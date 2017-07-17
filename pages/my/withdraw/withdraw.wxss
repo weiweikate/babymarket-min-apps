@@ -1,0 +1,37 @@
+/* withdraw.wxss */
+
+@import '/pages/my/cell/input-cell.wxss';
+
+.tips{
+    display: flex;
+    margin-left: 24rpx;
+}
+
+.remark-one{
+    margin-top: 10rpx;
+    line-height: 80rpx;
+    font-size: 26rpx;
+    color: #7d7f81;
+}
+
+.remark-two{
+    margin-top: 10rpx;
+    line-height: 80rpx;
+    font-size: 26rpx;
+    color: #7697C6;
+}
+
+button::after{
+    border: 0;
+}
+
+.okButton{
+    width: 702rpx;
+    margin: 30rpx 24rpx 0rpx 24rpx;
+    line-height: 88rpx;
+    border-radius: 8rpx;
+    background: #af8327;
+    font-size: 38rpx;
+    color: white;
+    text-align: center;
+}

@@ -1,0 +1,22 @@
+.bg-view{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 120rpx;
+}
+
+.bg-view .delivery-icon{
+    margin-left: 22rpx;
+}
+
+.bg-view .info{
+    margin-left: 18rpx;
+    font-size: 28rpx;
+    color: #715329;
+    width: 610rpx;
+    line-height: 120%;
+}
+
+.bg-view .arrow-icon{
+    margin-left: 40rpx;
+}

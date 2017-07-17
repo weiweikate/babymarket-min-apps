@@ -1,0 +1,157 @@
+/* orderDetail.wxss */
+@import '/pages/my/cell/address-cell.wxss';
+@import '/pages/my/myOrder/orderLineCell/orderline-cell.wxss';
+@import '/pages/my/cell/delivery-info-cell.wxss';
+@import '/pages/my/myOrder/settlement-cell/settlement-cell.wxss';
+
+/*订单信息*/
+
+.top-order-info-view {
+  background: white;
+  height: 125rpx;
+  width: 100%;
+  display: flex;
+  border-bottom: 20rpx solid #f5f7f7;
+  padding: 22rpx 26rpx 40rpx;
+}
+
+.order-info-icon {
+  width: 32rpx;
+  height: 26rpx;
+  /*background: red;*/
+  flex-shrink: 0;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16rpx;
+  font-size: 24rpx;
+  color: #1a1c1f;
+  justify-content: space-between;
+}
+
+/*支付金额*/
+.pay-amount-view {
+  display: flex;
+  border-bottom: 20rpx solid #f5f7f7;
+  background: white;
+  padding: 0rpx 26rpx;
+  align-items: center;
+  width: 100%;
+  height: 90rpx;
+}
+
+.pay-icon {
+  width: 32rpx;
+  height: 26rpx;
+  /*background: red;*/
+  flex-shrink: 0;
+}
+
+.pay-amount-text {
+  color: #454950;
+  font-size: 24rpx;
+  margin-left: 16rpx;
+}
+
+.pay-amount {
+  color: #1a1c1f;
+  font-size: 24rpx;
+  margin-top: 5rpx;
+}
+
+/*发货仓*/
+.delivery-address{
+    width: 100%;
+    line-height: 62rpx;
+    padding-left: 30rpx;
+    font-size: 24rpx;
+    color:#454950;
+    border-top: 20rpx solid #f5f7f7;
+}
+
+.settment-text{
+    border-top: 20rpx solid #f5f7f7;
+    width: 100%;
+    line-height: 62rpx;
+    padding-left: 30rpx;
+    font-size: 24rpx;
+    color:#454950;
+}
+
+.settlement-view-cell{
+    height: 62rpx;
+    background: white;
+    border-bottom: 2rpx solid #fafafa;
+}
+
+.footer-bg-view{
+    width: 100%;
+    margin-bottom: 200rpx;
+    margin-top: 20rpx;
+}
+
+.pay-finnal{
+    font-size: 24rpx;
+    color: #454950;
+    text-align: right;
+    margin-right: 24rpx;
+}
+
+.orderlineView {
+  background: white;
+}
+
+.order-sepline {
+  background: #f5f7f7;
+  margin-left: 25rpx;
+  height: 2rpx;
+  width: 725rpx;
+}
+
+.delivery-view {
+  background: white;
+}
+
+.bottom-view {
+  background-color: white;
+  height: 112rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  font-size: 28rpx;
+  position: fixed;
+  bottom: 0;
+}
+
+.bottom-button {
+  border-radius: 5rpx;
+  margin-right: 22rpx;
+  background-color: white;
+  padding: 18rpx 20rpx;
+  width: 128rpx;
+  text-align: center;
+}
+
+.bottom-button.right {
+  border: 2rpx solid #ACADAA;
+  color: #ACADAA;
+  position: fixed;
+  right: 0;
+}
+
+.bottom-button.middle {
+  border: 2rpx solid #715329;
+  color: #715329;
+  position: fixed;
+  right: 200rpx;
+}
+
+.bottom-button.left {
+  border: 2rpx solid #ACADAA;
+  color: #ACADAA;
+  position: fixed;
+  right: 400rpx;
+}

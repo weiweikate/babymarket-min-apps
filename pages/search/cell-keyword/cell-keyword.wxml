@@ -1,0 +1,5 @@
+<template name="cell-keyword">
+  <view class="cell-keyword" catchtap="onKeywordListener" data-keyword="{{title}}">
+    <text class="keyword">{{title}}</text>
+  </view>
+</template>

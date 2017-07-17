@@ -1,0 +1,16 @@
+<!--withdraw.wxml-->
+
+<import src='/pages/my/cell/input-cell.wxml' />
+
+<form bindsubmit="formSubmit">
+  <block wx:for="{{datas}}" wx:key="unique">
+    <template is="input-cell" data="{{...item, index:index}}"></template>
+  </block>
+
+  <view class="tips">
+    <text class="remark-one">请确保支付宝账号正确，</text>
+    <text class="remark-two" catchtap="bindAlipayTap">绑定支付宝</text>
+  </view>
+
+  <button class="okButton" form-type="submit">下一步</button>
+</form>

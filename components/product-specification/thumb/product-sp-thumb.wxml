@@ -1,0 +1,6 @@
+
+<template name="product-sp-thumb">
+    <view class="{{selected ? 'product-sp-thumb-select':'product-sp-thumb'}} {{showDashed ? 'product-sp-thumb-invalid':''}} " catchtap="thumbClicked" data-index="{{index}}" data-section="{{section}}">
+        <view>{{S_Value_Name}}</view>
+    </view>
+</template>

@@ -1,0 +1,158 @@
+/* my.wxss */
+
+@import '/pages/my/cell/my-cell.wxss';
+@import '/pages/my/cell/orderStatus-cell.wxss';
+
+.top-view{
+    width: 100%;
+    height: 420rpx;
+    background: #715329;
+}
+
+.top-view-flex{
+    width: 100%;
+    height: 350rpx;
+    /*background: mistyrose;*/
+    display: flex;
+}
+
+.message-image{
+    width: 31rpx;
+    height: 31rpx;
+    padding: 20rpx 20rpx;
+    margin-left: 10rpx;
+    /*background: red;*/
+}
+
+.setting-image{
+    width: 31rpx;
+    height: 31rpx;
+    margin-right: 10rpx;
+    padding: 20rpx 20rpx;
+    /*background: red;*/
+}
+
+/*个人资料*/
+.profile-view{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /*background: #715329;*/
+    height: 350rpx;
+    width: 590rpx;
+}
+
+/*头像*/
+.avatar-image{
+    width: 120rpx;
+    height: 120rpx;
+    border: 2rpx solid #715329;
+    border-radius: 100rpx;
+    margin-top: 20rpx;
+    background: white;
+    align-self: center;
+}
+
+/*昵称*/
+.nickname-text{
+    font-size: 32rpx;
+    color: white;
+    margin-top: 22rpx;
+}
+
+/*个性签名*/
+.introducion-text{
+    font-size: 26rpx;
+    color: #b19e83;
+    margin-top: 60rpx;
+}
+
+/*编辑资料*/
+.edit-view{
+    background: #61441a;
+    width: 114rpx;
+    height: 34rpx;
+    border-radius: 14rpx;
+    display: flex;
+    margin-top: 10rpx;
+    margin-left: 600rpx;
+    align-items: center;
+}
+
+.edit-icon{
+    width: 14rpx;
+    height: 14rpx;
+    /*background: red;*/
+    margin-left: 13rpx;
+}
+
+.edit-profile-text{
+    font-size: 18rpx;
+    color: #b19e83;
+    margin-left: 5rpx;
+}
+
+/*身份描述／二维码*/
+.desp-view{
+    display: flex;
+    width: 100%;
+    height: 120rpx;
+    background: white;
+    align-items: center;
+}
+
+.left-desp-view{
+    margin-left: 24rpx;
+    width: 622rpx;
+    height: 120rpx;
+}
+
+.qrcode-view{
+    width: 80rpx;
+    height: 80rpx;
+    background: cadetblue;
+}
+
+.line-one-view{
+    margin-top: 20rpx;
+    width: 100%;
+    height: 32rpx;
+    display: flex;
+    align-items: center;
+}
+
+.invite-code-text{
+    margin-top: 20rpx;
+    width: 100%;
+    font-size: 24rpx;
+    color: #454950;
+}
+
+.name-text{
+    font-size: 26rpx;
+    color: #1a1c1f;
+}
+
+.identify-name-text{
+    font-size: 20rpx;
+    color: #7697c6;
+    margin-left: 10rpx;
+}
+
+/*four cells*/
+.four-cell-view {
+  display: flex;
+  align-items: center;
+  height: 130rpx;
+  margin-top: 2rpx;
+  background-color: white;
+}
+
+.loginout{
+  font-size: 32rpx;
+  background-color: #715329;
+  color: white;
+  margin: 30rpx 30rpx;
+  line-height: 80rpx;
+  text-align: center;
+}

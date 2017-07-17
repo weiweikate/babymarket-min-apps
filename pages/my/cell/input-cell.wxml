@@ -1,0 +1,6 @@
+<template name="input-cell">
+  <view class="input-cell">
+    <text class="title-view">{{title}}</text>
+    <input name="{{inputName}}" class="input-view" placeholder="{{placeholder}}" bindtap="inputChangedTap" data-index="{{index}}" value="{{value}}" password="{{password}}" />
+  </view>
+</template>

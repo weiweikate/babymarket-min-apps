@@ -1,0 +1,16 @@
+<template name="orderline-cell">
+  <view class="orderline">
+
+    <image class="product-image" src="{{datas.imageUrl}}" mode="aspectFit"></image>
+    <view class="cart-describe">
+      <text class="cart-title OverFlowTwoLine">{{datas.Product_Name}}</text>
+      <text class="cart-desp" wx:if="{{datas.S_Name != '：' && datas.S_Name != ''}}">{{datas.S_Name}}</text>
+    </view>
+
+    <view class="cart-price-count">
+      <text class="cart-price" data-index="{{index}}">￥{{datas.Price}}</text>
+      <view class="qty" wx:if="{{!qtyHidden}}">x{{datas.Qnty}}</view>
+    </view>
+
+  </view>
+</template>

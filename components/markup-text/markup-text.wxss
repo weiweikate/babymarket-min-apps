@@ -1,0 +1,16 @@
+.bg-view{
+    display: flex;
+    font-size: 26rpx;
+    align-items: center;
+    height: 86rpx;
+    justify-content: flex-end;
+}
+
+.paintext{
+    color: #B0B1B3;
+}
+
+.number{
+    color: #af8327;
+    padding-top: 5rpx;
+}

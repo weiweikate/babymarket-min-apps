@@ -1,0 +1,75 @@
+{
+    "pages": [
+        "pages/home/home",
+        "pages/product-detail/product-detail",
+        "pages/my/my",
+        "pages/shopping-cart/shopping-cart",
+        "pages/login/login",
+        "pages/my/myOrder/myOrder",
+        "pages/order-confirm/order-confirm",
+        "pages/my/orderDetail/orderDetail",
+        "pages/my/delivery-info/delivery-info",
+        "pages/pay-method/pay-method",
+        "pages/my/agreement/agreement",
+        "pages/my/about-me/about-me",
+        "pages/my/withdraw/withdraw",
+        "pages/my/withdraw-detail/withdraw-detail",
+        "pages/my/my-fav/my-fav",
+        "pages/my/invite-friends/invite-friends",
+        "pages/address/address",
+        "pages/address/add-address/add-address",
+        "pages/address/select-provinces/select-provinces",
+        "pages/address/select-address/select-address",
+        "pages/home/product-more/product-more",
+        "pages/pay-success/pay-success",
+        "pages/my/my-property/my-property",
+        "pages/my/my-award/my-award",
+        "pages/my/my-save/my-save",
+        "pages/my/my-qrcode/my-qrcode",
+        "pages/my/withdraw/bind-alipay/bind-alipay",
+        "pages/my/withdraw/withdraw-to-alipay/withdraw-to-alipay",
+        "pages/my/withdraw/pay-password-set/pay-password-set",
+        "pages/my/withdraw/withdraw-success/withdraw-success",
+        "pages/search/search",
+        "pages/search/search-result/search-result"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#715329",
+        "navigationBarTitleText": "老友码头",
+        "navigationBarTextStyle": "#ffffff",
+        "backgroundColor": "#f2f2f2",
+        "enablePullDownRefresh": false
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "downloadFile": 10000
+    },
+    "tabBar": {
+        "backgroundColor": "#ffffff",
+        "selectedColor": "#af8327",
+        "color": "#808080",
+        "borderStyle": "white",
+        "list": [
+            {
+                "pagePath": "pages/home/home",
+                "text": "大码头",
+                "iconPath": "/res/img/tabbar/tabbar-icon-normal-0.png",
+                "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-0.png"
+            },
+            {
+                "pagePath": "pages/shopping-cart/shopping-cart",
+                "text": "购物车",
+                "iconPath": "/res/img/tabbar/tabbar-icon-normal-3.png",
+                "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-3.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "/res/img/tabbar/tabbar-icon-normal-4.png",
+                "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-4.png"
+            }
+        ]
+    },
+    "debug": true
+}

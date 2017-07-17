@@ -1,0 +1,78 @@
+/* delivery-info.wxss */
+
+@import '/pages/my/cell/express-info-cell.wxss';
+
+.top-info-view{
+    background: white;
+    width: 100%;
+    height: 200rpx;
+    display: flex;
+    align-items: center;
+}
+
+.img-view{
+    margin-left: 24rpx;
+    width: 120rpx;
+    height: 120rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-image{
+    border: 2rpx solid #f5f7f7;
+    width: 120rpx;
+    height: 120rpx;
+    position: absolute;
+}
+
+.qty-view{
+    width: 120rpx;
+    line-height: 30rpx;
+    text-align: center;
+    background: #000406;
+    color: white;
+    font-size: 20rpx;
+    margin-top: 92rpx;
+    z-index: 1;
+}
+
+.express-info-view{
+    font-size: 28rpx;
+    color: #3c3d3d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90rpx;
+    margin-left:20rpx;
+}
+
+.list-title{
+    line-height: 100rpx;
+    margin-top: 20rpx;
+    padding-left: 24rpx;
+    color: #000406;
+    font-size: 34rpx;
+    background: white;
+}
+
+.bgview{
+    background: white;
+    height: 2rpx;
+    width: 100%;
+}
+
+.sepline{
+    /*margin-left: 25rpx;*/
+    /*margin-right: 25rpx;*/
+    height: 2rpx;
+    background: #f5f7f7;
+}
+
+.delivery-info-list{
+    background: white;
+}
+
+
+
+

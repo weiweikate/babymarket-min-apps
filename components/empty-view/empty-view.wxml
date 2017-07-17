@@ -1,0 +1,6 @@
+<template name="empty-view">
+  <view class="empty-view">
+    <image class="img" src="{{imageUrl.length>0?imageUrl:'/res/img/common/comm-icon-empty.png'}}" />
+    <text class="title">{{title}}</text>
+  </view>
+</template>

@@ -1,0 +1,62 @@
+/* my-fav.wxss */
+/*@import '/pages/my/myOrder/orderLineCell/orderline-cell.wxss';*/
+
+.orderlineView {
+  background: white;
+}
+
+.order-sepline {
+  background: #f5f7f7;
+  margin-left: 25rpx;
+  height: 2rpx;
+  width: 725rpx;
+}
+
+.orderline {
+  display: flex;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.product-image {
+  background: white;
+  width: 150rpx;
+  height: 150rpx;
+  margin-left: 25rpx;
+  /*border: 2rpx solid #dcdedf;*/
+  flex-shrink: 0;
+}
+
+.cart-describe {
+  margin-top: 8rpx;
+  margin-bottom: 8rpx;
+  margin-left: 30rpx;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-title {
+  font-size: 28rpx;
+  color: #26272a;
+  width: 90%;
+  line-height: 120%;
+}
+
+.cart-desp {
+  font-size: 26rpx;
+  color: #acadaa;
+  margin-top: 20rpx;
+}
+
+.cart-price-count {
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: column;
+  margin-top: 13rpx;
+}
+
+.cart-price {
+  font-size: 28rpx;
+  color: #26272a;
+}

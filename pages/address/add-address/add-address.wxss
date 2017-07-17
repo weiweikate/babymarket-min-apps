@@ -1,0 +1,73 @@
+/*新建地址*/
+
+.address-add-main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.addresser-type {
+  display: flex;
+  padding: 15rpx 20rpx 15rpx 20rpx;
+  background: white;
+  align-items: center;
+  height: 58rpx;
+}
+
+.address-meter {
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.addresser-type-text {
+  font-size: 28rpx;
+  margin-left: 10rpx;
+  color: #b3b7b9;
+}
+
+.addresser-type-text1 {
+  font-size: 28rpx;
+  margin-left: 30rpx;
+  color: #b3b7b9;
+}
+
+.addresser-name-input {
+  font-size: 28rpx;
+  color: #3c3d3d;
+  flex-grow: 1;
+}
+
+.addresser-select {
+  font-size: 28rpx;
+  color: #3c3d3d;
+}
+
+.address-divide {
+  width: 100%;
+  height: 2rpx;
+  background: gainsboro;
+}
+
+.address-add {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+}
+
+.address-add-bt {
+  color: #715329;
+  border: 1rpx solid #715329;
+  background: white;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  margin: 20rpx 20rpx 20rpx 20rpx;
+  height: 70rpx;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+button::after {
+  border: 0;
+}

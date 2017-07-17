@@ -1,0 +1,23 @@
+.empty-view {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-view .img {
+  width: 240rpx;
+  height: 205rpx;
+  flex: none;
+}
+
+.empty-view .title {
+  font-size: 28rpx;
+  color: #b3b7b9;
+  margin-top: 30rpx;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+}

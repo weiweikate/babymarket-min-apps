@@ -1,0 +1,30 @@
+<!--搜索-->
+<import src='/components/search-field/search-field.wxml' />
+<import src='/pages/search/cell-keyword/cell-keyword.wxml' />
+
+<view class="root-view">
+  <view class="search-bar">
+    <template is="search-field" data="{{isDisabled:false}}" />
+  </view>
+  <view class="search-panel">
+    <view class="history">
+      <view class="history-title-panel">
+        <text class="history-title">最近搜索</text>
+        <image src="/res/img/address/address-delete.png" catchtap="onDeleteClickListener" class="btn-delete" />
+      </view>
+      <view class="history-list">
+        <block wx:for="{{historySearchData}}" wx:key="unique">
+          <template is="cell-keyword" data="{{title:item}}" />
+        </block>
+      </view>
+    </view>
+    <view class="hot">
+      <text class="hot-title">热门搜索</text>
+      <view class="hot-list">
+        <block wx:for="{{hotSearchData}}" wx:key="unique">
+          <template is="cell-keyword" data="{{title:item.Keyword}}" />
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+<!--about-me.wxml-->
+
+<view class="window">
+    <image src="/res/img/my/my-about-me-bg-icon.png" class="image_bg"></image>
+    <image src="/res/img/my/my-about-me-logo-icon.png" class="logo" style="width:380rpx;height:380rpx"></image>
+    <text>{{version}}</text>
+</view>

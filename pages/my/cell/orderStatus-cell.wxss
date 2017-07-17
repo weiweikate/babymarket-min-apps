@@ -1,0 +1,22 @@
+
+.myOrder-waitingDispatch{
+  width: 187rpx;
+  height: 130rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.myOrder-waitingDispatch.active{
+  border-left: 2rpx solid #dcdedf;
+}
+
+.cell-imgage{
+    margin-top: 28rpx;
+}
+
+.waitingDispatch-view{
+  font-size: 24rpx;
+  color: #1a1c1f;
+  margin-top: 20rpx;
+}

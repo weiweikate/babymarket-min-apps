@@ -1,0 +1,6 @@
+<!--选择区域-->
+<view class="main">
+  <view class="areas-list" wx:for="{{areas}}" wx:key="{{index}}">
+    <text class="area-name" bindtap="selectArea" data-index="{{index}}">{{item.Name}}</text>
+  </view>
+</view>

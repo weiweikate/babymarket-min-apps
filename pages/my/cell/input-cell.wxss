@@ -1,0 +1,20 @@
+.input-cell{
+    height: 116rpx;
+    width: 100%;
+    padding: 0rpx 24rpx;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-bottom: 1rpx solid #dcdedf;
+}
+
+.title-view{
+    font-size: 32rpx;
+    color: #1a1c1f;
+}
+
+.input-view{
+    margin-left: 20rpx;
+    height: 100%;
+    font-size: 32rpx;
+}

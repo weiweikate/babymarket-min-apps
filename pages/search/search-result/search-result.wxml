@@ -1,0 +1,19 @@
+<!--搜索-->
+<import src='/components/search-field/search-field.wxml' />
+<import src='/pages/home/cell-product/cell-product.wxml' />
+<import src='/components/empty-view/empty-view.wxml' />
+<import src='/components/product-specification/product-specification.wxml' />
+
+<view class="root-view">
+  <view class="search-bar">
+    <template is="search-field" data="{{isDisabled:false,defaultValue:keyword}}" />
+  </view>
+  <scroll-view class="search-result" scroll-y>
+    <view wx:if="{{productArray.length > 0}}" class="cell-item">
+      <template is="cell-product" data="{{productArray:productArray}}" />
+    </view>
+    <template is="empty-view" data="{{title:'没有搜索到相关结果~'}}" wx:else />
+  </scroll-view>
+</view>
+
+<template is="product-specification" data="{{visiable:showProductSpecification,innerTitle:innerTitle}}" />

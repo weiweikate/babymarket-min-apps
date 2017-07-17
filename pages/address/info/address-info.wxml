@@ -1,0 +1,14 @@
+<!--地址信息-->
+<template name="address-info">
+  <view class="address-view" bindtap="addressInfo" data-index="{{index}}">
+    <view class="address-row">
+      <view class="address-top-left">
+        <text class="address-name">{{Consignee}}</text>
+        <text wx:if="{{isShow}}" class="{{isAuthentication==true?'address-auth':'address-unauth'}}">{{authentication}}</text>
+      </view>
+      <text class="address-mobile">{{Mobile}}</text>
+    </view>
+    <text class="address-detail OverFlowTwoLine">{{Address}}</text>
+    <text wx:if="{{isAuthentication}}" class="address-id">身份证:{{Card}}</text>
+  </view>
+</template>

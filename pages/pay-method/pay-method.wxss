@@ -1,0 +1,117 @@
+.main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.pay-method-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 200rpx;
+  background: white;
+  border-bottom: 10rpx solid #f5f7f7;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+}
+
+.top-icon {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.top-text {
+  font-size: 34rpx;
+  margin-left: 10rpx;
+  color: #1a1c1f;
+}
+
+.center-text {
+  margin-top: 30rpx;
+  font-size: 26rpx;
+  color: #1a1c1f;
+}
+
+.no {
+  display: flex;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  background: white;
+  align-items: center;
+}
+
+.money {
+  display: flex;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  background: white;
+  border-bottom: 10rpx solid #f5f7f7;
+  align-items: center;
+}
+
+.info-no-title {
+  font-size: 30rpx;
+  color: #7d7f81;
+}
+
+.info-no-value {
+  font-size: 30rpx;
+  color: #454950;
+}
+
+.pay-info {
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.pay-info-text {
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  font-size: 24rpx;
+  color: #7d7f81;
+}
+
+.divide {
+  width: 100%;
+  height: 2rpx;
+  background: gainsboro;
+}
+
+.pay-info-list {
+  display: flex;
+  background: white;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  align-items: center;
+}
+
+.pay-info-title {
+  font-size: 28rpx;
+  color: #454950;
+}
+
+.pay-info-value {
+  font-size: 28rpx;
+  color: #454950;
+  margin-left: 30rpx;
+}
+
+.pay-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.pay-bt {
+  color: white;
+  background: #af8327;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  margin: 20rpx 20rpx 20rpx 20rpx;
+  height: 70rpx;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}

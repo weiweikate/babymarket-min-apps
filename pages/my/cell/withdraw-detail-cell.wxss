@@ -1,0 +1,30 @@
+.withdraw-detail-cell-view{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 24rpx;
+    margin-right: 0rpx;
+    border-bottom: 2rpx solid #f5f7f7;
+    height: 94rpx;
+}
+
+.time{
+    font-size: 28rpx;
+    color: #5e5e5f;
+    width: 300rpx;
+}
+
+.amount{
+    font-size: 34rpx;
+    color: #000406;
+}
+
+.status{
+    font-size: 32rpx;
+    color: #000406;
+    margin-right: 24rpx;
+}
+
+.status.active{
+    color: #715329;
+}

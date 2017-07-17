@@ -1,0 +1,6 @@
+<template name="cell-bulletin">
+  <view class="cell-bulletin">
+    <text class="title">码头快报</text>
+    <text class="content">客服QQ：3374808961</text>
+  </view>
+</template>

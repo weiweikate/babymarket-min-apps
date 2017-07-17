@@ -1,0 +1,12 @@
+<!--my-award.wxml-->
+<import src='/pages/my/my-award/cell/my-award-cell/my-award-cell.wxml' />
+
+<!--top view-->
+<view class="top-view">
+  <text class="balance-text">收到奖励（元）</text>
+  <text class="balance-value">¥{{award}}</text>
+</view>
+
+<block wx:for="{{listDatas}}" wx:key="unique">
+    <template is="my-award-cell" data="{{...item}}"></template>
+</block>

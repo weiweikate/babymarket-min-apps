@@ -1,0 +1,9 @@
+/* myOrder.wxss */
+
+@import '/pages/my/myOrder/empty/empty-view.wxss';
+@import '/pages/my/myOrder/segmentView/segment-view.wxss';
+@import '/pages/my/myOrder/orderCell/order-cell.wxss';
+
+.order{
+  margin-top: 96rpx;
+}

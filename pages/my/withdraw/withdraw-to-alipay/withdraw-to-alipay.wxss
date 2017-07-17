@@ -1,0 +1,40 @@
+/* withdraw-to-alipay.wxss */
+
+@import '/pages/my/cell/input-cell.wxss';
+
+.top-view{
+    display: flex;
+    margin: 18rpx 24rpx 18rpx 24rpx;
+}
+
+.current{
+    font-size: 26rpx;
+    color: #5e6064;
+}
+
+.amount{
+    font-size: 26rpx;
+    color: #e4c23f;
+}
+
+.remark{
+    margin: 10rpx 24rpx 0rpx 24rpx;
+    line-height: 80rpx;
+    font-size: 26rpx;
+    color: #7697C6;
+}
+
+button::after{
+    border: 0;
+}
+
+.okButton{
+    width: 702rpx;
+    margin: 30rpx 24rpx 0rpx 24rpx;
+    line-height: 88rpx;
+    border-radius: 8rpx;
+    background: #af8327;
+    font-size: 38rpx;
+    color: white;
+    text-align: center;
+}

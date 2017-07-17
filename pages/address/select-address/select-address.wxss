@@ -1,0 +1,23 @@
+/*选择地址*/
+@import '/pages/address/info/address-info.wxss';
+
+.address-main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.address-list {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 10rpx solid #f5f7f7;
+  background: white;
+}
+
+.address-no-data {
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}

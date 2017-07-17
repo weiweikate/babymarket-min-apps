@@ -1,0 +1,7 @@
+<template name="segment-view">
+  <view class="top flexbox">
+    <view wx:for="{{items}}" class="{{item.id==currentIndex?'item active':'item'}}" bindtap="segmentIndexChangedTap" data-index="{{index}}" wx:key="unique">{{item.name}}
+      <text class="bg1"></text>
+    </view>
+  </view>
+</template>

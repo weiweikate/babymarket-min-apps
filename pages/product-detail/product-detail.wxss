@@ -1,0 +1,171 @@
+@import '/pages/home/ad/home-ad.wxss';
+@import '/pages/product-detail/ad/product-ad.wxss';
+@import 'slogan/product-slogan.wxss';
+@import '/components/product-specification/product-specification.wxss';
+
+.root-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.root-view .product-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-info .image {
+  width: 100%;
+  height: 600rpx;
+  flex: none;
+  background-color: white;
+}
+
+.image.empty {
+  background-color: #f3f3f4;
+}
+
+.product-info .info {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 0;
+  background-color: white;
+  margin-top: 2rpx;
+}
+
+.info .name {
+  font-size: 30rpx;
+  color: black;
+    padding: 0 20rpx;
+}
+
+.info .detail {
+  font-size: 26rpx;
+  color: #969999;
+  margin: 24rpx 0 24rpx;
+    padding: 0 20rpx;
+}
+
+.info .price {
+  display: flex;
+  align-items: center;
+    padding: 0 20rpx;
+}
+
+.info .price .title {
+  font-size: 30rpx;
+  color: black;
+}
+
+.info .price .value {
+  font-size: 30rpx;
+  color: #e73962;
+}
+
+
+.root-view .bottom-bar {
+  display: flex;
+  height: 100rpx;
+  background-color: white;
+}
+
+.bottom-bar .go-cart-view {
+  display: flex;
+  height: 100%;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5rpx;
+}
+
+.go-cart-view .cart-image {
+  width: 65rpx;
+  height: 65rpx;
+  flex: none;
+}
+
+.go-cart-view .cart-name {
+  font-size: 20rpx;
+  color: black;
+  margin-top: 5dp;
+}
+
+.bottom-bar .btn-two {
+  display: flex;
+  height: 100%;
+}
+
+.btn-two .btn-addcart {
+  display: flex;
+  background-color: #ffba40;
+  height: 100%;
+  font-size: 35rpx;
+  color: white;
+  width: 300rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-two .btn-submit {
+  display: flex;
+  background-color: #e73962;
+  height: 100%;
+  font-size: 35rpx;
+  color: white;
+  width: 300rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.root-view .bmpi-country-base {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    color: #7798c4;
+}
+.bmpi-price{
+    font-size: 17px;
+    color: #ab7b0f;
+    margin-top: 5px;
+}
+
+.bmpi-old-price{
+    font-size: 17px;
+    color: #999999;
+    margin-left: 10px;
+    margin-top: 5px;
+    text-decoration:line-through;
+}
+
+.bmpi-country{
+    font-size: 28rpx;
+    padding: 14rpx 20rpx;
+}
+
+.bmpi-express-base{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f6f7f8;
+    width: 100%;
+    height: 30px;
+    margin: 0px;
+    font-size: 12px;
+    /*padding-left: 10px;*/
+    /*margin-left: 10px;*/
+}
+
+.bmpi-location{
+    margin-right: 15px;
+    padding-left: 10px;
+}
+
+.bmpi-express{
+    margin-right: 15px;
+}
+
+.bmpi-tax{
+
+}

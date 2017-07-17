@@ -1,0 +1,13 @@
+
+
+<template name="product-slogan-item">
+    <view class="bmpsi-content">
+        <image src='{{image}}' class="bmpsi-image"/>
+        <view class="bmpsi-title">
+            {{title}}
+        </view>
+    </view>
+</template>
+
+
+

@@ -1,0 +1,8 @@
+.keyword {
+  font-size: 25rpx;
+  color: black;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  padding: 8rpx 12rpx 8rpx 12rpx;
+  margin: 8rpx;
+}

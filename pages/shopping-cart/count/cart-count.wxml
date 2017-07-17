@@ -1,0 +1,8 @@
+<!--订单中心-子视图数量修改-->
+<template name="cell-quantity">
+  <view class="cell-quantity" hidden="{{!isSelect}}">
+    <view class="btn-mimus" catchtap="onQuantityMimusListener" data-group-position="{{groupPosition}}" data-child-position="{{childPosition}}" data-count="{{count}}">-</view>
+    <text class="text-count">{{item.Qnty}}</text>
+    <view class="btn-plus" catchtap="onQuantityPlusListener" data-group-position="{{groupPosition}}" data-child-position="{{childPosition}}" data-count="{{count}}">+</view>
+  </view>
+</template>

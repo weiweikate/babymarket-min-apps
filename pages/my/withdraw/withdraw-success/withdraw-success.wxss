@@ -1,0 +1,18 @@
+/* withdraw-success.wxss */
+
+.bg-view{
+    display: flex;
+    margin-top: 60rpx;
+    justify-content: center;
+}
+
+.img{
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.desp{
+    font-size: 34rpx;
+    color: #454950;
+    margin-left: 10rpx;
+}

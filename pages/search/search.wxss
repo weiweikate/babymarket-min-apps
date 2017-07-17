@@ -1,0 +1,66 @@
+/*搜索*/
+@import "/components/search-field/search-field.wxss";
+@import "/pages/search/cell-keyword/cell-keyword.wxss";
+
+.root-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.search-bar {
+  padding: 15rpx;
+}
+
+.search-panel {
+  height: 100%;
+  background-color: white;
+}
+
+.history {
+  display: flex;
+  flex-direction: column;
+}
+
+.history .history-title-panel {
+  display: flex;
+  align-items: center;
+  padding: 15rpx;
+}
+
+.history-title-panel .history-title {
+  font-size: 26rpx;
+  color: black;
+  flex-grow: 1;
+}
+
+.history-title-panel .btn-delete {
+  width: 36rpx;
+  height: 36rpx;
+  flex: none;
+}
+
+.history-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+
+.hot {
+  display: flex;
+  flex-direction: column;
+}
+
+.hot .hot-title {
+  font-size: 26rpx;
+  color: black;
+  padding: 15rpx;
+}
+
+.hot .hot-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}

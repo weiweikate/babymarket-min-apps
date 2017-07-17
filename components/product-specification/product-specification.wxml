@@ -1,0 +1,53 @@
+<!--product-specification.wxml-->
+<import src='/pages/shopping-cart/count/cart-count.wxml' />
+<import src='/components/submit-btn/submit-btn.wxml'/>
+<import src="/components/product-specification/thumb/product-sp-thumb.wxml"/>
+<import src='/components/adder-subtractor/adder-subtractor.wxml'/>
+
+<template name="product-specification">
+    <block wx:if="{{visiable}}">
+        <view catchtap="dismissProductSpecification" class="model-view-bg">
+            <view class="product-specification zoom-in" catchtap="productSpecificationClicked">
+
+
+                <view class="header">
+                    <view class="header-left">
+                        <view class="price">￥{{specificationData ? specificationData.levelPrice : innerProduct.SalePrice}}</view>
+                        <view class="inv">(库存{{specificationData ? specificationData.Inv : innerProduct.Inv}}件)</view>
+                    </view>
+                    <image class="dismiss-btn"
+                           catchtap="dismissProductSpecification"
+                           mode="aspectFit"
+                           src="/res/img/product-specification/product-specification-dismiss.png"
+                    />
+                </view>
+
+
+                <block wx:for="{{categoryArray}}" wx:key="unique" wx:for-index="section">
+                    <view class="thumb-group-title">
+                        <view>{{item.SpecificationName}}</view>
+                    </view>
+                    <view class="thumb-group">
+                        <block wx:for="{{item.S_Value_Detail}}" wx:for-index="index" wx:for-item="detail" wx:key="unique">
+                            <template is="product-sp-thumb" data="{{index,section,...detail}}"/>
+                        </block>
+                    </view>
+                </block>
+
+
+                <view class="counter">
+                    <view class="counter-value">数量</view>
+                    <template is="adder-subtractor" data="{{count:innerCount}}"/>
+                </view>
+
+                <view class="submit-btn-container">
+                    <template is="submit-btn" data="{{title:innerTitle}}"/>
+                </view>
+
+            </view>
+        </view>
+    </block>
+</template>
+
+
+

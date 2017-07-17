@@ -1,0 +1,11 @@
+.submit-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0rpx;
+    color: white;
+    background-color: #715329;
+    height:90rpx;
+    font-size: 28rpx;
+    border-radius: 10rpx;
+}

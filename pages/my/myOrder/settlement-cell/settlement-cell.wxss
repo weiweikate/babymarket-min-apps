@@ -1,0 +1,18 @@
+.bgview{
+    padding: 0rpx 25rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 700rpx;
+    height: 100%;
+}
+
+.name{
+    font-size: 24rpx;
+    color: #454950;
+}
+
+.value{
+    font-size: 24rpx;
+    color: #26272a; 
+}

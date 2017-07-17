@@ -1,0 +1,48 @@
+.input-alert{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 550rpx;
+    height: 250rpx;
+    padding:24rpx;
+    background-color: white;
+    border-radius: 18rpx;
+}
+
+.input-alert textarea{
+    height: 150rpx;
+    width: 530rpx;
+    background-color: #eeeeee;
+    margin-bottom: 24rpx;
+    padding: 10rpx;
+    font-size: 28rpx;
+}
+
+.input-alert .buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 78rpx;
+
+    color: white;
+    font-size: 30rpx;
+}
+
+.input-alert .buttons .left-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #999999;
+    width: 262rpx;
+    border-radius: 10rpx;
+}
+
+.input-alert .buttons .right-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #72c9c0;
+    width: 262rpx;
+    border-radius: 10rpx;
+}

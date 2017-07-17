@@ -1,0 +1,31 @@
+<!--日期筛选器-->
+<template name="date-filter">
+    <view class="date-filter">
+
+        <!--开始日期-->
+        <picker
+                mode="date"
+                fields="month"
+                value="{{startDate}}"
+                end="{{startMaxDate}}"
+                data-type="start"
+                bindchange="datePickerChange"
+        >
+            <input placeholder="开始日期" value="{{startDate}}"/>
+        </picker>
+
+        <!--结束日期-->
+        <picker
+                mode="date"
+                fields="month"
+                value="{{endDate}}"
+                start="{{endMinDate}}"
+                data-type="end"
+                bindchange="datePickerChange"
+        >
+            <input placeholder="结束日期" value="{{endDate}}"/>
+        </picker>
+
+
+    </view>
+</template>

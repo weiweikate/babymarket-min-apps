@@ -1,0 +1,38 @@
+<!--支付方式-->
+
+<view class="main">
+  <!--顶部-->
+  <view class="pay-method-top">
+    <view class="top">
+      <image src="/res/img/pay-success/pay-success-icon.png" class="top-icon" mode="aspectFit"></image>
+      <text class="top-text">订单已提交</text>
+    </view>
+    <text class="center-text">（请在30分钟内完成支付）</text>
+  </view>
+
+  <view class="no">
+    <text class="info-no-title">订单号：</text>
+    <text class="info-no-value">{{order.OrderNo}}</text>
+  </view>
+  <view class="money">
+    <text class="info-no-title">订单金额：</text>
+    <text class="info-no-value">{{order.Total}}</text>
+  </view>
+
+  <!--支付明细-->
+  <view class="pay-info">
+    <text class="pay-info-text">支付明细</text>
+    <!--分割线-->
+    <view class="divide"></view>
+    <!--明细-->
+    <view class="pay-info-list" wx:for="{{infos}}" wx:key="{{index}}">
+      <text class="pay-info-title">{{item.title}}</text>
+      <text class="pay-info-value">{{item.value}}</text>
+    </view>
+  </view>
+
+  <!--订单按钮-->
+  <view class="pay-footer">
+    <view bindtap="pay" class="pay-bt">确认支付</view>
+  </view>
+</view>

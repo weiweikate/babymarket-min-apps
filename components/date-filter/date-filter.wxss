@@ -1,0 +1,16 @@
+.date-filter{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 38rpx 0 0;
+    width: 100%;
+}
+
+.date-filter input{
+    display: flex;
+    background-color: white;
+    margin:0 30rpx;
+    padding:0 20rpx;
+    height:100rpx;
+    font-size: 28rpx;
+}

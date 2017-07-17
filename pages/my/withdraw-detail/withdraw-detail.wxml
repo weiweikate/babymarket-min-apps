@@ -1,0 +1,6 @@
+<!--withdraw-detail.wxml-->
+<import src='/pages/my/cell/withdraw-detail-cell.wxml' />
+
+  <block wx:for="{{detailDatas}}" wx:key="unique">
+    <template is="withdraw-detail-cell" data="{{...item}}"></template>
+  </block>

@@ -1,0 +1,25 @@
+<!--delivery-info.wxml-->
+
+<import src='/pages/my/cell/express-info-cell.wxml' />
+
+<view class="top-info-view">
+    <view class="img-view">
+        <image class="product-image" src="{{imgUrl}}" mode="aspectFit"></image>
+        <view class="qty-view">{{count}}件商品</view>
+    </view>
+
+    <view class="express-info-view">
+        <text class="express-company">物流公司：{{companyName}}</text>
+        <text class="express-no">物流单号：{{trackNo}}</text>
+    </view>
+</view>
+
+<text class="list-title">订单跟踪</text>
+
+<view class="bgview">
+    <view class="sepline"></view>
+</view>
+
+<view class="delivery-info-list" wx:for="{{deliveryInfoList}}" wx:key="unique">
+    <template is="express-info-cell" data="{{item:item,index:index}}"></template>
+</view>

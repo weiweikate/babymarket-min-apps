@@ -1,0 +1,6 @@
+.cell-title {
+  text-align: center;
+  font-size: 30rpx;
+  color: black;
+  padding: 30rpx;
+}

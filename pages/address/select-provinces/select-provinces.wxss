@@ -1,0 +1,19 @@
+.main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.areas-list {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  border-bottom: 2rpx solid #f5f7f7;
+  background: white;
+}
+
+.area-name {
+  font-size: 26rpx;
+  color: #5e5e5f;
+  width: 100%;
+}

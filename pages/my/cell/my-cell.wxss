@@ -1,0 +1,50 @@
+@import '/components/markup-text/markup-text.wxss';
+
+/*mycell*/
+.my-flex{
+  background: white;
+  margin-top: 20rpx;
+}
+
+.myCell-flex{
+  display: flex;
+  align-items: center;
+  height: 86rpx;
+  border-bottom: 2rpx solid #f3f3f4;
+}
+
+.icon{
+  /*background-color: red;*/
+  margin-left: 30rpx;
+}
+
+.name{
+  font-size: 28rpx;
+  color: #1a1c1f;
+  margin-left: 20rpx;
+  /*background-color: cornflowerblue;*/
+}
+
+.detail{
+  font-size: 26rpx;
+  color: #9b9a9b;
+  margin-right: 20rpx;
+  flex: 5 0 auto;
+  text-align: right;
+  /*background: yellow;*/
+}
+
+.arrow{
+  margin-right: 22rpx;
+  align-self: center;
+}
+
+/*.arrow.active{
+    display: none
+}*/
+
+.sepline{
+  background-color: #f2f5f5;
+  height: 2rpx;
+  margin-bottom: 0rpx;
+}

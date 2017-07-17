@@ -1,0 +1,8 @@
+<!--my-fav.wxml-->
+<import src='/pages/my/myOrder/orderLineCell/orderline-cell.wxml' />
+
+<!--商品列表-->
+<view wx:for="{{datas}}" class="orderlineView" wx:key="unique" catchtap="cellTap" data-index="{{index}}">
+  <template is="orderline-cell" data="{{datas:item, qtyHidden:qtyHidden}}"></template>
+  <view class="order-sepline"></view>
+</view>

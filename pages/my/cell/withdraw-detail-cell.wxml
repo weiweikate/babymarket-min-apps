@@ -1,0 +1,7 @@
+<template name="withdraw-detail-cell">
+  <view class="withdraw-detail-cell-view">
+    <text class="time">{{CreateTime}}</text>
+    <text class="amount">-{{Money}}</text>
+    <text class="{{Status=='未到账'?'status active':'status'}}">{{Status}}</text>
+  </view>
+</template>

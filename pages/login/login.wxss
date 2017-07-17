@@ -1,0 +1,48 @@
+.container {
+  padding: 0;
+}
+
+.image_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.view_top {
+  padding: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.view_bottom {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 12px 30px 12px;
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 2;
+}
+
+text {
+  color: #715329;
+  font-size: 12px;
+}
+
+input {
+  color: #715329;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.bt_login {
+  background-color: #715329;
+  color: white;
+  margin-top: 15px;
+  font-size: 17px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}

@@ -1,0 +1,10 @@
+
+let {Tool} = global;
+
+<template name="delivery-info-cell">
+    <view class="bg-view">
+        <image class="delivery-icon" src="/res/img/my/my-delivery-info-icon.png" mode="aspectFit" style="width:31rpx;height:31rpx"></image>
+        <text class="info OverFlowTwoLine">{{remark}}</text>
+        <image src="arrow-icon" src="/res/img/common/common-accessory-icon.png" mode="aspectFit" style="width:30rpx;height:30rpx"></image>
+    </view>
+</template>

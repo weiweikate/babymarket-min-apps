@@ -1,0 +1,12 @@
+<!--bind-alipay.wxml-->
+
+<import src='/pages/my/cell/input-cell.wxml' />
+
+<form bindsubmit="formSubmit">
+  <block wx:for="{{datas}}" wx:key="unique">
+    <template is="input-cell" data="{{...item, index:index}}"></template>
+  </block>
+
+  <text class="remark">请确认支付宝账号正确</text>
+  <button class="okButton" form-type="submit">绑定支付宝账号</button>
+</form>

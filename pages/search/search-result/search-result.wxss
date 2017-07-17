@@ -1,0 +1,29 @@
+/*搜索*/
+@import "/components/search-field/search-field.wxss";
+@import "/pages/home/cell-product/cell-product.wxss";
+@import '/components/empty-view/empty-view.wxss';
+@import '/components/product-specification/product-specification.wxss';
+
+.root-view {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+
+.search-bar {
+  padding: 15rpx;
+}
+
+.search-result {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.search-result .cell-item {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}

@@ -1,0 +1,43 @@
+/*地址*/
+.address-view {
+  background-color: white;
+  height: 142rpx;
+  display: flex;
+  width: 100%;
+}
+
+.address-view .left-icon{
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 20rpx;
+    margin-top: 30rpx;
+    flex-shrink: 0;
+}
+
+.right-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 30rpx 30rpx 30rpx 10rpx;
+}
+
+.address-row{
+  display: flex;
+  justify-content: space-between;
+}
+
+.address-name {
+  font-size: 24rpx;
+  color: #26272a;
+}
+
+.address-mobile {
+  font-size: 24rpx;
+  color: #26272a;
+}
+
+.address-detail {
+  color: #26272a;
+  font-size: 24rpx;
+}

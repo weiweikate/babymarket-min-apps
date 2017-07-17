@@ -1,0 +1,3 @@
+<template name="header-cell">
+    <text class="title">{{datas.dealMonth}}</text>
+</template>

@@ -1,0 +1,8 @@
+<template name="empty-view">
+  <view class="background-view">
+    <image class="image" src="/res/img/my/my-order-nothing-icon.png" mode="aspectFit"></image>
+    <text class="line1">您没有相关订单</text>
+    <text class="line2">可以去看看有哪些想买的噢</text>
+    <view class="okButton" bindtap="okButtonTap">随便逛逛</view>
+  </view>
+</template>

@@ -1,0 +1,17 @@
+<view class="container">
+  <image class="image_bg" src="/res/img/login/login-bg.jpg"></image>
+  <view class="view_top">
+    <image style="width: 180px; height: 180px;" src="/res/img/login/login-icon.png"></image>
+  </view>
+  <form class="view_bottom" bindsubmit="loginAction">
+    <view>
+      <text>登录名</text>
+      <input name="username" placeholder="请输入登录名" placeholder-style="color:#715329" />
+      <view style="height:1px; background-color: #715329; margin-bottom:10px;"></view>
+      <text>密码</text>
+      <input name="password" placeholder="请输入密码" password="true" placeholder-style="color:#715329" />
+      <view style="height:1px; background-color: #715329;"></view>
+      <button formType="submit" class="bt_login">登录</button>
+    </view>
+  </form>
+</view>

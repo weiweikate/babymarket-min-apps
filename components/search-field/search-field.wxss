@@ -1,0 +1,21 @@
+.search-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10rpx;
+  border: 1px solid lightgray;
+  background-color: white;
+}
+
+.search-field input {
+  display: flex;
+  flex: 1;
+  font-size: 25rpx;
+}
+
+.search-field image {
+  height: 25rpx;
+  width: 25rpx;
+  margin: 10rpx;
+  flex: none;
+}

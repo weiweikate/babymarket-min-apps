@@ -1,0 +1,16 @@
+<!--withdraw-to-alipay.wxml-->
+<import src='/pages/my/cell/input-cell.wxml' />
+
+<view class="top-view">
+  <text class="current">当前最大可提现金额：</text>
+  <text class="amount">{{maxAmount}}元</text>
+</view>
+
+<form bindsubmit="formSubmit">
+  <block wx:for="{{datas}}" wx:key="unique">
+    <template is="input-cell" data="{{...item, index:index}}"></template>
+  </block>
+
+  <text class="remark" catchtap="setPayPasswordTap">设置支付密码</text>
+  <button class="okButton" form-type="submit">提交</button>
+</form>

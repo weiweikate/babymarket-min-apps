@@ -1,0 +1,13 @@
+<template name="express-info-cell">
+<view class="bg-view">
+    <view class="left-line-view">
+        <view class="topline"></view>
+        <view class="{{index==0?'dot-view active':'dot-view'}}"></view>
+        <view class="downline"></view>
+    </view>
+    <view class="right-info-view">
+        <text class="info remark OverFlowTwoLine {{index==0?'active':''}}">{{item.remark}}</text>
+        <text class="info time {{index==0?'active':''}}">{{item.datetime}}</text>
+    </view>
+</view>
+</template>

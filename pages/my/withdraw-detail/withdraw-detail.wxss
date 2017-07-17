@@ -1,0 +1,7 @@
+/* withdraw-detail.wxss */
+
+@import '/pages/my/cell/withdraw-detail-cell.wxss';
+
+page{
+    background: white;
+}

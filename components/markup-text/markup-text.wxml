@@ -1,0 +1,7 @@
+<template name="markup-text">
+    <view class="bg-view">
+        <text class="paintext">{{leftText}}</text>
+        <text class="number">{{amount}}</text>
+        <text class="paintext">{{rightText}}</text>
+    </view>
+</template>

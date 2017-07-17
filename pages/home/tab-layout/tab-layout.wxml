@@ -1,0 +1,6 @@
+<!--顶部横向滚动的tab-->
+<template name="tab-layout">
+  <scroll-view class="tab-layout" scroll-x>
+    <view class="{{index==currentTab?'tab select':'tab'}}" catchtap="onTabChangeListener" wx:for="{{items}}" data-current="{{index}}" wx:key="unique">{{item.Name}}</view>
+  </scroll-view>
+</template>
