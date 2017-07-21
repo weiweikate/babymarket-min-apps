@@ -13,111 +13,62 @@ Page({
         shopName:'',
         idDesp:'',
         inviteCode:'',
+        points:'12367',
+        coins:'500',
+        fav:'10',
 
-        orderStatusItems: [
-            {
-                status: '我的订单',
-                image: '/res/img/my/my-four-cell-order-icon.png',
-            },
-            {
-                status: '我的收藏',
-                image: '/res/img/my/my-four-cell-fav-icon.png',
-            },
-            {
-                status: '地址管理',
-                image: '/res/img/my/my-four-cell-address-icon.png'
-            },
-            {
-                status: '邀请好友',
-                image: '/res/img/my/my-four-cell-invite-icon.png'
-            },
-        ],
         myDatasItems0: [
             {
                 image: '/res/img/my/my-cell-property-icon.png',
-                name: '我的优惠券',
-                detail: {
-                    leftText: '',
-                    amount: '',
-                    rightText: ''
-                }
+                name: '我的奖励',
             },
             {
                 image: '/res/img/my/my-cell-property-icon.png',
-                name: '我的资产',
-                detail: {
-                    leftText: '余额',
-                    amount: '0',
-                    rightText: '元'
-                }
+                name: '赚金币',
             },
             {
                 image: '/res/img/my/my-cell-award-icon.png',
-                name: '收到奖励',
-                detail: {
-                    leftText:'已收',
-                    amount:'0',
-                    rightText:'元'
-                }
+                name: '宝宝日记',
+                isShow:true
             },
             {
                 image: '/res/img/my/my-cell-save-icon.png',
-                name: '已省金额',
-                detail: {
-                    leftText: '已省',
-                    amount: '0',
-                    rightText: '元'
-                }
+                name: '我的秒杀',
             },
             {
                 image: '/res/img/my/my-cell-hehuoren-icon.png',
-                name: '城市合伙人',
-                detail: {
-                    leftText: '待领',
-                    amount: '0',
-                    rightText: '元'
-                }
-            },
-        ],
-        myDatasItems1: [
-            {
-                image: '/res/img/my/my-cell-frist-friends-icon.png',
-                name: '我的好友',
-                detail: {
-                    leftText: '共',
-                    amount: '0',
-                    rightText: '人'
-                }
+                name: '我的众筹',
             },
             {
-                image: '/res/img/my/my-cell-employee-icon.png',
-                name: '我的店员',
-                detail: {
-                    leftText: '共',
-                    amount: '0',
-                    rightText: '人'
-                }
+                image: '/res/img/my/my-cell-save-icon.png',
+                name: '我的团购',
             },
             {
-                image: '/res/img/my/my-cell-second-friends-icon.png',
-                name: '好友的好友',
-                detail: {
-                    leftText: '共',
-                    amount: '0',
-                    rightText: '人'
-                },
-                arrowHidden:true
+                image: '/res/img/my/my-cell-hehuoren-icon.png',
+                name: '我的试用',
             },
-        ],
-        myDatasItems2: [
             {
-                image: '/res/img/my/my-cell-feedback-icon.png',
-                name: '意见和反馈'
+                image: '/res/img/my/my-cell-hehuoren-icon.png',
+                name: '我的积分订单',
+                isShow: true
             },
-            // {
-            //     image: '/res/img/my/my-cell-agreement-icon.png',
-            //     name: '联系客服'
-            // }
+            {
+                image: '/res/img/my/my-cell-save-icon.png',
+                name: '我的问答',
+            },
+            {
+                image: '/res/img/my/my-cell-hehuoren-icon.png',
+                name: '发表的帖子',
+            },
+            {
+                image: '/res/img/my/my-cell-hehuoren-icon.png',
+                name: '回复的帖子',
+                isShow: true
+            },
+            {
+                image: '/res/img/my/my-cell-hehuoren-icon.png',
+                name: '收货地址管理',
+            },
         ]
     },
 

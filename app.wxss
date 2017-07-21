@@ -5,7 +5,7 @@ page {
     width: 100%;
     padding: 0;
     margin: 0;
-    background-color: #f5f7f7;
+    background-color: #fff8f4;
 }
 
 .container {
