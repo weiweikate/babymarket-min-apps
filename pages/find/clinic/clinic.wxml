@@ -1,0 +1,18 @@
+<!--clinic.wxml-->
+<import src='/pages/find/clinic/clinic-item/clinic-item.wxml' />
+
+<view class="main">
+    <view class="clinic-top">
+        <view class="initiate" catchtap="add">发起咨询</view>
+        <view class="initiate" catchtap="mine">我的咨询</view>
+        <view class="initiate" catchtap="knowledge">知识库</view>
+    </view>
+    <view wx:if="{{hasList}}">
+        <view wx:for="{{dataList}}" wx:key="{{index}}">
+            <template is="clinic-item" data="{{item}}"></template>
+        </view>
+    </view>
+    <view wx:else class="no-data">
+        <text>暂无咨询记录！</text>
+    </view>
+</view>

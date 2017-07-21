@@ -1,0 +1,9 @@
+<import src='/pages/find/head/head.wxml' />
+
+<template name="clinic-item">
+    <view class="clinic-item" catchtap="goDetail" data-index="{{index}}">
+        <template is="head" data="{{item}}"></template>
+        <view class="clinic-value OverFlowTwoLine">{{item.value}}</view>
+        <view class="clinic-time">{{item.time}}</view>
+    </view>
+</template>

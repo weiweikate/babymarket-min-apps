@@ -1,6 +1,7 @@
 {
     "pages": [
         "pages/home/home",
+        "pages/find/find",
         "pages/product-detail/product-detail",
         "pages/my/my",
         "pages/shopping-cart/shopping-cart",
@@ -31,7 +32,8 @@
         "pages/my/withdraw/pay-password-set/pay-password-set",
         "pages/my/withdraw/withdraw-success/withdraw-success",
         "pages/search/search",
-        "pages/search/search-result/search-result"
+        "pages/search/search-result/search-result",
+        "pages/find/clinic/clinic"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -60,6 +62,12 @@
             {
                 "pagePath": "pages/shopping-cart/shopping-cart",
                 "text": "购物车",
+                "iconPath": "/res/img/tabbar/tabbar-icon-normal-3.png",
+                "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-3.png"
+            },
+            {
+                "pagePath": "pages/find/find",
+                "text": "发现",
                 "iconPath": "/res/img/tabbar/tabbar-icon-normal-3.png",
                 "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-3.png"
             },

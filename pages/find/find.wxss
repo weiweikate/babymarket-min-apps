@@ -1,0 +1,29 @@
+@import '/pages/find/item/item.wxss';
+.main {
+    width: 100%;
+}
+
+.find-top {
+    display: flex;
+    border-bottom: 20rpx solid #f5f7f7;
+    background: white;
+}
+
+.left {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 40rpx 40rpx 40rpx 40rpx;
+    flex-grow: 1;
+}
+
+.clinic-img {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.clinic-txt {
+    font-size: 32rpx;
+    color: #494848;
+    margin-top: 20rpx;
+}

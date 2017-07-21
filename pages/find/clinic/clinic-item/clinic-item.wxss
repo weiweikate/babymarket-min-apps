@@ -1,0 +1,21 @@
+@import '/pages/find/head/head.wxss';
+
+.clinic-item {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx 20rpx 20rpx 20rpx;
+}
+
+.clinic-value {
+    margin-top: 30rpx;
+    font-size: 32rpx;
+    color: #090909;
+}
+
+.clinic-time {
+    margin-top: 20rpx;
+    font-size: 24rpx;
+    color: #acadaa;
+    align-items: right;
+}

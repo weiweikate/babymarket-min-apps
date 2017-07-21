@@ -16,6 +16,12 @@ export default class Operation {
     constructor() {
         if (__instance()) return __instance();
 
+        // 便便诊所
+        this.advisoryReadOperation ='de9167ca-44b6-42da-bf20-a63d0116325d';
+
+
+
+
         //首页-广告位
         this.homeAdReadOperation = 'b412ff1c-c19b-4250-b479-a61e0085a868';
         //首页-分类

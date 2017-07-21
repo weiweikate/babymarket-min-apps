@@ -1,4 +1,4 @@
-<import src='/components/markup-text/markup-text.wxml' />
+ <import src='/components/markup-text/markup-text.wxml' />
 
 <template name="my-cell">
   <view class="myCell-flex">

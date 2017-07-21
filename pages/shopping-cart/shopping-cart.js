@@ -1,5 +1,5 @@
 // shopping-cart.js
-let {Tool, Event, RequestReadFactory, RequestWriteFactory} = global;
+let { Tool, Event, RequestReadFactory, RequestWriteFactory } = global;
 Page({
 
     /**

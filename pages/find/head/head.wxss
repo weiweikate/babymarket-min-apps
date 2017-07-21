@@ -1,0 +1,38 @@
+.head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.head-icon {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.head-info {
+    margin-left: 20rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-name {
+    font-size: 28rpx;
+    color: #090909;
+}
+
+.info-subtitle {
+    font-size: 24rpx;
+    color: #acadaa;
+    margin-top: 6rpx;
+}
+
+.info-status{
+    font-size: 24rpx;
+    color: #acadaa;
+}
+

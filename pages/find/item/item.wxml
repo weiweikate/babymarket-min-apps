@@ -1,0 +1,14 @@
+
+<template name="item">
+ <view class="item" catchtap="goDetail" data-index="{{index}}">
+    <view class="top">
+      <image class="icon" src="{{item.image}}" mode="aspectFit"></image>
+      <view class="item-type">
+        <view class="name">{{item.name}}</view>
+        <image class="arrow" src="/res/img/my/my-address-arrow-icon.png" 
+        mode="aspectFit" hidden="{{item.arrowHidden}}"></image>
+      </view>
+    </view>
+    <view wx:if="{{item.isShow}}" class="divide"></view>
+  </view>
+</template>

@@ -621,51 +621,37 @@ export default class RequestReadFactory {
         return req;
     }
 
-    //我的资产查询
-    static myPropertyRead(index) {
-        let operation = Operation.sharedInstance().balanceLogMonthReadOperation;
-
+    // 便便诊所查询
+    static advisoryRead(index = 0, count = 20){
+        let operation = Operation.sharedInstance().advisoryReadOperation;
         let bodyParameters = {
             "Operation": operation,
-            "IsIncludeSubtables": true,
-            "Order": "${Month} DESC",
-            "MaxCount": '2',
-            "StartIndex": index,
-            "MemberId": global.Storage.memberId(),
-            // "Subtables": ["Detail"]
+            "MaxCount": count + '',
+            "StartIndex": index + '',
+            "Order": "${CreateTime} DESC",
+            "Condition": "${Invalid} == 'False' && ${CreatorId} == '" + global.Storage.memberId() + "'",
+            "Appendixes": {
+                "+Product": [
+                    "SPMC",
+                    "TPId",
+                    "SLTId"
+                ]
+            },
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '我的资产查询';
-        return req;
-    }
+        req.name = '购物车查询';
+        req.items = ['Id', 'ProductId', 'Qnty', 'Price', 'Money'];
+        req.appendixesKeyMap = { 'SP': 'ProductId' };//可以多个
 
-    //收到的奖励查询
-    static awardRead(index) {
-        let operation = Operation.sharedInstance().awardReadOperation;
-
-        let bodyParameters = {
-            "Operation": operation,
-            "Order": "${OrderDate} DESC",
-            "MaxCount": '2',
-            "StartIndex": index,
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            if (key === 'SP') {
+                //给data添加新属性
+                data.title = appendixe.SPMC;
+                data.productPicMain = appendixe.TPId;
+                data.productPicThumb = appendixe.SLTId;
+            }
         };
-        let req = new RequestRead(bodyParameters);
-        req.name = '收到的奖励查询';
-        return req;
-    }
-
-    //已省金额查询
-    static saveRead(index) {
-        let operation = Operation.sharedInstance().saveReadOperation;
-
-        let bodyParameters = {
-            "Operation": operation,
-            "Order": "${OrderDate} DESC",
-            "MaxCount": '2',
-            "StartIndex": index,
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '已省金额查询';
         return req;
     }
 }

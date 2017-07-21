@@ -1,0 +1,18 @@
+<import src='/pages/find/item/item.wxml' />
+
+<view class="main">
+    <view class="find-top">
+        <view class="left" catchtap="goClinic">
+            <image src="/res/img/find/find-clinic-icon.png" class="clinic-img" mode="aspectFit"></image>
+            <text class="clinic-txt">便便诊所</text>
+        </view>
+        <view class="left" catchtap="goTooth">
+            <image src="/res/img/find/find-tooth-icon.png" class="clinic-img" mode="aspectFit"></image>
+            <text class="clinic-txt">爱牙卫士</text>
+        </view>
+    </view>
+
+    <view wx:for="{{listData}}" wx:key="{{index}}">
+        <template is="item" data="{{item,index:index}}"></template>
+    </view>
+</view>
