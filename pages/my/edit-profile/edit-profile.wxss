@@ -1,0 +1,38 @@
+/* edit-profile.wxss */
+@import '/pages/my/edit-profile/edit-profile-cell/edit-profile-cell.wxss';
+
+.avatar-view{
+    width: 100%;
+    height: 178rpx;
+    display: flex;
+    background: white;
+    align-items: center;
+    border-top: 2rpx solid #eeeeee;
+    border-bottom: 2rpx solid #eeeeee;
+}
+
+.avatar-text{
+    font-size: 32rpx;
+    color: #1a1c1f;
+    margin-left: 36rpx;
+    flex-shrink: 0;
+}
+
+.avatar-image{
+    width: 94rpx;
+    height: 94rpx;
+    border-radius: 47rpx;
+    margin-left: 504rpx;  
+    margin-right: 20rpx;
+}
+
+.arrow{
+    margin-right: 27rpx; 
+}
+
+.modify-password-view{
+  margin-top: 20rpx;
+}
+
+
+

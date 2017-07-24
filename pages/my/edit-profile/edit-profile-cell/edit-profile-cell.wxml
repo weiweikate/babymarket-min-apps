@@ -1,0 +1,7 @@
+<template name="edit-profile-cell">
+    <view class="edit-profile-view">
+        <text class="title">{{title}}</text>
+        <text class="desp">{{desp}}</text>
+        <image class="arrow-icon" src="/res/img/my/my-address-arrow-icon.png" style="width:15rpx;height:26rpx" mode="aspectFit"></image>
+    </view>
+</template>

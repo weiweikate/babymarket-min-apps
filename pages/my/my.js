@@ -19,54 +19,54 @@ Page({
 
         myDatasItems0: [
             {
-                image: '/res/img/my/my-cell-property-icon.png',
+                image: '/res/img/my/my-cell-award-icon.png',
                 name: '我的奖励',
             },
             {
-                image: '/res/img/my/my-cell-property-icon.png',
+                image: '/res/img/my/my-cell-sign-icon.png',
                 name: '赚金币',
             },
             {
-                image: '/res/img/my/my-cell-award-icon.png',
+                image: '/res/img/my/my-cell-baby-diary-icon.png',
                 name: '宝宝日记',
                 isShow:true
             },
             {
-                image: '/res/img/my/my-cell-save-icon.png',
+                image: '/res/img/my/my-cell-seckill-icon.png',
                 name: '我的秒杀',
             },
             {
-                image: '/res/img/my/my-cell-hehuoren-icon.png',
+                image: '/res/img/my/my-cell-raise-icon.png',
                 name: '我的众筹',
             },
             {
-                image: '/res/img/my/my-cell-save-icon.png',
+                image: '/res/img/my/my-cell-group-buy-icon.png',
                 name: '我的团购',
             },
             {
-                image: '/res/img/my/my-cell-hehuoren-icon.png',
+                image: '/res/img/my/my-cell-free-trial-icon.png',
                 name: '我的试用',
             },
             {
-                image: '/res/img/my/my-cell-hehuoren-icon.png',
+                image: '/res/img/my/my-cell-points-order-icon.png',
                 name: '我的积分订单',
                 isShow: true
             },
             {
-                image: '/res/img/my/my-cell-save-icon.png',
+                image: '/res/img/my/my-cell-qa-icon.png',
                 name: '我的问答',
             },
             {
-                image: '/res/img/my/my-cell-hehuoren-icon.png',
+                image: '/res/img/my/my-cell-create-post-icon.png',
                 name: '发表的帖子',
             },
             {
-                image: '/res/img/my/my-cell-hehuoren-icon.png',
+                image: '/res/img/my/my-cell-reply-post-icon.png',
                 name: '回复的帖子',
                 isShow: true
             },
             {
-                image: '/res/img/my/my-cell-hehuoren-icon.png',
+                image: '/res/img/my/my-cell-address-icon.png',
                 name: '收货地址管理',
             },
         ]
@@ -127,49 +127,6 @@ Page({
      */
     onShareAppMessage: function () {
 
-    },
-
-    /**
-     * four cells
-     */
-    orderStatusTap: function (e) {
-        let status = e.currentTarget.dataset.index;
-        if (status == 0) {//我的订单
-            console.log('----我的订单----');
-            wx.navigateTo({
-                url: '../my/myOrder/myOrder',
-            })
-
-        } else if (status == 1) {//我的收藏
-            console.log('----我的收藏----');
-            wx.navigateTo({
-                url: '../my/my-fav/my-fav',
-            })
-
-        } else if (status == 2) {//地址管理
-            console.log('----地址管理----');
-            wx.navigateTo({
-                url: '../address/address' 
-            })
-
-        } else if (status == 3) {//邀请好友
-            console.log('----邀请好友----');
-            wx.navigateTo({
-                url: '../my/invite-friends/invite-friends',
-            })
-        }
-    },
-
-    /**
-     * 退出登录
-     */
-    loginoutTap: function () {
-        Storage.setDidLogin(false);
-        Storage.setCurrentSession('');
-
-        wx.redirectTo({
-            url: '/pages/login/login',
-        })
     },
 
     /**
@@ -237,15 +194,9 @@ Page({
      */
     editProfileTap: function () {
         console.log('----编辑资料----');
-    },
 
-    /**
-     * 二维码
-     */
-    qrcodeTap: function () {
-        console.log('----二维码----');
         wx.navigateTo({
-            url: '../my/my-qrcode/my-qrcode',
+            url: '../my/edit-profile/edit-profile',
         })
     },
 

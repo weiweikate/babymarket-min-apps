@@ -21,7 +21,6 @@
     height: 31rpx;
     padding: 20rpx 20rpx;
     margin-left: 10rpx;
-    background: red;
 }
 
 .setting-image{
@@ -29,7 +28,6 @@
     height: 31rpx;
     margin-right: 10rpx;
     padding: 20rpx 20rpx;
-    background: red;
 }
 
 /*个人资料*/

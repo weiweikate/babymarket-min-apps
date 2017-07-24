@@ -1,0 +1,7 @@
+<!--modify-nickname.wxml-->
+
+<form bindsubmit="okTap">
+    <input class="input" name = "name" placeholder="请输入{{modifyType == 0?'昵称':'宝宝姓名'}}" maxlength='15' />
+    <view class="tips">1-15个字符，可由中英文、数字组成</view>
+    <button class="ok-button" form-type="submit">确定</button>
+</form>
