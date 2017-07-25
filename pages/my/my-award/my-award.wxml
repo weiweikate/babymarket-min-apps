@@ -3,10 +3,35 @@
 
 <!--top view-->
 <view class="top-view">
-  <text class="balance-text">收到奖励（元）</text>
-  <text class="balance-value">¥{{award}}</text>
+    <view class="amount-view">
+        <label class="amount">{{award}}</label>
+        <label class="yuan">元</label>
+    </view>
+
+    <view class="bottom-buttons">
+        <view class="withdraw bottom-button" catchtap="withdrawTap">提现</view>
+        <view class="total bottom-button" catchtap="withdrawDetailTap">统计</view>
+        <view class="contact bottom-button" catchtap="contactTap">联系业务</view>
+    </view>
+
 </view>
 
-<block wx:for="{{listDatas}}" wx:key="unique">
+<view class="today-get">
+    <label>今日收获</label>
+    <view class="right-view">
+        <label>今日已赚得</label>
+        <label class="money">{{todayMoney}}</label>
+        <label>元</label>
+    </view>
+</view>
+
+<view class="list-title">
+    <label class="list-title-item1">会员积分账号</label>
+    <label class="list-title-item2">积分码</label>
+    <label class="list-title-item3">奖励金额</label>
+    <label class="list-title-item4">获得奖励时间</label>
+</view>
+
+ <block wx:for="{{listDatas}}" wx:key="unique">
     <template is="my-award-cell" data="{{...item}}"></template>
-</block>
+</block> 

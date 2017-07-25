@@ -19,54 +19,54 @@ Page({
 
         myDatasItems0: [
             {
-                image: '/res/img/my/my-cell-award-icon.png',
+                image: '/res/img/my/cell/my-cell-award-icon.png',
                 name: '我的奖励',
             },
             {
-                image: '/res/img/my/my-cell-sign-icon.png',
+                image: '/res/img/my/cell/my-cell-sign-icon.png',
                 name: '赚金币',
             },
             {
-                image: '/res/img/my/my-cell-baby-diary-icon.png',
+                image: '/res/img/my/cell/my-cell-baby-diary-icon.png',
                 name: '宝宝日记',
                 isShow:true
             },
             {
-                image: '/res/img/my/my-cell-seckill-icon.png',
+                image: '/res/img/my/cell/my-cell-seckill-icon.png',
                 name: '我的秒杀',
             },
             {
-                image: '/res/img/my/my-cell-raise-icon.png',
+                image: '/res/img/my/cell/my-cell-raise-icon.png',
                 name: '我的众筹',
             },
             {
-                image: '/res/img/my/my-cell-group-buy-icon.png',
+                image: '/res/img/my/cell/my-cell-group-buy-icon.png',
                 name: '我的团购',
             },
             {
-                image: '/res/img/my/my-cell-free-trial-icon.png',
+                image: '/res/img/my/cell/my-cell-free-trial-icon.png',
                 name: '我的试用',
             },
             {
-                image: '/res/img/my/my-cell-points-order-icon.png',
+                image: '/res/img/my/cell/my-cell-points-order-icon.png',
                 name: '我的积分订单',
                 isShow: true
             },
             {
-                image: '/res/img/my/my-cell-qa-icon.png',
+                image: '/res/img/my/cell/my-cell-qa-icon.png',
                 name: '我的问答',
             },
             {
-                image: '/res/img/my/my-cell-create-post-icon.png',
+                image: '/res/img/my/cell/my-cell-create-post-icon.png',
                 name: '发表的帖子',
             },
             {
-                image: '/res/img/my/my-cell-reply-post-icon.png',
+                image: '/res/img/my/cell/my-cell-reply-post-icon.png',
                 name: '回复的帖子',
                 isShow: true
             },
             {
-                image: '/res/img/my/my-cell-address-icon.png',
+                image: '/res/img/my/cell/my-cell-address-icon.png',
                 name: '收货地址管理',
             },
         ]
@@ -132,45 +132,38 @@ Page({
     /**
      * cell点击
      */
-    cellTap: function (e) {
+    goDetail: function (e) {
         let title = e.currentTarget.dataset.title;
-        if (title =='我的资产'){
-            console.log('----我的资产----');
-            wx.navigateTo({
-                url: '../my/my-property/my-property',
-            })
-        } else if (title == '收到奖励'){
-            console.log('----收到奖励----');
+        console.log('--------' + title);
+        if (title == '我的奖励'){
             wx.navigateTo({
                 url: '../my/my-award/my-award',
             })
 
-        } else if (title == '已省金额') {
-            console.log('----已省金额----');
-            wx.navigateTo({
-                url: '../my/my-save/my-save',
-            })
+        } else if (title == '赚金币') {
+            // wx.navigateTo({
+            //     url: '../my/my-save/my-save',
+            // })
 
-        } else if (title == '城市合伙人') {
-            console.log('----城市合伙人----');
+        } else if (title == '宝宝日记') {
 
-        } else if (title == '我的好友') {
-            console.log('----我的好友----');
+        } else if (title == '我的秒杀') {
 
-        } else if (title == '我的店员') {
-            console.log('----我的店员----');
+        } else if (title == '我的众筹') {
 
-        } else if (title == '好友的好友') {
-            console.log('----好友的好友----');
+        } else if (title == '我的团购') {
 
-        } else if (title == '意见和反馈') {
-            console.log('----意见和反馈----');
+        } else if (title == '我的试用') {
 
-        } else if (title == '我的优惠券') {
-            console.log('----我的优惠券----');
-            wx.navigateTo({
-                url: '../coupon/coupon',
-            })
+        } else if (title == '我的积分订单') {
+
+        } else if (title == '我的问答') {
+
+        } else if (title == '发表的帖子') {
+
+        } else if (title == '回复的帖子') {
+
+        } else if (title == '收货地址管理') {
 
         } 
     },

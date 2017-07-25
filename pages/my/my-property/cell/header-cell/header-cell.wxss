@@ -1,7 +1,0 @@
-.title{
-    width: 100%;
-    line-height: 50rpx;
-    font-size: 24rpx;
-    color: #5e6064;
-    padding-left: 40rpx;
-}

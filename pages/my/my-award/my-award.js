@@ -8,23 +8,24 @@ Page({
    */
   data: {
     listDatas:['','',''],
-    award:''
+    award:'90',
+    todayMoney:'100'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.requestData();
-      let self = this;
-      wx.getStorage({
-          key: 'memberInfo',
-          success: function (res) {
-              self.setData({
-                  award: res.data.Commission
-              })
-          },
-      })
+    //   this.requestData();
+    //   let self = this;
+    //   wx.getStorage({
+    //       key: 'memberInfo',
+    //       success: function (res) {
+    //           self.setData({
+    //               award: res.data.Commission
+    //           })
+    //       },
+    //   })
   },
 
   /**
@@ -76,6 +77,18 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  withdrawTap:function(){
+
+  },
+
+  withdrawDetailTap: function () {
+
+  },
+
+  contactTap: function () {
+
   },
 
   /**

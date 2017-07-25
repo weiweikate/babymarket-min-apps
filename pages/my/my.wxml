@@ -39,7 +39,7 @@
 <!--cell-->
 <view class="my-flex">
     <block wx:for="{{myDatasItems0}}" wx:key="unique">
-        <view class="my-cell-view" bindtap="cellTap" data-title="{{item.name}}">
+        <view class="my-cell-view" catchtap="cellTap" data-title="{{item.name}}">
             <template is="item" data="{{item:item}}"></template>
         </view>
     </block>
