@@ -1,0 +1,26 @@
+/* sign.wxss */
+.top-view {
+    height: 216rpx;
+    background: #f39138;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.top-view .amount-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 216rpx;
+}
+
+.top-view .amount-view .amount {
+    font-size: 100rpx;
+    color: white;
+}
+
+.yuan {
+    font-size: 30rpx;
+    margin-top: 40rpx;
+}

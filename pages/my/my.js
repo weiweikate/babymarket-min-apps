@@ -141,9 +141,9 @@ Page({
             })
 
         } else if (title == '赚金币') {
-            // wx.navigateTo({
-            //     url: '../my/my-save/my-save',
-            // })
+            wx.navigateTo({
+                url: '../my/sign/sign',
+            })
 
         } else if (title == '宝宝日记') {
 

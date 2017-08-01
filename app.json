@@ -33,7 +33,8 @@
         "pages/my/edit-profile/edit-profile",
         "pages/my/edit-profile/modify-nickname/modify-nickname",
         "pages/my/edit-profile/modify-password/modify-password",
-        "pages/my/edit-profile/modify-pay-password/modify-pay-password"
+        "pages/my/edit-profile/modify-pay-password/modify-pay-password",
+        "pages/my/sign/sign"
     ],
     "window": {
         "backgroundTextStyle": "light",
