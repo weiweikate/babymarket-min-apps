@@ -628,28 +628,24 @@ export default class RequestReadFactory {
             "Operation": operation,
             "MaxCount": count + '',
             "StartIndex": index + '',
-            "Order": "${CreateTime} DESC",
-            "Condition": "${Invalid} == 'False' && ${CreatorId} == '" + global.Storage.memberId() + "'",
+            "Order": "${Num} DESC,${CreateTime} DESC",
             "Appendixes": {
-                "+Product": [
-                    "SPMC",
-                    "TPId",
-                    "SLTId"
+                "+Member": [
+                    "NickName"
                 ]
             },
         };
         let req = new RequestRead(bodyParameters);
         req.name = '购物车查询';
-        req.items = ['Id', 'ProductId', 'Qnty', 'Price', 'Money'];
-        req.appendixesKeyMap = { 'SP': 'ProductId' };//可以多个
+        req.items = ["Id","CreateTime","Head_PictureId","Is_Answer","Else_Add","MemberId",
+        "GenderKey","BabyAge","Num"];
+        req.appendixesKeyMap = { 'Member': 'MemberId' };//可以多个
 
         //匹配成功函数
         req.appendixesBlock = (data, appendixe, key, id) => {
-            if (key === 'SP') {
+            if (key === 'Member') {
                 //给data添加新属性
-                data.title = appendixe.SPMC;
-                data.productPicMain = appendixe.TPId;
-                data.productPicThumb = appendixe.SLTId;
+                data.MemberNickName = appendixe.NickName;
             }
         };
         return req;

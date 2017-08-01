@@ -1,0 +1,6 @@
+<template name="tool-item">
+    <view class="tool-item" catchtap="goDetail" data-index="{{index}}">
+        <image class="tool-icon" src="{{item.image}}" mode="aspectFit"></image>
+        <view class="tool-name">{{item.name}}</view>
+    </view>
+</template>

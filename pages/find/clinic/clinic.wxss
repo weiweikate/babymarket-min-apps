@@ -1,29 +1,35 @@
 /* clinic.wxss */
 @import '/pages/find/clinic/clinic-item/clinic-item.wxss';
 
-.main{
+.main {
     width: 100%;
+    height: 100%;
 }
 
-.clinic-top{
+.clinic-top {
     display: flex;
     background: white;
+    height: 80rpx;
 }
 
-.initiate{
+.initiate {
     border: 2rpx solid #f5f7f7;
     flex-grow: 1;
-    text-align: center;
-    padding-top: 20rpx;
-    padding-bottom: 20rpx;
     font-size: 32rpx;
+    height: 100%;
+    text-align: center;
+    line-height: 80rpx;
     color: #494848;
 }
 
+.data {
+    margin-top: 80rpx;
+}
+
 .no-data {
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
+    justify-content: center;   
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }

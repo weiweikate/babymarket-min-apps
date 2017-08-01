@@ -82,7 +82,9 @@ Page({
         } else if (position == 4) {
             console.log("=======" + position);
         } else if (position == 5) {
-            console.log("=======" + position);
+            wx.navigateTo({
+                url: '../find/tool/tool',
+            })
         } else if (position == 6) {
             console.log("=======" + position);
         }

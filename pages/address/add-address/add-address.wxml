@@ -5,7 +5,6 @@
     <view class="address-add-box">
       <!--收货人姓名-->
       <view class="addresser-type">
-        <image src="/res/img/address/address-meter.png" class="address-meter"></image>
         <text class="addresser-type-text">收货人姓名：</text>
         <input name="addressname" class="addresser-name-input" placeholder="填写正确的收货人" type="text" placeholder-style="color:#CCCCCC" value="{{name}}" />
       </view>
@@ -13,22 +12,13 @@
 
       <!--手机号码-->
       <view class="addresser-type">
-        <image src="/res/img/address/address-meter.png" class="address-meter"></image>
         <text class="addresser-type-text">手机号码：</text>
         <input name="addressmobile" class="addresser-name-input" placeholder="填写正确的手机号码" type="number" placeholder-style="color:#CCCCCC" value="{{mobile}}"/>
       </view>
       <view class="address-divide"></view>
 
-      <!--身份证号码-->
-       <view class="addresser-type">
-        <text class="addresser-type-text1">身份证号码：</text>
-        <input name="addressidentity" class="addresser-name-input" placeholder="购跨境商品时，须正确填写" type="idcard" placeholder-style="color:#CCCCCC" value="{{identity}}"/>
-      </view>
-      <view class="address-divide"></view>
-
       <!--省市区-->
       <view class="addresser-type">
-        <image src="/res/img/address/address-meter.png" class="address-meter"></image>
         <text class="addresser-type-text">省市区：</text>
         <text class="addresser-select" bindtap="selectProvinces">{{provinces}}</text>
       </view>
@@ -36,7 +26,6 @@
 
       <!--详细地址-->
       <view class="addresser-type">
-        <image src="/res/img/address/address-meter.png" class="address-meter"></image>
         <text class="addresser-type-text">详细地址：</text>
         <input name="addressdetail" class="addresser-name-input" placeholder="请填写详细地址" type="text" placeholder-style="color:#CCCCCC" value="{{detail}}"/>
       </view>

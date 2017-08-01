@@ -11,7 +11,6 @@ Page({
         area: {},
         name: '',
         mobile: '',
-        identity: '',
         detail: '',
         num: 0,// 0为新增，1为修改
         address: {},
@@ -27,7 +26,6 @@ Page({
                 this.setData({
                     name: address.Consignee,
                     mobile: address.Mobile,
-                    identity: address.Card,
                     detail: address.Address1,
                     provinces: address.FullName,
                     num: 1,

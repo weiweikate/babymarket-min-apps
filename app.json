@@ -30,6 +30,10 @@
         "pages/search/search",
         "pages/search/search-result/search-result",
         "pages/find/clinic/clinic",
+        "pages/find/clinic/add-clinic/add-clinic",
+        "pages/find/tooth/tooth",
+        "pages/find/tool/tool",
+        "pages/find/levy/levy",
         "pages/my/edit-profile/edit-profile",
         "pages/my/edit-profile/modify-nickname/modify-nickname",
         "pages/my/edit-profile/modify-password/modify-password",
@@ -56,19 +60,25 @@
         "list": [
             {
                 "pagePath": "pages/home/home",
-                "text": "大码头",
+                "text": "首页",
                 "iconPath": "/res/img/tabbar/tabbar-icon-normal-0.png",
                 "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-0.png"
             },
             {
                 "pagePath": "pages/shopping-cart/shopping-cart",
-                "text": "购物车",
-                "iconPath": "/res/img/tabbar/tabbar-icon-normal-3.png",
-                "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-3.png"
+                "text": "宝妈圈",
+                "iconPath": "/res/img/tabbar/tabbar-icon-normal-1.png",
+                "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-1.png"
             },
             {
                 "pagePath": "pages/find/find",
                 "text": "发现",
+                "iconPath": "/res/img/tabbar/tabbar-icon-normal-2.png",
+                "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-2.png"
+            },
+            {
+                "pagePath": "pages/home/home",
+                "text": "积分商城",
                 "iconPath": "/res/img/tabbar/tabbar-icon-normal-3.png",
                 "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-3.png"
             },

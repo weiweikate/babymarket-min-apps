@@ -13,7 +13,6 @@
           <text class="address-status">{{item.status}}</text>
           <view class="address-delete" bindtap="deleteAddress" data-index="{{index}}">
             <image src="/res/img/address/address-delete.png" class="address-img-delete" mode="aspectFill"></image>
-            <text class="address-text-delete">删除</text>
           </view>
         </view>
         <!--分割线-->
