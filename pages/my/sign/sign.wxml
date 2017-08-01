@@ -1,0 +1,8 @@
+<!--sign.wxml-->
+<!--top view-->
+<view class="top-view">
+    <view class="amount-view">
+        <label class="amount">{{award}}</label>
+        <label class="yuan">金币</label>
+    </view>
+</view>
