@@ -13,111 +13,62 @@ Page({
         shopName:'',
         idDesp:'',
         inviteCode:'',
+        points:'12367',
+        coins:'500',
+        fav:'10',
 
-        orderStatusItems: [
-            {
-                status: '我的订单',
-                image: '/res/img/my/my-four-cell-order-icon.png',
-            },
-            {
-                status: '我的收藏',
-                image: '/res/img/my/my-four-cell-fav-icon.png',
-            },
-            {
-                status: '地址管理',
-                image: '/res/img/my/my-four-cell-address-icon.png'
-            },
-            {
-                status: '邀请好友',
-                image: '/res/img/my/my-four-cell-invite-icon.png'
-            },
-        ],
         myDatasItems0: [
             {
-                image: '/res/img/my/my-cell-property-icon.png',
-                name: '我的优惠券',
-                detail: {
-                    leftText: '',
-                    amount: '',
-                    rightText: ''
-                }
+                image: '/res/img/my/cell/my-cell-award-icon.png',
+                name: '我的奖励',
             },
             {
-                image: '/res/img/my/my-cell-property-icon.png',
-                name: '我的资产',
-                detail: {
-                    leftText: '余额',
-                    amount: '0',
-                    rightText: '元'
-                }
+                image: '/res/img/my/cell/my-cell-sign-icon.png',
+                name: '赚金币',
             },
             {
-                image: '/res/img/my/my-cell-award-icon.png',
-                name: '收到奖励',
-                detail: {
-                    leftText:'已收',
-                    amount:'0',
-                    rightText:'元'
-                }
+                image: '/res/img/my/cell/my-cell-baby-diary-icon.png',
+                name: '宝宝日记',
+                isShow:true
             },
             {
-                image: '/res/img/my/my-cell-save-icon.png',
-                name: '已省金额',
-                detail: {
-                    leftText: '已省',
-                    amount: '0',
-                    rightText: '元'
-                }
+                image: '/res/img/my/cell/my-cell-seckill-icon.png',
+                name: '我的秒杀',
             },
             {
-                image: '/res/img/my/my-cell-hehuoren-icon.png',
-                name: '城市合伙人',
-                detail: {
-                    leftText: '待领',
-                    amount: '0',
-                    rightText: '元'
-                }
-            },
-        ],
-        myDatasItems1: [
-            {
-                image: '/res/img/my/my-cell-frist-friends-icon.png',
-                name: '我的好友',
-                detail: {
-                    leftText: '共',
-                    amount: '0',
-                    rightText: '人'
-                }
+                image: '/res/img/my/cell/my-cell-raise-icon.png',
+                name: '我的众筹',
             },
             {
-                image: '/res/img/my/my-cell-employee-icon.png',
-                name: '我的店员',
-                detail: {
-                    leftText: '共',
-                    amount: '0',
-                    rightText: '人'
-                }
+                image: '/res/img/my/cell/my-cell-group-buy-icon.png',
+                name: '我的团购',
             },
             {
-                image: '/res/img/my/my-cell-second-friends-icon.png',
-                name: '好友的好友',
-                detail: {
-                    leftText: '共',
-                    amount: '0',
-                    rightText: '人'
-                },
-                arrowHidden:true
+                image: '/res/img/my/cell/my-cell-free-trial-icon.png',
+                name: '我的试用',
             },
-        ],
-        myDatasItems2: [
             {
-                image: '/res/img/my/my-cell-feedback-icon.png',
-                name: '意见和反馈'
+                image: '/res/img/my/cell/my-cell-points-order-icon.png',
+                name: '我的积分订单',
+                isShow: true
             },
-            // {
-            //     image: '/res/img/my/my-cell-agreement-icon.png',
-            //     name: '联系客服'
-            // }
+            {
+                image: '/res/img/my/cell/my-cell-qa-icon.png',
+                name: '我的问答',
+            },
+            {
+                image: '/res/img/my/cell/my-cell-create-post-icon.png',
+                name: '发表的帖子',
+            },
+            {
+                image: '/res/img/my/cell/my-cell-reply-post-icon.png',
+                name: '回复的帖子',
+                isShow: true
+            },
+            {
+                image: '/res/img/my/cell/my-cell-address-icon.png',
+                name: '收货地址管理',
+            },
         ]
     },
 
@@ -179,90 +130,40 @@ Page({
     },
 
     /**
-     * four cells
-     */
-    orderStatusTap: function (e) {
-        let status = e.currentTarget.dataset.index;
-        if (status == 0) {//我的订单
-            console.log('----我的订单----');
-            wx.navigateTo({
-                url: '../my/myOrder/myOrder',
-            })
-
-        } else if (status == 1) {//我的收藏
-            console.log('----我的收藏----');
-            wx.navigateTo({
-                url: '../my/my-fav/my-fav',
-            })
-
-        } else if (status == 2) {//地址管理
-            console.log('----地址管理----');
-            wx.navigateTo({
-                url: '../address/address' 
-            })
-
-        } else if (status == 3) {//邀请好友
-            console.log('----邀请好友----');
-            wx.navigateTo({
-                url: '../my/invite-friends/invite-friends',
-            })
-        }
-    },
-
-    /**
-     * 退出登录
-     */
-    loginoutTap: function () {
-        Storage.setDidLogin(false);
-        Storage.setCurrentSession('');
-
-        wx.redirectTo({
-            url: '/pages/login/login',
-        })
-    },
-
-    /**
      * cell点击
      */
-    cellTap: function (e) {
+    goDetail: function (e) {
         let title = e.currentTarget.dataset.title;
-        if (title =='我的资产'){
-            console.log('----我的资产----');
-            wx.navigateTo({
-                url: '../my/my-property/my-property',
-            })
-        } else if (title == '收到奖励'){
-            console.log('----收到奖励----');
+        console.log('--------' + title);
+        if (title == '我的奖励'){
             wx.navigateTo({
                 url: '../my/my-award/my-award',
             })
 
-        } else if (title == '已省金额') {
-            console.log('----已省金额----');
-            wx.navigateTo({
-                url: '../my/my-save/my-save',
-            })
+        } else if (title == '赚金币') {
+            // wx.navigateTo({
+            //     url: '../my/my-save/my-save',
+            // })
 
-        } else if (title == '城市合伙人') {
-            console.log('----城市合伙人----');
+        } else if (title == '宝宝日记') {
 
-        } else if (title == '我的好友') {
-            console.log('----我的好友----');
+        } else if (title == '我的秒杀') {
 
-        } else if (title == '我的店员') {
-            console.log('----我的店员----');
+        } else if (title == '我的众筹') {
 
-        } else if (title == '好友的好友') {
-            console.log('----好友的好友----');
+        } else if (title == '我的团购') {
 
-        } else if (title == '意见和反馈') {
-            console.log('----意见和反馈----');
+        } else if (title == '我的试用') {
 
-        } else if (title == '我的优惠券') {
-            console.log('----我的优惠券----');
-            wx.navigateTo({
-                url: '../coupon/coupon',
-            })
+        } else if (title == '我的积分订单') {
+
+        } else if (title == '我的问答') {
+
+        } else if (title == '发表的帖子') {
+
+        } else if (title == '回复的帖子') {
+
+        } else if (title == '收货地址管理') {
 
         } 
     },
@@ -286,15 +187,9 @@ Page({
      */
     editProfileTap: function () {
         console.log('----编辑资料----');
-    },
 
-    /**
-     * 二维码
-     */
-    qrcodeTap: function () {
-        console.log('----二维码----');
         wx.navigateTo({
-            url: '../my/my-qrcode/my-qrcode',
+            url: '../my/edit-profile/edit-profile',
         })
     },
 

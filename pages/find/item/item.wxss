@@ -2,17 +2,17 @@
     display: flex;
     flex-direction: column;
     background: white;
-    border-bottom: 2rpx solid #f5f7f7;
 }
 
 .top {
     display: flex;
-    padding: 20rpx 20rpx 20rpx 20rpx;
+    padding: 26rpx 20rpx 26rpx 20rpx;
+    border-bottom: 2rpx solid #f5f7f7;
 }
 
 .icon {
-    width: 40rpx;
-    height: 40rpx;
+    width: 38rpx;
+    height: 38rpx;
 }
 
 .item-type {
@@ -35,5 +35,5 @@
 
 .divide {
     height: 20rpx;
-    background: #f5f7f7;
+    background: #fff8f4;
 }

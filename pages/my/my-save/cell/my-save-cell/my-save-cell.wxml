@@ -1,7 +1,0 @@
-<template name="my-award-cell">
-  <view class="bg-view">
-    <text class="name">{{Type}}</text>
-    <text class="amount">+{{Commission}}</text>
-    <text class="time">{{OrderDate}}</text>
-  </view>
-</template>

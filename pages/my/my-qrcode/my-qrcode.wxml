@@ -1,8 +1,0 @@
-<!--my-qrcode.wxml-->
-
-<view class="bg-view">
-    <text class="name">普艳芳</text>
-    <text class="invite-code">分享码：1234567</text>
-    <image src="" class="qr-image"></image>
-    <text class="desp">扫一扫上面的二维码图案，注册购物</text>
-</view>

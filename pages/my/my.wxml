@@ -1,84 +1,46 @@
 <!--my.wxml-->
 
-<import src='/pages/my/cell/my-cell.wxml' />
-<import src='/pages/my/cell/orderStatus-cell.wxml' />
+<import src='/pages/find/item/item.wxml' />
 
-<!--个人资料：头像／昵称／签名／-->
+<!--个人资料：头像／昵称／宝宝年龄、所属门店／-->
 <view class="top-view">
-  <view class="top-view-flex">
-    <image src="/res/img/my/my-message-icon.png" class="message-image" mode="aspectFit" catchtap="messageTap"></image>
+    <view class="top-view-flex">
+        <image src="/res/img/my/my-message-icon.png" class="message-image" mode="aspectFit" catchtap="messageTap"></image>
 
-    <view class="profile-view">
-      <image src="{{avatarUrl}}" class="avatar-image"></image>
-      <text class="nickname-text">{{nickName}}</text>
-      <text class="introducion-text">{{sign}}</text>
+        <view class="profile-view">
+            <image src="{{avatarUrl}}" class="avatar-image" catchtap="editProfileTap"></image>
+            <text class="nickname-text">{{nickName}}</text>
+            <text class="store-name">{{sign}}</text>
+        </view>
+
+        <image src="/res/img/my/my-setting-icon.png" class="setting-image" mode="aspectFit" catchtap="settingTap"></image>
     </view>
-
-    <image src="/res/img/my/my-setting-icon.png" class="setting-image" mode="aspectFit" catchtap="settingTap"></image>
-  </view>
-
-  <!--编辑资料按钮-->
-  <view class="edit-view" catchtap="editProfileTap">
-    <image src="/res/img/my/my-profile-edit-icon.png" class="edit-icon"></image>
-    <text class="edit-profile-text">编辑资料</text>
-  </view>
 </view>
 
-<!--身份描述／二维码-->
-<view class="desp-view">
-  <view class="left-desp-view">
-    <view class="line-one-view">
-      <text class="name-text">{{shopName}}</text>
-      <text class="identify-name-text">（{{idDesp}}）</text>
+<view class="points-coins-fav-view">
+    <view class="cell">
+        <label>积分</label>
+        <label class="points">{{points}}</label>
     </view>
-    <text class="invite-code-text">分享码：{{inviteCode}}（可用于邀请好友！）</text>
-  </view>
-  <view class="qrcode-view" catchtap="qrcodeTap">
 
-  </view>
-</view>
+    <view class="sepline"></view>
 
-<!--four cells-->
-<view class="four-cell-view">
-  <!-- wx:key="unique"可以告诉编译器，重用(reuse) item 提高性能-->
-  <block wx:for="{{orderStatusItems}}" wx:key="unique">
-    <template is="orderStatus-cell" data="{{...item,index:index}}"></template>
-  </block>
+    <view class="cell">
+        <label>金币</label>
+        <label class="coins">{{coins}}</label>
+    </view>
+    <view class="sepline"></view>
+    <view class="cell">
+        <label>收藏</label>
+        <label class="coins">{{fav}}</label>
+    </view>
 </view>
 
 <!--cell-->
 <view class="my-flex">
-  <block wx:for="{{myDatasItems0}}" wx:key="unique">
-    <view class="my-cell-view" bindtap="cellTap" data-title="{{item.name}}">
-      <template is="my-cell" data="{{...item}}"></template>
-    </view>
-  </block>
+    <block wx:for="{{myDatasItems0}}" wx:key="unique">
+        <view class="my-cell-view" catchtap="cellTap" data-title="{{item.name}}">
+            <template is="item" data="{{item:item}}"></template>
+        </view>
+    </block>
 </view>
-
-<view class="my-flex">
-  <block wx:for="{{myDatasItems1}}" wx:key="unique">
-    <view class="my-cell-view" bindtap="cellTap" data-title="{{item.name}}">
-      <template is="my-cell" data="{{...item}}"></template>
-    </view>
-  </block>
-</view>
-
-<view class="my-flex">
-  <block wx:for="{{myDatasItems2}}" wx:key="unique">
-    <view class="my-cell-view" bindtap="cellTap" data-title="{{item.name}}">
-      <template is="my-cell" data="{{...item}}"></template>
-    </view>
-  </block>
-</view>
-
-<!--设置-->
-<view class="my-flex">
-  <block wx:for="{{settingDatasItems}}" wx:key="unique">
-    <view class="my-cell-view" bindtap="cellSectionTwoTap" data-index="{{index}}">
-      <template is="my-cell" data="{{...item}}"></template>
-    </view>
-  </block>
-</view>
-
-<!--退出登录-->
-<view class="loginout" bindtap="loginoutTap">退出登录</view>

@@ -1,6 +1,6 @@
 
 <template name="item">
- <view class="item" catchtap="goDetail" data-index="{{index}}">
+ <view class="item" catchtap="goDetail" data-index="{{index}}" data-title="{{item.name}}">
     <view class="top">
       <image class="icon" src="{{item.image}}" mode="aspectFit"></image>
       <view class="item-type">

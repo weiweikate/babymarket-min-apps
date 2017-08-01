@@ -1,0 +1,38 @@
+<!--edit-profile.wxml-->
+
+<import src='/pages/my/edit-profile/edit-profile-cell/edit-profile-cell.wxml' />
+
+<!--头像  -->
+<view class="avatar-view" catchtap="modifyImageTap">
+    <text class="avatar-text">头像</text>
+    <image src="{{imageUrl}}" class="avatar-image"></image>
+    <image src="/res/img/my/my-address-arrow-icon.png" style="width:15rpx;height:26rpx" mode="aspectFit" class="arrow"></image>
+</view>
+
+<!--昵称，简介  -->
+<block wx:for="{{listDatas}}" wx:key="unique">
+    <picker bindchange="bindPickerChange" data-title="{{item.title}}" value="{{statusIndex}}" range="{{statusArry}}" wx:if="{{item.title == '当前状态'}}">
+        <template is="edit-profile-cell" data="{{...item}}"></template>
+    </picker>
+
+    <picker bindchange="bindPickerChange" data-title="{{item.title}}" value="{{sexIndex}}" range="{{sexArry}}" wx:elif="{{item.title == '宝宝性别'}}">
+        <template is="edit-profile-cell" data="{{...item}}"></template>
+    </picker>
+
+    <picker mode="date" start="1970-01-01" end="{{endDate}}" value="{{endDate}}" bindchange="bindPickerChange" data-title="{{item.title}}" wx:elif="{{item.title == '宝宝出生日期'}}">
+        <template is="edit-profile-cell" data="{{...item}}"></template>
+    </picker>
+
+    <view class="edit-profile-cell-view" catchtap="cellTap" data-title="{{item.title}}" wx:else>
+        <template is="edit-profile-cell" data="{{...item}}"></template>
+    </view>
+
+</block>
+
+<view class="modify-password-view">
+    <block wx:for="{{modifyPasswordLists}}" wx:key="unique">
+        <view class="edit-profile-cell-view" catchtap="cellTap" data-title="{{item.title}}">
+            <template is="edit-profile-cell" data="{{...item}}"></template>
+        </view>
+    </block>
+</view>

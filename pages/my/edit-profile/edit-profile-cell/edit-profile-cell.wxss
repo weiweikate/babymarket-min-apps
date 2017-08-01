@@ -1,0 +1,29 @@
+.edit-profile-view {
+    display: flex;
+    width: 100%;
+    height: 129rpx;
+    border-bottom: 2rpx solid #eeeeee;
+    align-items: center;
+    background: white;
+}
+
+.title {
+    font-size: 32rpx;
+    margin-left: 36rpx;
+    color: #1a1c1f;
+    flex-shrink: 0;
+    width: 200rpx;
+}
+
+.desp {
+    font-size: 30rpx;
+    color: #b0b1b3;
+    text-align: right;
+    margin-right: 20rpx;
+    margin-left: 10rpx;
+    width: 500rpx;
+}
+
+.arrow-icon {
+    margin-right: 27rpx;
+}
