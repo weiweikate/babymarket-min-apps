@@ -1,4 +1,4 @@
-// pages/special/special-activity.js
+// pages/index/mom.js
 Page({
 
   /**
