@@ -7,7 +7,7 @@
         <view class="initiate" catchtap="mine">我的咨询</view>
         <view class="initiate" catchtap="knowledge">知识库</view>
     </view>
-    <view wx:if="{{hasList}}">
+    <view class="data" wx:if="{{hasList}}">
         <view wx:for="{{dataList}}" wx:key="{{index}}">
             <template is="clinic-item" data="{{item}}"></template>
         </view>

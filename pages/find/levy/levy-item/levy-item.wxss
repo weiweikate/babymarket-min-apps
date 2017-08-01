@@ -1,0 +1,47 @@
+.levy-item {
+    display: flex;
+    background: white;
+}
+
+.levy-image {
+    background: white;
+    width: 150rpx;
+    height: 150rpx;
+    border: 2rpx solid #f5f7f7;
+    flex-shrink: 0;
+}
+
+.image-empty {
+    background: #f3f3f4;
+    width: 150rpx;
+    height: 150rpx;
+    border: 2rpx solid #f5f7f7;
+    flex-shrink: 0;
+}
+
+.levy-info {
+    margin-left: 20rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.levy-title {
+    font-size: 32rpx;
+    color: #494848;
+}
+
+.levy-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.integral {
+    display: flex;
+    margin-top: 10rpx;
+}
+
+.now{
+   font-size: 32rpx;
+    color: #494848; 
+}

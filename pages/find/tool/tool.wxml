@@ -1,0 +1,8 @@
+<!--tool.wxml-->
+<import src='/pages/find/tool/tool-item/tool-item.wxml' />
+
+<view class="tool-list">
+    <view wx:for="{{listData}}" wx:key="{{index}}">
+        <template is="tool-item" data="{{item,index:index}}"></template>
+    </view>
+</view>

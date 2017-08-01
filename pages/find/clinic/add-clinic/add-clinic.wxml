@@ -1,0 +1,77 @@
+<!--add-clinic.wxml-->
+<view class="main">
+    <form class="add-Advisory" bindsubmit="addAdvisory">
+        <!--填写地址信息-->
+        <view class="advisory-add-box">
+            <!--哺乳-->
+            <view class="advisory-add-item">
+                <text class="advisory-type-text">哺乳</text>
+                <view class="advisory-type">
+                    <text class="advisory-select" bindtap="selectNurse">{{nurse}}</text>
+                    <image class="advisory-arrow" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit"></image>
+                </view>
+                <view class="address-divide"></view>
+            </view>
+
+            <!--奶粉品牌及奶量-->
+            <view class="advisory-add-item">
+                <text class="advisory-type-text">奶粉品牌及奶量</text>
+                <input name="advisorymilk" class="advisory-input" placeholder="请输入奶粉品牌及奶量" type="text" placeholder-style="color:#dbdbdb" value="{{milk}}" />
+                <view class="address-divide"></view>
+            </view>
+
+            <!--辅食添加结构-->
+            <view class="advisory-add-item">
+                <text class="advisory-type-text">辅食添加结构</text>
+                <view class="advisory-type">
+                    <text class="advisory-select" bindtap="selectFood">{{food}}</text>
+                    <image class="advisory-arrow" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit"></image>
+                </view>
+                <view class="address-divide"></view>
+            </view>
+
+            <!--饮水量-->
+            <view class="advisory-add-item">
+                <text class="advisory-type-text">饮水量</text>
+                <view class="advisory-type">
+                    <text class="advisory-select" bindtap="selectWater">{{water}}</text>
+                    <image class="advisory-arrow" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit"></image>
+                </view>
+                <view class="address-divide"></view>
+            </view>
+
+             <!--排便次数-->
+            <view class="advisory-add-item">
+                <text class="advisory-type-text">排便次数</text>
+                <view class="advisory-type">
+                    <text class="advisory-select" bindtap="selectNum">{{num}}</text>
+                    <image class="advisory-arrow" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit"></image>
+                </view>
+                <view class="address-divide"></view>
+            </view>
+
+             <!--拉粑粑时表情-->
+            <view class="advisory-add-item">
+                <text class="advisory-type-text">拉粑粑时表情</text>
+                <view class="advisory-type">
+                    <text class="advisory-select" bindtap="selectFace">{{face}}</text>
+                    <image class="advisory-arrow" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit"></image>
+                </view>
+                <view class="address-divide"></view>
+            </view>
+
+            <!--详细描述（如精神状态等）-->
+            <view class="advisory-add-item">
+                <text class="advisory-type-text">详细描述（如精神状态等）</text>
+                <input name="advisorydetail" class="advisory-input" placeholder="请填写详细描述" type="text" placeholder-style="color:#dbdbdb" value="{{detail}}" />
+                <view class="address-divide"></view>
+            </view>
+
+        </view>
+
+        <!--底部按钮保存-->
+        <view class="advisory-add">
+            <button class="advisory-add-bt" form-type="submit">提交</button>
+        </view>
+    </form>
+</view>

@@ -10,34 +10,9 @@
   justify-content: space-between;
 }
 
-.address-top-left {
-  display: flex;
-  align-items: center;
-}
-
 .address-name {
   font-size: 30rpx;
   color: topic;
-}
-
-.address-auth {
-  font-size: 22rpx;
-  color: #7697c6;
-  border: 1rpx solid #7697c6;
-  background: white;
-  border-radius: 10rpx;
-  margin-left: 20rpx;
-  padding: 5rpx 5rpx 5rpx 5rpx;
-}
-
-.address-unauth {
-  font-size: 22rpx;
-  color: white;
-  border: 1rpx solid #e4c23f;
-  background: #e4c23f;
-  border-radius: 10rpx;
-  margin-left: 20rpx;
-  padding: 5rpx 5rpx 5rpx 5rpx;
 }
 
 .address-mobile {
@@ -51,10 +26,4 @@
   color: #5e5e5f;
   font-size: 28rpx;
   flex-wrap: wrap;
-}
-
-.address-id {
-  color: #5e6064;
-  font-size: 26rpx;
-  margin-top: 10rpx;
 }

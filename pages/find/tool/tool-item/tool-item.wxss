@@ -1,0 +1,19 @@
+.tool-item {
+    background: white;
+    width: 375rpx;
+    padding: 50rpx 0 50rpx 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tool-icon {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.tool-name {
+    color: #acadaa;
+    font-size: 24rpx;
+    margin-top: 20rpx;
+}

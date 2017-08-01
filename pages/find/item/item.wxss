@@ -11,8 +11,8 @@
 }
 
 .icon {
-    width: 50rpx;
-    height: 50rpx;
+    width: 40rpx;
+    height: 40rpx;
 }
 
 .item-type {

@@ -1,0 +1,7 @@
+/* tool.wxss */
+@import '/pages/find/tool/tool-item/tool-item.wxss';
+
+.tool-list{
+    display: flex;
+    flex-wrap:wrap;
+}

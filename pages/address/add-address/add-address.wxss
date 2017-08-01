@@ -14,20 +14,9 @@
   height: 58rpx;
 }
 
-.address-meter {
-  width: 20rpx;
-  height: 20rpx;
-}
-
 .addresser-type-text {
   font-size: 28rpx;
   margin-left: 10rpx;
-  color: #b3b7b9;
-}
-
-.addresser-type-text1 {
-  font-size: 28rpx;
-  margin-left: 30rpx;
   color: #b3b7b9;
 }
 
@@ -68,6 +57,3 @@
   align-items: center;
 }
 
-button::after {
-  border: 0;
-}
