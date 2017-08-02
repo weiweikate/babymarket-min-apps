@@ -5,7 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+      currentTab: 0,
+      momList: [],
+      hasData: false,
+      noData: '',
+      oneSortData: [
+          {
+              Name: '热帖',
+          },
+          {
+              Name: '所有贴',
+          },
+          {
+              Name: '所有圈',
+          },
+          {
+              Name: '搜帖子',
+          },
+      ],
   },
 
   /**

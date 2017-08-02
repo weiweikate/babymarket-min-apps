@@ -1,2 +1,27 @@
 <!--mom.wxml-->
-<text>mom.wxml</text>
+<import src='/pages/home/tab-layout/tab-layout.wxml' />
+
+<view class="mom-box">
+  <view class="top">
+    <template is="tab-layout" data="{{items:oneSortData,currentTab}}" />
+  </view>
+  <view wx:if="{{hasData}}" class="swiper-view">
+    <swiper class="swiper-container" bindchange="onTabChangeListener" current="{{currentTab}}">
+      <block wx:for="{{oneSortData}}" wx:key="unique">
+        <swiper-item>
+          <scroll-view class="scroll" scroll-y>
+            <block wx:for="{{momList}}" wx:key="unique">
+
+            </block>
+          </scroll-view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!--无数据-->
+  <view wx:else class="no-data">
+    <text>{{noData}}</text>
+  </view>
+
+</view>

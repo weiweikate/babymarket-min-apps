@@ -1,0 +1,23 @@
+.tab-layout {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  flex-direction: row;
+  flex: none;
+  white-space: nowrap;
+}
+
+.tab-layout .tab {
+  display: inline-flex;
+  font-size: 28rpx;
+  color: #494848;
+  height: 90rpx;
+  width: 187rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-layout .tab.select {
+  color: #ff5555;
+  border-bottom: 4rpx solid #ff5555;
+}

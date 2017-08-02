@@ -35,7 +35,7 @@ Page({
     },
     gotoIndex: function () {
         wx.switchTab({
-            url: '/pages/home/home'
+            url: '/pages/index/index'
         });
     },
     loginTypeWithKey: function (key) {

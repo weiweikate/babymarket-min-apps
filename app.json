@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/index/index",
         "pages/home/home",
         "pages/find/find",
         "pages/product-detail/product-detail",
@@ -39,7 +40,6 @@
         "pages/my/edit-profile/modify-password/modify-password",
         "pages/my/edit-profile/modify-pay-password/modify-pay-password",
         "pages/mom/mom",
-        "pages/index/index",
         "pages/my/sign/sign"
     ],
     "window": {
