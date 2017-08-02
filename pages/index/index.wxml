@@ -25,9 +25,9 @@
     <label class="desp">等级分类交付了的；是靠近阿道夫了可是解放路撒可点击解放东路空数据发了范德萨</label>
 </view>
 
-<block wx:for="{{listDatas}}" wx:key='unique'>
+<view wx:for="{{listDatas}}" wx:key='unique' class="index-artical-cell">
     <template is="index-artical-cell" data="{{...item, index:index}}"></template>
-</block>
+</view>
 
 <view class="question-view" catchtap="questionListTap">
     <view class="top-view">

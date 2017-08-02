@@ -91,6 +91,10 @@
     margin-top: 30rpx;
 }
 
+.index-artical-cell{
+    background: white;
+}
+
 .question-view{
     padding: 40rpx 22rpx 40rpx 22rpx;
     display: flex;

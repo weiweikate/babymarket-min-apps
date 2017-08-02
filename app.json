@@ -40,13 +40,14 @@
         "pages/my/edit-profile/modify-pay-password/modify-pay-password",
         "pages/mom/mom",
         "pages/index/index",
-        "pages/my/sign/sign"
+        "pages/my/sign/sign",
+        "pages/question/question"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fafafa",
         "navigationBarTitleText": "TOPMOM",
-        "navigationBarTextStyle": "#000000",
+        "navigationBarTextStyle": "black",
         "backgroundColor": "#fff8f4",
         "enablePullDownRefresh": false
     },

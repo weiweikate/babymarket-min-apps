@@ -11,13 +11,12 @@
   display: inline-flex;
   font-size: 28rpx;
   color: #3c3d3d;
-  padding-left: 18rpx;
-  padding-right: 18rpx;
   height: 54rpx;
   align-items: center;
+  justify-content: center;
 }
 
 .tab-layout .tab.select {
-  color: #af8327;
-  border-bottom: 4rpx solid #af8327;
+  color: #ff5555;
+  border-bottom: 4rpx solid #ff5555;
 }

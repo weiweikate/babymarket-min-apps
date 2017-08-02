@@ -92,6 +92,9 @@ Page({
 
     questionListTap:function(){
         console.log('进入孕育问答页面');
+        wx.navigateTo({
+            url: '../question/question',
+        })
     },
 
     toolCellTap:function(e){

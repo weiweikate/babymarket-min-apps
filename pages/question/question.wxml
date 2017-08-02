@@ -1,0 +1,25 @@
+<!--question.wxml-->
+<import src='/pages/home/tab-layout/tab-layout.wxml' />
+<import src='/pages/question/question-latest-cell/question-latest-cell.wxml' />
+<import src='/pages/question/question-best-cell/question-best-cell.wxml' />
+
+<template is="tab-layout" data="{{items:navTabs,currentTab}}" />
+<view class="sepline"></view>
+<view class="swiper-view">
+    <swiper class="swiper-container" bindchange="onTabChangeListener" current="{{currentTab}}">
+        <block wx:for="{{navTabs}}" wx:key="unique">
+            <swiper-item>
+                <view wx:if="{{index ==0}}">
+                    <block wx:for="{{listDatas}}" wx:key="unique">
+                        <template is="question-latest-cell" data="{{item:listDatas, index:index}}" />
+                    </block>
+                </view>
+                <view wx:else>
+                    <block wx:for="{{listDatas}}" wx:key="unique">
+                        <template is="question-best-cell" data="{{item:listDatas, index:index}}" />
+                    </block>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
