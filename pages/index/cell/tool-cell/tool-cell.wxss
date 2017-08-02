@@ -1,0 +1,19 @@
+.tool-cell-view{
+    display: flex;
+    flex-direction: column;
+    width: 167rpx;
+    height: 235rpx;
+    align-items: center;
+}
+
+.tool-cell-view .image{
+    width: 75rpx;
+    height: 75rpx;
+    margin-top: 54rpx;
+}
+
+.tool-cell-view .title{
+    font-size: 28rpx;
+    color: #acadaa;
+    margin-top: 30rpx;
+}

@@ -1,0 +1,27 @@
+.question-base-cell{
+    background: white;
+    padding: 20rpx 30rpx 35rpx 22rpx;
+}
+
+.top-view{
+    height: 40rpx;
+    font-size: 28rpx;
+    color: #acadaa;
+    display: flex;
+    align-items: center;
+}
+
+.content{
+    font-size: 32rpx;
+    color: #090909;
+    margin-top: 20rpx;
+}
+
+.top-view .name{
+    margin-left: 15rpx;
+}
+
+.top-view .age{
+    right: 22rpx;
+    position: fixed;
+}

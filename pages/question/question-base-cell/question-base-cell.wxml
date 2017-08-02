@@ -1,0 +1,10 @@
+<template name="question-base-cell">
+    <view class="question-base-cell">
+        <view class="top-view">
+            <image src="/res/img/index/index-eat-yes-icon.png" style="width:18rpx;height:18rpx"></image>
+            <view class="name">name小红</view>
+            <view class="age">3个月15天</view>
+        </view>
+        <view class="content">激发了大家舒服附近的撒了房间睡懒觉</view>
+    </view>
+</template>

@@ -1,2 +1,47 @@
 <!--index.wxml-->
-<text>index.wxml</text>
+
+<import src='/pages/index/cell/index-artical-cell/index-artical-cell.wxml' />
+<import src='/pages/index/cell/tool-cell/tool-cell.wxml' />
+
+<view class="header-view">
+    <view class="top-view">
+        <view class="left-arrow" catchtap="leftArrowTap">
+            <image src="/res/img/index/index-left-arrow-white-icon.png" style="width:13rpx;height:25rpx;"></image>
+        </view>
+        <label class="date">8月1号</label>
+        <view class="right-arrow" catchtap="rightArrowTap">
+            <image src="/res/img/index/index-right-arrow-white-icon.png" style="width:13rpx;height:25rpx;"></image>
+        </view>
+
+        <view class="search-icon" catchtap="searchTap">
+            <image src="/res/img/index/index-search-white-icon.png" style="width:28rpx;height:27rpx;"></image>
+        </view>
+    </view>
+
+    <label class="baby-age">2个月14天</label>
+    <image src="/res/img/index/index-baby-avatar-icon.png" class="avatar"></image>
+    <label class="name">cynthia</label>
+    <label class="height-weight">50.3-60.5cm/12.5-17.5kg</label>
+    <label class="desp">等级分类交付了的；是靠近阿道夫了可是解放路撒可点击解放东路空数据发了范德萨</label>
+</view>
+
+<view wx:for="{{listDatas}}" wx:key='unique' class="index-artical-cell">
+    <template is="index-artical-cell" data="{{...item, index:index}}"></template>
+</view>
+
+<view class="question-view" catchtap="questionListTap">
+    <view class="top-view">
+        <label class="title">孕育问答</label>
+        <view class="button" catchtap="questionTap">
+            <image src="/res/img/index/index-question-icon.png" style="width:19rpx;height:14rpx" class="question-icon"></image>
+            <label>我要提问</label>
+        </view>
+    </view>
+    <label class="content">觉得拉萨肌肤疯狂的撒</label>
+</view>
+
+<view class="tool-view">
+    <block wx:for="{{toolList}}" wx:key='unique'>
+        <template is="tool-cell" data="{{...item}}"></template>
+    </block>
+</view>

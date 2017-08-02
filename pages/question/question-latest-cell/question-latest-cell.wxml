@@ -1,0 +1,15 @@
+<import src='/pages/question/question-base-cell/question-base-cell.wxml' />
+
+<template name="question-latest-cell">
+    <view class="question-latest-cell" catchtap="latestCellTap" data-index="{{index}}">
+        <template is="question-base-cell"></template>
+        <view class="sepline"></view>
+        <view class="bottom-view">
+            <view class="reply-num">所有0个回答</view>
+            <view class="right-view">
+                <view class="reply-button" catchtap="replyTap" data-index="{{index}}">立即回答</view>
+                <view class="time">08-02 11:26</view>
+            </view>
+        </view>
+    </view>
+</template>

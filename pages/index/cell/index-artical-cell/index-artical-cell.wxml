@@ -1,0 +1,12 @@
+<template name="index-artical-cell">
+    <view class="sepline" wx:if="{{index != 0}}"></view>
+    <view class="index-artical-cell-view">
+        <image src="/res/img/index/index-cell-teach-icon.png" class="left-icon"></image>
+
+        <view class="right-view">
+            <label class="subject">育儿头条</label>
+            <label class="title">宝宝天生具备的能力</label>
+            <label class="content">付款点击萨克拉飞机都是垃圾</label>
+        </view>
+    </view>
+</template>
