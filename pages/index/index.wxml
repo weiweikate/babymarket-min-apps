@@ -22,7 +22,10 @@
     <image src="/res/img/index/index-baby-avatar-icon.png" class="avatar"></image>
     <label class="name">cynthia</label>
     <label class="height-weight">50.3-60.5cm/12.5-17.5kg</label>
-    <label class="desp">等级分类交付了的；是靠近阿道夫了可是解放路撒可点击解放东路空数据发了范德萨</label>
+    <view class="desp">
+        <image src="/res/img/index/index-heart-icon.png" style="width:17rpx;height:16rpx"></image> 等级分类交付了的；是靠近阿道夫了可是解放路撒可点击解放东路空数据发了范德萨
+    </view>
+    
 </view>
 
 <view wx:for="{{listDatas}}" wx:key='unique' class="index-artical-cell">

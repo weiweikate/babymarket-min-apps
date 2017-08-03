@@ -1,30 +1,32 @@
-// index.js
+// eat.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        listDatas: ['', ''],
-        toolList: [
+        listDatas: [
             {
                 'imageUrl': '/res/img/index/index-tool-eat-icon.png',
-                'title': '能不能吃'
+                'title': '五谷杂粮'
             },
             {
                 'imageUrl': '/res/img/index/index-tool-vaccine-icon.png',
-                'title': '宝贝疫苗'
-            }, 
+                'title': '蔬菜菌类'
+            },
             {
                 'imageUrl': '/res/img/index/index-tool-baby-food-icon.png',
-                'title': '辅食大全'
-            }, 
+                'title': '水果'
+            },
             {
                 'imageUrl': '/res/img/index/index-tool-lib-icon.png',
-                'title': '工具库'
+                'title': '饮品'
             },
-
-        ]
+            {
+                'imageUrl': '/res/img/index/index-tool-lib-icon.png',
+                'title': '零食'
+            },
+            ]
     },
 
     /**
@@ -83,38 +85,12 @@ Page({
 
     },
 
-    /**
-     * 我要提问
-     */
-    questionTap:function(){
-        console.log('我要提问');
-    },
-
-    questionListTap:function(){
+    toolCellTap: function (e) {
+        let index = e.currentTarget.dataset.index;
+        console.log(index);
+        
         wx.navigateTo({
-            url: '../question/question',
+            url: '../eat/eat-food-list/eat-food-list',
         })
     },
-
-    toolCellTap:function(e){
-        let title = e.currentTarget.dataset.title;
-        console.log(title);
-        if(title == '能不能吃'){
-            wx.navigateTo({
-                url: '../eat/eat',
-            })
-        }
-    },
-
-    leftArrowTap:function(){
-        console.log('日期减1');
-    },
-
-    rightArrowTap: function () {
-        console.log('日期加1');
-    },
-
-    searchTap: function () {
-        console.log('搜索');
-    }
 })

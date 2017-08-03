@@ -1,0 +1,18 @@
+.search-field {
+    display: flex;
+    align-items: center;
+    border-radius: 30rpx;
+    border: 1px solid #f55;
+    height: 60rpx;
+}
+
+.search-field input {
+    flex: 1;
+    font-size: 28rpx;
+}
+
+.search-field image {
+    height: 25rpx;
+    width: 25rpx;
+    margin: 10rpx;
+}

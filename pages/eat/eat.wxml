@@ -1,0 +1,13 @@
+<!--eat.wxml-->
+<import src='/pages/index/cell/tool-cell/tool-cell.wxml' />
+<import src='/pages/eat/search-cell/search-cell.wxml' />
+
+<view class="top-view">
+    <template is="search-cell"></template>
+</view>
+
+<view class="eat-view">
+    <block wx:for="{{listDatas}}" wx:key='unique'>
+        <template is="tool-cell" data="{{...item, index:index}}"></template>
+    </block>
+</view>

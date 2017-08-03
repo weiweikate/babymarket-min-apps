@@ -1,0 +1,42 @@
+.eat-food-list-cell-view{
+    display: flex;
+    align-items: center;
+    margin-top: 20rpx;
+    padding: 22rpx;
+    background: white; 
+}
+
+.desp-view{
+    margin-left: 30rpx;
+    margin-right: 30rpx;
+    width: 430rpx;
+}
+
+.desp-view .name{
+    font-size: 32rpx;
+    color: #090909;
+}
+
+.desp-view .desp{
+    margin-top: 20rpx;
+    font-size: 28rpx;
+    color: #494848;
+}
+
+.desp-view .eat-or-not-view{
+    margin-top: 15rpx; 
+    height: 40rpx;  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eat-or-not-view{
+    display: flex;
+}
+
+.eat-or-not-view .status{
+    font-size: 24rpx;
+    color: #090909;
+    margin-left: 8rpx;
+}

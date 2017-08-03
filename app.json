@@ -41,7 +41,9 @@
         "pages/mom/mom",
         "pages/index/index",
         "pages/my/sign/sign",
-        "pages/question/question"
+        "pages/question/question",
+        "pages/eat/eat",
+        "pages/eat/eat-food-list/eat-food-list"
     ],
     "window": {
         "backgroundTextStyle": "light",
