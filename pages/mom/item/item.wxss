@@ -1,0 +1,49 @@
+@import '/pages/find/head/head.wxss';
+
+.mom-item {
+    background: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+}
+
+.item-title {
+    font-size: 32rpx;
+    color: #090909;
+}
+
+.item-value {
+    font-size: 26rpx;
+    color: #7d7d7f;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20rpx;
+}
+
+.bottom-left {
+    display: flex;
+}
+
+.icon-read {
+}
+
+.num-read {
+    font-size: 24rpx;
+    color: #acadaa;
+}
+
+.bottom-right {
+    display: flex;
+}
+
+.icon-message {
+}
+
+.num-message {
+    font-size: 26rpx;
+    color: #5caad3;
+}

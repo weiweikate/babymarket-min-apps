@@ -1,0 +1,10 @@
+<template name="mom-type">
+    <view class="mom-type">
+        <image class="type-icon" src="{{item.image}}" mode="aspectFit"></image>
+        <view class="type-left">
+            <view class="type-name">{{item.name}}</view>
+            <view class="type-subtitle">{{item.subtitle}}</view>
+        </view>
+        <view class="{{item.status==='关注'？type-status:type-status1}}">{{item.status}}</view>
+    </view>
+</template>

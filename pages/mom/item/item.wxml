@@ -1,0 +1,18 @@
+<import src='/pages/find/head/head.wxml' />
+<template name="mom-item">
+    <view class="mom-item" catchtap="goDetail" data-index="{{index}}">
+        <template is="head" data="{{item}}"></template>
+        <view class="item-title OverFlowTwoLine">{{item.Title_Article}}</view>
+        <view class="item-value OverFlowTwoLine">{{item.Article_Abstract}}</view>
+        <view class="bottom">
+            <view class="bottom-left">
+                <image class="icon-read" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit"></image>
+                <view class="num-read">{{item.TotalViews}}</view>
+            </view>
+            <view class="bottom-right">
+                <image class="icon-message" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit"></image>
+                <view class="num-message">{{item.Commemt_Number}}</view>
+            </view>
+        </view>
+    </view>
+</template>
