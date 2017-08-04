@@ -136,7 +136,9 @@ Page({
     },
 
     favTap: function () {
-
+        wx.navigateTo({
+            url: '../my/my-fav/my-fav',
+        })
     },
 
     /**

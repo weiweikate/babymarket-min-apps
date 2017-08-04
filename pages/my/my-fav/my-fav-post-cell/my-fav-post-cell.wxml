@@ -1,0 +1,24 @@
+<import src='/pages/my/my-fav/my-fav-artical-cell/my-fav-artical-cell.wxml' />
+
+<template name="my-fav-post-cell">
+    <view class="my-fav-post-cell">
+        <view class="avatar-name-view">
+            <image src="/res/img/common/common-avatar-default-icon.png" class="image"></image>
+            <view class="name-time-view">
+                <view class="name">小红红</view>
+
+                <view class="time-read">
+                    <view class="time">2017-08-04 17:30:45</view>
+
+                    <view class="read-num-view">
+                        <image src="/res/img/index/index-reply-black-icon.png" class="read-image"></image>
+                        <view class="read-num">10</view>
+                    </view>
+
+                </view>
+                
+            </view>
+        </view>
+        <template is="my-fav-artical-cell"></template>
+    </view>
+</template>

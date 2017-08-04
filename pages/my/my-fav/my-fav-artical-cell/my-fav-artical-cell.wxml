@@ -1,0 +1,6 @@
+<template name="my-fav-artical-cell">
+    <view class="my-fav-artical-cell">
+        <view class="title">不同季节轻松坐月子</view>
+        <view class="content OverFlowTwoLine">不同季节轻松坐月子加夫里什解放了解放军队失联飞机等级分拉萨附近拉屎false</view>
+    </view>
+</template>
