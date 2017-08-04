@@ -19,7 +19,7 @@
                             <!--所有圈-->
                             <view wx:elif="{{type==1}}">
 
-                            </view>type
+                            </view>
                             <!--搜帖子-->
                             <view wx:else>
                             </view>
