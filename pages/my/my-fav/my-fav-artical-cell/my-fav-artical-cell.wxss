@@ -1,0 +1,16 @@
+.my-fav-artical-cell{
+    background: white;
+    padding: 20rpx 22rpx 30rpx 22rpx;
+}
+
+.my-fav-artical-cell .title{
+    font-size: 34rpx;
+    color: #090909;
+}
+
+.my-fav-artical-cell .content{
+    font-size: 28rpx;
+    color: #7d7d7f;
+    margin-top: 20rpx;
+    line-height: 120%;
+}
