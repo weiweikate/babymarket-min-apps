@@ -1,0 +1,26 @@
+<!--coins.wxml-->
+<import src='/pages/my/coins/coin-cell/coin-cell.wxml' />
+
+<!--top view-->
+<view class="top-view">
+    <view class="amount-view">
+        <label class="amount">{{award}}</label>
+        <label class="yuan">金币</label>
+    </view>
+
+    <view class="bottom-button" catchtap="rechargeTap">去充值</view>
+
+</view>
+
+<view class="today-get">
+    <label>今日收获</label>
+    <view class="right-view">
+        <label>今日已获得</label>
+        <label class="money">{{todayMoney}}</label>
+        <label>个金币</label>
+    </view>
+</view>
+
+ <block wx:for="{{listDatas}}" wx:key="unique">
+    <template is="coin-cell" data="{{...item}}"></template>
+</block> 

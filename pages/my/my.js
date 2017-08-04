@@ -129,6 +129,16 @@ Page({
 
     },
 
+    coinsTap:function(){
+        wx.navigateTo({
+            url: '../my/coins/coins',
+        })
+    },
+
+    favTap: function () {
+
+    },
+
     /**
      * cell点击
      */

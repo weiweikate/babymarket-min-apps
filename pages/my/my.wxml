@@ -25,12 +25,12 @@
 
     <view class="sepline"></view>
 
-    <view class="cell">
+    <view class="cell" catchtap="coinsTap">
         <label>金币</label>
         <label class="coins">{{coins}}</label>
     </view>
     <view class="sepline"></view>
-    <view class="cell">
+    <view class="cell" catchtap="favTap">
         <label>收藏</label>
         <label class="coins">{{fav}}</label>
     </view>

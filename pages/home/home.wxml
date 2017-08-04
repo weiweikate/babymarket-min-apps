@@ -1,5 +1,4 @@
-<!--搜索-->
-<import src='/components/search-field/search-field.wxml' />
+
 <!--顶部导航栏-->
 <import src='tab-layout/tab-layout.wxml' />
 <!--首页-->
@@ -10,9 +9,6 @@
 <import src='/components/product-specification/product-specification.wxml' />
 
 <view class="root-view">
-  <view class="search-bar">
-    <template is="search-field" />
-  </view>
   <template is="tab-layout" data="{{items:oneSortData,currentTab}}" />
   <view class="swiper-view">
     <swiper class="swiper-container" bindchange="onTabChangeListener" current="{{currentTab}}">

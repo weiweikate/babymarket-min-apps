@@ -23,6 +23,7 @@
 
 .swiper-view {
   height: 100%;
+  border-top: 6rpx solid #eeeeee;
 }
 
 .swiper-view .swiper-container {

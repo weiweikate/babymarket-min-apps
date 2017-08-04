@@ -1,0 +1,60 @@
+/* coins.wxss */
+@import '/pages/my/coins/coin-cell/coin-cell.wxss';
+
+.top-view {
+    height: 337rpx;
+    background: #f39138;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.top-view .amount-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 195rpx;
+}
+
+.top-view .amount-view .amount {
+    font-size: 100rpx;
+    color: white;
+}
+
+.yuan {
+    font-size: 30rpx;
+    margin-top: 40rpx;
+}
+
+.bottom-button {
+    margin-top: 10rpx;
+    margin-left: 100rpx;
+    width: 550rpx;
+    height: 80rpx;
+    border: 2rpx solid white;
+    border-radius: 10rpx;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 30rpx;
+}
+
+.today-get {
+    width: 706rpx;
+    height: 72rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #7d7d7f;
+    padding: 0rpx 22rpx;
+    background: #fffdea;
+}
+
+.today-get .right-view {
+    display: flex;
+}
+
+.right-view .money {
+    color: #f39138;
+}

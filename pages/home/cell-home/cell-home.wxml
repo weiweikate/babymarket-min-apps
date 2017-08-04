@@ -1,7 +1,6 @@
 <!--广告位-->
 <import src='/pages/home/ad/home-ad.wxml' />
 <!--码头快报-->
-<import src='/pages/home/cell-bulletin/cell-bulletin.wxml' />
 <import src='/pages/home/cell-title/cell-title.wxml' />
 <import src='/pages/home/cell-product/cell-product.wxml' />
 
@@ -9,7 +8,6 @@
   <view class="cell-home">
     <view>
       <template is="home-ad" data="{{adArray:adArray}}" />
-      <template is="cell-bulletin" />
       <block wx:for="{{oneSortData}}" wx:key="unique">
         <template is="cell-title" data="{{title:item.Name,position:index}}" wx:if="{{index>0}}" />
         <template is="cell-product" data="{{productArray:item.productData,groupPosition:index,isMore:true,title:item.Name,categoryId:item.Id}}" wx:if="{{index>0}}" />
