@@ -1,0 +1,49 @@
+.bg-view {
+    display: flex;
+    background: white;
+    height: 120rpx;
+    padding: 0rpx 22rpx;
+    align-items: center;
+    font-size: 32rpx;
+    color: #090909;
+    border-bottom: 2rpx solid #eee;
+}
+
+.bg-view .title {
+    width: 45%;
+    flex-shrink: 0;
+}
+
+.bg-view .amount-view {
+    width: 25%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.amount-view .amount-icon {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.amount-view .amount {
+    color: #f39138;
+    margin-left: 5rpx;
+    font-size: 28rpx;
+}
+
+.bg-view .right-view{
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.coin {
+    font-size: 28rpx;
+    color: #acadaa;
+}
+
+.coin.currentCoin {
+    color: #f39138;
+}

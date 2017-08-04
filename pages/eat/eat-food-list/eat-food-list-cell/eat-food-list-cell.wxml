@@ -1,0 +1,22 @@
+<template name="eat-food-list-cell">
+    <view class="eat-food-list-cell-view">
+        <image src="" style="width:187rpx;height:187rpx;background:red"></image>
+        <view class="desp-view">
+            <view class="name">玉米</view>
+            <view class="desp OverFlowTwoLine">加快了极大了房间睡啦到家乐福撒娇法律框架撒激发快乐的撒</view>
+            <view class="eat-or-not-view">
+                <block wx:for="{{eatList}}" wx:key='unique'>
+                    <template is="eat-or-not-cell" data="{{...item}}"></template>
+                </block>
+            </view>
+        </view>
+        <image src="/res/img/common/common-accessory-icon.png" style="width:16rpx;height:26rpx"></image>
+    </view>
+</template>
+
+<template name="eat-or-not-cell">
+    <view class="eat-or-not-view">
+        <image src="{{imgUrl}}" style="width:18rpx;height:18rpx"></image>
+        <view class="status">{{name}}</view>
+    </view>
+</template>

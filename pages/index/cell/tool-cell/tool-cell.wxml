@@ -1,5 +1,5 @@
 <template name="tool-cell">
-    <view class="tool-cell-view" catchtap="toolCellTap" data-title="{{title}}">
+    <view class="tool-cell-view" catchtap="toolCellTap" data-title="{{title}}" data-index="{{index}}">
         <image src="{{imageUrl}}" class="image"></image>
         <label class="title">{{title}}</label>
     </view>

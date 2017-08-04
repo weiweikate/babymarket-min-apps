@@ -43,7 +43,11 @@
         "pages/my/sign/sign",
         "pages/index/index",
         "pages/my/sign/sign",
-        "pages/question/question"
+        "pages/question/question",
+        "pages/eat/eat",
+        "pages/eat/eat-food-list/eat-food-list",
+        "pages/my/coins/coins",
+        "pages/my/coins/recharge/recharge"
     ],
     "window": {
         "backgroundTextStyle": "light",

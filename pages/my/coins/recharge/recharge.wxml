@@ -1,0 +1,39 @@
+<!--recharge.wxml-->
+<view class="top-view">
+    <view class="amount-view">
+        <label class="amount">{{award}}</label>
+        <label class="yuan">金币</label>
+    </view>
+</view>
+
+<view class="my-points">
+    <view>我的积分：</view>
+    <view class="points">0</view>
+    <view>积分</view>
+</view>
+
+<view class="recharge-cell">
+
+    <view class="{{currentIndex == 0?'recharge active':'recharge'}}"
+        catchtap="selectCoinTap" data-index="0" data-coins="10">10金币</view>
+    <view class="{{currentIndex == 1?'recharge active':'recharge'}}"
+        catchtap="selectCoinTap" data-index="1" data-coins="50">50金币</view>
+    <view class="{{currentIndex == 2?'recharge active':'recharge'}}"
+        catchtap="selectCoinTap" data-index="2" data-coins="100">100金币</view>
+
+    <input class="{{currentIndex == 3?'recharge input active':'recharge input'}}"
+        placeholder="其他金额" value='{{inputValue}}' type="number" name="coins"
+        bindfocus="beginInputTap" bindinput="inputValueChanged" />
+</view>
+
+<view class="desp">
+    <view>消耗：</view>
+    <view class="points">{{costPoints}}</view>
+    <view>积分 （1积分=</view>
+    <view class="points">10</view>
+    <view>金币）</view>
+</view>
+
+<view class="recharge-button" catchtap="rechargeTap">立即充值</view>
+
+<view class="remark">备注: 金币仅能用于兑换本公司直接运营的产品和服务，不能兑换现金，不能进行转账交易，不能兑换本公司体系外的产品和服务。</view>

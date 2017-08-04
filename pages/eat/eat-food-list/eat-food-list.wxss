@@ -1,0 +1,12 @@
+/* eat-food-list.wxss */
+ @import '/pages/eat/search-cell/search-cell.wxss'; 
+ @import '/pages/eat/eat-food-list/eat-food-list-cell/eat-food-list-cell.wxss';
+
+ page {
+    background: #fafafa;
+}
+
+.top-view {
+    background: white;
+    padding: 30rpx 22rpx;
+}
