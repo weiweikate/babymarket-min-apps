@@ -1,0 +1,22 @@
+.sign-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 74rpx;
+    height: 74rpx;
+}
+
+.coins-image {
+    z-index: -1;
+    position: absolute;
+}
+
+.coins-num {
+    font-size: 30rpx;
+    color: #d86e00;
+    margin-top: 22rpx;
+}
+
+.coins-num.disable{
+    color: #acadaa;
+}

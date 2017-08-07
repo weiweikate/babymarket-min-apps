@@ -1,0 +1,7 @@
+<template name="sign-cell">
+     <view class="sign-cell">
+        <image src="{{(signDays%8 == 0 || index < signDays%8)&&(signDays != 0) ? '/res/img/my/coins/my-coins-sign-bg-normal-icon.png':'/res/img/my/coins/my-coins-sign-bg-disable-icon.png'}}"
+         style="width:74rpx;height:74rpx" class="coins-image"></image>
+        <view class="{{(signDays%8 == 0 || index < signDays%8)&&(signDays != 0)?'coins-num':'coins-num disable'}}">+{{coin}}</view>
+     </view> 
+</template>
