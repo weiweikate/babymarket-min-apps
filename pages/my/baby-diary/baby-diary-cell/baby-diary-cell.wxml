@@ -1,0 +1,10 @@
+<template name="baby-diary-cell">
+    <view class="baby-diary-cell">
+        <image src="" style="width:342rpx;height:342rpx;background:red"></image>
+        <view class="date-age">
+            <view class="date">2017-8-7</view>
+            <view class="age">(1个月3天)</view>
+        </view>
+        <view class="content">{{content}}</view>
+    </view>
+</template>

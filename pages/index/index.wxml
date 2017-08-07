@@ -3,6 +3,7 @@
 <import src='/pages/index/cell/index-artical-cell/index-artical-cell.wxml' />
 <import src='/pages/index/cell/tool-cell/tool-cell.wxml' />
 
+<image class="sign-view" src="/res/img/index/index-sign-icon.png" catchtouchmove="signMove" catchtap="signTap" style="top:{{signTop}}rpx; left:{{signLeft}}rpx;"></image>
 <view class="header-view">
     <view class="top-view">
         <view class="left-arrow" catchtap="leftArrowTap">

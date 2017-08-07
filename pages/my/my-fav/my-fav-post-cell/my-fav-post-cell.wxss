@@ -1,0 +1,52 @@
+@import '/pages/my/my-fav/my-fav-artical-cell/my-fav-artical-cell.wxss';
+
+.my-fav-post-cell{
+    background: white;
+}
+
+.avatar-name-view{
+    display: flex;
+    padding: 30rpx 22rpx 0rpx 22rpx;
+}
+
+.name-time-view{
+    margin-left: 20rpx;
+}
+
+.avatar-name-view .image{
+    border-radius: 40rpx;
+    width:80rpx;
+    height:80rpx;
+}
+
+.name-time-view .name{
+    font-size: 32rpx;
+    color: #7d7d7f;
+}
+
+.time-read{
+    display: flex;
+    margin-top: 20rpx;
+    width: 606rpx;
+    justify-content: space-between;
+}
+
+.name-time-view .time{
+    font-size: 22rpx;
+    color: #7d7d7f;
+}
+
+.read-num-view{
+    display: flex;
+}
+
+.read-image{
+    width: 17rpx;
+    height: 17rpx;
+}
+
+.name-time-view .read-num{
+    font-size: 22rpx;
+    color: #7d7d7f;
+    margin-left: 8rpx;
+}

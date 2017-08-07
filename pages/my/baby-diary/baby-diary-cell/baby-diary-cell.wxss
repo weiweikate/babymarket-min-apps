@@ -1,0 +1,38 @@
+   /* .baby-diary-cell{
+    display: flex;
+    flex-direction: column;
+    width: 342rpx;
+    height: 100%;
+    background: white;
+    margin-left: 22rpx;
+    margin-top: 20rpx;
+    padding-bottom: 25rpx;
+}    */
+
+.date-age{
+    display: flex;
+    align-items: center;
+    height: 40rpx;
+    margin-left: 10rpx;
+    margin-top: 25rpx;
+}
+
+.date{
+    font-size: 28rpx;
+    color: #494848;
+}
+
+.age{
+    font-size: 26rpx;
+    color: #acadaa;
+    margin-left: 20rpx;
+}
+
+.content{
+    margin-top: 30rpx;
+    font-size: 26rpx;
+    color: #494848;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    line-height: 120%;
+}

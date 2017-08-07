@@ -136,7 +136,9 @@ Page({
     },
 
     favTap: function () {
-
+        wx.navigateTo({
+            url: '../my/my-fav/my-fav',
+        })
     },
 
     /**
@@ -156,6 +158,9 @@ Page({
             })
 
         } else if (title == '宝宝日记') {
+            wx.navigateTo({
+                url: '../my/baby-diary/baby-diary',
+            })
 
         } else if (title == '我的秒杀') {
 

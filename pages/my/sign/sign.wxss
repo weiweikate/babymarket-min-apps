@@ -1,4 +1,6 @@
 /* sign.wxss */
+@import '/pages/my/sign/sign-cell/sign-cell.wxss';
+
 .top-view {
     height: 216rpx;
     background: #f39138;
@@ -24,3 +26,39 @@
     font-size: 30rpx;
     margin-top: 40rpx;
 }
+
+.sign-view{
+    display: flex;
+    align-items: center;
+    margin: 87rpx 22rpx 31rpx 22rpx;
+}
+
+.sign-days-desp{
+    font-size: 28rpx;
+    color: #494848;
+    margin-left: 22rpx;
+}
+
+.sign-button{
+    margin: 120rpx 22rpx 61rpx 22rpx;
+    font-size: 32rpx;
+    color: white;
+    width: 704rpx;
+    height: 88rpx;
+    border-radius: 10rpx;
+    line-height: 88rpx;
+    text-align: center;
+    background: #f39138;
+}
+
+.sign-button.disable{
+    background: #dbdbdb;
+}
+
+.tips{
+    font-size: 26rpx;
+    color: #acadaa;
+    margin-left: 22rpx;
+    line-height: 120%;
+}
+

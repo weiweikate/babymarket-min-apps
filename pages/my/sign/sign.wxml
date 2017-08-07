@@ -1,4 +1,6 @@
 <!--sign.wxml-->
+<import src='/pages/my/sign/sign-cell/sign-cell.wxml' />
+
 <!--top view-->
 <view class="top-view">
     <view class="amount-view">
@@ -6,3 +8,17 @@
         <label class="yuan">金币</label>
     </view>
 </view>
+
+<view class="sign-view">
+    <block wx:for="{{coinsList}}" wx:key="unique">
+        <image src="{{(signDays%8 == 0 || index < signDays%8)&&(signDays != 0) ?'/res/img/my/coins/my-coins-yellow-line-icon.png':'/res/img/my/coins/my-coins-gray-line-icon.png'}}" wx:if="{{index != 0}}" style="width:17rpx;height:5rpx;"></image>
+        <template is="sign-cell" data="{{...item, index:index, signDays:signDays}}"></template>
+    </block>
+</view>
+
+<view class="sign-days-desp">已签到{{signDays}}天</view>
+
+<view class="sign-button disable" wx:if="{{todaySign}}">已签到</view>
+<view class="sign-button" wx:else catchtap="signTap">立即签到</view>
+
+<view class="tips">规则: 第一天签到得5个金币，第二天签到得5个金币，连续第7天和第8天签到可以得10个金币；按照月为单位计算。</view>

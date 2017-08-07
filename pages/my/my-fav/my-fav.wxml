@@ -1,8 +1,13 @@
 <!--my-fav.wxml-->
-<import src='/pages/my/myOrder/orderLineCell/orderline-cell.wxml' />
+<import src='/pages/my/my-fav/my-fav-artical-cell/my-fav-artical-cell.wxml' />
+<import src='/pages/my/my-fav/my-fav-post-cell/my-fav-post-cell.wxml' />
 
-<!--商品列表-->
 <view wx:for="{{datas}}" class="orderlineView" wx:key="unique" catchtap="cellTap" data-index="{{index}}">
-  <template is="orderline-cell" data="{{datas:item, qtyHidden:qtyHidden}}"></template>
-  <view class="order-sepline"></view>
+  <template is="my-fav-artical-cell" data="{{datas:item, qtyHidden:qtyHidden}}"></template>
+  <view class="sepline"></view>
+</view>
+
+<view wx:for="{{datas}}" class="orderlineView" wx:key="unique" catchtap="cellTap" data-index="{{index}}">
+  <template is="my-fav-post-cell" data="{{datas:item}}"></template>
+  <view class="sepline"></view>
 </view>
