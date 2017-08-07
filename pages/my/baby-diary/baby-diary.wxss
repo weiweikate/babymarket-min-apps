@@ -1,0 +1,31 @@
+/* baby-diary.wxss */
+@import '/pages/my/baby-diary/baby-diary-cell/baby-diary-cell.wxss';
+
+.diary-view{
+    display: flex;
+} 
+
+.left{
+    width: 364rpx;
+    height: 100%; 
+}
+
+.right{
+    width: 364rpx;
+    height: 100%; 
+} 
+
+.add-diary{
+    position: fixed;
+    bottom: 100rpx;
+    right: 50rpx;
+    width: 110rpx;
+    height: 110rpx;
+    font-size: 32rpx;
+    background: blue;
+    color: white;
+    border-radius: 55rpx;
+    z-index: 20;
+    text-align: center;
+    line-height: 100rpx;
+}

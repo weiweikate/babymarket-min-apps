@@ -41,13 +41,12 @@
         "pages/my/edit-profile/modify-pay-password/modify-pay-password",
         "pages/mom/mom",
         "pages/my/sign/sign",
-        "pages/index/index",
-        "pages/my/sign/sign",
         "pages/question/question",
         "pages/eat/eat",
         "pages/eat/eat-food-list/eat-food-list",
         "pages/my/coins/coins",
-        "pages/my/coins/recharge/recharge"
+        "pages/my/coins/recharge/recharge",
+        "pages/my/baby-diary/baby-diary"
     ],
     "window": {
         "backgroundTextStyle": "light",

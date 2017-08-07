@@ -1,0 +1,22 @@
+<!--baby-diary.wxml-->
+
+<import src='/pages/my/baby-diary/baby-diary-cell/baby-diary-cell.wxml' />
+
+ <view class="diary-view"> 
+    <view class="left">
+        <block wx:for="{{leftDatas}}" wx:key="unique">
+            <view style="width:342rpx;height:{{item.height}}rpx;display: flex;flex-direction: column;background: white;padding-bottom: 28rpx;margin-left: 22rpx;margin-top: 20rpx;">
+                <template is="baby-diary-cell" data="{{...item}}"></template>
+            </view>
+        </block>
+    </view>
+
+     <view class="right">
+        <view class="add-diary">创建</view>
+        <block wx:for="{{rightDatas}}" wx:key="unique">
+            <view style="width:342rpx;height:{{item.height}}rpx;display: flex;flex-direction: column;background: white;padding-bottom: 28rpx;margin-left: 22rpx;margin-top: 20rpx;">
+                <template is="baby-diary-cell" data="{{...item}}"></template>
+            </view>
+        </block>
+    </view> 
+</view> 

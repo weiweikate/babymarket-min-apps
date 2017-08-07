@@ -2,6 +2,13 @@
 @import '/pages/index/cell/index-artical-cell/index-artical-cell.wxss';
 @import '/pages/index/cell/tool-cell/tool-cell.wxss';
 
+ .sign-view{
+    position: fixed;
+    width: 130rpx;
+    height: 130rpx;
+    z-index: 20;
+} 
+
 .header-view {
     width: 706rpx;
     background: #ff5555;
@@ -45,11 +52,10 @@
 .search-icon {
     width: 60rpx;
     height: 60rpx;
-    right: 22rpx;
-    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 120rpx;
 }
 
 .baby-age {

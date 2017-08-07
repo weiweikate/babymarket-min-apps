@@ -158,6 +158,9 @@ Page({
             })
 
         } else if (title == '宝宝日记') {
+            wx.navigateTo({
+                url: '../my/baby-diary/baby-diary',
+            })
 
         } else if (title == '我的秒杀') {
 

@@ -23,8 +23,9 @@ Page({
                 'imageUrl': '/res/img/index/index-tool-lib-icon.png',
                 'title': '工具库'
             },
-
-        ]
+        ],
+        signLeft:600,
+        signTop:880
     },
 
     /**
@@ -116,5 +117,36 @@ Page({
 
     searchTap: function () {
         console.log('搜索');
+    },
+
+    signMove:function(e){ 
+        let clientX = e.touches[0].clientX;
+        let clientY = e.touches[0].clientY;
+        let left = e.touches[0].clientX * 2;
+        let top = e.touches[0].clientY * 2;
+        if(left < 0){
+            left = 0;
+        }
+
+        if (top < 0){
+            top = 0;
+        }
+        if (left > 620) {
+            left = 620;
+        }
+        if (top > 980) {
+            top = 980;
+        }
+
+        this.setData({
+            signLeft: left,
+            signTop: top
+        });
+    },
+
+    signTap:function(){
+        wx.navigateTo({
+            url: '../my/sign/sign',
+        })
     }
 })
