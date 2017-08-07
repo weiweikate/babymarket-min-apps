@@ -2,20 +2,22 @@
 
 .mom-item {
     background: white;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 20rpx;
+    padding: 20rpx 20rpx 20rpx 20rpx;
+    border-bottom: 20rpx solid #fff8f4;
 }
 
 .item-title {
     font-size: 32rpx;
     color: #090909;
+    margin-top: 20rpx;
 }
 
 .item-value {
     font-size: 26rpx;
     color: #7d7d7f;
+    margin-top: 10rpx;
 }
 
 .bottom {
@@ -24,11 +26,15 @@
     margin-top: 20rpx;
 }
 
-.bottom-left {
+.bottom-left, .bottom-right {
     display: flex;
+    align-items: center;
+    flex-shrink: 1;
 }
 
 .icon-read {
+    width: 23rpx;
+    height: 13rpx;
 }
 
 .num-read {
@@ -36,11 +42,9 @@
     color: #acadaa;
 }
 
-.bottom-right {
-    display: flex;
-}
-
 .icon-message {
+    width: 22rpx;
+    height: 22rpx;
 }
 
 .num-message {

@@ -3,11 +3,14 @@
     width: 100%;
     display: flex;
     align-items: center;
+    padding: 20rpx 20rpx 20rpx 20rpx;
 }
 
 .type-icon {
-    width: 80rpx;
-    height: 80rpx;
+    width: 104rpx;
+    height: 104rpx;
+    border-radius: 52rpx;
+    background: coral;
 }
 
 .type-left {
@@ -24,13 +27,10 @@
 .type-subtitle {
     font-size: 26rpx;
     color: #494848;
-    margin-top: 20rpx;
+    margin-top: 10rpx;
 }
 
-.type-status{
-
-}
-
-.type-status1{
-    
+.type-status {
+    width: 40rpx;
+    height: 20rpx;
 }

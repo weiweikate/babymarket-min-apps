@@ -2,9 +2,9 @@
     <view class="mom-type">
         <image class="type-icon" src="{{item.image}}" mode="aspectFit"></image>
         <view class="type-left">
-            <view class="type-name">{{item.name}}</view>
-            <view class="type-subtitle">{{item.subtitle}}</view>
+            <view class="type-name">{{item.Name}}</view>
+            <view class="type-subtitle">{{item.Introduction}}</view>
         </view>
-        <view class="{{item.status==='关注'?'type-status':'type-status1'}}">{{item.status}}</view>
+        <image class="type-status" src="{{item.status}}" mode="aspectFit"></image>
     </view>
 </template>

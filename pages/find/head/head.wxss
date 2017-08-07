@@ -7,6 +7,8 @@
 .head-icon {
     width: 80rpx;
     height: 80rpx;
+    border-radius: 40rpx;
+    background: navajowhite;
 }
 
 .head-info {
@@ -31,8 +33,7 @@
     margin-top: 6rpx;
 }
 
-.info-status{
+.info-status {
     font-size: 24rpx;
     color: #acadaa;
 }
-

@@ -47,7 +47,8 @@
         "pages/eat/eat",
         "pages/eat/eat-food-list/eat-food-list",
         "pages/my/coins/coins",
-        "pages/my/coins/recharge/recharge"
+        "pages/my/coins/recharge/recharge",
+        "pages/mom/mom-type/mom-type"
     ],
     "window": {
         "backgroundTextStyle": "light",
