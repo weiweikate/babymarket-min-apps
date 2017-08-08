@@ -1,6 +1,5 @@
 .mom-type {
     background: white;
-    width: 100%;
     display: flex;
     align-items: center;
     padding: 20rpx 20rpx 20rpx 20rpx;

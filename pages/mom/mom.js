@@ -175,14 +175,17 @@ Page({
                 {
                     Name: '标题',
                     Introduction: '介绍',
+                    status:true,
                 },
                 {
                     Name: '标题',
                     Introduction: '介绍',
+                    status: true,
                 },
                 {
                     Name: '标题',
                     Introduction: '介绍',
+                    status: false,
                 },
             ],
 
