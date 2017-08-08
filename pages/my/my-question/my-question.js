@@ -5,7 +5,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        listDatas: ['', '']
+        questionListDatas: ['', ''],
+        replyListDatas: ['', '', ''],
+        currentIndex:0,//0:我的提问 1:我的回答
     },
 
     /**
@@ -62,5 +64,17 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    questionButtonTap:function(){
+        this.setData({
+            currentIndex: 0
+        })
+    },
+
+    replyButtonTap: function () {
+        this.setData({
+            currentIndex: 1
+        })
     }
 })

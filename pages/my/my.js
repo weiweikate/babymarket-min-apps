@@ -1,21 +1,21 @@
 // my.js
 
-let {Tool, Storage, RequestReadFactory} = global;
+let { Tool, Storage, RequestReadFactory } = global;
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        nickName:'',
-        avatarUrl:'/res/img/common/common-avatar-default-icon.png',
-        sign:'',
-        shopName:'',
-        idDesp:'',
-        inviteCode:'',
-        points:'12367',
-        coins:'500',
-        fav:'10',
+        nickName: '',
+        avatarUrl: '/res/img/common/common-avatar-default-icon.png',
+        sign: '',
+        shopName: '',
+        idDesp: '',
+        inviteCode: '',
+        points: '12367',
+        coins: '500',
+        fav: '10',
 
         myDatasItems0: [
             {
@@ -29,7 +29,7 @@ Page({
             {
                 image: '/res/img/my/cell/my-cell-baby-diary-icon.png',
                 name: '宝宝日记',
-                isShow:true
+                isShow: true
             },
             {
                 image: '/res/img/my/cell/my-cell-seckill-icon.png',
@@ -77,7 +77,7 @@ Page({
      */
     onLoad: function (options) {
         this.requestData();
-        
+
     },
 
     /**
@@ -129,7 +129,7 @@ Page({
 
     },
 
-    coinsTap:function(){
+    coinsTap: function () {
         wx.navigateTo({
             url: '../my/coins/coins',
         })
@@ -147,7 +147,7 @@ Page({
     goDetail: function (e) {
         let title = e.currentTarget.dataset.title;
         console.log('--------' + title);
-        if (title == '我的奖励'){
+        if (title == '我的奖励') {
             wx.navigateTo({
                 url: '../my/my-award/my-award',
             })
@@ -178,12 +178,18 @@ Page({
             })
 
         } else if (title == '发表的帖子') {
+            wx.navigateTo({
+                url: '../my/my-create-post/my-create-post',
+            })
 
         } else if (title == '回复的帖子') {
+            wx.navigateTo({
+                url: '../my/my-reply-post/my-reply-post',
+            })
 
         } else if (title == '收货地址管理') {
 
-        } 
+        }
     },
 
     /**
@@ -242,8 +248,8 @@ Page({
 
                 //身份描述设置
                 let name = '';
-                let desp= '';
-                if (item.MemberTypeKey == 0){//普通员工
+                let desp = '';
+                if (item.MemberTypeKey == 0) {//普通员工
                     name = item.Nickname;
                 } else if (item.MemberTypeKey == 1 || item.MemberTypeKey == 3) {//内部员工和门店
                     name = item.ShopName;
@@ -261,7 +267,7 @@ Page({
                     shopName: name,
                     idDesp: desp,
                     inviteCode: item.InvitationCode,
-                    'myDatasItems0[1].detail.amount':item.Balance,
+                    'myDatasItems0[1].detail.amount': item.Balance,
                     'myDatasItems0[2].detail.amount': item.Commission,
                     'myDatasItems0[3].detail.amount': item.BuyerCommission,
                     'myDatasItems0[4].detail.amount': item.PartnerCommission,

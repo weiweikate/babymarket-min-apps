@@ -3,7 +3,7 @@
     padding: 20rpx 30rpx 35rpx 22rpx;
 }
 
-.top-view{
+.question-base-cell .top-view{
     height: 40rpx;
     font-size: 28rpx;
     color: #acadaa;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.content{
+.question-base-cell .content{
     font-size: 32rpx;
     color: #090909;
     margin-top: 20rpx;

@@ -1,7 +1,7 @@
 <import src='/pages/question/question-base-cell/question-base-cell.wxml' />
 
 <template name="question-best-cell">
-    <view class="question-best-cell"  catchtap="bestCellTap" data-index="{{index}}">
+    <view class="question-best-cell" catchtap="bestCellTap" data-index="{{index}}">
         <template is="question-base-cell"></template>
         <view class="sepline"></view>
         <view class="bottom-view">
