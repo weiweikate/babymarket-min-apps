@@ -49,7 +49,10 @@
         "pages/mom/mom-type/mom-type",
         "pages/my/baby-diary/baby-diary",
         "pages/my/baby-diary/baby-diary-detail/baby-diary-detail",
-        "pages/my/baby-diary/add-baby-diary/add-baby-diary"
+        "pages/my/baby-diary/add-baby-diary/add-baby-diary",
+        "pages/my/my-question/my-question",
+        "pages/my/my-create-post/my-create-post",
+        "pages/my/my-reply-post/my-reply-post"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -1,0 +1,13 @@
+<!--my-question.wxml-->
+<import src='/pages/my/my-question/my-question-cell/my-question-cell.wxml' />
+
+<view class="top-buttons-view">
+    <view class="top-button left active">我的提问</view>
+    <view class="top-button right">我的回答</view>
+</view>
+
+<view class="list-view">
+    <block wx:for="{{listDatas}}" wx:key="unique">test
+        <template is="my-question-cell" data="{{item:listDatas, index:index}}" />
+    </block>
+</view>

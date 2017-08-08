@@ -173,6 +173,9 @@ Page({
         } else if (title == '我的积分订单') {
 
         } else if (title == '我的问答') {
+            wx.navigateTo({
+                url: '../my/my-question/my-question',
+            })
 
         } else if (title == '发表的帖子') {
 
