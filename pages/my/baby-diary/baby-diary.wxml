@@ -5,18 +5,18 @@
  <view class="diary-view"> 
     <view class="left">
         <block wx:for="{{leftDatas}}" wx:key="unique">
-            <view style="width:342rpx;height:{{item.height}}rpx;display: flex;flex-direction: column;background: white;padding-bottom: 28rpx;margin-left: 22rpx;margin-top: 20rpx;">
+             <view catchtap="diaryCellTap" data-index="{{index}}" data-coloum="0"> 
                 <template is="baby-diary-cell" data="{{...item}}"></template>
-            </view>
+             </view> 
         </block>
     </view>
 
      <view class="right">
-        <view class="add-diary">创建</view>
+        <view class="add-diary" catchtap="addTap">创建</view>
         <block wx:for="{{rightDatas}}" wx:key="unique">
-            <view style="width:342rpx;height:{{item.height}}rpx;display: flex;flex-direction: column;background: white;padding-bottom: 28rpx;margin-left: 22rpx;margin-top: 20rpx;">
+             <view catchtap="diaryCellTap" data-index="{{index}}" data-coloum="1"> 
                 <template is="baby-diary-cell" data="{{...item}}"></template>
-            </view>
+             </view> 
         </block>
     </view> 
 </view> 

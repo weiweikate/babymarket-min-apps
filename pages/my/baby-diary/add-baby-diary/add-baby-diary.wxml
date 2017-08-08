@@ -1,0 +1,18 @@
+<!--add-baby-diary.wxml-->
+<view class="bg-view">
+    <form bindsubmit="submitTap">
+        <view class="input-area">
+            <textarea class="input" name="input" placeholder="请输入记录心情，不要超过40个字哦～" />
+            <image class="select-image" src="{{imageUrl == ''?'/res/img/my/my-baby-diary-carema-icon.png':imageUrl}}" mode="aspectFit" catchtap="selectImageTap"></image>
+        </view>
+
+        <view class="time-view">
+            <view class="modify-time">修改拍摄日期</view>
+
+            <picker mode="date" value="{{date}}" end="{{endDate}}" bindchange="dateChange">
+                <view class="time">{{date}}</view>
+            </picker>
+
+        </view>
+    </form>
+</view>
