@@ -1,5 +1,5 @@
 <template name="baby-diary-cell">
-    <view class="baby-diary-cell">
+    <view class="baby-diary-cell" style="width:342rpx;height:{{height}}rpx;">
         <image src="" style="width:342rpx;height:342rpx;background:red"></image>
         <view class="date-age">
             <view class="date">2017-8-7</view>

@@ -110,5 +110,22 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    diaryCellTap:function(e){
+        let index = e.currentTarget.dataset.index;
+        let coloum = e.currentTarget.dataset.coloum;
+        console.log('index:' + index);
+        console.log('coloum:' + coloum);
+
+        wx.navigateTo({
+            url: '../baby-diary/baby-diary-detail/baby-diary-detail',
+        })
+    },
+
+    addTap:function(){
+        wx.navigateTo({
+            url: '../baby-diary/add-baby-diary/add-baby-diary',
+        })
     }
 })

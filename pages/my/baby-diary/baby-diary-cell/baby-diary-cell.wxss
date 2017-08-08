@@ -1,13 +1,13 @@
-   /* .baby-diary-cell{
-    display: flex;
-    flex-direction: column;
-    width: 342rpx;
-    height: 100%;
+    .baby-diary-cell{
+    /* display: flex;
+    flex-direction: column; */
+    /* width: 342rpx;
+    height: 100%; */
     background: white;
     margin-left: 22rpx;
     margin-top: 20rpx;
-    padding-bottom: 25rpx;
-}    */
+    padding-bottom: 28rpx;
+}    
 
 .date-age{
     display: flex;

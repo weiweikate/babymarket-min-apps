@@ -1,0 +1,41 @@
+/* add-baby-diary.wxss */
+
+page{
+    background: white;
+}
+
+.input-area{
+    margin: 40rpx 22rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-area .input{
+    width: 453rpx;
+    height: 340rpx;
+    font-size: 30rpx;
+    color: #090909;
+    padding: 20rpx;
+}
+
+.input-area .select-image{
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.time-view{
+    display: flex;
+    height: 88rpx;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0rpx 22rpx;
+    border-bottom: 2rpx solid #dbdbdb;
+    border-top: 2rpx solid #dbdbdb;
+    font-size: 32rpx;
+    color: #494848;
+}
+
+.modify-time{
+    font-size: 30rpx;
+    color: #acadaa;
+}
