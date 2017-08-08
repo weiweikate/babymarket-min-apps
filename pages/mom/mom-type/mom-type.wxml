@@ -1,2 +1,32 @@
 <!--mom-type.wxml-->
-<text>mom-type.wxml</text>
+<import src='/pages/mom/top-item/top-item.wxml' />
+<import src='/pages/mom/item/item.wxml' />
+<view class="main">
+    <view class="head">
+        <image src="{{imageBackground}}" class="image-background"></image>
+        <view class="info">
+            <image src="{{imageIcon}}" class="image-icon"></image>
+            <view class="info-name">{{Name}}</view>
+            <view class="{{status==='取消关注'?'info-no-attention':'info-attention'}}">{{status}}</view>
+            <view class="info-introduction">简介:{{Introduction}}</view>
+        </view>
+    </view>
+    <view class="switch-bt">
+        <view class="{{isAll?'select-red':'select-gray'}}" catchtap="selectAll">全部</view>
+        <view class="{{isEssential?'select-red':'select-gray'}}" catchtap="selectEssential">精华</view>
+    </view>
+    <!--置顶列表-->
+    <view class="top-box">
+        <view wx:for="{{topList}}" wx:key="{{index}}">
+            <template is="top-item" data="{{item,index:index}}"></template>
+        </view>
+    </view>
+
+    <!--列表-->
+    <view class="data-box">
+        <view wx:for="{{dataList}}" wx:key="{{index}}">
+            <template is="mom-item" data="{{item,index:index}}"></template>
+        </view>
+    </view>
+
+</view>

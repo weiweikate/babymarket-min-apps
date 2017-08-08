@@ -1,5 +1,5 @@
 <template name="mom-type">
-    <view class="mom-type">
+    <view class="mom-type" catchtap="typeDetail" data-index="{{index}}">
         <image class="type-icon" src="{{item.image}}" mode="aspectFit"></image>
         <view class="type-left">
             <view class="type-name">{{item.Name}}</view>

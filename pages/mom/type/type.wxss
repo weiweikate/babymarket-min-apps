@@ -31,6 +31,6 @@
 }
 
 .type-status {
-    width: 40rpx;
-    height: 20rpx;
+    width: 122rpx;
+    height: 44rpx;
 }
