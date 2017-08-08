@@ -132,8 +132,20 @@ Page({
     /**
      * 进入帖子详情
      */
-    goDetail: function () {
+    goDetail: function (e) {
+        let index = e.currentTarget.dataset.index;
+        let momList = this.data.momList;
+    },
 
+    /**
+     * 进入圈详情
+     */
+    typeDetail: function (e) {
+        let index = e.currentTarget.dataset.index;
+        let typeList = this.data.typeList;
+        wx.navigateTo({
+            url: '../mom/mom-type/mom-type'
+        })
     },
 
     /**
@@ -163,14 +175,17 @@ Page({
                 {
                     Name: '标题',
                     Introduction: '介绍',
+                    status:true,
                 },
                 {
                     Name: '标题',
                     Introduction: '介绍',
+                    status: true,
                 },
                 {
                     Name: '标题',
                     Introduction: '介绍',
+                    status: false,
                 },
             ],
 

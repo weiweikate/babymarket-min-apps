@@ -1,10 +1,10 @@
 <template name="mom-type">
-    <view class="mom-type">
+    <view class="mom-type" catchtap="typeDetail" data-index="{{index}}">
         <image class="type-icon" src="{{item.image}}" mode="aspectFit"></image>
         <view class="type-left">
             <view class="type-name">{{item.Name}}</view>
             <view class="type-subtitle">{{item.Introduction}}</view>
         </view>
-        <image class="type-status" src="{{item.status}}" mode="aspectFit"></image>
+        <image class="type-status" src="{{item.status?'/res/img/mother-circle/mother-circle-attention-success-icon.png':'/res/img/mother-circle/mother-circle-attention-add-icon.png'}}" mode="aspectFit"></image>
     </view>
 </template>
