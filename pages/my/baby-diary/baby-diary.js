@@ -1,4 +1,4 @@
-// baby-diary.js
+mother - circle - eye - icon.pngmother - circle - eye - icon.pngmother - circle - eye - icon.pngmother - circle - eye - icon.pngmother - circle - eye - icon.pngmother - circle - eye - icon.pngmother - circle - eye - icon.pngmother - circle - eye - icon.pngmother - circle - eye - icon.pngmother - circle - eye - icon.png// baby-diary.js
 Page({
 
     /**

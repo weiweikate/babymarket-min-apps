@@ -40,6 +40,7 @@
 .num-read {
     font-size: 24rpx;
     color: #acadaa;
+    margin-left: 8rpx;
 }
 
 .icon-message {
@@ -50,4 +51,5 @@
 .num-message {
     font-size: 26rpx;
     color: #5caad3;
+    margin-left: 8rpx;
 }
