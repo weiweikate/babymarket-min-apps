@@ -52,7 +52,10 @@
         "pages/my/baby-diary/add-baby-diary/add-baby-diary",
         "pages/my/my-question/my-question",
         "pages/my/my-create-post/my-create-post",
-        "pages/my/my-reply-post/my-reply-post"
+        "pages/my/my-reply-post/my-reply-post",
+        "pages/my/setting/setting",
+        "pages/my/complete-info/complete-info",
+        "pages/my/complete-info/shop-list/shop-list"
     ],
     "window": {
         "backgroundTextStyle": "light",

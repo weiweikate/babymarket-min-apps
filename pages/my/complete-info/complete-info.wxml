@@ -1,0 +1,23 @@
+<!--complete-info.wxml-->
+
+<import src='/pages/my/complete-info/cell/complete-info-cell.wxml' />
+
+<view class="sex-view">
+    <view class="sex">性别</view>
+    <view class="male-view" catchtap="maleTap">
+        <image src="{{sex == 0?'/res/img/common/comm-icon-check-select.png':'/res/img/common/comm-icon-check-normal.png'}}" style="width:40rpx;height:40rpx;"></image>
+        <view class="">男</view>
+    </view>
+    <view class="male-view" catchtap="femaleTap">
+        <image src="{{sex == 1?'/res/img/common/comm-icon-check-select.png':'/res/img/common/comm-icon-check-normal.png'}}" style="width:40rpx;height:40rpx;"></image>
+        <view class="">女</view>
+    </view>
+</view>
+
+<form bindsubmit="formSubmit">
+  <block wx:for="{{datas}}" wx:key="unique">
+    <template is="complete-info-cell" data="{{...item, index:index, area:area.FullName, date:birthDate, shopName:shopName}}"></template>
+  </block>
+
+  <button class="okButton" form-type="submit">确定</button>
+</form>

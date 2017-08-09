@@ -204,6 +204,10 @@ Page({
      */
     settingTap: function () {
         console.log('----设置----');
+
+        wx.navigateTo({
+            url: '../my/setting/setting',
+        })
     },
 
     /**

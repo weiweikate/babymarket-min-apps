@@ -1,33 +1,14 @@
-// eat.js
+// shop-list.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        listDatas: [
-            {
-                'imageUrl': '/res/img/index/index-tool-eat-icon.png',
-                'title': '五谷杂粮'
-            },
-            {
-                'imageUrl': '/res/img/index/index-tool-vaccine-icon.png',
-                'title': '蔬菜菌类'
-            },
-            {
-                'imageUrl': '/res/img/index/index-tool-baby-food-icon.png',
-                'title': '水果'
-            },
-            {
-                'imageUrl': '/res/img/index/index-tool-lib-icon.png',
-                'title': '饮品'
-            },
-            {
-                'imageUrl': '/res/img/index/index-tool-lib-icon.png',
-                'title': '零食'
-            },
-            ],
-        placeholder: '请输入食物名称，例如“奇异果”'
+        listDatas:[
+            {'name':'测试店1'},
+            {'name': '测试店2' },
+        ]
     },
 
     /**
@@ -86,12 +67,13 @@ Page({
 
     },
 
-    toolCellTap: function (e) {
+    cellTap:function(e){
         let index = e.currentTarget.dataset.index;
-        console.log(index);
-        
-        wx.navigateTo({
-            url: '../eat/eat-food-list/eat-food-list',
+        let name = e.currentTarget.dataset.name;
+        console.log(name + index);
+
+        wx.navigateBack({
+            delta:1
         })
-    },
+    }
 })

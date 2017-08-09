@@ -1,0 +1,16 @@
+/* shop-list.wxss */
+ @import '/pages/eat/search-cell/search-cell.wxss'; 
+
+ .top-view {
+    /* background: white; */
+    padding: 30rpx 22rpx;
+}
+
+.text{
+    font-size: 32rpx;
+    color: #090909;
+    border-bottom: 2rpx solid #eeeeee;
+    line-height: 80rpx;
+    background: white;
+    padding-left: 22rpx;
+}

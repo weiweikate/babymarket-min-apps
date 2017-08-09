@@ -1,6 +1,6 @@
 <template name="search-cell">
    <view catchtap="searchClicked" class="search-field">
         <image mode="AspectFit" src="/res/img/common/common-search-icon.png" />
-        <input catchconfirm="onConfirmAction" confirm-type="search" placeholder="请输入食物名称，例如“奇异果”" />
+        <input catchconfirm="onConfirmAction" confirm-type="search" placeholder="{{placeholder == '' ?'请输入关键字':placeholder}}" />
     </view>
 </template>

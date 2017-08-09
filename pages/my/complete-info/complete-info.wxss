@@ -1,0 +1,43 @@
+/* complete-info.wxss */
+
+@import '/pages/my/complete-info/cell/complete-info-cell.wxss';
+
+page{
+    background: white;
+}
+
+.sex-view{
+    margin:50rpx 50rpx 30rpx 50rpx; 
+    display: flex;
+    align-items: center;
+    height: 50rpx;
+    font-size: 32rpx;
+    color: #090909;
+}
+
+.sex{
+    font-size: 24rpx;
+    color: #3c3d3d;
+}
+
+.male-view{
+    display: flex;
+    margin-left: 100rpx;
+    width: 90rpx;
+    justify-content: space-between;
+}
+
+button::after{
+    border: 0;
+}
+
+.okButton{
+    margin:70rpx 30rpx;
+    border: 2rpx solid #ff5555;
+    border-radius: 10rpx;
+    line-height: 75rpx;
+    font-size: 30rpx;
+    color: #ff5555;
+    text-align: center;
+    background: white;
+}

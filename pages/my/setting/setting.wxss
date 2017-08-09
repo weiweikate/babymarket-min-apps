@@ -1,0 +1,16 @@
+/* setting.wxss */
+@import '/pages/my/setting/setting-cell/setting-cell.wxss';
+ @import '/pages/login/login.wxss'; 
+
+.login-view{
+    margin-left: 22rpx;
+    width: 702rpx;
+    height: 80rpx;
+    color: white;
+    background: #ff5555;
+    font-size: 32rpx;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    margin-top: 40rpx;
+}
