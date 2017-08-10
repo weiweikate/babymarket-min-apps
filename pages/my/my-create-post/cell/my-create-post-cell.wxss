@@ -1,0 +1,21 @@
+@import '/pages/my/my-create-post/cell/header-avatar-name-cell.wxss';
+
+.my-create-post-cell-view{
+    background: white;
+    padding-bottom: 25rpx;
+    margin-bottom: 20rpx;
+}
+
+.my-create-post-cell-view .title{
+    font-size: 32rpx;
+    color: #090909;
+    margin-left: 22rpx;
+}
+
+.my-create-post-cell-view .content{
+    font-size: 28rpx;
+    color: #7d7d7f;
+    margin: 20rpx 22rpx;
+
+}
+

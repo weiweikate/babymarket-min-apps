@@ -1,1 +1,2 @@
 /* my-create-post.wxss */
+@import '/pages/my/my-create-post/cell/my-create-post-cell.wxss';
