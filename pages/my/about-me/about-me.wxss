@@ -1,26 +1,23 @@
 /* about-me.wxss */
 
+page{
+    background: white;
+}
+
 .window{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.image_bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-}
-
 .logo{
     margin-top: 170rpx;
+    width: 132rpx;
+    height: 132rpx;
 }
 
 text{
     font-size: 24rpx;
-    color: white;
+    color: #7d7d7f;
     margin-top: 50rpx;
 }

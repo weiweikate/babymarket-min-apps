@@ -1,0 +1,10 @@
+<!--shop-list.wxml-->
+<import src='/pages/eat/search-cell/search-cell.wxml' />
+
+<view class="top-view">
+    <template is="search-cell" data="{{placeholder:''}}"></template>
+</view>
+
+<block wx:for="{{listDatas}}" wx:key = "unique">
+    <view class="text" catchtap="cellTap" data-index="{{index}}" data-name="{{item.name}}">{{item.name}}</view>
+</block>

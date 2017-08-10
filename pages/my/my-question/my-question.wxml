@@ -1,0 +1,19 @@
+<!--my-question.wxml-->
+<import src='/pages/my/my-question/my-question-cell/my-question-cell.wxml' />
+
+<view class="top-buttons-view">
+    <view class="{{currentIndex == 0 ?'top-button active':'top-button'}}" catchtap="questionButtonTap">我的提问</view>
+    <view class="{{currentIndex == 1 ?'top-button active':'top-button'}}" catchtap="replyButtonTap">我的回答</view>
+</view>
+
+<view class="list-view" wx:if="{{currentIndex == 0}}">
+    <block wx:for="{{questionListDatas}}" wx:key="unique">
+        <template is="my-question-cell" data="{{item:questionListDatas, index:index}}" />
+    </block>
+</view>
+
+<view class="list-view" wx:else>
+    <block wx:for="{{replyListDatas}}" wx:key="unique">
+        <template is="my-question-cell" data="{{item:replyListDatas, index:index}}" />
+    </block>
+</view>

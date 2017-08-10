@@ -1,0 +1,10 @@
+<!--award-detail.wxml-->
+<import src='/components/date-filter/date-filter.wxml' />
+<import src='/pages/my/my-award/award-detail/award-detail-cell/award-detail-cell.wxml' />
+
+<template is="date-filter" data="{{startDate:startDate, endDate:endDate}}"></template>
+<view class="ok-button">确定</view>
+
+<block wx:for="{{listDatas}}" wx:key="unique">
+    <template is="award-detail-cell" data="{{...item}}"></template>
+</block>

@@ -1,37 +1,96 @@
 /* withdraw.wxss */
 
-@import '/pages/my/cell/input-cell.wxss';
+@import '/components/alerts/input-alert/input-alert.wxss';
 
-.tips{
+.bg-view{
     display: flex;
-    margin-left: 24rpx;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0rpx;
+    margin-left: 30rpx;
+    margin-right: 30rpx;
 }
 
-.remark-one{
-    margin-top: 10rpx;
-    line-height: 80rpx;
-    font-size: 26rpx;
-    color: #7d7f81;
+.withdraw-detail{
+    color: #5bbfb3;
+    font-size: 28rpx;
+    align-self: flex-end;
+    line-height: 90rpx;
 }
 
-.remark-two{
-    margin-top: 10rpx;
-    line-height: 80rpx;
+.withdraw-icon{
+    margin-top: 70rpx;
+}
+
+.my-walet{
+    margin-top: 40rpx;
+    font-size: 30rpx;
+    color: #3c3d3d;
+}
+
+.amount{
+    margin-top: 24rpx;
+    font-size: 100rpx;
+    color: #000406;
+}
+
+.withdraw-amount{
+    margin-top: 70rpx;
     font-size: 26rpx;
-    color: #7697C6;
+    color: #667a7b;
+    align-self: flex-start;
+}
+
+.formView{
+    width: 100%;
+}
+
+.input-view{
+    width: 100%;
+    height: 100rpx;
+    background: white;
+    margin-top: 18rpx;
+    display: flex;
+}
+
+.amount-icon{
+    margin-left: 0rpx;
+    width: 80rpx;
+    line-height: 100rpx;
+    font-size: 40rpx;
+    color: #000406;
+    text-align: center;
+}
+
+.input{
+    height: 100rpx;
+    width: 100%;
 }
 
 button::after{
     border: 0;
 }
 
-.okButton{
-    width: 702rpx;
-    margin: 30rpx 24rpx 0rpx 24rpx;
+.ok-button{
+    width: 100%;
+    margin-top: 40rpx;
     line-height: 88rpx;
     border-radius: 8rpx;
-    background: #af8327;
-    font-size: 38rpx;
+    background: #5bbfb3;
+    font-size: 32rpx;
     color: white;
     text-align: center;
+}
+
+.input-alert{
+    height: 150rpx;
+}
+
+.input-alert textarea{
+    height: 40rpx;
+    width: 530rpx;
+    background-color: #eeeeee;
+    margin-bottom: 24rpx;
+    padding: 10rpx;
 }

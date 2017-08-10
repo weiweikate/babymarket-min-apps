@@ -1,0 +1,44 @@
+.complete-info-cell{
+    margin-top: 20rpx;
+    margin-left: 50rpx;
+    margin-right: 50rpx;
+    height: 120rpx;
+    /*background: cadetblue;*/
+}
+
+.title-view{
+    font-size: 24rpx;
+    color: #3c3d3d;
+}
+
+.input-line{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 60rpx;
+    margin-top: 15rpx;
+}
+
+.input-view{
+    width: 100%;
+    height: 60rpx;
+    font-size: 30rpx;
+}
+
+.area{
+    width: 95%;
+    line-height: 60rpx;
+    font-size: 30rpx;
+}
+
+.image{
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.bottom-line{
+    height: 2rpx;
+    width: 100%rpx;
+    background: #f3f3f4;
+    margin-top: 5rpx;
+}

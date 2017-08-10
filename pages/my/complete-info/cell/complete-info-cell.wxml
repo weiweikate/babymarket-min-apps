@@ -1,0 +1,17 @@
+<template name="complete-info-cell">
+  <view class="complete-info-cell">
+    <text class="title-view">{{title}}</text>
+
+    <view class="input-line">
+        <picker mode="date" wx:if="{{index == 1}}" class="area" bindchange="dateChanged">
+            <text>{{date}}</text>
+        </picker>
+        <text class="area" bindtap="areaTap" wx:elif="{{index == 2}}">{{area}}</text>
+        <text class="area" bindtap="shopTap" wx:elif="{{index == 3}}">{{shopName}}</text>
+        <input wx:else name="{{inputName}}" class="input-view" placeholder="{{placeholder}}" bindtap="inputChangedTap" data-index="{{index}}" value ="{{value}}" password = "{{password}}" />
+        <image class="arrow-image" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit" style="width:30rpx;height:30rpx;" wx:if="{{arrowShow}}"></image>
+    </view>
+
+    <view class="bottom-line"></view>
+  </view>
+</template>

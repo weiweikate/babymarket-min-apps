@@ -1,0 +1,43 @@
+ @import '/pages/question/question-base-cell/question-base-cell.wxss'; 
+
+.my-question-cell{
+    display: flex;
+    flex-direction: column; 
+    border-bottom: 20rpx solid #fff8f4;
+}
+
+.my-question-cell .sepline{
+    background: #eeeeee;
+    height: 2rpx;
+    margin-left: 22rpx;
+    width: 706rpx;
+}
+
+.bottom-view{
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    background: white;
+    margin-left: 22rpx;
+    margin-right: 22rpx;
+    justify-content: space-between;
+}
+
+.right-view{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 50%;
+}
+
+.read-num{
+    font-size: 28rpx;
+    color: #494848;
+    margin-left: 10rpx; 
+}
+
+.question-time{
+    font-size: 26rpx;
+    color: #dbdbdb;
+    margin-right: 15rpx;
+}

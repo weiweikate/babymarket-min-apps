@@ -1,15 +1,14 @@
 <import src='/pages/question/question-base-cell/question-base-cell.wxml' />
 
-<template name="question-best-cell">
-    <view class="question-best-cell" catchtap="bestCellTap" data-index="{{index}}">
+<template name="my-question-cell">
+    <view class="my-question-cell" catchtap="latestCellTap" data-index="{{index}}">
         <template is="question-base-cell"></template>
-        <view class="sepline"></view>
         <view class="bottom-view">
-            <view class="reply-num">还没有评论</view>
+            <view class="question-time">2017-08-08</view>
             <view class="right-view">
                 <view class="read-num">0</view>
                 <image src="/res/img/index/index-reply-black-icon.png" style="width:17rpx;height:17rpx"></image>
             </view>
-        </view>
+        </view> 
     </view>
 </template>

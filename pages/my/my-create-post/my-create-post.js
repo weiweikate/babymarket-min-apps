@@ -1,4 +1,4 @@
-// withdraw-success.js
+// my-create-post.js
 Page({
 
   /**

@@ -24,10 +24,6 @@
         "pages/home/product-more/product-more",
         "pages/pay-success/pay-success",
         "pages/my/my-award/my-award",
-        "pages/my/withdraw/bind-alipay/bind-alipay",
-        "pages/my/withdraw/withdraw-to-alipay/withdraw-to-alipay",
-        "pages/my/withdraw/pay-password-set/pay-password-set",
-        "pages/my/withdraw/withdraw-success/withdraw-success",
         "pages/search/search",
         "pages/search/search-result/search-result",
         "pages/find/clinic/clinic",
@@ -49,7 +45,14 @@
         "pages/mom/mom-type/mom-type",
         "pages/my/baby-diary/baby-diary",
         "pages/my/baby-diary/baby-diary-detail/baby-diary-detail",
-        "pages/my/baby-diary/add-baby-diary/add-baby-diary"
+        "pages/my/baby-diary/add-baby-diary/add-baby-diary",
+        "pages/my/my-question/my-question",
+        "pages/my/my-create-post/my-create-post",
+        "pages/my/my-reply-post/my-reply-post",
+        "pages/my/setting/setting",
+        "pages/my/complete-info/complete-info",
+        "pages/my/complete-info/shop-list/shop-list",
+        "pages/my/my-award/award-detail/award-detail"
     ],
     "window": {
         "backgroundTextStyle": "light",

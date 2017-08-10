@@ -1,0 +1,14 @@
+/* award-detail.wxss */
+@import '/components/date-filter/date-filter.wxss';
+@import '/pages/my/my-award/award-detail/award-detail-cell/award-detail-cell.wxss';
+
+.ok-button{
+    margin:30rpx 25rpx 40rpx 25rpx;
+    background: #ff5555;
+    color: white;
+    font-size: 32rpx;
+    height: 88rpx;
+    border-radius: 10rpx;
+    line-height: 88rpx;
+    text-align: center;
+}

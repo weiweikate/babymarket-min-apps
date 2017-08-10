@@ -3,7 +3,7 @@
 <import src='/pages/eat/search-cell/search-cell.wxml' />
 
 <view class="top-view">
-    <template is="search-cell"></template>
+    <template is="search-cell" data="{{placeholder:'请输入食物名称，例如“奇异果”'}}"></template>
 </view>
 
 <view class="eat-view">

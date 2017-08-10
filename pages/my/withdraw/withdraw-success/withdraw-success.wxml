@@ -1,6 +1,0 @@
-<!--withdraw-success.wxml-->
-
-<view class="bg-view">
-    <image src="/res/img/my/my-withdraw-success-icon.png" class="img"></image>
-    <text class="desp">您的提现申请已经提交成功</text>
-</view>

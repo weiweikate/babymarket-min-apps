@@ -1,33 +1,26 @@
-// eat.js
+// award-detail.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        listDatas: [
+        listDatas:[
             {
-                'imageUrl': '/res/img/index/index-tool-eat-icon.png',
-                'title': '五谷杂粮'
+                'left':'品牌',
+                'right':'奖励金额'
             },
             {
-                'imageUrl': '/res/img/index/index-tool-vaccine-icon.png',
-                'title': '蔬菜菌类'
+                'left': '培康米粉',
+                'right': '10'
             },
             {
-                'imageUrl': '/res/img/index/index-tool-baby-food-icon.png',
-                'title': '水果'
-            },
-            {
-                'imageUrl': '/res/img/index/index-tool-lib-icon.png',
-                'title': '饮品'
-            },
-            {
-                'imageUrl': '/res/img/index/index-tool-lib-icon.png',
-                'title': '零食'
-            },
-            ],
-        placeholder: '请输入食物名称，例如“奇异果”'
+                'left': '辅食',
+                'right': '20'
+            }
+        ],
+        startDate: '',
+        endDate: '',
     },
 
     /**
@@ -86,12 +79,17 @@ Page({
 
     },
 
-    toolCellTap: function (e) {
-        let index = e.currentTarget.dataset.index;
-        console.log(index);
-        
-        wx.navigateTo({
-            url: '../eat/eat-food-list/eat-food-list',
-        })
-    },
+    datePickerChange:function(e){
+        let typeInput = e.currentTarget.dataset.type;
+        let date = e.detail.value;
+        if (typeInput =='start'){
+            this.setData({
+                startDate: date
+            })
+        }else{
+            this.setData({
+                endDate: date
+            })
+        }
+    }
 })
