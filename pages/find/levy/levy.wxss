@@ -1,1 +1,2 @@
 /* levy.wxss */
+@import '/pages/find/levy/levy-item/levy-item.wxss';

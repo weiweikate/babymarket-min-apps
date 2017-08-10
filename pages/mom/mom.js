@@ -149,6 +149,14 @@ Page({
     },
 
     /**
+     * 点击搜索记录
+     */
+    searchResult: function (e) {
+        let index = e.currentTarget.dataset.index;
+        
+    },
+
+    /**
      * 测试数据
      */
     setData1: function () {
@@ -175,7 +183,7 @@ Page({
                 {
                     Name: '标题',
                     Introduction: '介绍',
-                    status:true,
+                    status: true,
                 },
                 {
                     Name: '标题',

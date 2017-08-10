@@ -43,7 +43,7 @@
                                     <view class="search-text">大家都在搜：</view>
                                     <view class="search-list">
                                         <block wx:for="{{recordList}}" wx:key="unique">
-                                            <view class="search-record">{{item.record}}</view>
+                                            <view class="search-record" catchtap="searchResult">{{item.record}}</view>
                                         </block>
                                     </view>
                                 </view>

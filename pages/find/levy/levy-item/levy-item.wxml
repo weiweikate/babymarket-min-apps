@@ -1,3 +1,4 @@
+<!--征集令列表-->
 <template name="levy-item">
     <view class="levy-item" catchtap="goDetail" data-index="{{index}}">
         <image class="{{item.image.length>0?'levy-image':'image-empty'}}" src="{{item.image}}" mode="aspectFit" />

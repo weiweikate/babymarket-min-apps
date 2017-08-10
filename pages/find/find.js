@@ -80,7 +80,9 @@ Page({
         } else if (position == 3) {
             console.log("=======" + position);
         } else if (position == 4) {
-            console.log("=======" + position);
+            wx.navigateTo({
+                url: '../find/levy/levy',
+            })
         } else if (position == 5) {
             wx.navigateTo({
                 url: '../find/tool/tool',
