@@ -2,13 +2,22 @@
 @import '/pages/mom/tab-layout/tab-layout.wxss';
 @import '/pages/mom/item/item.wxss';
 @import '/pages/mom/type/type.wxss';
-@import '/components/search-field/search-field.wxss';
+@import '/pages/eat/search-cell/search-cell.wxss';
 @import '/components/empty-view/empty-view.wxss';
 
 .mom-box {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.create-post-image{
+    z-index: 20;
+    position: fixed;
+    width: 128rpx;
+    height: 128rpx;
+    left: 591rpx;
+    top: 920rpx;
 }
 
 .top {

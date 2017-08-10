@@ -5,11 +5,12 @@
   flex-direction: row;
   flex: none;
   white-space: nowrap;
+  border-bottom: 2rpx solid #eeeeee;
 }
 
 .tab-layout .tab {
   display: inline-flex;
-  font-size: 28rpx;
+  font-size: 32rpx;
   color: #494848;
   height: 90rpx;
   width: 187rpx;

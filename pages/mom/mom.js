@@ -230,4 +230,8 @@ Page({
         });
     },
 
+    createPostTap:function(){
+        console.log('发帖');
+    }
+
 })
