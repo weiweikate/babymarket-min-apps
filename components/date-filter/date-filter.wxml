@@ -5,7 +5,6 @@
         <!--开始日期-->
         <picker
                 mode="date"
-                fields="month"
                 value="{{startDate}}"
                 end="{{startMaxDate}}"
                 data-type="start"
@@ -17,7 +16,6 @@
         <!--结束日期-->
         <picker
                 mode="date"
-                fields="month"
                 value="{{endDate}}"
                 start="{{endMinDate}}"
                 data-type="end"

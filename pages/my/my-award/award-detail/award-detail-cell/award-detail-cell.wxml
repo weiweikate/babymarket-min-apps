@@ -1,0 +1,6 @@
+<template name="award-detail-cell">
+    <view class="award-detail-cell">
+        <view class="left">{{left}}</view>
+        <view class="right">{{right}}</view>
+    </view>
+</template>

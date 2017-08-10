@@ -1,16 +1,24 @@
 <!--withdraw.wxml-->
 
-<import src='/pages/my/cell/input-cell.wxml' />
+<import src='/components/alerts/input-alert/input-alert.wxml' />
 
-<form bindsubmit="formSubmit">
-  <block wx:for="{{datas}}" wx:key="unique">
-    <template is="input-cell" data="{{...item, index:index}}"></template>
-  </block>
+<view class="bg-view">
+  <text class="withdraw-detail" catchtap="withdrawDetailTap">提现明细</text>
+  <image src="/res/img/my/my-withdraw-icon.png" style="width:144rpx;height:144rpx" class="withdraw-icon"></image>
+  <text class="my-walet">我的钱包</text>
+  <text class="amount">{{balance}}</text>
+  <text class="withdraw-amount">提现金额</text>
 
-  <view class="tips">
-    <text class="remark-one">请确保支付宝账号正确，</text>
-    <text class="remark-two" catchtap="bindAlipayTap">绑定支付宝</text>
-  </view>
+  <form bindsubmit="formSubmit" class="formView">
 
-  <button class="okButton" form-type="submit">下一步</button>
-</form>
+    <view class="input-view">
+      <text class="amount-icon">￥</text>
+      <input class="input" placeholder="0.00" name="amount" />
+    </view>
+
+    <button class="ok-button" form-type="submit">确认提现</button>
+
+  </form>
+
+  <template is="input-alert" data="{{visiable:showInputAlert, placeholder:placeholder}}" />
+</view>

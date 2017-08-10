@@ -1,0 +1,12 @@
+.award-detail-cell{
+    display: flex;
+    padding: 25rpx;
+    background: white;
+    border-bottom: 2rpx solid #eeeeee;
+    font-size: 28rpx;
+    color: #494848;
+}
+
+.left{
+   width: 55%; 
+}
