@@ -3,7 +3,7 @@
 <template name="my-create-post-cell">
     <view class="my-create-post-cell-view" catchtap="cellTap" data-index="{{index}}">
         <!--头像／姓名／时间  -->
-        <template is="header-avatar-name-cell" class="left-view"></template>
+        <template is="header-avatar-name-cell" class="left-view" data="{{isShowReadNum:isShowReadNum}}"></template>
         <view class="title">如何做一个美美的辣妈</view>
         <view class="content OverFlowTwoLine">如何做一个美美的辣妈房间打扫垃圾发电撒时间</view>
     </view>

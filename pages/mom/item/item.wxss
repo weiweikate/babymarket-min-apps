@@ -1,10 +1,10 @@
-@import '/pages/find/head/head.wxss';
+@import '/pages/my/my-create-post/cell/my-create-post-cell.wxss';
 
 .mom-item {
     background: white;
     display: flex;
     flex-direction: column;
-    padding: 20rpx 20rpx 20rpx 20rpx;
+    padding: 0rpx 0rpx 20rpx 0rpx;
     border-bottom: 20rpx solid #fff8f4;
 }
 
@@ -23,7 +23,7 @@
 .bottom {
     display: flex;
     justify-content: space-between;
-    margin-top: 20rpx;
+    padding: 0rpx 22rpx;
 }
 
 .bottom-left, .bottom-right {

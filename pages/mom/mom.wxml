@@ -2,10 +2,11 @@
 <import src='/pages/home/tab-layout/tab-layout.wxml' />
 <import src='/pages/mom/item/item.wxml' />
 <import src='/pages/mom/type/type.wxml' />
-<import src='/components/search-field/search-field.wxml' />
+<import src='/pages/eat/search-cell/search-cell.wxml' />
 <import src='/components/empty-view/empty-view.wxml' />
 
 <view class="mom-box">
+    <image src="/res/img/mother-circle/mother-circle-create-post-icon.png" class="create-post-image" catchtap="createPostTap"></image>
     <view class="top">
         <template is="tab-layout" data="{{items:oneSortData,currentTab}}" />
     </view>
@@ -37,7 +38,10 @@
                         <!--搜帖子-->
                         <view wx:if="{{momtype==2}}" class="hot">
                             <view class="search">
-                                <template is="search-field"></template>
+                                <!-- <template is="search-field"></template> -->
+                                <view class="top-view">
+                                    <template is="search-cell" data="{{placeholder:'搜索圈内帖子'}}"></template>
+                                </view>
                                 <!--搜帖子的记录-->
                                 <view wx:if="{{isRecord}}">
                                     <view class="search-text">大家都在搜：</view>

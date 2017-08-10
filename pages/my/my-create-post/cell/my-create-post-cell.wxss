@@ -3,7 +3,6 @@
 .my-create-post-cell-view{
     background: white;
     padding-bottom: 25rpx;
-    margin-bottom: 20rpx;
 }
 
 .my-create-post-cell-view .title{

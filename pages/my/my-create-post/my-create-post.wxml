@@ -2,6 +2,9 @@
 <import src='/pages/my/my-create-post/cell/my-create-post-cell.wxml' />
 
 <block wx:for="{{listDatas}}" wx:key="unique">
-    <template is="my-create-post-cell" data="{{...item, index:index}}"></template>
+    <view class="my-create-post-cell">
+        <template is="my-create-post-cell" data="{{...item, index:index, isShowReadNum:true}}"></template>
+    </view>
+    
 </block>
 

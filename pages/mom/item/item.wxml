@@ -1,9 +1,8 @@
-<import src='/pages/find/head/head.wxml' />
+<import src='/pages/my/my-create-post/cell/my-create-post-cell.wxml' />
+
 <template name="mom-item">
     <view class="mom-item" catchtap="goDetail" data-index="{{index}}">
-        <template is="head" data="{{item}}"></template>
-        <view class="item-title OverFlowTwoLine">{{item.Title_Article}}</view>
-        <view class="item-value OverFlowTwoLine">{{item.Article_Abstract}}</view>
+        <template is="my-create-post-cell" data="{{item, isShowReadNum:false}}"></template>
         <view class="bottom">
             <view class="bottom-left">
                 <image class="icon-read" src="/res/img/mother-circle/mother-circle-eye-icon.png" mode="aspectFit"></image>
