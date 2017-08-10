@@ -188,7 +188,9 @@ Page({
             })
 
         } else if (title == '收货地址管理') {
-
+            wx.navigateTo({
+                url: '../address/address',
+            })
         }
     },
 
