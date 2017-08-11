@@ -28,16 +28,16 @@
 }
 
 .address-name {
-  font-size: 24rpx;
-  color: #26272a;
+  font-size: 28rpx;
+  color: #090909;
 }
 
 .address-mobile {
-  font-size: 24rpx;
-  color: #26272a;
+  font-size: 28rpx;
+  color: #090909;
 }
 
 .address-detail {
-  color: #26272a;
-  font-size: 24rpx;
+  color: #090909;
+  font-size: 28rpx;
 }

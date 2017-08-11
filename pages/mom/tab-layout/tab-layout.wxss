@@ -10,7 +10,7 @@
 
 .tab-layout .tab {
   display: inline-flex;
-  font-size: 32rpx;
+  font-size: 34rpx;
   color: #494848;
   height: 90rpx;
   width: 187rpx;

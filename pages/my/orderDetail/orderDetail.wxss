@@ -1,157 +1,109 @@
 /* orderDetail.wxss */
 @import '/pages/my/cell/address-cell.wxss';
 @import '/pages/my/myOrder/orderLineCell/orderline-cell.wxss';
-@import '/pages/my/cell/delivery-info-cell.wxss';
-@import '/pages/my/myOrder/settlement-cell/settlement-cell.wxss';
 
 /*订单信息*/
 
 .top-order-info-view {
-  background: white;
-  height: 125rpx;
-  width: 100%;
-  display: flex;
-  border-bottom: 20rpx solid #f5f7f7;
-  padding: 22rpx 26rpx 40rpx;
+    background: white;
+    height: 150rpx;
+    width: 100%;
+    display: flex;
+    border-bottom: 2rpx solid #eee;
+    padding: 40rpx 26rpx 40rpx;
+    /* align-items: center; */
 }
 
 .order-info-icon {
-  width: 32rpx;
-  height: 26rpx;
-  /*background: red;*/
-  flex-shrink: 0;
+    width: 30rpx;
+    height: 29rpx;
+    flex-shrink: 0;
+    margin-top: 30rpx;
 }
 
 .order-info {
-  display: flex;
-  flex-direction: column;
-  margin-left: 16rpx;
-  font-size: 24rpx;
-  color: #1a1c1f;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    margin-left: 16rpx;
+    font-size: 28rpx;
+    color: #494848;
+    justify-content: space-between;
+    height: 100%;
 }
 
-/*支付金额*/
-.pay-amount-view {
-  display: flex;
-  border-bottom: 20rpx solid #f5f7f7;
-  background: white;
-  padding: 0rpx 26rpx;
-  align-items: center;
-  width: 100%;
-  height: 90rpx;
+.order-status-view {
+    display: flex;
 }
 
-.pay-icon {
-  width: 32rpx;
-  height: 26rpx;
-  /*background: red;*/
-  flex-shrink: 0;
+.order-status {
+    color: #f55;
 }
 
-.pay-amount-text {
-  color: #454950;
-  font-size: 24rpx;
-  margin-left: 16rpx;
+.order-tips-view {
+    font-size: 26rpx;
+    color: #acadaa;
+    display: flex;
 }
 
-.pay-amount {
-  color: #1a1c1f;
-  font-size: 24rpx;
-  margin-top: 5rpx;
+.order-tips {
+    color: #5caad3;
 }
 
-/*发货仓*/
-.delivery-address{
-    width: 100%;
-    line-height: 62rpx;
-    padding-left: 30rpx;
-    font-size: 24rpx;
-    color:#454950;
-    border-top: 20rpx solid #f5f7f7;
-}
-
-.settment-text{
-    border-top: 20rpx solid #f5f7f7;
-    width: 100%;
-    line-height: 62rpx;
-    padding-left: 30rpx;
-    font-size: 24rpx;
-    color:#454950;
-}
-
-.settlement-view-cell{
-    height: 62rpx;
+.order-line-view {
     background: white;
-    border-bottom: 2rpx solid #fafafa;
-}
-
-.footer-bg-view{
-    width: 100%;
     margin-bottom: 200rpx;
-    margin-top: 20rpx;
-}
-
-.pay-finnal{
-    font-size: 24rpx;
-    color: #454950;
-    text-align: right;
-    margin-right: 24rpx;
-}
-
-.orderlineView {
-  background: white;
 }
 
 .order-sepline {
-  background: #f5f7f7;
-  margin-left: 25rpx;
-  height: 2rpx;
-  width: 725rpx;
+    background: #f5f7f7;
+    margin-left: 25rpx;
+    height: 2rpx;
+    width: 725rpx;
 }
 
-.delivery-view {
-  background: white;
+.address-view {
+    margin-bottom: 20rpx;
 }
 
 .bottom-view {
-  background-color: white;
-  height: 112rpx;
-  width: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  font-size: 28rpx;
-  position: fixed;
-  bottom: 0;
+    background-color: white;
+    height: 112rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    font-size: 28rpx;
+    position: fixed;
+    bottom: 0;
+    border-top: 2rpx solid #eee;
 }
 
 .bottom-button {
-  border-radius: 5rpx;
-  margin-right: 22rpx;
-  background-color: white;
-  padding: 18rpx 20rpx;
-  width: 128rpx;
-  text-align: center;
+    border-radius: 5rpx;
+    margin-right: 22rpx;
+    background-color: white;
+    padding: 18rpx 20rpx;
+    width: 128rpx;
+    text-align: center;
 }
 
 .bottom-button.right {
-  border: 2rpx solid #ACADAA;
-  color: #ACADAA;
-  position: fixed;
-  right: 0;
+    border: 2rpx solid #acadaa;
+    color: #acadaa;
+    position: fixed;
+    right: 0;
 }
 
 .bottom-button.middle {
-  border: 2rpx solid #715329;
-  color: #715329;
-  position: fixed;
-  right: 200rpx;
+    border: 2rpx solid #715329;
+    color: #715329;
+    position: fixed;
+    right: 200rpx;
 }
 
 .bottom-button.left {
-  border: 2rpx solid #ACADAA;
-  color: #ACADAA;
-  position: fixed;
-  right: 400rpx;
+    border: 2rpx solid #acadaa;
+    color: #acadaa;
+    position: fixed;
+    right: 400rpx;
 }
