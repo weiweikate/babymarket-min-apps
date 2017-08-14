@@ -1,7 +1,7 @@
 <!--mom.wxml-->
 <import src='/pages/home/tab-layout/tab-layout.wxml' />
-<import src='/pages/mom/item/item.wxml' />
-<import src='/pages/mom/type/type.wxml' />
+<import src='/pages/mom/cell-post/cell-post.wxml' />
+<import src='/pages/mom/cell-circle/cell-circle.wxml' />
 <import src='/pages/eat/search-cell/search-cell.wxml' />
 <import src='/components/empty-view/empty-view.wxml' />
 
@@ -15,28 +15,39 @@
             <block wx:for="{{oneSortData}}" wx:key="unique">
                 <swiper-item>
                     <scroll-view class="scroll" scroll-y>
-                        <!--热帖所有贴-->
-                        <view wx:if="{{momtype==0}}" class="hot">
-                            <view wx:if="{{momList.length>0}}">
-                                <block wx:for="{{momList}}" wx:key="unique">
-                                    <template is="mom-item" data="{{item,index:index}}"></template>
+                        <!--热帖-->
+                        <view wx:if="{{currentTab==0}}" class="hot">
+                            <view wx:if="{{hotPostList.length>0}}">
+                                <block wx:for="{{hotPostList}}" wx:key="unique">
+                                    <template is="cell-post" data="{{...item}}"></template>
                                 </block>
                             </view>
-                            <!--无数据-->
+                            <view wx:else class="no-data">
+                                <template is="empty-view" data="{{title}}"></template>
+                            </view>
+                        </view>
+                        
+                        <!--所有贴-->
+                        <view wx:if="{{currentTab==1}}" class="hot">
+                            <view wx:if="{{allPostList.length>0}}">
+                                <block wx:for="{{allPostList}}" wx:key="unique">
+                                    <template is="cell-post" data="{{...item}}"></template>
+                                </block>
+                            </view>
                             <view wx:else class="no-data">
                                 <template is="empty-view" data="{{title}}"></template>
                             </view>
                         </view>
 
                         <!--所有圈-->
-                        <view wx:if="{{momtype==1}}" class="hot">
-                            <block wx:for="{{typeList}}" wx:key="unique">
-                                <template is="mom-type" data="{{item,index:index}}"></template>
+                        <view wx:if="{{currentTab==2}}" class="hot">
+                            <block wx:for="{{allCircleList}}" wx:key="unique">
+                                <template is="cell-circle" data="{{...item}}"></template>
                             </block>
                         </view>
 
                         <!--搜帖子-->
-                        <view wx:if="{{momtype==2}}" class="hot">
+                        <view wx:if="{{currentTab==3}}" class="hot">
                             <view class="search">
                                 <!-- <template is="search-field"></template> -->
                                 <view class="top-view">
@@ -47,15 +58,15 @@
                                     <view class="search-text">大家都在搜：</view>
                                     <view class="search-list">
                                         <block wx:for="{{recordList}}" wx:key="unique">
-                                            <view class="search-record" catchtap="searchResult">{{item.record}}</view>
+                                            <view class="search-record" catchtap="onKeywordListener" data-keyword="{{item.Name}}">{{item.Name}}</view>
                                         </block>
                                     </view>
                                 </view>
                                 <!--搜帖子的结果记录-->
                                 <view wx:else>
-                                    <view wx:if="{{hasSearchData}}">
-                                        <block wx:for="{{momList}}" wx:key="unique">
-                                            <template is="mom-item" data="{{item,index:index}}"></template>
+                                    <view wx:if="{{searchPostList.length>0}}">
+                                        <block wx:for="{{searchPostList}}" wx:key="unique">
+                                            <template is="cell-post" data="{{...item}}"></template>
                                         </block>
                                     </view>
                                     <!--无数据-->

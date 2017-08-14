@@ -650,4 +650,166 @@ export default class RequestReadFactory {
         };
         return req;
     }
+
+    // 宝妈圈-热帖查询
+    static hotPostRead(index = 0, count = 20) {
+      let operation = Operation.sharedInstance().postReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        // "MaxCount": count + '',
+        // "StartIndex": index + '',
+        "IsTopArticle":'true',
+        "Order": "${CreateTime} DESC"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '宝妈圈-热帖查询';
+      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "Article_Abstract", "TotalViews",
+        "Commemt_Number", "Img_Member_Article_SendId"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.Img_Member_Article_SendId);
+          item.name = item.SendNickName;
+          item.age = "宝宝"+item.BabyAge;
+          item.isReply = false;
+          item.title = item.Title_Article;
+          item.content = item.Article_Abstract;
+          item.isBottom = true;
+          item.readNum = item.TotalViews;
+          item.commemtNum = item.Commemt_Number;
+        });
+      }
+      return req;
+    }
+
+    // 宝妈圈-所有帖查询
+    static allPostRead(index = 0, count = 20) {
+      let operation = Operation.sharedInstance().postReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        // "MaxCount": count + '',
+        // "StartIndex": index + '',
+        "Belong_ArticleId": '00000000-0000-0000-0000-000000000000',
+        "Order": "${CreateTime} DESC"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '宝妈圈-所有帖查询';
+      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "Article_Abstract", "TotalViews",
+        "Commemt_Number", "Img_Member_Article_SendId"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.Img_Member_Article_SendId);
+          item.name = item.SendNickName;
+          item.age = "宝宝" + item.BabyAge;
+          item.isReply = false;
+          item.title = item.Title_Article;
+          item.content = item.Article_Abstract;
+          item.isBottom = true;
+          item.readNum = item.TotalViews;
+          item.commemtNum = item.Commemt_Number;
+        });
+      }
+      return req;
+    }
+
+    // 宝妈圈-所有圈查询
+    static allCircleRead(index = 0, count = 20) {
+      let operation = Operation.sharedInstance().circleReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        // "MaxCount": count + '',
+        // "StartIndex": index + '',
+        "Belong_ArticleId": '00000000-0000-0000-0000-000000000000',
+        "Order": "${Ordinal} ASC"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '宝妈圈-所有圈查询';
+      req.items = ["Id", "Name", "Introduction", "Small_ImgId"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.Small_ImgId);
+          item.title = item.Name;
+          item.content = item.Introduction;
+        });
+      }
+      return req;
+    }
+    // 宝妈圈-所有圈关注列表查询
+    static allCircleAttentionRead() {
+      let operation = Operation.sharedInstance().circleAttentionReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MemberId": global.Storage.memberId()
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '宝妈圈-所有圈关注列表查询';
+      req.items = ["ModuleappId"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.Id = item.ModuleappId;
+        });
+      }
+      return req;
+    }
+    // 宝妈圈-大家都在搜查询
+    static recordRead() {
+      let operation = Operation.sharedInstance().recordReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MaxCount":"10",
+        "Order": "${SearchNumber} DESC"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '宝妈圈-大家都在搜查询';
+      req.items = ["Name"];
+      return req;
+    }
+
+    // 宝妈圈-搜索帖子
+    static searchPostRead(keyword, index = 0, count = 20) {
+      let operation = Operation.sharedInstance().postReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        // "MaxCount": count + '',
+        // "StartIndex": index + '',
+        "Condition": "${Title_Article} like %" + keyword + "% && ${Article_Abstract} like %" + keyword+"% && ${Belong_ArticleId} =='00000000-0000-0000-0000-000000000000'",
+        "Order": "${CreateTime} DESC"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '宝妈圈-搜索帖子';
+      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "Article_Abstract",
+        "Commemt_Number", "Img_Member_Article_SendId"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.Img_Member_Article_SendId);
+          item.name = item.SendNickName;
+          item.age = "宝宝" + item.BabyAge;
+          item.isReply = true;
+          item.replyNum = item.Commemt_Number;
+          item.title = item.Title_Article;
+          item.content = item.Article_Abstract;
+        });
+      }
+      return req;
+    }
 }

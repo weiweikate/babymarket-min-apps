@@ -1,0 +1,105 @@
+.cell-post {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 22rpx;
+  border-bottom: 20rpx solid #fff8f4;
+}
+
+.avatar-view {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-view .avatar-img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+
+.avatar-view .avatar-info {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar-info .name {
+  font-size: 30rpx;
+  color: #090909;
+}
+
+.avatar-info .date-view {
+  display: flex;
+  margin-top: 10rpx;
+}
+
+.date-view .age {
+  font-size: 26rpx;
+  color: #acadaa;
+  flex-grow: 1;
+}
+
+.date-view .reply-view {
+  display: flex;
+  align-items: center;
+}
+
+.reply-view .replynum {
+  font-size: 26rpx;
+  color: #acadad;
+  margin-left: 5rpx;
+}
+
+.title {
+  font-size: 30rpx;
+  color: #090909;
+  margin-top: 20rpx;
+}
+
+.content {
+  font-size: 25rpx;
+  color: #7d7d7f;
+  margin-top: 20rpx;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.bottom-left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+
+.bottom-right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+
+.icon-read {
+  width: 28rpx;
+  height: 20rpx;
+  flex: none;
+}
+
+.num-read {
+  font-size: 24rpx;
+  color: #acadaa;
+  margin-left: 8rpx;
+}
+
+.icon-message {
+  width: 22rpx;
+  height: 22rpx;
+  flex: none;
+}
+
+.num-message {
+  font-size: 26rpx;
+  color: #5caad3;
+  margin-left: 8rpx;
+}

@@ -18,8 +18,14 @@ export default class Operation {
 
         // 便便诊所
         this.advisoryReadOperation ='de9167ca-44b6-42da-bf20-a63d0116325d';
-
-
+        // 宝妈圈-贴子查询
+        this.postReadOperation = '459fcf50-c9db-40a1-8cf7-a63d0119205d';
+        // 宝妈圈-圈子查询
+        this.circleReadOperation = '1e9cea5e-ea22-486f-b2cb-a63d011834d1';
+        // 宝妈圈-圈子是否关注查询
+        this.circleAttentionReadOperation = '7c05789f-d478-4a22-9e9c-a63d01189741';
+        // 宝妈圈-大家都在搜查询
+        this.recordReadOperation = 'd734db6e-2322-4a81-bfca-a68e00af1389';
 
 
         //首页-广告位
