@@ -8,9 +8,9 @@ Page({
      */
     data: {
         addressData: {
-            name: '',
-            mobile: '',
-            detail: '',
+            name: 'test',
+            mobile: '13646837967',
+            detail: '天目山路313号',
         },
         orderLineList: ['', '', ''],
         orderId: '',

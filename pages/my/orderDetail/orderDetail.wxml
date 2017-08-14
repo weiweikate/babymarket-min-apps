@@ -7,55 +7,38 @@
 
 <!--订单状态-->
 <view class="top-order-info-view">
-  <image src="/res/img/my/order-detail/my-order-detail-order-icon.png" class="order-info-icon" mode="aspectFit"></image>
-  <view class="order-info">
-    <text class="order-status">订单状态：{{orderStatus}}</text>
-    <text class="order-no">订单号：{{orderDatas.OrderNo}}</text>
-    <text class="order-tips">{{orderTips}}</text>
-  </view>
-</view>
+    <image src="/res/img/my/order-detail/my-order-detail-order-icon.png" class="order-info-icon" mode="aspectFit"></image>
+    <view class="order-info">
+        <view class="order-status-view">
+            <text>订单状态：</text>
+            <text class="order-status">待发货{{orderStatus}}</text>
+        </view>
+        <text class="order-no">订单号：{{orderDatas.OrderNo}}</text>
 
-<!--支付金额-->
-<view class="pay-amount-view">
-  <image src="/res/img/my/order-detail/my-order-detail-pay-icon.png" class="pay-icon" mode="aspectFit"></image>
-  <text class="pay-amount-text">支付金额：</text>
-  <text class="pay-amount">¥{{orderDatas.Due}}</text>
-</view>
-
-<!--物流信息-->
-<view class="delivery-view" bindtap="deliveryTap" wx:if="{{orderDatas.StatusKey == '2'}}">
-  <template is="delivery-info-cell" data="{{...deliveryInfo}}"></template>
-  <view class="order-sepline"></view>
+        <view class="order-tips-view">
+            <text>如果长时间未发货，您可以联系客服：</text>
+            <text class="order-tips">0571-56888866</text>
+        </view>
+    </view>
 </view>
 
 <!--地址-->
 <view class="address-view">
-  <template is="address-cell" data="{{...addressData}}"></template>
+    <template is="address-cell" data="{{...addressData}}"></template>
 </view>
-
-<!--仓库-->
-<view class="delivery-address">{{orderDatas.WarehouseName}}仓发货</view>
 
 <!--商品列表-->
-<view wx:for="{{orderLineList}}" class="orderlineView" wx:key="unique">
-  <template is="orderline-cell" data="{{datas:item}}"></template>
-  <view class="order-sepline"></view>
-</view>
-
-<!--结算-->
-<text class="settment-text">结算</text>
-<block wx:for="{{settlementList}}" wx:key="unique">
-  <view class="settlement-view-cell">
-    <template is="settlement-cell" data="{{datas:item}}"></template>
-  </view>
-</block>
-<view class="footer-bg-view">
-  <text class="pay-finnal">应付总额：¥{{orderDatas.Total}}</text>
+<view class="order-line-view">
+    <block wx:for="{{orderLineList}}" wx:key="unique">
+        <template is="orderline-cell" data="{{datas:item}}"></template>
+        <view class="order-sepline"></view>
+    </block>
 </view>
 
 <!--底部按钮-->
 <view class="bottom-view">
-  <view class="bottom-button right" bindtap="bottomButtonTap" data-title="{{bottomButton0Name}}" wx:if="{{bottomButton0Name != ''}}">{{bottomButton0Name}}</view>
+    <!-- <view class="bottom-button right" bindtap="bottomButtonTap" data-title="{{bottomButton0Name}}" wx:if="{{bottomButton0Name != ''}}">{{bottomButton0Name}}</view>
   <view class="bottom-button middle" bindtap="bottomButtonTap" data-title="{{bottomButton1Name}}" wx:if="{{bottomButton1Name != ''}}">{{bottomButton1Name}}</view>
-  <view class="bottom-button left" bindtap="bottomButtonTap" data-title="{{bottomButton2Name}}" wx:if="{{bottomButton2Name != ''}}">{{bottomButton2Name}}</view>
+  <view class="bottom-button left" bindtap="bottomButtonTap" data-title="{{bottomButton2Name}}" wx:if="{{bottomButton2Name != ''}}">{{bottomButton2Name}}</view> -->
+    <view class="bottom-button right" bindtap="bottomButtonTap" data-title="{{bottomButton2Name}}">联系客服</view>
 </view>

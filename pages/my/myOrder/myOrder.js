@@ -8,31 +8,13 @@ Page({
      */
     data: {
         index: 0,
-        currentIndex: 0,
-        orderList: [],
-        dataArry: ['', '', '', '', ''],
-        navItems: [
+        orderList: [
             {
-                id: 0,
-                name: '全部',
+                'Line':['']
             },
             {
-                id: 1,
-                name: '待付款',
-            },
-            {
-                id: 2,
-                name: '待发货',
-            },
-            {
-                id: 3,
-                name: '待收货',
-            },
-            {
-                id: 4,
-                name: '待评价',
-            }
-        ],
+                'Line': ['']
+            }],
         nomoredata: false,
     },
 
@@ -40,7 +22,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.requestData();
+        // this.requestData();
         Event.on('deleteOrderFinish', this.requestData, this)
     },
 

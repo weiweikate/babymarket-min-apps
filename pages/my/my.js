@@ -171,6 +171,9 @@ Page({
         } else if (title == '我的试用') {
 
         } else if (title == '我的积分订单') {
+            wx.navigateTo({
+                url: '../my/myOrder/myOrder',
+            })
 
         } else if (title == '我的问答') {
             wx.navigateTo({

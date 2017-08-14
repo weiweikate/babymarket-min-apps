@@ -3,17 +3,8 @@
 <template name="order-cell">
   <view class="order-cell" bindtap="orderCellTap" data-index="{{index}}">
     <view class="time-line">
-      <text class="time">{{items.CreateTime}}</text>
-      <text class="order-status" wx:if="{{items.StatusKey == '0'}}">待付款</text>
-      <text class="order-status" wx:if="{{items.StatusKey == '1'}}">待发货</text>
-      <text class="order-status" wx:if="{{items.StatusKey == '2'}}">待收货</text>
-      <text class="order-status" wx:if="{{items.StatusKey == '3'}}">已收货</text>
-      <text class="order-status" wx:if="{{items.StatusKey == '4'}}">已分享</text>
-      <text class="order-status" wx:if="{{items.StatusKey == '5'}}">交易成功</text>
-      <text class="order-status" wx:if="{{items.StatusKey == '6'}}">交易关闭</text>
-      <text class="order-status" wx:if="{{items.StatusKey == '7'}}">退款中</text>
-      <text class="order-status" wx:if="{{items.StatusKey == '8'}}">退款成功</text>
-      <text class="order-status" wx:if="{{items.StatusKey == '9'}}">退款失败</text>
+      <text class="time">2017-08-08 14:35:50{{items.CreateTime}}</text>
+      <text class="order-status">待发货</text>
     </view>
 
     <view class="orderlist" wx:for="{{items.Line}}" wx:key="unique">
@@ -22,27 +13,15 @@
       </view>
     </view>
 
-    <!--<view class="sepline"></view>-->
-
     <view class="bottom-view">
       <view class="total-amount">
-        <text class="goods-num">订单金额：</text>
-        <text class="amount">￥{{items.Total}}</text>
+        <text class="goods-num">共消耗积分：</text>
+        <text class="amount">2000{{items.Total}}</text>
       </view>
 
       <!--底部按钮-->
       <view class="bottom-button-view">
-
-        <view class="bottom-button right" catchtap="bottomButtonTap" wx:if="{{items.StatusKey == '0'}}" data-title="付款" data-index="{{index}}">付款</view>
-        <view class="bottom-button right" catchtap="bottomButtonTap" wx:if="{{items.StatusKey == '1' || items.StatusKey == '4'|| items.StatusKey == '8'}}" data-title="联系客服" data-index="{{index}}">联系客服</view>
-        <view class="bottom-button right" catchtap="bottomButtonTap" wx:if="{{items.StatusKey == '2'}}" data-title="确认收货" data-index="{{index}}">确认收货</view>
-        <view class="bottom-button right" catchtap="bottomButtonTap" wx:if="{{items.StatusKey == '3'}}" data-title="立即分享" data-index="{{index}}">立即分享</view>
-        <view class="bottom-button right" catchtap="bottomButtonTap" wx:if="{{items.StatusKey == '5'}}" data-title="查看物流" data-index="{{index}}">查看物流</view>
-        <view class="bottom-button right" catchtap="bottomButtonTap" wx:if="{{items.StatusKey == '6' || items.StatusKey == '7'}}" data-title="删除订单" data-index="{{index}}">删除订单</view>
-
-        <view class="bottom-button left" catchtap="bottomButtonTap" wx:if="{{items.StatusKey == '2'}}" data-title="查看物流" data-index="{{index}}">查看物流</view>
-        <view class="bottom-button left" catchtap="bottomButtonTap" wx:if="{{items.StatusKey == '5'}}" data-title="删除订单" data-index="{{index}}">删除订单</view>
-
+        <view class="bottom-button right" catchtap="bottomButtonTap" data-title="联系客服" data-index="{{index}}">联系客服</view>
       </view>
     </view>
 
