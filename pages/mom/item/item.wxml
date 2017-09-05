@@ -10,8 +10,8 @@
             </view>
             <view class="bottom-right">
                 <image class="icon-message" src="/res/img/mother-circle/mother-circle-comment-icon.png" mode="aspectFit"></image>
-                <view class="num-message">{{item.Commemt_Number}}</view>
+                <view class="num-message">全部评论{{item.Commemt_Number}}</view>
             </view>
         </view>
-    </view>
+      </view>
 </template>

@@ -1,7 +1,7 @@
 /* mom.wxss */
 @import '/pages/mom/tab-layout/tab-layout.wxss';
-@import '/pages/mom/item/item.wxss';
-@import '/pages/mom/type/type.wxss';
+@import '/pages/mom/cell-post/cell-post.wxss';
+@import '/pages/mom/cell-circle/cell-circle.wxss';
 @import '/pages/eat/search-cell/search-cell.wxss';
 @import '/components/empty-view/empty-view.wxss';
 

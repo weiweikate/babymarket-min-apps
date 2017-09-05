@@ -81,6 +81,9 @@ Page({
         } else if (position == 2) {
         } else if (position == 3) {
         } else if (position == 4) {
+            wx.navigateTo({
+                url: '../find/levy/levy',
+            })
         } else if (position == 5) {
             wx.navigateTo({
                 url: '../find/tool/tool',

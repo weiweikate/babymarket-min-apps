@@ -1,4 +1,4 @@
-
+<!--发现首页的列表-->
 <template name="item">
  <view class="item" catchtap="goDetail" data-index="{{index}}" data-title="{{item.name}}">
     <view class="top">

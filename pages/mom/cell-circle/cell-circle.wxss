@@ -1,0 +1,37 @@
+.cell-circle {
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+}
+
+.cell-circle .head-img {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 52rpx;
+  background: gray;
+}
+
+.cell-circle .info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.cell-circle .info .name {
+  font-size: 30rpx;
+  color: #090909;
+}
+
+.cell-circle .info .content {
+  font-size: 26rpx;
+  color: #494848;
+  margin-top: 10rpx;
+}
+
+.cell-circle .status {
+  width: 122rpx;
+  height: 44rpx;
+}
