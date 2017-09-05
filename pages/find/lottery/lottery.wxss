@@ -1,0 +1,22 @@
+/* lottery.wxss */
+
+.bg-view{
+    z-index: -1;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.my-coins{
+    font-size: 36rpx;
+    color: white;
+    padding-top: 25rpx;
+    text-align: center;
+}
+
+.tips{
+    font-size: 28rpx;
+    color: white;
+    margin-top: 10rpx;
+    text-align: center;
+}

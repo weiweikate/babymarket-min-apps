@@ -71,22 +71,21 @@ Page({
      */
     goDetail: function (e) {
         let position = e.currentTarget.dataset.index;
+        console.log("=======" + position);
+
         if (position == 0) {
-            console.log("=======" + position);
+            wx.navigateTo({
+                url: '../find/lottery/lottery',
+            })
         } else if (position == 1) {
-            console.log("=======" + position);
         } else if (position == 2) {
-            console.log("=======" + position);
         } else if (position == 3) {
-            console.log("=======" + position);
         } else if (position == 4) {
-            console.log("=======" + position);
         } else if (position == 5) {
             wx.navigateTo({
                 url: '../find/tool/tool',
             })
         } else if (position == 6) {
-            console.log("=======" + position);
         }
     }
 })

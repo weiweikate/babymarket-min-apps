@@ -1,0 +1,6 @@
+<!--lottery.wxml-->
+<view class="lottery-view">
+    <image src="/res/img/find/find-lottery-bg-view-icon.png" class="bg-view"></image>
+    <view class="my-coins">我的金币：1000</view>
+    <view class="tips">每次抽奖将消耗10金币</view>
+</view>
