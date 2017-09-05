@@ -5,8 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        dataList: [],
-        hasList:false,
+        dataList: ['',''],
+        hasList:true,
         dataIndex:0,
         totalNum:0,
     },
@@ -15,7 +15,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.requestData();
+        // this.requestData();
     },
 
     /**
@@ -36,7 +36,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-        this.requestData();
+        // this.requestData();
     },
 
     /**
@@ -113,7 +113,9 @@ Page({
      * 咨询详情
      */
     goDetail: function () {
-
+        wx.navigateTo({
+            url: '../clinic/clinic-detail/clinic-detail',
+        })
     },
 
     /**
@@ -129,7 +131,9 @@ Page({
      * 我的咨询
      */
     mine: function () {
-
+        wx.navigateTo({
+            url: '../clinic/my-clinic/my-clinic',
+        })
     },
     /**
      * 知识库

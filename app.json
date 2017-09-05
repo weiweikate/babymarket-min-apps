@@ -52,7 +52,9 @@
         "pages/my/complete-info/complete-info",
         "pages/my/complete-info/shop-list/shop-list",
         "pages/my/my-award/award-detail/award-detail",
-        "pages/find/lottery/lottery"
+        "pages/find/lottery/lottery",
+        "pages/find/clinic/clinic-detail/clinic-detail",
+        "pages/find/clinic/my-clinic/my-clinic"
     ],
     "window": {
         "backgroundTextStyle": "light",

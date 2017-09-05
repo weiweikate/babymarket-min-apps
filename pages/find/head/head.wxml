@@ -3,8 +3,8 @@
     <image class="head-icon" src="{{item.image}}" mode="aspectFit"></image>
     <view class="head-info">
         <view class="info-left">
-            <view class="info-name">{{item.SendNickName}}</view>
-            <view class="info-subtitle">{{item.subtitle}}</view>
+            <view class="info-name">宝妈{{item.SendNickName}}</view>
+            <view class="info-subtitle">宝宝15天{{item.subtitle}}</view>
         </view>
         <view wx:if="{{hasStatus}}" class="info-status">{{item.status}}</view>
     </view>

@@ -3,7 +3,7 @@
 <template name="clinic-item">
     <view class="clinic-item" catchtap="goDetail" data-index="{{index}}">
         <template is="head" data="{{item}}"></template>
-        <view class="clinic-value OverFlowTwoLine">{{item.value}}</view>
-        <view class="clinic-time">{{item.time}}</view>
+        <view class="clinic-value OverFlowTwoLine">激发肌肤上分离的时刻肌肤抵抗力{{item.value}}</view>
+        <view class="clinic-time">2017-09-05 10:35{{item.time}}</view>
     </view>
 </template>
