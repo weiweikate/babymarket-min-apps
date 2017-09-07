@@ -1,0 +1,9 @@
+<template name="lottery-cell">
+    <view class="lottery-cell">
+        <view class="points-cell" wx:if="{{index%2 == 0}}">2000积分</view>
+        <view class="goods-cell" wx:else>
+            <image src="" style="width:70rpx;height:70rpx;background:blue" class="goods-picture"></image>
+            <view class="goods-name">奶粉1段</view>
+        </view>
+    </view>
+</template>

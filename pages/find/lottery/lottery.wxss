@@ -1,4 +1,5 @@
 /* lottery.wxss */
+@import '/pages/find/lottery/lottery-cell/lottery-cell.wxss';
 
 .bg-view{
     z-index: -1;
@@ -19,4 +20,9 @@
     color: white;
     margin-top: 10rpx;
     text-align: center;
+}
+
+.circle-view{
+    margin-top: 100rpx;
+    margin-left: 100rpx;
 }
