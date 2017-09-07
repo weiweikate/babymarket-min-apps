@@ -55,7 +55,7 @@ Page({
      */
     goClinic: function () {
         wx.navigateTo({
-            url: '../find/clinic/clinic',
+            url: '../find/clinic/clinic?type=0',
         })
     },
 
@@ -63,7 +63,9 @@ Page({
      * 爱牙卫士
      */
     goTooth: function () {
-
+        wx.navigateTo({
+            url: '../find/clinic/clinic?type=1',
+        })
     },
 
     /**

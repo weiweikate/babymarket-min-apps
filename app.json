@@ -54,7 +54,8 @@
         "pages/my/my-award/award-detail/award-detail",
         "pages/find/lottery/lottery",
         "pages/find/clinic/clinic-detail/clinic-detail",
-        "pages/find/clinic/my-clinic/my-clinic"
+        "pages/find/clinic/my-clinic/my-clinic",
+        "pages/find/clinic/add-tooth-concult/add-tooth-concult"
     ],
     "window": {
         "backgroundTextStyle": "light",
