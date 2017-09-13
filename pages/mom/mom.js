@@ -17,17 +17,17 @@ Page({
     isRecord: true, //是显示搜索记录，还是显示搜索结果
     oneSortData: [
       {
-        Name: '热帖',
+        Name: '热帖'
       },
       {
-        Name: '所有贴',
+        Name: '所有贴'
       },
       {
-        Name: '所有圈',
+        Name: '所有圈'
       },
       {
-        Name: '搜帖子',
-      },
+        Name: '搜帖子'
+      }
     ],
   },
 
