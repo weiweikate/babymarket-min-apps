@@ -10,6 +10,9 @@
     display: flex;
     background: white;
     height: 80rpx;
+    position: fixed;
+    top: 0rpx;
+    width: 100%;
 }
 
 .initiate {
@@ -22,9 +25,9 @@
     color: #494848;
 }
 
-.data {
-    margin-top: 80rpx;
-}
+ .data {
+     margin-top: 80rpx; 
+} 
 
 .no-data {
     justify-content: center;   

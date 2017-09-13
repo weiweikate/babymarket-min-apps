@@ -1,0 +1,44 @@
+.clinic-detail-comment-cell{
+    padding: 22rpx;
+}
+
+.clinic-detail-comment-cell .top-view{
+    display: flex;
+}
+
+.top-view .avatar{
+    width: 108rpx;
+    height: 108rpx;
+    border-radius: 54rpx;
+    background: red;
+}
+
+.right-view{
+    margin-left: 20rpx;
+}
+
+.right-view .name{
+    margin-top: 10rpx;
+    font-size: 30rpx;
+    color: #494848;
+}
+
+.clinic-detail-comment-cell .right-view .time{
+    margin-top: 25rpx;
+    font-size: 26rpx;
+    color: #acadaa;
+}
+
+.clinic-detail-comment-cell .content{
+    margin-left: 128rpx;
+    margin-top: 15rpx;
+    font-size: 26rpx;
+    color: #090909;
+    line-height: 135%;
+}
+
+.sepline{
+    margin: 20rpx 22rpx 0rpx 22rpx;
+    height: 2rpx;
+    background: #dbdbdb;
+}

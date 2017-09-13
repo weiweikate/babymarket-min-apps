@@ -1,0 +1,6 @@
+<!--my-clinic.wxml-->
+<import src='/pages/find/clinic/clinic-item/clinic-item.wxml' />
+
+<block wx:for="{{listDatas}}" wx:key="{{index}}">
+    <template is="clinic-item" data="{{item}}"></template>
+</block>

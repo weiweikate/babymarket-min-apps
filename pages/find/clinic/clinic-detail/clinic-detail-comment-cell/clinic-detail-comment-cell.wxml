@@ -1,0 +1,13 @@
+<template name="clinic-detail-comment-cell">
+    <view class="clinic-detail-comment-cell">
+        <view class="top-view">
+            <image src="" class="avatar"></image>
+            <view class="right-view">
+                <view class="name">很有趣的人</view>
+                <view class="time">2017-09-05 16:20:35</view>
+            </view>
+        </view>
+        <view class="content">你好啊啊啊啊</view>
+        <view class="sepline"></view>
+    </view>
+</template>

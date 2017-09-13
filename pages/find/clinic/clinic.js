@@ -5,18 +5,51 @@ Page({
      * 页面的初始数据
      */
     data: {
-        dataList: [],
-        hasList:false,
+        dataList: ['',''],
+        hasList:true,
         dataIndex:0,
         totalNum:0,
+        pageType:0
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.requestData();
+        // this.requestData();
+        let type = options.type
+        if(type == 0){//便便诊所
+            wx.setNavigationBarTitle({
+                title: '便便诊所',
+                success: function(res) {},
+                fail: function(res) {},
+                complete: function(res) {},
+            })
+        }else if(type == 1){//爱牙卫士
+            wx.setNavigationBarTitle({
+                title: '爱牙卫士',
+                success: function (res) { },
+                fail: function (res) { },
+                complete: function (res) { },
+            })
+        }
+
+        this.setData({
+            pageType: options.type
+        });
     },
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * 生命周期函数--监听页面显示
@@ -36,7 +69,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-        this.requestData();
+        // this.requestData();
     },
 
     /**
@@ -113,6 +146,13 @@ Page({
      * 咨询详情
      */
     goDetail: function () {
+        if (this.data.pageType == 0) {//便便诊所
+            wx.navigateTo({
+                url: '../clinic/clinic-detail/clinic-detail',
+            })
+        } else if (this.data.pageType == 1){//爱牙卫士
+
+        }
 
     },
 
@@ -120,16 +160,28 @@ Page({
      * 发起咨询
      */
     add: function () {
-        wx.navigateTo({
-            url: '../clinic/add-clinic/add-clinic',
-        })
+        if (this.data.pageType == 0) {//便便诊所
+            wx.navigateTo({
+                url: '../clinic/add-clinic/add-clinic',
+            })
+        } else if (this.data.pageType == 1) {//爱牙卫士
+            wx.navigateTo({
+                url: '../clinic/add-tooth-concult/add-tooth-concult',
+            })
+        }
     },
 
     /**
      * 我的咨询
      */
     mine: function () {
+        if (this.data.pageType == 0) {//便便诊所
+            wx.navigateTo({
+                url: '../clinic/my-clinic/my-clinic',
+            })
+        } else if (this.data.pageType == 1) {//爱牙卫士
 
+        }
     },
     /**
      * 知识库

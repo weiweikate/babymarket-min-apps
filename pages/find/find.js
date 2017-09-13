@@ -55,7 +55,7 @@ Page({
      */
     goClinic: function () {
         wx.navigateTo({
-            url: '../find/clinic/clinic',
+            url: '../find/clinic/clinic?type=0',
         })
     },
 
@@ -63,7 +63,9 @@ Page({
      * 爱牙卫士
      */
     goTooth: function () {
-
+        wx.navigateTo({
+            url: '../find/clinic/clinic?type=1',
+        })
     },
 
     /**
@@ -71,14 +73,15 @@ Page({
      */
     goDetail: function (e) {
         let position = e.currentTarget.dataset.index;
+        console.log("=======" + position);
+
         if (position == 0) {
-            console.log("=======" + position);
+            wx.navigateTo({
+                url: '../find/lottery/lottery',
+            })
         } else if (position == 1) {
-            console.log("=======" + position);
         } else if (position == 2) {
-            console.log("=======" + position);
         } else if (position == 3) {
-            console.log("=======" + position);
         } else if (position == 4) {
             wx.navigateTo({
                 url: '../find/levy/levy',
@@ -88,7 +91,6 @@ Page({
                 url: '../find/tool/tool',
             })
         } else if (position == 6) {
-            console.log("=======" + position);
         }
     }
 })

@@ -2,23 +2,23 @@
 <template name="levy-item">
     <view class="levy-item" catchtap="goDetail" data-index="{{index}}">
         <image class="{{item.image.length>0?'levy-image':'image-empty'}}" src="{{item.image}}" mode="aspectFit" />
+        
         <view class="levy-info">
-            <text class="levy-title">{{item.title}}</text>
-            <view class="levy-right">
-                <view class="integral">】
-                    <view class="now">现积分：</view>
-                    <view class="now-integral">{{item.now}}</view>
-                    <view class="old">原积分：</view>
-                    <view class="old-integral">{{item.old}}</view>
-                </view>
-                <view class="num-bt">
-                    <view class=" num">
-                        <view class="now">现积分：</view>
-                        <view class="now-integral">{{item.now}}</view>
-                    </view>
-                    <view class="levy-bt" catchtap="toBuy">{{item.value}}</view>
-                </view>
+            <text class="levy-title">title{{item.title}}</text>
+
+             <view class="integral-view">
+                <view class="now">现积分: </view>
+                <view class="now-integral">0{{item.now}}</view>
+                <view class="old">原积分: </view>
+                <view class="old-integral">1000{{item.old}}</view>
+            </view> 
+
+            <view class="bottom-view">
+                <view>总共(份):</view>
+                <view class="total-num">10</view>
+                <view class="buy-button">已结束</view>
             </view>
         </view>
+
     </view>
 </template>

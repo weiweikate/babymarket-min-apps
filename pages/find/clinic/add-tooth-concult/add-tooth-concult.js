@@ -1,11 +1,13 @@
-// levy.js
+// add-tooth-concult.js
+let { Tool, RequestWriteFactory } = global;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      dataList:['','']
+  
   },
 
   /**
@@ -62,5 +64,25 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  submitTap:function(e){
+      let toothNumber = e.detail.value.tooth;
+      let consultDetail = e.detail.value.detail;
+
+      console.log('----toothNumber:' + toothNumber);
+      console.log('----consultDetail:' + consultDetail);
+
+      // 判断是否填写信息
+      if (Tool.isEmptyStr(toothNumber)) {
+          Tool.showAlert("请填写出牙个数");
+          return false;
+      };
+
+      if (Tool.isEmptyStr(consultDetail)) {
+          Tool.showAlert("请填写咨询详情");
+          return false;
+      };
+
   }
 })

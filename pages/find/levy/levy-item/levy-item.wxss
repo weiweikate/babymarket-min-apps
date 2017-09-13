@@ -1,26 +1,29 @@
 .levy-item {
     display: flex;
     background: white;
+    border-bottom: 20rpx solid #fff8f4;
 }
 
 .levy-image {
     background: white;
-    width: 150rpx;
-    height: 150rpx;
+    width: 236rpx;
+    height: 236rpx;
     border: 2rpx solid #f5f7f7;
     flex-shrink: 0;
+    margin: 46rpx 22rpx;
 }
 
 .image-empty {
     background: #f3f3f4;
-    width: 150rpx;
-    height: 150rpx;
+    width: 236rpx;
+    height: 236rpx;
     border: 2rpx solid #f5f7f7;
     flex-shrink: 0;
+    margin: 46rpx 22rpx;
 }
 
 .levy-info {
-    margin-left: 20rpx;
+    margin-top: 60rpx;
     display: flex;
     flex-direction: column;
 }
@@ -30,18 +33,52 @@
     color: #494848;
 }
 
-.levy-right {
+.integral-view {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.integral {
-    display: flex;
-    margin-top: 10rpx;
+    margin-top: 20rpx;
+    font-size: 28rpx;
 }
 
 .now{
-   font-size: 32rpx;
     color: #494848; 
+}
+
+.now-integral{
+    color: #ff5555;
+    margin-left: 10rpx;
+}
+
+.old{
+    color: #dbdbdb;
+    margin-left: 30rpx;
+}
+
+.old-integral{
+    color: #dbdbdb;
+    margin-left: 10rpx;
+}
+
+.bottom-view{
+    display: flex;
+    margin-top: 80rpx;
+    font-size: 28rpx;
+    color: #090909;
+    height: 70rpx;
+    align-items: center;
+}
+
+.total-num{
+    color: #ff5555;
+}
+
+.buy-button{
+    width: 168rpx;
+    height: 70rpx;
+    border-radius: 10rpx;
+    background: #eeeeee;
+    line-height: 70rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #acadaa;
+    margin-left: 125rpx;
 }

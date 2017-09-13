@@ -1,0 +1,76 @@
+/* clinic-detail.wxss */
+@import '/pages/find/clinic/clinic-detail/clinic-detail-baby-info-cell/clinic-detail-baby-info-cell.wxss';
+@import '/pages/find/clinic/clinic-detail/clinic-detail-comment-cell/clinic-detail-comment-cell.wxss';
+
+page{
+    background: white;
+}
+
+.time-view{
+    display: flex;
+    margin:20rpx 22rpx;
+    font-size: 26rpx;
+    color: #acadaa;
+}
+
+.create{
+    margin-top: 50rpx;
+}
+
+.time{
+    color: #494848;
+    margin-left: 10rpx;
+    margin-top: 3rpx;
+}
+
+.baby-info-header{
+    display: flex;
+    margin-left: 22rpx;
+    margin-top: 64rpx;
+}
+
+.baby-info-title{
+    color: #494848;
+    font-size: 32rpx;
+    margin-left: 20rpx;
+}
+
+.baby-info-view{
+    margin: 22rpx;
+    font-size: 28rpx;
+    color: #090909;
+    line-height: 135%;
+}
+
+.tips{
+    font-size: 26rpx;
+    color: #acadaa;
+    margin: 30rpx 22rpx 0rpx 22rpx;
+    line-height: 135%;
+}
+
+.attachments-view{
+    margin: 40rpx 22rpx 0rpx 22rpx;
+}
+
+.attachments-header-view{
+    font-size: 28rpx;
+    color: #494848;
+    display: flex;
+    align-items: center;
+}
+
+.picture-view{
+    display: flex;
+    margin-top: 20rpx;
+}
+
+.attachment-image{
+    margin-right: 20rpx;
+}
+
+.comment-title{
+    margin:38rpx 22rpx 20rpx 22rpx;
+    font-size: 32rpx;
+    color: #494848;
+}
