@@ -1,0 +1,7 @@
+<template name='levy-winner-cell'>
+    <view class='levy-winner-cell'>
+        <image class='avatar' src='/res/img/common/common-avatar-default-icon.png'></image>
+        <view class='name'>猪某某</view>
+        <view class='status'>已提交</view>
+    </view>
+</template>

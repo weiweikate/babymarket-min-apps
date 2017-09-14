@@ -1,0 +1,2 @@
+/* pages/find/levy/levy-detail/levy-report/levy-report.wxss */
+@import '/pages/find/levy/levy-report/levy-report-cell/levy-report-cell.wxss';

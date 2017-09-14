@@ -1,0 +1,7 @@
+<template name='grid-image-view'>
+    <view class='grid-image-view' >
+        <block wx:for='{{imageDatas}}' wx:key='unique'>
+            <image src='{{item}}' class='image' mode='aspectFit'></image>
+        </block>
+    </view>
+</template>
