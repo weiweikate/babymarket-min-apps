@@ -652,12 +652,12 @@ export default class RequestReadFactory {
     }
 
     // 宝妈圈-热帖查询
-    static hotPostRead(index = 0, count = 20) {
+    static hotPostRead(index = 0) {
       let operation = Operation.sharedInstance().postReadOperation;
       let bodyParameters = {
         "Operation": operation,
-        // "MaxCount": count + '',
-        // "StartIndex": index + '',
+        "MaxCount": '20',
+        "StartIndex": index * 20 + '',
         "IsTopArticle":'true',
         "Order": "${CreateTime} DESC"
       };
@@ -670,28 +670,18 @@ export default class RequestReadFactory {
       //修改返回结果
       req.preprocessCallback = (req) => {
         let responseData = req.responseObject.Datas;
-        responseData.forEach((item, index) => {
-          item.headImgUrl = global.Tool.imageURLForId(item.Img_Member_Article_SendId);
-          item.name = item.SendNickName;
-          item.age = "宝宝"+item.BabyAge;
-          item.isReply = false;
-          item.title = item.Title_Article;
-          item.content = item.Article_Abstract;
-          item.isBottom = true;
-          item.readNum = item.TotalViews;
-          item.commemtNum = item.Commemt_Number;
-        });
+        this.parseMomPostData(responseData);
       }
       return req;
     }
 
     // 宝妈圈-所有帖查询
-    static allPostRead(index = 0, count = 20) {
+    static allPostRead(index = 0) {
       let operation = Operation.sharedInstance().postReadOperation;
       let bodyParameters = {
         "Operation": operation,
-        // "MaxCount": count + '',
-        // "StartIndex": index + '',
+        "MaxCount": '20',
+        "StartIndex": index * 20 + '',
         "Belong_ArticleId": '00000000-0000-0000-0000-000000000000',
         "Order": "${CreateTime} DESC"
       };
@@ -704,29 +694,33 @@ export default class RequestReadFactory {
       //修改返回结果
       req.preprocessCallback = (req) => {
         let responseData = req.responseObject.Datas;
-        responseData.forEach((item, index) => {
-          item.headImgUrl = global.Tool.imageURLForId(item.Img_Member_Article_SendId);
-          item.name = item.SendNickName;
-          item.age = "宝宝" + item.BabyAge;
-          item.isReply = false;
-          item.title = item.Title_Article;
-          item.content = item.Article_Abstract;
-          item.isBottom = true;
-          item.readNum = item.TotalViews;
-          item.commemtNum = item.Commemt_Number;
-        });
+        this.parseMomPostData(responseData);
       }
       return req;
     }
 
+    /**
+     * 处理宝妈圈帖子的返回数据
+     */
+    static parseMomPostData(responseData){
+      responseData.forEach((item, index) => {
+        item.headImgUrl = global.Tool.imageURLForId(item.Img_Member_Article_SendId);
+        item.name = item.SendNickName;
+        item.age = "宝宝" + item.BabyAge;
+        item.isReply = false;
+        item.title = item.Title_Article;
+        item.content = item.Article_Abstract;
+        item.isBottom = true;
+        item.readNum = item.TotalViews;
+        item.commemtNum = item.Commemt_Number;
+      });
+    }
+
     // 宝妈圈-所有圈查询
-    static allCircleRead(index = 0, count = 20) {
+    static allCircleRead() {
       let operation = Operation.sharedInstance().circleReadOperation;
       let bodyParameters = {
         "Operation": operation,
-        // "MaxCount": count + '',
-        // "StartIndex": index + '',
-        "Belong_ArticleId": '00000000-0000-0000-0000-000000000000',
         "Order": "${Ordinal} ASC"
       };
 
@@ -766,6 +760,7 @@ export default class RequestReadFactory {
       }
       return req;
     }
+
     // 宝妈圈-大家都在搜查询
     static recordRead() {
       let operation = Operation.sharedInstance().recordReadOperation;
@@ -782,12 +777,12 @@ export default class RequestReadFactory {
     }
 
     // 宝妈圈-搜索帖子
-    static searchPostRead(keyword, index = 0, count = 20) {
+    static searchPostRead(keyword, index = 0) {
       let operation = Operation.sharedInstance().postReadOperation;
       let bodyParameters = {
         "Operation": operation,
-        // "MaxCount": count + '',
-        // "StartIndex": index + '',
+        "MaxCount": '20',
+        "StartIndex": index * 20 + '',
         "Condition": "${Title_Article} like %" + keyword + "% && ${Article_Abstract} like %" + keyword+"% && ${Belong_ArticleId} =='00000000-0000-0000-0000-000000000000'",
         "Order": "${CreateTime} DESC"
       };

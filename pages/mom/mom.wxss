@@ -6,70 +6,74 @@
 @import '/components/empty-view/empty-view.wxss';
 
 .mom-box {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.create-post-image{
-    z-index: 20;
-    position: fixed;
-    width: 128rpx;
-    height: 128rpx;
-    left: 591rpx;
-    top: 920rpx;
+.create-post-image {
+  z-index: 20;
+  position: fixed;
+  width: 128rpx;
+  height: 128rpx;
+  left: 591rpx;
+  top: 920rpx;
 }
 
 .top {
-    position: fixed;
-    top: 0;
-    z-index: 20;
+  position: fixed;
+  top: 0;
+  z-index: 20;
 }
 
 .swiper-view {
-    margin-top: 96rpx;
-    height: 100%;
+  margin-top: 96rpx;
+  height: 100%;
 }
 
 .swiper-view .swiper-container {
-    height: 100%;
+  height: 100%;
 }
 
 .swiper-view .swiper-container .scroll {
-    height: 100%;
+  height: 100%;
+}
+
+.search-view {
+  background: white;
+  padding: 20rpx;
 }
 
 .search {
-    background: white;
-    padding: 20rpx;
+  background: white;
+  padding: 0rpx 20rpx 20rpx 20rpx;
 }
 
 .search-text {
-    color: #acadaa;
-    font-size: 22rpx;
-    margin-top: 20rpx;
-    margin-bottom: 20rpx;
+  color: #acadaa;
+  font-size: 22rpx;
+  margin-bottom: 20rpx;
 }
 
 .search-list {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .search-record {
-    color: #83c3bf;
-    font-size: 24rpx;
-    padding: 10rpx 15rpx 10rpx 15rpx;
-    border-radius: 30rpx;
-    border: 1rpx solid #83c3bf;
-    margin-right: 20rpx;
-    margin-bottom: 20rpx;
+  color: #83c3bf;
+  font-size: 24rpx;
+  padding: 10rpx 15rpx 10rpx 15rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid #83c3bf;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
 }
 
 .hot {
-    height: 100%;
+  height: 100%;
 }
 
 .no-data {
-    height: 100%;
+  height: 100%;
 }

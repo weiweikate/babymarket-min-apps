@@ -12,7 +12,7 @@
                 <view class="age">{{age}}</view>
                 <!--回复数量  -->
                 <view class="reply-view" wx:if="{{isReply}}">
-                    <image src="/res/img/index/index-reply-black-icon.png" style="width:17rpx;height:17rpx" />
+                    <image class="reply-icon" src="/res/img/index/index-reply-black-icon.png" mode="aspectFit"/>
                     <view class="replynum">{{replyNum}}</view>
                 </view>
             </view>
@@ -22,7 +22,7 @@
         <view class="content OverFlowTwoLine">{{content}}</view>
         <view class="bottom" wx:if="{{isBottom}}">
             <view class="bottom-left">
-                <image class="icon-read" src="/res/img/mother-circle/mother-circle-eye-icon.png" />
+                <image class="icon-read" src="/res/img/mother-circle/mother-circle-eye-icon.png" mode="aspectFit"/>
                 <view class="num-read">{{readNum}}</view>
             </view>
             <view class="bottom-right">

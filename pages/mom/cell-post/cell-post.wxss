@@ -44,6 +44,12 @@
   align-items: center;
 }
 
+.reply-view .reply-icon {
+  width: 32rpx;
+  height: 32rpx;
+  flex: none;
+}
+
 .reply-view .replynum {
   font-size: 26rpx;
   color: #acadad;
@@ -81,8 +87,8 @@
 }
 
 .icon-read {
-  width: 28rpx;
-  height: 20rpx;
+  width: 35rpx;
+  height: 21rpx;
   flex: none;
 }
 
@@ -93,8 +99,8 @@
 }
 
 .icon-message {
-  width: 22rpx;
-  height: 22rpx;
+  width: 26rpx;
+  height: 26rpx;
   flex: none;
 }
 

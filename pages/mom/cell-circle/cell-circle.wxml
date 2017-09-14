@@ -1,11 +1,11 @@
 <template name="cell-circle">
-    <view class="cell-circle" catchtap="onItemClickListener" data-id="{{Id}}">
-        <image class="head-img" src="{{headImgUrl}}" mode="aspectFit"></image>
-        <view class="info">
-            <view class="name">{{title}}</view>
-            <view class="content">{{content}}</view>
-        </view>
-        <image class="status" src="{{isAttention?'/res/img/mother-circle/mother-circle-attention-success-icon.png':'/res/img/mother-circle/mother-circle-attention-add-icon.png'}}" mode="aspectFit" 
-        catchtap="onAttentionListener" data-id="{{Id}}" data-attention="{{isAttention}}"></image>
+  <view class="cell-circle" catchtap="onItemClickListener" data-id="{{Id}}">
+    <image class="head-img" src="{{headImgUrl.length>0?headImgUrl:'/res/img/common/common-avatar-default-icon.png'}}" />
+    <view class="info">
+      <text class="name">{{title}}</text>
+      <text class="content">{{content}}</text>
     </view>
+    <image class="status" src="{{isAttention?'/res/img/mother-circle/mother-circle-attention-success-icon.png':'/res/img/mother-circle/mother-circle-attention-add-icon.png'}}" mode="aspectFit" catchtap="onAttentionListener" data-id="{{Id}}" data-attention="{{isAttention}}"
+    />
+  </view>
 </template>

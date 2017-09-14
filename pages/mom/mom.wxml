@@ -6,79 +6,68 @@
 <import src='/components/empty-view/empty-view.wxml' />
 
 <view class="mom-box">
-    <image src="/res/img/mother-circle/mother-circle-create-post-icon.png" class="create-post-image" catchtap="createPostTap"></image>
-    <view class="top">
-        <template is="tab-layout" data="{{items:oneSortData,currentTab}}" />
-    </view>
-    <view class="swiper-view">
-        <swiper class="swiper-container" bindchange="onTabChangeListener" current="{{currentTab}}">
-            <block wx:for="{{oneSortData}}" wx:key="unique">
-                <swiper-item>
-                    <scroll-view class="scroll" scroll-y>
-                        <!--热帖-->
-                        <view wx:if="{{currentTab==0}}" class="hot">
-                            <view wx:if="{{hotPostList.length>0}}">
-                                <block wx:for="{{hotPostList}}" wx:key="unique">
-                                    <template is="cell-post" data="{{...item}}"></template>
-                                </block>
-                            </view>
-                            <view wx:else class="no-data">
-                                <template is="empty-view" data="{{title}}"></template>
-                            </view>
-                        </view>
-                        
-                        <!--所有贴-->
-                        <view wx:if="{{currentTab==1}}" class="hot">
-                            <view wx:if="{{allPostList.length>0}}">
-                                <block wx:for="{{allPostList}}" wx:key="unique">
-                                    <template is="cell-post" data="{{...item}}"></template>
-                                </block>
-                            </view>
-                            <view wx:else class="no-data">
-                                <template is="empty-view" data="{{title}}"></template>
-                            </view>
-                        </view>
+  <image src="/res/img/mother-circle/mother-circle-create-post-icon.png" class="create-post-image" catchtap="createPostTap"></image>
+  <view class="top">
+    <template is="tab-layout" data="{{items:oneSortData,currentTab}}" />
+  </view>
+  <view class="swiper-view">
+    <swiper class="swiper-container" bindchange="onTabChangeListener" current="{{currentTab}}">
+      <block wx:for="{{oneSortData}}" wx:key="unique">
+        <swiper-item>
+          <scroll-view class="scroll" scroll-y bindscrolltolower="onScrollReachBottom">
+            <!--热帖-->
+            <view wx:if="{{currentTab==0}}" class="hot">
+              <view wx:if="{{hotPostList.length>0}}">
+                <block wx:for="{{hotPostList}}" wx:key="unique">
+                  <template is="cell-post" data="{{...item}}"></template>
+                </block>
+              </view>
+              <view wx:else class="no-data">
+                <template is="empty-view" data="{{title:'这里还什么都没有哦～'}}"></template>
+              </view>
+            </view>
 
-                        <!--所有圈-->
-                        <view wx:if="{{currentTab==2}}" class="hot">
-                            <block wx:for="{{allCircleList}}" wx:key="unique">
-                                <template is="cell-circle" data="{{...item}}"></template>
-                            </block>
-                        </view>
+            <!--所有贴-->
+            <view wx:if="{{currentTab==1}}" class="hot">
+              <view wx:if="{{allPostList.length>0}}">
+                <block wx:for="{{allPostList}}" wx:key="unique">
+                  <template is="cell-post" data="{{...item}}"></template>
+                </block>
+              </view>
+              <view wx:else class="no-data">
+                <template is="empty-view" data="{{title:'这里还什么都没有哦～'}}"></template>
+              </view>
+            </view>
 
-                        <!--搜帖子-->
-                        <view wx:if="{{currentTab==3}}" class="hot">
-                            <view class="search">
-                                <!-- <template is="search-field"></template> -->
-                                <view class="top-view">
-                                    <template is="search-cell" data="{{placeholder:'搜索圈内帖子'}}"></template>
-                                </view>
-                                <!--搜帖子的记录-->
-                                <view wx:if="{{isRecord}}">
-                                    <view class="search-text">大家都在搜：</view>
-                                    <view class="search-list">
-                                        <block wx:for="{{recordList}}" wx:key="unique">
-                                            <view class="search-record" catchtap="onKeywordListener" data-keyword="{{item.Name}}">{{item.Name}}</view>
-                                        </block>
-                                    </view>
-                                </view>
-                                <!--搜帖子的结果记录-->
-                                <view wx:else>
-                                    <view wx:if="{{searchPostList.length>0}}">
-                                        <block wx:for="{{searchPostList}}" wx:key="unique">
-                                            <template is="cell-post" data="{{...item}}"></template>
-                                        </block>
-                                    </view>
-                                    <!--无数据-->
-                                    <view wx:else class="no-data">
-                                        <template is="empty-view" data="{{title}}"></template>
-                                    </view>
-                                </view>
-                            </view>
-                        </view>
-                    </scroll-view>
-                </swiper-item>
-            </block>
-        </swiper>
-    </view>
+            <!--所有圈-->
+            <view wx:if="{{currentTab==2}}" class="hot">
+              <block wx:for="{{allCircleList}}" wx:key="unique">
+                <template is="cell-circle" data="{{...item}}"></template>
+              </block>
+            </view>
+
+            <!--搜帖子-->
+            <view wx:if="{{currentTab==3}}" class="hot">
+              <view class="search-view">
+                <template is="search-cell" data="{{placeholder:'搜索圈内帖子'}}"></template>
+              </view>
+              <view wx:if="{{searchPostList.length>0}}">
+                <block wx:for="{{searchPostList}}" wx:key="unique">
+                  <template is="cell-post" data="{{...item}}"></template>
+                </block>
+              </view>
+              <view wx:else class="search">
+                <view class="search-text">大家都在搜：</view>
+                <view class="search-list">
+                  <block wx:for="{{recordList}}" wx:key="unique">
+                    <view class="search-record" catchtap="onKeywordListener" data-keyword="{{item.Name}}">{{item.Name}}</view>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </scroll-view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
 </view>
