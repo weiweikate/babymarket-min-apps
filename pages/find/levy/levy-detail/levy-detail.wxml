@@ -1,0 +1,36 @@
+<!--levy-detail.wxml-->
+<import src='/pages/product-detail/ad/product-ad.wxml' />
+<import src='/pages/find/levy/levy-detail/levy-detail-cell/levy-detail-cell.wxml' />
+<import src='/components/bottom-btn/bottom-btn.wxml' />
+
+<view class="levy-detail-view-container">
+    <!--轮播图  -->
+    <template is="product-ad" data="{{adArray:images}}"></template>
+
+    <view class="product-info">
+        <view class="product-title">乐天大贵族奶粉1段绿贵</view>
+        <view class="number-view">
+            <view>总份数:</view>
+            <view class="total-number">5</view>
+            <view>份</view>
+        </view>
+        <view class="now-price-view">
+            <view>现积分:</view>
+            <view class="now-price">0</view>
+            <view class="orignal-price">原积分:6000</view>
+        </view>
+    </view>
+
+    <!--申请状态  -->
+    <view class='apply-status'>您没有参与此次试用</view>
+
+    <block wx:for='{{tableList}}' wx:key='unique'>
+        <template is='levy-detail-cell' data='{{item}}'></template>
+    </block>
+
+    <view class='sepline'></view>
+
+    <!--底部按钮  -->
+    <template is='bottom-btn' data='{{bottomBtn}}'></template> 
+    
+</view>

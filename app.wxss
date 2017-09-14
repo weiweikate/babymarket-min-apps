@@ -18,16 +18,16 @@ page {
     box-sizing: border-box;
 }
 
-/*text{*/
+.OverFlowOneLine{
 
     /*!*只显示1行*!*/
-    /*text-overflow: -o-ellipsis-lastline;*/
-    /*overflow: hidden;*/
-    /*text-overflow: ellipsis;*/
-    /*display: -webkit-box;*/
-    /*-webkit-line-clamp: 1;*/
-    /*-webkit-box-orient: vertical;*/
-/*}*/
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
 
 .OverFlowTwoLine{
 

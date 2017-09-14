@@ -1,0 +1,3 @@
+/* pages/find/levy/levy-report-detail/levy-report-detail.wxss */
+@import '/pages/find/levy/levy-report/levy-report-cell/levy-report-cell.wxss';
+@import '/components/grid-image-view/grid-image-view.wxss';

@@ -1,0 +1,66 @@
+/* levy-detail.wxss */
+@import '/pages/product-detail/ad/product-ad.wxss';
+@import '/pages/find/levy/levy-detail/levy-detail-cell/levy-detail-cell.wxss';
+@import '/components/bottom-btn/bottom-btn.wxss';
+
+page {
+    background: white;
+}
+
+.product-info {
+    margin: 44rpx 22rpx 0rpx 22rpx;
+}
+
+.product-title {
+    font-size: 32rpx;
+    color: #090909;
+}
+
+.number-view {
+    display: flex;
+    font-size: 32rpx;
+    color: #090909;
+    margin-top: 50rpx;
+}
+
+.number-view .total-number {
+    color: #f55;
+}
+
+.now-price-view {
+    margin-top: 24rpx;
+    font-size: 30rpx;
+    color: #090909;
+    display: flex;
+}
+
+.now-price-view .now-price {
+    color: #f55;
+}
+
+.now-price-view .now-price {
+    color: #acadaa;
+    margin-left: 10rpx;
+}
+
+.orignal-price{
+    margin-left: 10rpx;
+}
+
+.apply-status {
+    margin-top: 15rpx;
+    width: 100%;
+    text-align: center;
+    font-size: 28rpx;
+    color: #494848;
+    height: 120rpx;
+    line-height: 120rpx;
+    border-bottom: 2rpx solid #acadaa;
+}
+
+.levy-detail-view-container .sepline{
+    height: 20rpx;
+    background: white;
+    width: 100%;
+    padding-bottom: 130rpx;
+}

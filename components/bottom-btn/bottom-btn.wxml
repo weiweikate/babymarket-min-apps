@@ -1,0 +1,6 @@
+<template name='bottom-btn'>
+    <view class='bottom-btn-view'>
+         <view class='bottom-btn active' wx:if='{{bottomBtn.enable}}' catchtap='bottomBtnTap'>{{bottomBtn.title}}</view>
+        <view class='bottom-btn' catchtap='bottomBtnTap' wx:else>{{bottomBtn.title}}</view> 
+    </view>
+</template>

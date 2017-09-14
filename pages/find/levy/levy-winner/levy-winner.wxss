@@ -1,0 +1,24 @@
+/* pages/find/levy/levy-winner/levy-winner.wxss */
+@import '/pages/find/levy/levy-winner/levy-winner-cell/levy-winner-cell.wxss';
+
+page{
+    background: white;
+}
+
+.title-one{
+    margin: 58rpx 22rpx 18rpx 22rpx;
+    font-size: 32rpx;
+    color: #090909;
+}
+
+.title-two{
+    font-size: 26rpx;
+    color: #494848;
+}
+
+.spline{
+    background: #eeeeee;
+    height: 2rpx;
+    width: 100%;
+    margin-top: 54rpx;
+}

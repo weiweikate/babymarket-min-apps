@@ -1,0 +1,22 @@
+.bottom-btn-view{
+    background: white;
+    width: 100%;
+    height: 130rpx;
+    position: fixed;
+    bottom: 0rpx;
+}
+
+.bottom-btn{
+    height: 80rpx;
+    margin: 25rpx 22rpx 25rpx 22rpx;
+    background: #acadaa;
+    color: white;
+    font-size: 30rpx;
+    border-radius: 10rpx;
+    line-height: 80rpx;
+    text-align: center;
+}
+
+.active{
+    background: #ff5555;
+}
