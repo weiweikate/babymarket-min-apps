@@ -2,9 +2,6 @@
 <import src='slogan/product-slogan.wxml'/>
 <import src='/components/product-specification/product-specification.wxml'/>
 
-
-
-
 <view class="root-view">
 
     <view class="product-info">

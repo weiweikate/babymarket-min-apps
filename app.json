@@ -55,7 +55,12 @@
         "pages/find/lottery/lottery",
         "pages/find/clinic/clinic-detail/clinic-detail",
         "pages/find/clinic/my-clinic/my-clinic",
-        "pages/find/clinic/add-tooth-concult/add-tooth-concult"
+        "pages/find/clinic/add-tooth-concult/add-tooth-concult",
+        "pages/find/levy/levy-detail/levy-detail",
+        "pages/find/levy/levy-report/levy-report",
+        "pages/find/levy/levy-report-detail/levy-report-detail",
+        "pages/find/levy/levy-winner/levy-winner",
+        "pages/find/levy/levy-apply/levy-apply"
     ],
     "window": {
         "backgroundTextStyle": "light",

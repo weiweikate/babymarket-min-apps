@@ -1,0 +1,35 @@
+/* pages/find/levy/levy-apply/levy-apply.wxss */
+@import '/pages/address/info/address-info.wxss';
+
+.rceive-address-view{
+    display: flex;
+    padding-left: 22rpx;
+    align-items: center;
+    background: white;
+}
+
+.address-icon{
+    width: 31rpx;
+    height: 31rpx;
+}
+
+.input-area-view{
+    height: 300rpx;
+    width: 706rpx;
+    padding: 50rpx 22rpx 22rpx 22rpx;
+    background: white;
+    font-size: 30rpx;
+    color: #090909;
+    border-top: 2rpx solid #eeeeee;
+}
+
+.submit-button{
+    font-size: 32rpx;
+    color: white;
+    background: #ff5555;
+    border-radius: 10rpx;
+    margin: 40rpx 22rpx 0rpx 22rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+}

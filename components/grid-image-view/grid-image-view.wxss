@@ -1,0 +1,14 @@
+.grid-image-view{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0rpx 22rpx;
+    background: white;
+}
+
+.grid-image-view .image{
+    width: 228.5rpx;
+    height: 228.5rpx;
+    background: #f3f4f5;
+    margin-bottom: 10rpx;
+}

@@ -1,0 +1,14 @@
+<template name='levy-report-cell'>
+    <view class='levy-report-cell' catchtap='levyReportCellTap' data-index='{{index}}'>
+
+        <view class='top-view'>
+            <image src='/res/img/common/common-avatar-default-icon.png' class='avatar'></image>
+            <view class='right-view'>
+                <view class='name OverFlowOneLine'>猪妈妈猪妈妈猪妈妈猪妈妈猪妈妈猪妈妈猪妈妈猪妈妈猪妈妈</view>
+                 <view class='time'>2017-09-14</view>
+            </view>
+        </view>
+
+        <view class='content'>content</view>
+    </view>
+</template>

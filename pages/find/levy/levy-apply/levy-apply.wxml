@@ -1,0 +1,14 @@
+<!--pages/find/levy/levy-apply/levy-apply.wxml-->
+<import src='/pages/address/info/address-info.wxml' />
+
+<view class='rceive-address-view'>
+    <image src='/res/img/my/order-detail/my-order-detail-address-icon.png' class='address-icon'></image>
+    <template is='address-info' data='{{...address}}'></template>
+</view>
+
+<form bindsubmit='submitTap'>
+    <textarea class='input-area-view' placeholder='请填写您的申请理由' name='input'></textarea>
+    <button class='submit-button' form-type='submit'>提交</button>
+</form>
+
+

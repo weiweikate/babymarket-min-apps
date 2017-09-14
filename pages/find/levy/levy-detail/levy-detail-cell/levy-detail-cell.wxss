@@ -1,0 +1,16 @@
+.levy-detail-cell{
+    display: flex;
+    margin-left: 22rpx;
+    margin-right: 22rpx;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 32rpx;
+    color: #494848;
+    height: 98rpx;
+    border-bottom: 2rpx solid #dbdbdb;
+}
+
+.levy-detail-cell .icon{
+    width: 16rpx;
+    height: 26rpx;
+}

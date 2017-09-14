@@ -1,11 +1,18 @@
-// levy.js
+// pages/find/levy/levy-report-detail/levy-report-detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      dataList:['','']
+    imageDatas:[
+        '/res/img/common/comm-icon-empty.png',
+        '/res/img/common/comm-icon-empty.png',
+        '/res/img/common/comm-icon-empty.png',
+        '/res/img/common/comm-icon-empty.png',
+        '',
+        '',
+        '']
   },
 
   /**
@@ -62,11 +69,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-
-  goDetail:function(){
-      wx.navigateTo({
-          url: '/pages/find/levy/levy-detail/levy-detail',
-      })
   }
 })

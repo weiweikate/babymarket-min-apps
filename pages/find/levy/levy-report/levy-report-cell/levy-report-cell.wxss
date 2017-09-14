@@ -1,0 +1,43 @@
+page{
+    background: #f3f4f5;
+}
+
+.levy-report-cell{
+    padding: 50rpx 22rpx;
+    background: white;
+    margin-bottom: 20rpx;
+}
+
+.levy-report-cell .top-view{
+    display: flex;
+}
+
+.levy-report-cell .avatar{
+    width: 110rpx;
+    height: 110rpx;
+    flex-shrink: 0;
+}
+
+.levy-report-cell .right-view{
+    margin-left: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.right-view .name{
+    font-size: 32rpx;
+    color: #090909;
+    margin-top: 8rpx;
+}
+
+.right-view .time{
+    font-size: 26rpx;
+    color: #494848;
+}
+
+.content{
+    font-size: 30rpx;
+    color: #494848;
+    margin-top: 46rpx;
+}

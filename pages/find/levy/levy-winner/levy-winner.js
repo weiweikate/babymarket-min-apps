@@ -1,11 +1,11 @@
-// levy.js
+// pages/find/levy/levy-winner/levy-winner.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      dataList:['','']
+    winnerList:['','']
   },
 
   /**
@@ -62,11 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-
-  goDetail:function(){
-      wx.navigateTo({
-          url: '/pages/find/levy/levy-detail/levy-detail',
-      })
   }
 })
