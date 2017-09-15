@@ -1,4 +1,6 @@
 // index.js
+let {Tool} = global
+
 Page({
 
     /**
@@ -25,14 +27,18 @@ Page({
             },
         ],
         signLeft:600,
-        signTop:880
+        signTop:880,
+        today:'',
+        todayHidden:true
     },
+    currentDate: new Date(),
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        //获取今天日期
+        this.updateDate(new Date());
     },
 
     /**
@@ -97,6 +103,9 @@ Page({
         })
     },
 
+    /**
+     * 四个工具 点击
+     */
     toolCellTap:function(e){
         let title = e.currentTarget.dataset.title;
         console.log(title);
@@ -109,16 +118,31 @@ Page({
 
     leftArrowTap:function(){
         console.log('日期减1');
+
+        let timeInterval = Tool.timeIntervalFromDate(this.currentDate, -24*3600);
+        let dateString = Tool.timeStringFromInterval(timeInterval, 'YYYY MM-DD HH:mm');
+        let date = Tool.dateFromString(dateString);
+
+        this.updateDate(date);
     },
 
     rightArrowTap: function () {
         console.log('日期加1');
+
+        let timeInterval = Tool.timeIntervalFromDate(this.currentDate, 24 * 3600);
+        let dateString = Tool.timeStringFromInterval(timeInterval, 'YYYY MM-DD HH:mm');
+        let date = Tool.dateFromString(dateString);
+
+        this.updateDate(date);
     },
 
     searchTap: function () {
         console.log('搜索');
     },
 
+    /**
+     * 签到图标 拖动
+     */
     signMove:function(e){ 
         let clientX = e.touches[0].clientX;
         let clientY = e.touches[0].clientY;
@@ -144,9 +168,40 @@ Page({
         });
     },
 
+    /**
+     * 签到 点击
+     */
     signTap:function(){
         wx.navigateTo({
             url: '../my/sign/sign',
         })
+    },
+
+    /**
+     * 今天图标 点击
+     */
+    todayTap:function(){
+        console.log('今天');
+    },
+
+    /**
+     * 更新当前日期
+     */
+    updateDate:function(date){
+        this.currentDate = date;
+        let dateString = Tool.timeStringForDate(date, 'MM月DD号');
+
+        let todayHidden = false;
+        let currentDateString = Tool.timeStringForDate(date, 'MM-DD');
+        let todayDateString = Tool.timeStringForDate(new Date(), 'MM-DD');
+        if (currentDateString === todayDateString){
+            todayHidden = true;
+        }
+
+        this.setData({
+            today:dateString,
+            todayHidden: todayHidden
+        })
     }
+
 })

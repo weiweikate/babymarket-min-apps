@@ -3,22 +3,39 @@
 <import src='/pages/index/cell/index-artical-cell/index-artical-cell.wxml' />
 <import src='/pages/index/cell/tool-cell/tool-cell.wxml' />
 
+<!--签到  -->
 <image class="sign-view" src="/res/img/index/index-sign-icon.png" catchtouchmove="signMove" catchtap="signTap" style="top:{{signTop}}rpx; left:{{signLeft}}rpx;"></image>
+
+<!--红色部分  -->
 <view class="header-view">
+
     <view class="top-view">
-        <view class="left-arrow" catchtap="leftArrowTap">
-            <image src="/res/img/index/index-left-arrow-white-icon.png" style="width:13rpx;height:25rpx;"></image>
-        </view>
-        <label class="date">8月1号</label>
-        <view class="right-arrow" catchtap="rightArrowTap">
-            <image src="/res/img/index/index-right-arrow-white-icon.png" style="width:13rpx;height:25rpx;"></image>
+
+        <!--今天图标  -->
+        <view class="{{todayHidden?'today-logo hidden':'today-logo'}}" catchtap='todayTap'>
+            <image src="/res/img/index/index-today-icon.png" style="width:31rpx;height:31rpx;" class='today-logo'></image>
         </view>
 
+        <view class='current-date-flex-view'>
+            <!--左箭头  -->
+            <view class="left-arrow" catchtap="leftArrowTap">
+                <image src="/res/img/index/index-left-arrow-white-icon.png" style="width:13rpx;height:25rpx;"></image>
+            </view>
+            <!--当前日期  -->
+            <label class="date OverFlowOneLine">{{today}}</label>
+            <!--右箭头  -->
+            <view class="right-arrow" catchtap="rightArrowTap">
+                <image src="/res/img/index/index-right-arrow-white-icon.png" style="width:13rpx;height:25rpx;"></image>
+            </view>
+        </view>
+
+        <!--搜索  -->
         <view class="search-icon" catchtap="searchTap">
             <image src="/res/img/index/index-search-white-icon.png" style="width:28rpx;height:27rpx;"></image>
         </view>
     </view>
 
+    <!--宝宝年龄  -->
     <label class="baby-age">2个月14天</label>
     <image src="/res/img/index/index-baby-avatar-icon.png" class="avatar"></image>
     <label class="name">cynthia</label>
