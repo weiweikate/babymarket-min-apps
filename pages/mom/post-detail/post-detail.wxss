@@ -1,0 +1,6 @@
+@import "/libs/wxParse/wxParse.wxss";
+.content-web{
+  background-color: white;
+   padding-left: 30rpx;
+  padding-right: 30rpx; 
+}

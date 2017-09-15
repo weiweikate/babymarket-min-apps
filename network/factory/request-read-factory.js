@@ -651,6 +651,27 @@ export default class RequestReadFactory {
         return req;
     }
 
+    // 宝妈圈-查询帖子详情
+    static postDetailRead(postId) {
+      let operation = Operation.sharedInstance().postReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": postId
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询帖子详情';
+      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "TotalViews",
+        "Commemt_Number", "Img_Member_Article_SendId","Article_Content"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        // let responseData = req.responseObject.Datas;
+        // this.parseMomPostData(responseData);
+      }
+      return req;
+    }
+
     // 宝妈圈-热帖查询
     static hotPostRead(index = 0) {
       let operation = Operation.sharedInstance().postReadOperation;

@@ -17,7 +17,7 @@ export default class Operation {
         if (__instance()) return __instance();
 
         // 便便诊所
-        this.advisoryReadOperation ='de9167ca-44b6-42da-bf20-a63d0116325d';
+        this.advisoryReadOperation = 'de9167ca-44b6-42da-bf20-a63d0116325d';
         // 宝妈圈-贴子查询
         this.postReadOperation = '459fcf50-c9db-40a1-8cf7-a63d0119205d';
         // 宝妈圈-圈子查询

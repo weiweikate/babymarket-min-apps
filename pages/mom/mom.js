@@ -354,13 +354,16 @@ Page({
     let currentTab = this.data.currentTab;
     if (currentTab == 2) {
       //进入圈子
-      console.log('进入圈子');
+      console.log('进入圈子' + id);
       wx.navigateTo({
         url: '../mom/mom-type/mom-type'
       })
     } else {
       //进入帖子详情
-      console.log('进入帖子详情');
+      console.log('进入帖子详情' + id);
+      wx.navigateTo({
+        url: '/pages/mom/post-detail/post-detail?id=' + id
+      })
     }
   },
   /**
