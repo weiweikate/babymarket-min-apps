@@ -656,13 +656,14 @@ export default class RequestReadFactory {
       let operation = Operation.sharedInstance().postReadOperation;
       let bodyParameters = {
         "Operation": operation,
-        "Id": postId
+        "Id": postId,
+        "IsIncludeSubtables": true
       };
 
       let req = new RequestRead(bodyParameters);
       req.name = '查询帖子详情';
       req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "TotalViews",
-        "Commemt_Number", "Img_Member_Article_SendId","Article_Content"];
+        "Commemt_Number", "Img_Member_Article_SendId"];
 
       //修改返回结果
       req.preprocessCallback = (req) => {

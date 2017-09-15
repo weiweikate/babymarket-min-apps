@@ -13,24 +13,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // let self = this;
-
-    // let urlStr = "http://mobile.topmom.com.cn/ArticleShare.aspx?Id=" + options.id;
-    // if (Storage.didLogin()) {
-    //   urlStr += "&MemberId=" + Storage.memberId();
-    // }
-    // wx.request({
-    //   url: urlStr,
-    //   header: {
-    //     'content-type': 'application/json'
-    //   },
-    //   success: function (res) {
-    //     let response = res.data;
-    //     let arry = response.split('<div class="ImgM" style="font-family: 微软雅黑;font-size: 16px;">');
-    //     let html = arry[1];
-    //     WxParse.wxParse('article', 'html', html, self, 0);
-    //   }
-    // })
     this.requestPostDetail(options.id);
   },
   /**
