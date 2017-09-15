@@ -2,16 +2,16 @@
 @import '/pages/index/cell/index-artical-cell/index-artical-cell.wxss';
 @import '/pages/index/cell/tool-cell/tool-cell.wxss';
 
- .sign-view{
+.sign-view {
     position: fixed;
     width: 130rpx;
     height: 130rpx;
     z-index: 20;
-} 
+}
 
 .header-view {
     width: 706rpx;
-    background: #ff5555;
+    background: #f55;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,10 +26,25 @@
     align-items: center;
 }
 
+.current-date-flex-view {
+    display: flex;
+    width: 360rpx;
+    margin-left: 120rpx;
+    margin-right: 120rpx;
+}
+
+.top-view .today-logo {
+    margin-left: 20rpx;
+    width: 60rpx;
+    height: 60rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .top-view .left-arrow {
     width: 60rpx;
     height: 60rpx;
-    margin-left: 228rpx;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +70,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 120rpx;
 }
 
 .baby-age {
@@ -97,11 +111,11 @@
     margin-top: 30rpx;
 }
 
-.index-artical-cell{
+.index-artical-cell {
     background: white;
 }
 
-.question-view{
+.question-view {
     padding: 40rpx 22rpx 40rpx 22rpx;
     display: flex;
     flex-direction: column;
@@ -109,24 +123,24 @@
     margin: 20rpx 0rpx;
 }
 
-.question-view .top-view{
+.question-view .top-view {
     height: 46rpx;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.top-view .title{
+.top-view .title {
     font-size: 26rpx;
-    color: #ff5555;
+    color: #f55;
 }
 
-.top-view .button{
+.top-view .button {
     font-size: 28rpx;
-    color: #ff5555; 
+    color: #f55;
     width: 196rpx;
     height: 46rpx;
-    border: 2rpx solid #ff5555;
+    border: 2rpx solid #f55;
     border-radius: 23rpx;
     text-align: center;
     line-height: 46rpx;
@@ -135,18 +149,22 @@
     justify-content: center;
 }
 
-.question-icon{
+.question-icon {
     margin-right: 10rpx;
 }
 
-.question-view .content{
+.question-view .content {
     margin-top: 30rpx;
     font-size: 30rpx;
     color: #494848;
 }
 
-.tool-view{
+.tool-view {
     padding: 0rpx 40rpx;
     background: white;
     display: flex;
+}
+
+.hidden{
+    opacity: 0;
 }

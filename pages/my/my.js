@@ -241,13 +241,6 @@ Page({
         r.finishBlock = (req) => {
             let datas = req.responseObject.Datas;
             datas.forEach((item, index) => {
-                // console.log('money1 :' + item.Money1);
-                // console.log('name :' + item.KHMC);
-
-                wx.setStorage({
-                    key: 'memberInfo',
-                    data: item,
-                })
 
                 //是否为内部员工
                 Storage.setInsideMember(item.Inside);
