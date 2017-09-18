@@ -1,34 +1,19 @@
+<import src='/pages/mom/cell-post-avatar/cell-post-avatar.wxml' />
 <template name="cell-post">
-    <view class="cell-post" catchtap="onItemClickListener" data-id="{{Id}}">
-        <!--头像／姓名／年龄/回复数量  -->
-        <view class="avatar-view">
-        <!--头像  -->
-        <image src="{{headImgUrl.length>0?headImgUrl:'/res/img/common/common-avatar-default-icon.png'}}" class="avatar-img" />
-        <view class="avatar-info">
-        <!--姓名  -->
-            <view class="name">{{name}}</view>
-            <view class="date-view">
-                <!--年龄  -->
-                <view class="age">{{age}}</view>
-                <!--回复数量  -->
-                <view class="reply-view" wx:if="{{isReply}}">
-                    <image class="reply-icon" src="/res/img/index/index-reply-black-icon.png" mode="aspectFit"/>
-                    <view class="replynum">{{replyNum}}</view>
-                </view>
-            </view>
-        </view>
-        </view>
-        <view class="title">{{title}}</view>
-        <view class="content OverFlowTwoLine">{{content}}</view>
-        <view class="bottom" wx:if="{{isBottom}}">
-            <view class="bottom-left">
-                <image class="icon-read" src="/res/img/mother-circle/mother-circle-eye-icon.png" mode="aspectFit"/>
-                <view class="num-read">{{readNum}}</view>
-            </view>
-            <view class="bottom-right">
-                <image class="icon-message" src="/res/img/mother-circle/mother-circle-comment-icon.png" mode="aspectFit" />
-                <view class="num-message">全部评论{{commemtNum}}</view>
-            </view>
-        </view>
+  <view class="cell-post" catchtap="onItemClickListener" data-id="{{Id}}">
+    <!--头像／姓名／年龄/回复数量  -->
+    <template is="cell-post-avatar" data="{{headImgUrl,name,age,isReply,replyNum}}" />
+    <view class="title">{{title}}</view>
+    <view class="content OverFlowTwoLine">{{content}}</view>
+    <view class="bottom" wx:if="{{isBottom}}">
+      <view class="bottom-left">
+        <image class="icon-read" src="/res/img/mother-circle/mother-circle-eye-icon.png" mode="aspectFit" />
+        <view class="num-read">{{readNum}}</view>
+      </view>
+      <view class="bottom-right">
+        <image class="icon-message" src="/res/img/mother-circle/mother-circle-comment-icon.png" mode="aspectFit" />
+        <view class="num-message">全部评论{{commemtNum}}</view>
+      </view>
     </view>
+  </view>
 </template>

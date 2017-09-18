@@ -656,19 +656,46 @@ export default class RequestReadFactory {
       let operation = Operation.sharedInstance().postReadOperation;
       let bodyParameters = {
         "Operation": operation,
-        "Id": postId,
-        "IsIncludeSubtables": true
+        "Id": postId
       };
 
       let req = new RequestRead(bodyParameters);
       req.name = '查询帖子详情';
-      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "TotalViews",
-        "Commemt_Number", "Img_Member_Article_SendId"];
+      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "Article_Content", "TotalViews",
+        "Commemt_Number", "Img_Member_Article_SendId", "RecommendId", "RecommendTitle" ,"LikeNumber"];
 
       //修改返回结果
       req.preprocessCallback = (req) => {
-        // let responseData = req.responseObject.Datas;
-        // this.parseMomPostData(responseData);
+        let responseData = req.responseObject.Datas;
+        this.parseMomPostData(responseData);
+      }
+      return req;
+    }
+
+    // 宝妈圈-查询帖子的评论
+    static postDiscussRead(postId) {
+      let operation = Operation.sharedInstance().postReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": "${Belong_ArticleId} == '" + postId + "' && ${BelongCommentId} == '00000000-0000-0000-0000-000000000000'",
+        "IsIncludeSubtables": true
+      };
+      
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询帖子的评论';
+      req.items = ["Id", "Replier_MemberId", "Replier_Member_ImgId", "BabyAge", "Commemt_Content",
+        "Commemt_ImgId", "CreateTime","Member_Article_Send_Name"];
+      req.subtables = [
+        "ReplyDetail"
+      ];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.Replier_Member_ImgId);
+          item.age = "宝宝" + item.BabyAge;
+        });
       }
       return req;
     }

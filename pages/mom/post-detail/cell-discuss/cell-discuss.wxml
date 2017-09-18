@@ -1,0 +1,29 @@
+<import src='/pages/mom/post-detail/cell-reply/cell-reply.wxml' />
+<template name="cell-discuss">
+  <!--头像／姓名／年龄/回复内容/回复时间/楼层数/回复按钮  -->
+  <view class="cell-discuss">
+    <!--头像  -->
+    <image src="{{headImgUrl.length>0?headImgUrl:'/res/img/common/common-avatar-default-icon.png'}}" class="avatar-img" />
+    <view class="avatar-info">
+      <view class='view-name-floor'>
+        <!--姓名  -->
+        <text class="name">{{Member_Article_Send_Name}}</text>
+        <!--楼层数  -->
+        <text class="floor">{{position+1}}楼</text>
+      </view>
+      <!--年龄  -->
+      <text class="age">{{age}}</text>
+      <!--内容  -->
+      <text class="content">{{Commemt_Content}}</text>
+      <block wx:for="{{ReplyDetail}}" wx:key="unique" wx:if="{{ReplyDetail.length > 0}}">
+        <template is="cell-reply" data="{{...item,position:index}}" />
+      </block>
+      <view class="view-date-reply">
+        <!--回复数量  -->
+        <image class="date-icon" src="/res/img/mom/mom-discuss-time.png" mode="aspectFit" />
+        <text class="date-text">{{CreateTime}}</text>
+        <text class="relpy-text">回复</text>
+      </view>
+    </view>
+  </view>
+</template>

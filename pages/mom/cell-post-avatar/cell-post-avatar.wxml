@@ -1,0 +1,20 @@
+<template name="cell-post-avatar">
+  <!--头像／姓名／年龄/回复数量  -->
+  <view class="cell-post-avatar">
+    <!--头像  -->
+    <image src="{{headImgUrl.length>0?headImgUrl:'/res/img/common/common-avatar-default-icon.png'}}" class="avatar-img" />
+    <view class="avatar-info">
+      <!--姓名  -->
+      <view class="name">{{name}}</view>
+      <view class="date-view">
+        <!--年龄  -->
+        <view class="age">{{age}}</view>
+        <!--回复数量  -->
+        <view class="reply-view" wx:if="{{isReply}}">
+          <image class="reply-icon" src="/res/img/index/index-reply-black-icon.png" mode="aspectFit" />
+          <view class="replynum">{{replyNum}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,6 +1,110 @@
 @import "/libs/wxParse/wxParse.wxss";
-.content-web{
-  background-color: white;
-   padding-left: 30rpx;
-  padding-right: 30rpx; 
+@import '/pages/mom/cell-post-avatar/cell-post-avatar.wxss';
+@import '/pages/mom/post-detail/cell-discuss/cell-discuss.wxss';
+
+.root-view {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+}
+
+.view-avatar {
+  padding: 30rpx;
+}
+
+.title {
+  font-size: 30rpx;
+  color: #090909;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.content-web {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.view-discuss {
+  padding: 20rpx 30rpx 0rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.view-discuss .all-tip {
+  font-size: 28rpx;
+  color: #7d7f81;
+}
+
+.view-guess {
+  padding: 20rpx 30rpx 0rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.view-guess .guess-info {
+  display: flex;
+  align-items: center;
+}
+
+.guess-info .tip {
+  font-size: 28rpx;
+  color: #7d7f81;
+  flex-grow: 1;
+}
+
+.guess-info .praise-icon {
+  width: 38rpx;
+  height: 35rpx;
+  flex: none;
+}
+
+.guess-info .praise-count {
+  font-size: 24rpx;
+  color: #7d7f81;
+  margin-left: 10rpx;
+}
+
+.guess-info .discuss-icon {
+  width: 35rpx;
+  height: 29rpx;
+  flex: none;
+  margin-left: 30rpx;
+}
+
+.guess-info .discuss-count {
+  font-size: 24rpx;
+  color: #7d7f81;
+  margin-left: 10rpx;
+}
+
+.view-guess .guess-title {
+  font-size: 32rpx;
+  color: #090909;
+  margin-top: 10rpx;
+}
+
+.view-guess .guess-total {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}
+
+.guess-total .texts {
+  font-size: 28rpx;
+  color: #7d7f81;
+}
+
+.guess-total .read-icon {
+  width: 35rpx;
+  height: 21rpx;
+  flex: none;
+  margin-left: 20rpx;
+}
+
+.guess-total .read-count {
+  font-size: 24rpx;
+  color: #7d7f81;
+  margin-left: 10rpx;
 }

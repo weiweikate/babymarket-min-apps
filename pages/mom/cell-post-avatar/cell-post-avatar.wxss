@@ -1,0 +1,49 @@
+.cell-post-avatar {
+  display: flex;
+  align-items: center;
+}
+
+.cell-post-avatar .avatar-img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+
+.cell-post-avatar .avatar-info {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar-info .name {
+  font-size: 30rpx;
+  color: #090909;
+}
+
+.avatar-info .date-view {
+  display: flex;
+  margin-top: 10rpx;
+}
+
+.date-view .age {
+  font-size: 26rpx;
+  color: #acadaa;
+  flex-grow: 1;
+}
+
+.date-view .reply-view {
+  display: flex;
+  align-items: center;
+}
+
+.reply-view .reply-icon {
+  width: 32rpx;
+  height: 32rpx;
+  flex: none;
+}
+
+.reply-view .replynum {
+  font-size: 26rpx;
+  color: #acadad;
+  margin-left: 5rpx;
+}

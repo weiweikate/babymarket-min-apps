@@ -1,0 +1,9 @@
+<template name="cell-reply">
+  <!--头像／姓名／年龄/回复内容/回复时间/楼层数/回复按钮  -->
+  <view class="cell-reply">
+    <!--姓名  -->
+    <text class="reply-name">{{ReplyMemberName}}</text>
+    <!--内容  -->
+    <text class="reply-content">{{CommemtContent}}</text>
+  </view>
+</template>

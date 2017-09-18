@@ -1,5 +1,34 @@
 <import src="/libs/wxParse/wxParse.wxml" />
+<import src='/pages/mom/cell-post-avatar/cell-post-avatar.wxml' />
+<import src='/pages/mom/post-detail/cell-discuss/cell-discuss.wxml' />
 
-<view class='content-web'>
-  <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+<view class='root-view'>
+  <view class='view-avatar'>
+    <template is="cell-post-avatar" data="{{headImgUrl:postData.headImgUrl,name:postData.name,age:postData.age}}" />
+  </view>
+  <text class="title">{{postData.title}}</text>
+  <view class='content-web'>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+  <view class='view-discuss' wx:if="{{discussArray.length > 0}}">
+    <text class="all-tip">全部回帖</text>
+    <block wx:for="{{discussArray}}" wx:key="unique">
+      <template is="cell-discuss" data="{{...item,position:index}}" />
+    </block>
+  </view>
+  <view class='view-guess'>
+    <view class='guess-info'>
+      <text class="tip">猜你喜欢</text>
+      <image class="praise-icon" src="{{isParise?'/res/img/mom/mom-praise-s.png':'/res/img/mom/mom-praise-n.png'}}" mode="aspectFit" />
+      <text class="praise-count">{{postData.LikeNumber}}</text>
+      <image class="discuss-icon" src="/res/img/mom/mom-discuss-n.png" mode="aspectFit" />
+      <text class="discuss-count">{{postData.commemtNum}}</text>
+    </view>
+    <text class="guess-title">{{postData.RecommendTitle}}</text>
+    <view class='guess-total'>
+      <text class="texts">文章</text>
+      <image class="read-icon" src="/res/img/mother-circle/mother-circle-eye-icon.png" mode="aspectFit" />
+      <text class="read-count">{{postData.readNum}}</text>
+    </view>
+  </view>
 </view>

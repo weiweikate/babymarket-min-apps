@@ -1,0 +1,18 @@
+.cell-reply {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rpx;
+  padding: 15rpx;
+  background: #fafafa;
+}
+
+.cell-reply .reply-name {
+  font-size: 24rpx;
+  color: #83c3bf;
+}
+
+.cell-reply .reply-content {
+  font-size: 26rpx;
+  color: black;
+  margin-top: 5rpx;
+}

@@ -82,6 +82,9 @@ export default class Request {
         //要返回的字段
         this.items = [];
 
+        //要返回的子表字段
+        this.subtables = [];
+
         //     "Appendixes": [
         //     {
         //         "$DataKey": "ZDSD.ed0d67cb-9a93-434c-9d9a-a57e00df2d99",

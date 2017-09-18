@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    postData: null
+    postData: null,
+    discussArray:[]
   },
 
   /**
@@ -30,6 +31,25 @@ Page({
           postData: postData
         });
         WxParse.wxParse('article', 'html', postData.Article_Content, self, 0);
+      }
+      self.requestPostDiscuss(id);
+    };
+    task.addToQueue();
+  },
+  /**
+   * 查询热帖的评论
+   */
+  requestPostDiscuss: function (id) {
+    let self = this;
+    let task = RequestReadFactory.postDiscussRead(id);
+    task.finishBlock = (req) => {
+      let count = req.responseObject.Count;
+      if (count > 0) {
+        let responseData = req.responseObject.Datas;
+        this.setData({
+          discussArray: responseData
+        });
+        console.log(responseData);
       }
     };
     task.addToQueue();

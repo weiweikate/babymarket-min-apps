@@ -25,6 +25,7 @@ export default class RequestRead extends Request {
         key === 'Appendixes' ||
         key === 'AppendixesFormatType' ||
         key === 'IsIncludeSubtables' ||
+        key === 'Subtables' ||
         key === 'View' ||
         key === 'IsIncludeLong'||
         key === '_SESSION_' ||
@@ -38,6 +39,9 @@ export default class RequestRead extends Request {
 
         if (Tool.isValidArr(this.items)) {
             this.bodyParam['Items'] = this.items;
+        }
+        if (Tool.isValidArr(this.subtables)) {
+          this.bodyParam['Subtables'] = this.subtables;
         }
         if (Tool.isValidObject(this.appendixes)) {
             this.bodyParam['Appendixes'] = this.appendixes;
