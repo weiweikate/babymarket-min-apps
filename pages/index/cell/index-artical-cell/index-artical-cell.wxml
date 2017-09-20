@@ -4,9 +4,9 @@
         <image src="/res/img/index/index-cell-teach-icon.png" class="left-icon"></image>
 
         <view class="right-view">
-            <label class="subject">育儿头条</label>
-            <label class="title">宝宝天生具备的能力</label>
-            <label class="content">付款点击萨克拉飞机都是垃圾</label>
+            <label class="subject OverFlowOneLine">{{ArticalName}}</label>
+            <label class="title OverFlowOneLine">{{MainTitle}}</label>
+            <label class="content OverFlowOneLine">{{SubTitle}}</label>
         </view>
     </view>
 </template>

@@ -36,12 +36,12 @@
     </view>
 
     <!--宝宝年龄  -->
-    <label class="baby-age">2个月14天</label>
-    <image src="/res/img/index/index-baby-avatar-icon.png" class="avatar"></image>
-    <label class="name">cynthia</label>
-    <label class="height-weight">50.3-60.5cm/12.5-17.5kg</label>
+    <label class="baby-age">{{babyAge}}</label>
+    <image src="{{babyImageUrl}}" class="avatar"></image>
+    <label class="name">{{babyName}}</label>
+    <label class="height-weight">{{weightHeight}}</label>
     <view class="desp">
-        <image src="/res/img/index/index-heart-icon.png" style="width:17rpx;height:16rpx"></image> 等级分类交付了的；是靠近阿道夫了可是解放路撒可点击解放东路空数据发了范德萨
+        <image src="/res/img/index/index-heart-icon.png" style="width:17rpx;height:16rpx"></image>{{ageDesp}}
     </view>
     
 </view>
@@ -58,7 +58,7 @@
             <label>我要提问</label>
         </view>
     </view>
-    <label class="content">觉得拉萨肌肤疯狂的撒</label>
+    <label class="content">{{questionContent}}</label>
 </view>
 
 <view class="tool-view">
