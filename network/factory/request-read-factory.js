@@ -636,7 +636,7 @@ export default class RequestReadFactory {
             },
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '购物车查询';
+        req.name = '便便诊所查询';
         req.items = ["Id","CreateTime","Head_PictureId","Is_Answer","Else_Add","MemberId",
         "GenderKey","BabyAge","Num"];
         req.appendixesKeyMap = { 'Member': 'MemberId' };//可以多个
@@ -828,4 +828,108 @@ export default class RequestReadFactory {
       }
       return req;
     }
+
+    //首页 宝宝年龄段描述 查询
+    static requestAgeDescriptionWithDay(days) {
+        let operation = Operation.sharedInstance().babyAgeDespReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": "${Day} == " + days
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '首页 宝宝年龄段描述 查询';
+        return req;
+    }
+
+    //录入最大年龄 查询
+    static requestAgeMax() {
+        let operation = Operation.sharedInstance().babyAgeDespReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '录入最大年龄 查询';
+        return req;
+    }
+
+    //首页文章 查询
+    static requestHomeArticalWithDays(days) {
+        let operation = Operation.sharedInstance().homeArticalReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": "${Day} == " + days,
+            "Appendixes": {
+                "+IndexArticleClassify": [
+                    "Name"
+                ],
+                "+BirthMonthDay": [
+                    "MonthDay"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '首页文章 查询';
+        req.appendixesKeyMap = { 'IndexArticleClassify': 'IndexArticleClassifyId', 'BirthMonthDay': 'BirthMonthDayId' };//可以多个
+        req.items = ["Id", "MainTitle", "SubTitle", "IndexArticleClassifyId", "BirthMonthDayId", "Day"];
+
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            if (key === 'IndexArticleClassify') {
+                //给data添加新属性
+                data.ArticalName = appendixe.Name;
+            }
+
+            if (key === 'BirthMonthDay') {
+                //给data添加新属性
+                data.MonthDay = appendixe.MonthDay;
+            }
+        };
+        return req;
+    }
+
+    //孕育问答 查询
+    static requestQAWithCondition(condition, index, count) {
+        let operation = Operation.sharedInstance().questionReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "Order": "${CreateTime} DESC",
+            "MaxCount": count,
+            "StartIndex": index,
+            "Appendixes": {
+                "+AskMember": [
+                    "ImgId",
+                    "NickName"
+                ],
+                "+ReplierMember": [
+                    "NickName",
+                    "ImgId"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '孕育问答 查询';
+        req.appendixesKeyMap = { 'Member': 'AskMemberId', 'ReplierMember': 'ReplierMemberId' };//可以多个
+        req.items = ["Id", 
+            "AskMemberId",
+            "CreateTime",
+            "Que",
+            "MonthDay",
+            "ReplierNumber",
+            "ReplierMemberId",
+            "IsAnonymity",
+            "Attachments",
+            "BreedQueAnsId",
+            "IsHandpick"];
+
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            if (key === 'Member') {
+                //给data添加新属性
+                data.NickName = appendixe.NickName;
+            }
+        };
+        return req;
+    }
+    
 }

@@ -21,13 +21,15 @@
 
 .header-view .top-view {
     width: 100%;
-    height: 128rpx;
+    height: 78rpx;
     display: flex;
     align-items: center;
+    margin-top: 40rpx;
 }
 
 .current-date-flex-view {
     display: flex;
+    align-items: center;
     width: 360rpx;
     margin-left: 120rpx;
     margin-right: 120rpx;
