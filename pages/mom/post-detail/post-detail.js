@@ -7,7 +7,7 @@ Page({
    */
   data: {
     postData: null,
-    discussArray:[]
+    discussArray: []
   },
 
   /**
@@ -49,10 +49,36 @@ Page({
         this.setData({
           discussArray: responseData
         });
-        console.log(responseData);
       }
     };
     task.addToQueue();
   },
+  /**
+   * 回复
+   */
+  onReplyListener: function (e) {
+    console.log(e)
+  },
+  /**
+   * 评论
+   */
+  onDiscussListener: function (e) {
+    console.log(e)
+  },
+  /**
+   * 点赞
+   */
+  onPraiseListener: function (e) {
+    console.log(e)
+  },
+  /**
+   * 猜你喜欢点击，进入下个帖子
+   */
+  onGuessListener: function (e) {
+    let postId = e.currentTarget.dataset.id;
+    wx.redirectTo({
+      url: '/pages/mom/post-detail/post-detail?id=' + postId
+    })
+  }
 
 })
