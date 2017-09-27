@@ -27,6 +27,13 @@ export default class Operation {
         // 宝妈圈-大家都在搜查询
         this.recordReadOperation = 'd734db6e-2322-4a81-bfca-a68e00af1389';
 
+        // 首页-宝宝年龄段描述查询
+        this.babyAgeDespReadOperation = '5685c0ea-609e-4844-a2e4-a68600aae0ed';
+        // 首页-文章查询
+        this.homeArticalReadOperation = '568b4f34-2b12-48ff-b8dc-a68600af2af9';
+
+        // 孕育问答 查询
+        this.questionReadOperation = '5107b45e-6f9d-4383-bdfa-a68600b56711'
 
         //首页-广告位
         this.homeAdReadOperation = 'b412ff1c-c19b-4250-b479-a61e0085a868';
@@ -64,7 +71,7 @@ export default class Operation {
         this.cartAddWriteOperation = '';
 
         //用户信息
-        this.memberInfoReadOperation = 'b83b9dc9-5568-0c67-1926-3c1701fb385b';
+        this.memberInfoReadOperation = 'cf71ab3d-ed28-4541-819b-a62c00f4ed2d';
 
         //购物车
         this.cartReadOperation = '0a8ed48f-088f-0ca3-0c43-3c290052b69b';
@@ -84,9 +91,6 @@ export default class Operation {
         //地区
         this.areaReadOperation = '7e179d1c-ab1c-0352-0a44-393c01c0abf4';
 
-        //优惠劵
-        this.couponReadOperation = 'ac4b38e9-45ce-0626-2fc2-3c3b000e731f';
-
         //订单
         this.orderAddOperation = 'c65c46b6-b12e-0e57-28fe-3c1900223872';
         this.orderDeleteOperation = '';
@@ -99,36 +103,6 @@ export default class Operation {
         //完善信息
         this.informationCompleteReadOperation = '';
         this.informationCompleteWriteOperation = '';
-
-        //提现
-        this.withdrawAddOperation = '';
-        this.withdrawReadOperation = '';
-
-        //支付宝账号
-        this.alipayAccountAddOperation = '89f9cea6-ffa1-47c5-afe0-a75f00fee459';
-        this.alipayAccountReadOperation = '6b3453e1-4643-4a57-a4d9-a75f00ff120d';
-
-        //收藏
-        this.favReadOperation = 'ad5b7994-a09c-0aa9-35fe-3c3b0004d9af';
-
-        //提现
-        this.withdrawAddOperation = '22572f16-f23c-0907-11f1-3e570121be67';
-        this.withdrawReadOperation = '2ec381c4-c12f-4938-8f9f-a75c009f612d';
-
-        //验证码
-        this.verifyCodeAddOperation = '47d7a940-ab9e-04dc-2029-3c2701c073ba';
-
-        //支付密码
-        this.payPasswordAddOperation = 'd398c8f4-195e-4135-bbf4-a75f00fcc241';
-
-        //我的资产
-        this.balanceLogMonthReadOperation = 'a0d1c6cb-0618-008d-3073-3e5e0059b80b';
-
-        //我收到的奖励
-        this.awardReadOperation = '82f1f24c-e796-4d4c-8afb-a75c009c282d';
-
-        //已省金额
-        this.saveReadOperation = 'def432e0-c6b8-4bef-8ed3-a75c009c3aed';
 
         __instance(this);
     }

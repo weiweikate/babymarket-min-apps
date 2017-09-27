@@ -16,6 +16,7 @@
     height: 98rpx;
     margin-left: 18rpx;
     margin-top: 40rpx;
+    flex-shrink: 0;
 }
 
 .right-view {
