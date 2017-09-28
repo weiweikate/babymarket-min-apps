@@ -850,13 +850,14 @@ export default class RequestReadFactory {
 
       let req = new RequestRead(bodyParameters);
       req.name = '宝妈圈-详情查询';
-      // req.items = ["Id", "Name", "Introduction", "Small_ImgId"];
+      req.items = ["Id", "Name","ImgId", "Introduction", "Small_ImgId"];
 
       //修改返回结果
       req.preprocessCallback = (req) => {
         let responseData = req.responseObject.Datas;
         responseData.forEach((item, index) => {
           item.headImgUrl = global.Tool.imageURLForId(item.Small_ImgId);
+          item.bgImgUrl = global.Tool.imageURLForId(item.ImgId);
         });
       }
       return req;

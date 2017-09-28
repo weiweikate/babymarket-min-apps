@@ -380,17 +380,17 @@ Page({
    */
   onItemClickListener: function (e) {
     let id = e.currentTarget.dataset.id;
-    let title = e.currentTarget.dataset.title;
     let currentTab = this.data.currentTab;
     if (currentTab == 2) {
       //进入圈子
-      console.log('进入圈子' + id);
+      let title = e.currentTarget.dataset.title;
+      let attentionId = e.currentTarget.dataset.attentionId;
+      let isAttention = e.currentTarget.dataset.attention;
       wx.navigateTo({
-        url: '../mom/mom-type/mom-type?id=' + id + "&title=" + title
+        url: '/pages/mom/circle-detail/circle-detail?id=' + id + "&title=" + title + "&attentionId=" + attentionId + "&isAttention=" + isAttention
       })
     } else {
       //进入帖子详情
-      console.log('进入帖子详情' + id);
       wx.navigateTo({
         url: '/pages/mom/post-detail/post-detail?id=' + id
       })

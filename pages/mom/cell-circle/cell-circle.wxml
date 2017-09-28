@@ -1,5 +1,5 @@
 <template name="cell-circle">
-  <view class="cell-circle" catchtap="onItemClickListener" data-id="{{Id}}" data-title="{{title}}">
+  <view class="cell-circle" catchtap="onItemClickListener" data-id="{{Id}}" data-title="{{title}}" data-attention-id="{{attentionId}}" data-attention="{{isAttention}}">
     <image class="head-img" src="{{headImgUrl.length>0?headImgUrl:'/res/img/common/common-avatar-default-icon.png'}}" />
     <view class="info">
       <text class="name">{{title}}</text>

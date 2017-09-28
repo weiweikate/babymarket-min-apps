@@ -41,7 +41,6 @@
     "pages/eat/eat-food-list/eat-food-list",
     "pages/my/coins/coins",
     "pages/my/coins/recharge/recharge",
-    "pages/mom/mom-type/mom-type",
     "pages/my/baby-diary/baby-diary",
     "pages/my/baby-diary/baby-diary-detail/baby-diary-detail",
     "pages/my/baby-diary/add-baby-diary/add-baby-diary",
@@ -61,6 +60,7 @@
     "pages/find/levy/levy-report-detail/levy-report-detail",
     "pages/find/levy/levy-winner/levy-winner",
     "pages/find/levy/levy-apply/levy-apply",
+    "pages/mom/circle-detail/circle-detail",
     "pages/mom/post-detail/post-detail"
   ],
   "window": {
