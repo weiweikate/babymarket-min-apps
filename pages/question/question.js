@@ -1,4 +1,7 @@
 // question.js
+
+let { Tool, Storage, RequestReadFactory } = global
+
 Page({
 
     /**
@@ -17,14 +20,14 @@ Page({
             },
         ],
         currentTab:0,
-        listDatas:['','']
+        listDatas:[]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.requestData(this.data.currentTab);
     },
 
     /**
@@ -54,6 +57,7 @@ Page({
     onUnload: function () {
 
     },
+    
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
@@ -106,5 +110,25 @@ Page({
 
     bestCellTap: function(e) {
         console.log('点击cell' + e.currentTarget.dataset.index);
+    },
+
+    /**
+    * 孕育问答
+    */
+    requestData: function (tabIndex) {
+        let condition = "${BreedQueAnsId} == '" + global.TCGlobal.EmptyId + "'";
+        let r = RequestReadFactory.requestQAWithCondition(condition, 0, 20);
+        let self = this;
+        r.finishBlock = (req) => {
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                
+            });
+
+            self.setData({
+                listDatas: datas
+            })
+        };
+        r.addToQueue();
     },
 })
