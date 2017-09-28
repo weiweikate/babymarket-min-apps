@@ -672,6 +672,57 @@ export default class RequestReadFactory {
       return req;
     }
 
+    // 宝妈圈-查询帖子是否被我点赞
+    static isPostPraiseRead(postId) {
+      let operation = Operation.sharedInstance().postPraiseReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "ArticleId": postId,
+        "MemberId": global.Storage.memberId(),
+        "MaxCount": "0"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询帖子是否被我点赞';
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let total = req.responseObject.Total;
+        req.responseObject.isPraise = total > 0;
+      }
+      return req;
+    }
+
+    // 宝妈圈-查询帖子是否被我收藏
+    static isPostCollectRead(postId) {
+      let operation = Operation.sharedInstance().postCollectReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "SourceId": postId,
+        "Collect_MemberId": global.Storage.memberId(),
+        "MaxCount": "1"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询帖子是否被我收藏';
+      req.items = ["Id"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let count = req.responseObject.Count;
+        if(count>0){
+          req.responseObject.isCollect = true;
+          let collectId = req.responseObject.Datas[0].Id;
+          req.responseObject.collectId = collectId;
+        }else{
+          req.responseObject.isCollect = false;
+          req.responseObject.collectId = '';
+        }
+        console.log(req.responseObject)
+      }
+      return req;
+    }
+
     // 宝妈圈-查询帖子的评论
     static postDiscussRead(postId) {
       let operation = Operation.sharedInstance().postReadOperation;
@@ -788,6 +839,29 @@ export default class RequestReadFactory {
       }
       return req;
     }
+
+    // 宝妈圈-宝妈圈详情查询
+    static circleDetailRead(id) {
+      let operation = Operation.sharedInstance().circleReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": id
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '宝妈圈-详情查询';
+      // req.items = ["Id", "Name", "Introduction", "Small_ImgId"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.Small_ImgId);
+        });
+      }
+      return req;
+    }
+
     // 宝妈圈-所有圈关注列表查询
     static allCircleAttentionRead() {
       let operation = Operation.sharedInstance().circleAttentionReadOperation;
@@ -798,14 +872,11 @@ export default class RequestReadFactory {
 
       let req = new RequestRead(bodyParameters);
       req.name = '宝妈圈-所有圈关注列表查询';
-      req.items = ["ModuleappId"];
+      req.items = ["Id","ModuleappId"];
 
       //修改返回结果
       req.preprocessCallback = (req) => {
         let responseData = req.responseObject.Datas;
-        responseData.forEach((item, index) => {
-          item.Id = item.ModuleappId;
-        });
       }
       return req;
     }

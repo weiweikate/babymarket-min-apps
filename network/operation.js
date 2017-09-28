@@ -20,10 +20,26 @@ export default class Operation {
         this.advisoryReadOperation = 'de9167ca-44b6-42da-bf20-a63d0116325d';
         // 宝妈圈-贴子查询
         this.postReadOperation = '459fcf50-c9db-40a1-8cf7-a63d0119205d';
+        // 宝妈圈-贴子新增
+        this.postAddOperation = '9f0deed4-76cc-4a3f-9340-a63d01193c7d';
+        // 宝妈圈-贴子点赞新增
+        this.postPraiseAddOperation = '627fc402-8626-4615-bd11-a6db0106d461';
+        // 宝妈圈-贴子点赞查询
+        this.postPraiseReadOperation = 'd06340d6-aea6-002f-0b1a-3fd901f4ab87';
+        // 宝妈圈-贴子收藏新增
+        this.postCollectAddOperation = 'dd2586b6-37f9-4b81-89b5-a63d0119b789';
+        // 宝妈圈-贴子收藏查询
+        this.postCollectReadOperation = '50a1b87d-e2b1-43f6-aa4e-a63d01199dc1';
+        // 宝妈圈-贴子收藏删除
+        this.postCollectDeleteOperation = 'b6fdfd74-bde5-4af5-90ae-a63d0119ee9d';
         // 宝妈圈-圈子查询
         this.circleReadOperation = '1e9cea5e-ea22-486f-b2cb-a63d011834d1';
         // 宝妈圈-圈子是否关注查询
         this.circleAttentionReadOperation = '7c05789f-d478-4a22-9e9c-a63d01189741';
+        // 宝妈圈-圈子新增关注
+        this.circleAttentionAddOperation = '96cac357-8b6c-459a-bd07-a63d0118aeb1';
+        // 宝妈圈-圈子取消关注
+        this.circleAttentionDeleteOperation = '27fc1943-83c8-4b94-8158-a63d0118f17d';
         // 宝妈圈-大家都在搜查询
         this.recordReadOperation = 'd734db6e-2322-4a81-bfca-a68e00af1389';
 

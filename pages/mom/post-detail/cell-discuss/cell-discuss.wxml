@@ -22,7 +22,7 @@
         <!--回复数量  -->
         <image class="date-icon" src="/res/img/mom/mom-discuss-time.png" mode="aspectFit" />
         <text class="date-text">{{CreateTime}}</text>
-        <text class="relpy-text" catchtap="onReplyListener" data-id="{{Id}}">回复</text>
+        <text class="relpy-text" catchtap="onReplyListener" data-id="{{Id}}" data-name="{{Member_Article_Send_Name}}">回复</text>
       </view>
     </view>
   </view>

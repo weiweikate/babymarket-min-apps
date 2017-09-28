@@ -10,6 +10,13 @@
   <view class='content-web'>
     <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
+  <view class="view-btns">
+    <image class="collect-icon" src="{{isCollect?'/res/img/mom/mom-collect-s.png':'/res/img/mom/mom-collect-n.png'}}" mode="aspectFit" catchtap="onCollectListener" data-id="{{postData.Id}}" />
+    <image class="praise-icon" src="{{isPraise?'/res/img/mom/mom-praise-s.png':'/res/img/mom/mom-praise-n.png'}}" mode="aspectFit" catchtap="onPraiseListener" data-id="{{postData.Id}}" />
+    <text class="praise-count">{{postData.LikeNumber}}</text>
+    <image class="discuss-icon" src="/res/img/mom/mom-discuss-n.png" mode="aspectFit" catchtap="onDiscussListener" data-id="{{postData.Id}}" />
+    <text class="discuss-count">{{postData.commemtNum}}</text>
+  </view>
   <view class='view-discuss' wx:if="{{discussArray.length > 0}}">
     <text class="all-tip">全部回帖</text>
     <block wx:for="{{discussArray}}" wx:key="unique">
@@ -17,13 +24,7 @@
     </block>
   </view>
   <view class='view-guess'>
-    <view class='guess-info'>
-      <text class="tip">猜你喜欢</text>
-      <image class="praise-icon" src="{{isParise?'/res/img/mom/mom-praise-s.png':'/res/img/mom/mom-praise-n.png'}}" mode="aspectFit" catchtap="onPraiseListener" data-id="{{postData.Id}}" />
-      <text class="praise-count">{{postData.LikeNumber}}</text>
-      <image class="discuss-icon" src="/res/img/mom/mom-discuss-n.png" mode="aspectFit" catchtap="onDiscussListener" data-id="{{postData.Id}}" />
-      <text class="discuss-count">{{postData.commemtNum}}</text>
-    </view>
+    <text class='guess-tips'>猜你喜欢</text>
     <text class="guess-title" catchtap="onGuessListener" data-id="{{postData.RecommendId}}">{{postData.RecommendTitle}}</text>
     <view class='guess-total'>
       <text class="texts">文章</text>
@@ -31,4 +32,8 @@
       <text class="read-count">{{postData.readNum}}</text>
     </view>
   </view>
+</view>
+
+<view class='view-send'>
+  <input class='input-send' value='{{discussContent}}' placeholder='{{discussHint}}' confirm-type='send' catchfocus='onFocusListener' catchblur='onFocusNoListener' catchconfirm='onSendListener' focus='{{focus}}' data-post-id='{{postData.Id}}'></input>
 </view>

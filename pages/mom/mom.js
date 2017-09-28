@@ -1,5 +1,5 @@
 //宝妈圈
-let { Tool, Storage, RequestReadFactory } = global;
+let { Tool, Storage, RequestReadFactory, RequestWriteFactory } = global;
 Page({
 
   /**
@@ -194,9 +194,11 @@ Page({
       let responseData = req.responseObject.Datas;
       let allCircleList = this.data.allCircleList;
       allCircleList.forEach((item, index) => {
+        item.isAttention = false;
         responseData.forEach((item2, index2) => {
-          if (item.Id == item2.Id) {
+          if (item.Id == item2.ModuleappId) {
             item.isAttention = true;
+            item.attentionId = item2.Id;
             return;
           }
         });
@@ -312,7 +314,34 @@ Page({
       });
     }
   },
+  /**
+   * 新增圈子关注
+   */
+  requestAddCircleAttention: function (requestData) {
+    let self = this;
+    let task = RequestWriteFactory.addCircleAttention(requestData);
+    task.finishBlock = (req) => {
+      //重新请求关注数据
+      self.requestCircleAttention();
 
+      Tool.showSuccessToast("已关注");
+    };
+    task.addToQueue();
+  },
+  /**
+   * 取消圈子关注
+   */
+  requestDeleteCircleAttention: function (attentionId) {
+    let self = this;
+    let task = RequestWriteFactory.deleteCircleAttention(attentionId);
+    task.finishBlock = (req) => {
+      //重新请求关注数据
+      self.requestCircleAttention();
+
+      Tool.showSuccessToast("取消关注");
+    };
+    task.addToQueue();
+  },
   createPostTap: function () {
     console.log('发帖');
   },
@@ -351,12 +380,13 @@ Page({
    */
   onItemClickListener: function (e) {
     let id = e.currentTarget.dataset.id;
+    let title = e.currentTarget.dataset.title;
     let currentTab = this.data.currentTab;
     if (currentTab == 2) {
       //进入圈子
       console.log('进入圈子' + id);
       wx.navigateTo({
-        url: '../mom/mom-type/mom-type'
+        url: '../mom/mom-type/mom-type?id=' + id + "&title=" + title
       })
     } else {
       //进入帖子详情
@@ -371,22 +401,26 @@ Page({
    */
   onAttentionListener: function (e) {
     let id = e.currentTarget.dataset.id;
-    let attention = e.currentTarget.dataset.attention;
-    console.log(e.currentTarget.dataset);
-    console.log(id);
-    console.log(attention);
+    let attentionId = e.currentTarget.dataset.attentionId;
+    let isAttention = e.currentTarget.dataset.attention;
     if (Storage.didLogin()) {
       //已登录，取消关注或关注
-      if (attention) {
+      Tool.showLoading();
+
+      if (isAttention) {
         //取消关注
-        console.log('取消关注');
+        this.requestDeleteCircleAttention(attentionId);
       } else {
-        //取消关注
-        console.log('关注');
+        //关注
+        let requestData = new Object();
+        requestData.ModuleappId = id;
+        requestData.MemberId = Storage.memberId();
+
+        this.requestAddCircleAttention(requestData);
       }
     } else {
       //请先登录
-      console.log('请先登录');
+      Tool.showAlert("请先登录");
     }
   }
 

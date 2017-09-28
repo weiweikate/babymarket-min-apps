@@ -276,4 +276,70 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //新增帖子评论
+    static addPostDiscuss(requestData) {
+      let operation = Operation.sharedInstance().postAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'Article', requestData, operation, null);
+      req.name = '新增帖子评论';
+      return req;
+    }
+
+    //新增帖子点赞
+    static addPostPraise(requestData) {
+      let operation = Operation.sharedInstance().postPraiseAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'ArticleLike', requestData, operation, null);
+      req.name = '新增帖子点赞';
+      return req;
+    }
+
+    //新增帖子收藏
+    static addPostCollect(requestData) {
+      let operation = Operation.sharedInstance().postCollectAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'Article_Collect', requestData, operation, null);
+      req.name = '新增帖子收藏';
+      return req;
+    }
+
+    //删除帖子收藏
+    static deletePostCollect(collectId) {
+      let operation = Operation.sharedInstance().postCollectDeleteOperation;
+      let status = Network.sharedInstance().statusDelete;
+      let params = {
+        "Id": collectId
+      };
+
+      let req = new RequestWrite(status, 'Article_Collect', params, operation, null);
+      req.name = '删除帖子收藏';
+      return req;
+    }
+
+    //取消圈子关注
+    static deleteCircleAttention(attentionId) {
+      let operation = Operation.sharedInstance().circleAttentionDeleteOperation;
+      let status = Network.sharedInstance().statusDelete;
+      let params = {
+        "Id": attentionId
+      };
+
+      let req = new RequestWrite(status, 'Module_Attention', params, operation, null);
+      req.name = '取消圈子关注';
+      return req;
+    }
+
+    //新增圈子关注
+    static addCircleAttention(requestData) {
+      let operation = Operation.sharedInstance().circleAttentionAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'Module_Attention', requestData, operation, null);
+      req.name = '新增圈子关注';
+      return req;
+    }
+
 }

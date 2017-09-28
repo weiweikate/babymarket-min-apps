@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 1rpx;
+  margin-bottom: 100rpx;
 }
 
 .view-avatar {
@@ -23,6 +24,47 @@
 .content-web {
   padding-left: 30rpx;
   padding-right: 30rpx;
+}
+
+.view-btns {
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+}
+
+.view-btns .collect-icon {
+  width: 38rpx;
+  height: 36rpx;
+  flex: none;
+  margin-right: 50rpx;
+}
+
+.view-btns .praise-icon {
+  width: 38rpx;
+  height: 35rpx;
+  flex: none;
+}
+
+.view-btns .praise-count {
+  font-size: 24rpx;
+  color: #7d7f81;
+  margin-left: 10rpx;
+  margin-right: 40rpx;
+}
+
+.view-btns .discuss-icon {
+  width: 36rpx;
+  height: 31rpx;
+  flex: none;
+  margin-top: 5rpx;
+}
+
+.view-btns .discuss-count {
+  font-size: 24rpx;
+  color: #7d7f81;
+  margin-left: 10rpx;
+  margin-right: 20rpx;
 }
 
 .view-discuss {
@@ -42,40 +84,9 @@
   flex-direction: column;
 }
 
-.view-guess .guess-info {
-  display: flex;
-  align-items: center;
-}
-
-.guess-info .tip {
+.view-guess .guess-tips {
   font-size: 28rpx;
   color: #7d7f81;
-  flex-grow: 1;
-}
-
-.guess-info .praise-icon {
-  width: 38rpx;
-  height: 35rpx;
-  flex: none;
-}
-
-.guess-info .praise-count {
-  font-size: 24rpx;
-  color: #7d7f81;
-  margin-left: 10rpx;
-}
-
-.guess-info .discuss-icon {
-  width: 35rpx;
-  height: 29rpx;
-  flex: none;
-  margin-left: 30rpx;
-}
-
-.guess-info .discuss-count {
-  font-size: 24rpx;
-  color: #7d7f81;
-  margin-left: 10rpx;
 }
 
 .view-guess .guess-title {
@@ -107,4 +118,24 @@
   font-size: 24rpx;
   color: #7d7f81;
   margin-left: 10rpx;
+}
+
+.view-send {
+  display: flex;
+  height: 100rpx;
+  width: 100%;
+  background: #eee;
+  position: fixed;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-send .input-send {
+  flex-grow: 1;
+  padding: 8rpx 12rpx 8rpx 12rpx;
+  margin: 0rpx 20rpx 0rpx 20rpx;
+  background: white;
+  font-size: 26rpx;
+  color: #090909;
 }
