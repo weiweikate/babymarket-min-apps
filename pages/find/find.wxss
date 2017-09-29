@@ -5,7 +5,6 @@
 
 .find-top {
     display: flex;
-    border-bottom: 20rpx solid #fff8f4;
     background: white;
 }
 
@@ -26,4 +25,8 @@
     font-size: 32rpx;
     color: #494848;
     margin-top: 20rpx;
+}
+
+.view-menu{
+  margin-top: 20rpx;
 }

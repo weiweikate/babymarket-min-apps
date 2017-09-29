@@ -1,4 +1,3 @@
-<!--mom-type.wxml-->
 <import src='/pages/mom/cell-post-top/cell-post-top.wxml' />
 <import src='/pages/mom/cell-post/cell-post.wxml' />
 

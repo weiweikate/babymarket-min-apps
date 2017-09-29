@@ -12,7 +12,7 @@
         </view>
     </view>
 
-    <view wx:for="{{listData}}" wx:key="{{index}}">
-        <template is="item" data="{{item,index:index}}"></template>
+    <view class='view-menu'>
+        <template is="item" data="{{item,index}}" wx:for="{{listData}}" wx:key="unique"/>
     </view>
 </view>
