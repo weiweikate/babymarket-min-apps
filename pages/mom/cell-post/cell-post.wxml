@@ -5,7 +5,7 @@
     <template is="cell-post-avatar" data="{{headImgUrl,name,age,isReply,replyNum}}" />
     <view class="title">{{title}}</view>
     <view class="content OverFlowTwoLine">{{content}}</view>
-    <view class="bottom" wx:if="{{isBottom}}">
+    <view class="bottom" wx:if="{{hasBottom}}">
       <view class="bottom-left">
         <image class="icon-read" src="/res/img/mother-circle/mother-circle-eye-icon.png" mode="aspectFit" />
         <view class="num-read">{{readNum}}</view>

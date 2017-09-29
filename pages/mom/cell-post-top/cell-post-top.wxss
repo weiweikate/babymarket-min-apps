@@ -1,0 +1,32 @@
+.cell-post-top {
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+}
+
+.cell-post-top.top {
+  border-top: 0.5rpx solid #f7f7f7;
+}
+
+.top-icon {
+  width: 16rpx;
+  height: 17rpx;
+  flex: none;
+}
+
+.top-tips {
+  font-size: 28rpx;
+  color: red;
+  margin-left: 5rpx;
+  flex-shrink: 0;
+}
+
+.top-title {
+  font-size: 30rpx;
+  color: #090909;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 15rpx;
+}

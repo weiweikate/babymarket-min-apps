@@ -1,0 +1,7 @@
+<template name="cell-post-top">
+  <view class="{{index==0?'cell-post-top':'cell-post-top top'}}" catchtap="onItemClickListener" data-id="{{Id}}">
+    <image class="top-icon" src="/res/img/mother-circle/mother-circle-top-icon.png" mode="aspectFit" />
+    <text class="top-tips">置顶</text>
+    <text class="top-title">{{Title_Article}}</text>
+  </view>
+</template>

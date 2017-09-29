@@ -68,7 +68,7 @@
     "navigationBarBackgroundColor": "white",
     "navigationBarTitleText": "TOPMOM",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#fff8f4",
+    "backgroundColor": "#f3f4f5",
     "enablePullDownRefresh": false
   },
   "networkTimeout": {

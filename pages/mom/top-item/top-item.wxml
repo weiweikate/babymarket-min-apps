@@ -1,7 +1,0 @@
-<template name="top-item">
-    <view class="top-item" catchtap="goTopDetail" data-index="{{index}}">
-        <image class="icon-top" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit"></image>
-        <view class="top-text">置顶</view>
-        <view class="top_value">{{item.Title_Article}}</view>
-    </view>
-</template>

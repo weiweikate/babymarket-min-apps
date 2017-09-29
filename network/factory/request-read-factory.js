@@ -672,6 +672,66 @@ export default class RequestReadFactory {
       return req;
     }
 
+    // 宝妈圈-查询置顶帖子
+    static postTopRead(circleId) {
+      let operation = Operation.sharedInstance().postReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Is_Top":true,
+        "ModuleappId": circleId,
+        "Order": "${CreateTime} DESC"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询置顶帖子';
+      req.items = ["Id", "Title_Article"];
+      return req;
+    }
+
+    // 宝妈圈-根据圈子ID查询所有帖子列表
+    static postAllRead(circleId) {
+      let operation = Operation.sharedInstance().postReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Is_Top": false,
+        "ModuleappId": circleId,
+        "Order": "${CreateTime} DESC"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '根据圈子ID查询所有帖子列表';
+      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "Article_Abstract","Img_Member_Article_SendId"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        this.parseMomPostData(responseData);
+      }
+      return req;
+    }
+
+    // 宝妈圈-根据圈子ID查询精华帖子列表
+    static postEssenceRead(circleId) {
+      let operation = Operation.sharedInstance().postReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Is_Essential": true,
+        "ModuleappId": circleId,
+        "Order": "${CreateTime} DESC"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '根据圈子ID查询精华帖子列表';
+      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "Article_Abstract", "Img_Member_Article_SendId"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        this.parseMomPostData(responseData);
+      }
+      return req;
+    }
+
     // 宝妈圈-查询帖子是否被我点赞
     static isPostPraiseRead(postId) {
       let operation = Operation.sharedInstance().postPraiseReadOperation;
@@ -810,7 +870,6 @@ export default class RequestReadFactory {
         item.isReply = false;
         item.title = item.Title_Article;
         item.content = item.Article_Abstract;
-        item.isBottom = true;
         item.readNum = item.TotalViews;
         item.commemtNum = item.Commemt_Number;
       });

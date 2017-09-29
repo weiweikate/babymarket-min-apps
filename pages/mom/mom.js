@@ -1,5 +1,5 @@
 //宝妈圈
-let { Tool, Storage, RequestReadFactory, RequestWriteFactory } = global;
+let { Tool, Event,Storage, RequestReadFactory, RequestWriteFactory } = global;
 Page({
 
   /**
@@ -40,6 +40,16 @@ Page({
    */
   onLoad: function (options) {
     this.requestData();
+
+    //注册通知
+    Event.on('refreshAttentionList', this.requestCircleAttention, this)
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    Event.off('refreshAttentionList', this.requestCircleAttention)
   },
 
   /**
@@ -318,13 +328,11 @@ Page({
    * 新增圈子关注
    */
   requestAddCircleAttention: function (requestData) {
-    let self = this;
     let task = RequestWriteFactory.addCircleAttention(requestData);
     task.finishBlock = (req) => {
-      //重新请求关注数据
-      self.requestCircleAttention();
-
       Tool.showSuccessToast("已关注");
+
+      Event.emit('refreshAttentionList');//发出通知,刷新关注列表
     };
     task.addToQueue();
   },
@@ -332,13 +340,11 @@ Page({
    * 取消圈子关注
    */
   requestDeleteCircleAttention: function (attentionId) {
-    let self = this;
     let task = RequestWriteFactory.deleteCircleAttention(attentionId);
     task.finishBlock = (req) => {
-      //重新请求关注数据
-      self.requestCircleAttention();
-
       Tool.showSuccessToast("取消关注");
+
+      Event.emit('refreshAttentionList');//发出通知,刷新关注列表
     };
     task.addToQueue();
   },

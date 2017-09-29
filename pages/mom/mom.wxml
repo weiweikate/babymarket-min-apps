@@ -19,11 +19,11 @@
             <view wx:if="{{currentTab==0}}" class="hot">
               <view wx:if="{{hotPostList.length>0}}">
                 <block wx:for="{{hotPostList}}" wx:key="unique">
-                  <template is="cell-post" data="{{...item}}"></template>
+                  <template is="cell-post" data="{{...item,hasBottom:true}}" />
                 </block>
               </view>
               <view wx:else class="no-data">
-                <template is="empty-view" data="{{title:'这里还什么都没有哦～'}}"></template>
+                <template is="empty-view" data="{{title:'这里还什么都没有哦～'}}" />
               </view>
             </view>
 
@@ -31,29 +31,29 @@
             <view wx:if="{{currentTab==1}}" class="hot">
               <view wx:if="{{allPostList.length>0}}">
                 <block wx:for="{{allPostList}}" wx:key="unique">
-                  <template is="cell-post" data="{{...item}}"></template>
+                  <template is="cell-post" data="{{...item,hasBottom:true}}" />
                 </block>
               </view>
               <view wx:else class="no-data">
-                <template is="empty-view" data="{{title:'这里还什么都没有哦～'}}"></template>
+                <template is="empty-view" data="{{title:'这里还什么都没有哦～'}}" />
               </view>
             </view>
 
             <!--所有圈-->
             <view wx:if="{{currentTab==2}}" class="hot">
               <block wx:for="{{allCircleList}}" wx:key="unique">
-                <template is="cell-circle" data="{{...item}}"></template>
+                <template is="cell-circle" data="{{...item}}" />
               </block>
             </view>
 
             <!--搜帖子-->
             <view wx:if="{{currentTab==3}}" class="hot">
               <view class="search-view">
-                <template is="search-cell" data="{{placeholder:'搜索圈内帖子'}}"></template>
+                <template is="search-cell" data="{{placeholder:'搜索圈内帖子'}}" />
               </view>
               <view wx:if="{{searchPostList.length>0}}">
                 <block wx:for="{{searchPostList}}" wx:key="unique">
-                  <template is="cell-post" data="{{...item}}"></template>
+                  <template is="cell-post" data="{{...item,hasBottom:true}}" />
                 </block>
               </view>
               <view wx:else class="search">

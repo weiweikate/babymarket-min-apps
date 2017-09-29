@@ -1,35 +1,33 @@
 <!--mom-type.wxml-->
-<import src='/pages/mom/top-item/top-item.wxml' />
-<import src='/pages/mom/item/item.wxml' />
+<import src='/pages/mom/cell-post-top/cell-post-top.wxml' />
+<import src='/pages/mom/cell-post/cell-post.wxml' />
 
-<view class="root-view">
-  <view class="head">
-    <image src="{{circleData.bgImgUrl}}" class="image-background" mode="aspectFit"></image>
-    <view class="info">
-      <image src="{{circleData.headImgUrl}}" class="image-icon" mode="aspectFit"></image>
-      <view class="info-name">{{circleData.Name}}</view>
-      <view class="{{status==='取消关注'?'info-no-attention':'info-attention'}}">{{status}}</view>
-      <view class="info-introduction">简介:{{circleData.Introduction}}</view>
+<view class="view-root">
+
+  <view class="view-header">
+    <image src="{{circleData.bgImgUrl}}" class="header-background" mode="aspectFit" />
+    <view class="header-info">
+      <image src="{{circleData.headImgUrl}}" class="header-icon" mode="aspectFit" />
+      <view class="header-name">{{circleData.Name}}</view>
+      <view class="{{isAttention?'header-attention':'header-no-attention'}}" catchtap="onAttentionListener">{{isAttention?'取消关注':'关注'}}</view>
+      <view class="header-introduction">简介: {{circleData.Introduction}}</view>
     </view>
   </view>
 
-  <view class="switch-bt">
-    <view class="{{isAll?'select-red':'select-gray'}}" catchtap="onTabChangeListener" data-position='0'>全部</view>
-    <view class="{{isEssential?'select-red':'select-gray'}}" catchtap="onTabChangeListener" data-position='1'>精华</view>
+  <!--全部和精华-->
+  <view class="view-tab">
+    <text class="{{currentTab==0?'tab-red':'tab-gray'}}" catchtap="onTabChangeListener" data-position='0'>全部</text>
+    <text class="{{currentTab==1?'tab-red':'tab-gray'}}" catchtap="onTabChangeListener" data-position='1'>精华</text>
   </view>
 
   <!--置顶列表-->
-  <view class="top-box">
-    <view wx:for="{{topList}}" wx:key="{{index}}">
-      <template is="top-item" data="{{item,index:index}}"></template>
-    </view>
+  <view class="view-top" wx:if="{{postTopArray.length>0}}">
+    <template is="cell-post-top" data="{{...item,index}}" wx:for="{{postTopArray}}" wx:key="unique" />
   </view>
 
   <!--列表-->
-  <view class="data-box">
-    <view wx:for="{{dataList}}" wx:key="{{index}}">
-      <template is="mom-item" data="{{item,index:index}}"></template>
-    </view>
+  <view class="view-other" wx:if="{{postOtherArray.length>0}}">
+    <template is="cell-post" data="{{...item,hasBottom:false}}" wx:for="{{postOtherArray}}" wx:key="unique" />
   </view>
 
 </view>
