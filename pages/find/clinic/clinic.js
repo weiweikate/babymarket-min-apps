@@ -57,7 +57,6 @@ Page({
     let task = RequestReadFactory.advisoryRead();
     task.finishBlock = (req) => {
       let responseData = req.responseObject.Datas;
-      console.log(responseData);
       this.setData({
         listArray: responseData
       });
@@ -71,7 +70,6 @@ Page({
     let task = RequestReadFactory.toothAdvisoryRead();
     task.finishBlock = (req) => {
       let responseData = req.responseObject.Datas;
-      console.log(responseData);
       this.setData({
         listArray: responseData
       });
