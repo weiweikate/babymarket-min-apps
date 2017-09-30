@@ -6,8 +6,6 @@ Page({
    */
   data: {
     listArray: [],
-    dataIndex: 0,
-    totalNum: 0,
     currentTab: undefined
   },
 
