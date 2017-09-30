@@ -1,8 +1,14 @@
-<import src='/pages/find/head/head.wxml' />
-<template name="clinic-item">
-    <view class="clinic-item" catchtap="goDetail" data-index="{{index}}">
-        <template is="head" data="{{item}}"></template>
-        <view class="clinic-value OverFlowTwoLine">激发肌肤上分离的时刻肌肤抵抗力{{item.value}}</view>
-        <view class="clinic-time">2017-09-05 10:35{{item.time}}</view>
+<import src='/components/cell/cell-avatar/cell-avatar.wxml' />
+
+<template name="cell-clinic">
+  <view class="{{position==0?'cell-clinic':'cell-clinic top'}}" catchtap="onItemClickListener" data-id="{{Id}}">
+    <view class='view-avatar'>
+      <view class='view-avatar-root'>
+        <template is="cell-avatar" data="{{headImgUrl,name,age}}" />
+      </view>
+      <text class="{{isAnswer?'cell-status':'cell-status red'}}">{{isAnswer?'专家已解答':'等待专家解答'}}</text>
     </view>
+    <text class="clinic-content OverFlowTwoLine">{{content}}</text>
+    <text class="clinic-time">{{CreateTime}}</text>
+  </view>
 </template>

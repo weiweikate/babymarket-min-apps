@@ -2,6 +2,18 @@
 @import '/pages/find/clinic/cell-clinic/cell-clinic.wxss';
 
 .view-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.view-root .view-scroll {
+  display: flex;
+  margin-top: 85rpx;
+  height: 100%;
+}
+
+.view-scroll .scroll {
   height: 100%;
 }
 
@@ -13,8 +25,6 @@
   top: 0rpx;
   width: 100%;
   align-items: center;
-  border-bottom: 0.5rpx solid #f3f4f5;
-  border-top: 0.5rpx solid #f3f4f5;
 }
 
 .tab-item {
@@ -32,9 +42,10 @@
 }
 
 .view-list {
-  margin-top: 81rpx;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-.view-empty{
-    height: 100%;
+
+.view-empty {
+  height: 100%;
 }

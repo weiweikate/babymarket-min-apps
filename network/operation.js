@@ -18,6 +18,8 @@ export default class Operation {
 
         // 便便诊所
         this.advisoryReadOperation = 'de9167ca-44b6-42da-bf20-a63d0116325d';
+        // 爱牙卫士
+        this.toothAdvisoryReadOperation = '34fe93b4-dd36-4289-a1bd-a6c60123a429';
         // 宝妈圈-贴子查询
         this.postReadOperation = '459fcf50-c9db-40a1-8cf7-a63d0119205d';
         // 宝妈圈-贴子新增

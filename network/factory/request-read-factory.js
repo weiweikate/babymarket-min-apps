@@ -622,12 +622,10 @@ export default class RequestReadFactory {
     }
 
     // 便便诊所查询
-    static advisoryRead(index = 0, count = 20){
+    static advisoryRead(){
         let operation = Operation.sharedInstance().advisoryReadOperation;
         let bodyParameters = {
             "Operation": operation,
-            "MaxCount": count + '',
-            "StartIndex": index + '',
             "Order": "${Num} DESC,${CreateTime} DESC",
             "Appendixes": {
                 "+Member": [
@@ -638,17 +636,85 @@ export default class RequestReadFactory {
         let req = new RequestRead(bodyParameters);
         req.name = '便便诊所查询';
         req.items = ["Id","CreateTime","Head_PictureId","Is_Answer","Else_Add","MemberId",
-        "GenderKey","BabyAge","Num"];
+        "GenderKey","BabyAge"];
         req.appendixesKeyMap = { 'Member': 'MemberId' };//可以多个
 
+        //修改返回结果
+        req.preprocessCallback = (req) => {
+          let responseData = req.responseObject.Datas;
+          responseData.forEach((item, index) => {
+            item.headImgUrl = global.Tool.imageURLForId(item.Head_PictureId);
+            item.content = item.Else_Add;
+            
+            item.age = "宝宝" + item.BabyAge;
+            if (item.GenderKey == "1") {
+              item.age = "男" + item.age;
+            } else if (item.GenderKey == "2"){
+              item.age = "女" + item.age;
+            }
+            if (item.Is_Answer == "True") {
+              item.isAnswer = true;
+            } else {
+              item.isAnswer = false;
+            }
+          });
+        }
         //匹配成功函数
-        req.appendixesBlock = (data, appendixe, key, id) => {
+        req.appendixesBlock = (item, appendixe, key, id) => {
             if (key === 'Member') {
                 //给data添加新属性
-                data.MemberNickName = appendixe.NickName;
+              item.name = appendixe.NickName;
             }
         };
         return req;
+    }
+
+    // 便便诊所查询
+    static toothAdvisoryRead() {
+      let operation = Operation.sharedInstance().toothAdvisoryReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Order": "${Num} DESC,${CreateTime} DESC",
+        "Appendixes": {
+          "+Member": [
+            "NickName"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '便便诊所查询';
+      req.items = ["Id", "CreateTime", "MemberImgId", "IsAns", "AdvisoryDetail", "MemberId",
+        "BabySexKey", "BabyAge"];
+      req.appendixesKeyMap = { 'Member': 'MemberId' };//可以多个
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.MemberImgId);
+          item.content = item.AdvisoryDetail;
+
+          item.age = "宝宝" + item.BabyAge;
+          if (item.BabySexKey == "1") {
+            item.age = "男" + item.age;
+          } else if (item.BabySexKey == "2") {
+            item.age = "女" + item.age;
+          }
+          if (item.IsAns == "True") {
+            item.isAnswer = true;
+          } else {
+            item.isAnswer = false;
+          }
+        });
+      }
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'Member') {
+          //给data添加新属性
+          item.name = appendixe.NickName;
+        }
+      };
+      return req;
     }
 
     // 宝妈圈-查询帖子详情
