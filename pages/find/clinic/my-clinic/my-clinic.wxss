@@ -1,2 +1,2 @@
 /* my-clinic.wxss */
-@import '/pages/find/clinic/clinic-item/clinic-item.wxss';
+@import '/pages/find/clinic/cell-clinic/cell-clinic.wxss';

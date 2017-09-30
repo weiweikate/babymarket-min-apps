@@ -1,32 +1,31 @@
-.cell-post-avatar {
+.cell-avatar {
   display: flex;
   align-items: center;
 }
 
-.cell-post-avatar .avatar-img {
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 40rpx;
+.cell-avatar .avatar-img {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 44rpx;
 }
 
-.cell-post-avatar .avatar-info {
+.cell-avatar .avatar-info {
   margin-left: 20rpx;
   display: flex;
   flex-direction: column;
 }
 
 .avatar-info .name {
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: #090909;
 }
 
 .avatar-info .date-view {
   display: flex;
-  margin-top: 10rpx;
 }
 
 .date-view .age {
-  font-size: 26rpx;
+  font-size: 24rpx;
   color: #acadaa;
   flex-grow: 1;
 }

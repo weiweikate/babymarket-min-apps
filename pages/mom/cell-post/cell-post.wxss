@@ -1,4 +1,4 @@
-@import '/pages/mom/cell-post-avatar/cell-post-avatar.wxss';
+@import '/components/cell/cell-avatar/cell-avatar.wxss';
 
 .cell-post {
   background: white;

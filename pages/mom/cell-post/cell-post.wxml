@@ -1,8 +1,9 @@
-<import src='/pages/mom/cell-post-avatar/cell-post-avatar.wxml' />
+<import src='/components/cell/cell-avatar/cell-avatar.wxml' />
+
 <template name="cell-post">
   <view class="cell-post" catchtap="onItemClickListener" data-id="{{Id}}">
     <!--头像／姓名／年龄/回复数量  -->
-    <template is="cell-post-avatar" data="{{headImgUrl,name,age,isReply,replyNum}}" />
+    <template is="cell-avatar" data="{{headImgUrl,name,age,isReply,replyNum}}" />
     <view class="title">{{title}}</view>
     <view class="content OverFlowTwoLine">{{content}}</view>
     <view class="bottom" wx:if="{{hasBottom}}">

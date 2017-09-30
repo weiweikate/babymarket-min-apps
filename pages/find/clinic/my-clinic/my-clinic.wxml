@@ -1,6 +1,6 @@
 <!--my-clinic.wxml-->
-<import src='/pages/find/clinic/clinic-item/clinic-item.wxml' />
+<import src='/pages/find/clinic/cell-clinic/cell-clinic.wxml' />
 
 <block wx:for="{{listDatas}}" wx:key="{{index}}">
-    <template is="clinic-item" data="{{item}}"></template>
+    <template is="cell-clinic" data="{{item}}"></template>
 </block>

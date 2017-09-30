@@ -1,5 +1,5 @@
 @import "/libs/wxParse/wxParse.wxss";
-@import '/pages/mom/cell-post-avatar/cell-post-avatar.wxss';
+@import '/components/cell/cell-avatar/cell-avatar.wxss';
 @import '/pages/mom/post-detail/cell-discuss/cell-discuss.wxss';
 
 .view-root {

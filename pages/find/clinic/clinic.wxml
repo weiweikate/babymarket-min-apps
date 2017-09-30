@@ -1,18 +1,16 @@
-<!--clinic.wxml-->
-<import src='/pages/find/clinic/clinic-item/clinic-item.wxml' />
+<import src='/pages/find/clinic/cell-clinic/cell-clinic.wxml' />
+<import src='/components/empty-view/empty-view.wxml' />
 
-<view class="main">
-    <view class="clinic-top">
-        <view class="initiate" catchtap="add">发起咨询</view>
-        <view class="initiate" catchtap="mine">我的咨询</view>
-        <view class="initiate" catchtap="knowledge">知识库</view>
-    </view>
-    <view class="data" wx:if="{{hasList}}">
-        <view wx:for="{{dataList}}" wx:key="{{index}}">
-            <template is="clinic-item" data="{{item}}"></template>
-        </view>
-    </view>
-    <view wx:else class="no-data">
-        <text>暂无咨询记录！</text>
-    </view>
+<view class="view-root">
+  <view class="view-tab">
+    <view class="tab-item border" catchtap="onTabListener" data-position='0'>发起咨询</view>
+    <view class="tab-item border" catchtap="onTabListener" data-position='1'>我的咨询</view>
+    <view class="tab-item" catchtap="onTabListener" data-position='2'>知识库</view>
+  </view>
+  <view class="view-list" wx:if="{{listArray.length>0}}">
+    <template is="cell-clinic" data="{{...item}}" wx:for="{{listArray}}" wx:key="unique" />
+  </view>
+  <view wx:else class="view-empty">
+    <template is="empty-view" data="{{title:'暂无咨询记录！'}}" />
+  </view>
 </view>
