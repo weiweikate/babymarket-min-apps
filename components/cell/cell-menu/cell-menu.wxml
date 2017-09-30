@@ -1,0 +1,11 @@
+<!--公用cell-菜单-->
+<template name="cell-menu">
+  <view class="cell-menu">
+    <view wx:if="{{hasDivide}}" class="view-divide" />
+    <view class="{{index==0||hasDivide?'view-item':'view-item line'}}" catchtap="onMenuItemListener" data-position="{{index}}" data-title="{{title}}">
+      <image class="item-icon" src="{{icon}}" mode="aspectFit" />
+      <view class="item-title">{{title}}</view>
+      <image class="item-arrow" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit" hidden="{{!hasArrow}}" />
+    </view>
+  </view>
+</template>

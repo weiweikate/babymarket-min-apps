@@ -1,6 +1,4 @@
-<!--my.wxml-->
-
-<import src='/pages/find/item/item.wxml' />
+<import src='/components/cell/cell-menu/cell-menu.wxml' />
 
 <!--个人资料：头像／昵称／宝宝年龄、所属门店／-->
 <view class="top-view">
@@ -36,11 +34,6 @@
     </view>
 </view>
 
-<!--cell-->
-<view class="my-flex">
-    <block wx:for="{{myDatasItems0}}" wx:key="unique">
-        <view class="my-cell-view" catchtap="cellTap" data-title="{{item.name}}">
-            <template is="item" data="{{item:item}}"></template>
-        </view>
-    </block>
+<view class='view-menu'>
+  <template is="cell-menu" data="{{...item,index}}" wx:for="{{menuArray}}" wx:key="unique" />
 </view>

@@ -1,6 +1,4 @@
-/* my.wxss */
-
-@import '/pages/find/item/item.wxss';
+@import '/components/cell/cell-menu/cell-menu.wxss';
 
 .top-view{
     width: 100%;
@@ -100,4 +98,8 @@
     height: 40rpx;
     margin-top: 20rpx;
     background: #eeeeee;
+}
+
+.view-menu {
+  margin-top: 20rpx;
 }

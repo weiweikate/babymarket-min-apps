@@ -2,7 +2,7 @@
 <import src='/pages/mom/cell-post-avatar/cell-post-avatar.wxml' />
 <import src='/pages/mom/post-detail/cell-discuss/cell-discuss.wxml' />
 
-<view class='root-view'>
+<view class='view-root'>
   <view class='view-avatar'>
     <template is="cell-post-avatar" data="{{headImgUrl:postData.headImgUrl,name:postData.name,age:postData.age}}" />
   </view>

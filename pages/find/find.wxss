@@ -1,32 +1,31 @@
-@import '/pages/find/item/item.wxss';
-.main {
-    width: 100%;
+@import '/components/cell/cell-menu/cell-menu.wxss';
+
+.view-top {
+  display: flex;
+  background: white;
+  margin-top: 1rpx;
 }
 
-.find-top {
-    display: flex;
-    background: white;
+.top {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+  flex-grow: 1;
 }
 
-.left {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    padding: 40rpx 40rpx 40rpx 40rpx;
-    flex-grow: 1;
+.top .top-icon {
+  width: 100rpx;
+  height: 100rpx;
+  flex: none;
 }
 
-.clinic-img {
-    width: 100rpx;
-    height: 100rpx;
+.top .top-title {
+  font-size: 32rpx;
+  color: #494848;
+  margin-top: 20rpx;
 }
 
-.clinic-txt {
-    font-size: 32rpx;
-    color: #494848;
-    margin-top: 20rpx;
-}
-
-.view-menu{
+.view-menu {
   margin-top: 20rpx;
 }

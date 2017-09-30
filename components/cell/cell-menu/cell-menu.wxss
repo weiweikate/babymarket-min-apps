@@ -1,0 +1,39 @@
+.cell-menu {
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.view-item {
+  display: flex;
+  padding: 20rpx;
+  align-items: center;
+}
+
+.view-item.line {
+  border-top: 0.5rpx solid #f3f4f5;
+}
+
+.item-icon {
+  width: 48rpx;
+  height: 48rpx;
+  flex: none;
+  margin-right: 15rpx;
+}
+
+.item-title {
+  font-size: 28rpx;
+  color: #7d7d7f;
+  flex-grow: 1;
+}
+
+.item-arrow {
+  width: 17rpx;
+  height: 29rpx;
+  flex: none;
+}
+
+.view-divide {
+  height: 20rpx;
+  background: #f3f4f5;
+}

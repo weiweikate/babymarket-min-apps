@@ -1,18 +1,16 @@
-<import src='/pages/find/item/item.wxml' />
+<import src='/components/cell/cell-menu/cell-menu.wxml' />
 
-<view class="main">
-    <view class="find-top">
-        <view class="left" catchtap="goClinic">
-            <image src="/res/img/find/find-clinic-icon.png" class="clinic-img" mode="aspectFit"></image>
-            <text class="clinic-txt">便便诊所</text>
-        </view>
-        <view class="left" catchtap="goTooth">
-            <image src="/res/img/find/find-tooth-icon.png" class="clinic-img" mode="aspectFit"></image>
-            <text class="clinic-txt">爱牙卫士</text>
-        </view>
-    </view>
+<view class="view-top">
+  <view class="top" catchtap="onTopListener" data-position='0'>
+    <image src="/res/img/find/find-clinic-icon.png" class="top-icon" mode="aspectFit" />
+    <text class="top-title">便便诊所</text>
+  </view>
+  <view class="top" catchtap="onTopListener" data-position='1'>
+    <image src="/res/img/find/find-tooth-icon.png" class="top-icon" mode="aspectFit" />
+    <text class="top-title">爱牙卫士</text>
+  </view>
+</view>
 
-    <view class='view-menu'>
-        <template is="item" data="{{item,index}}" wx:for="{{listData}}" wx:key="unique"/>
-    </view>
+<view class='view-menu'>
+  <template is="cell-menu" data="{{...item,index}}" wx:for="{{menuArray}}" wx:key="unique" />
 </view>

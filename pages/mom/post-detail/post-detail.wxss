@@ -2,7 +2,7 @@
 @import '/pages/mom/cell-post-avatar/cell-post-avatar.wxss';
 @import '/pages/mom/post-detail/cell-discuss/cell-discuss.wxss';
 
-.root-view {
+.view-root {
   background: white;
   display: flex;
   flex-direction: column;

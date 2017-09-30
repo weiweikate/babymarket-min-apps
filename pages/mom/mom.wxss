@@ -5,7 +5,7 @@
 @import '/pages/eat/search-cell/search-cell.wxss';
 @import '/components/empty-view/empty-view.wxss';
 
-.mom-box {
+.root-view {
   display: flex;
   flex-direction: column;
   height: 100%;

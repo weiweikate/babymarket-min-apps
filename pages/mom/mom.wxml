@@ -5,7 +5,7 @@
 <import src='/pages/eat/search-cell/search-cell.wxml' />
 <import src='/components/empty-view/empty-view.wxml' />
 
-<view class="mom-box">
+<view class="root-view">
   <image src="/res/img/mother-circle/mother-circle-create-post-icon.png" class="create-post-image" catchtap="createPostTap"></image>
   <view class="top">
     <template is="tab-layout" data="{{items:oneSortData,currentTab}}" />
