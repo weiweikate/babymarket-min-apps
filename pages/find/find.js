@@ -19,9 +19,20 @@ Page({
    */
   onTopListener: function (e) {
     let position = e.currentTarget.dataset.position;
-    wx.navigateTo({
-      url: '../find/clinic/clinic?position=' + position,
-    })
+    switch (position) {
+      case "0":
+        console.log("0")
+        wx.navigateTo({
+          url: '/pages/find/clinic/stool/stool'
+        })
+        break;
+      case "1":
+        console.log("1")
+        wx.navigateTo({
+          url: '/pages/find/clinic/tooth/tooth'
+        })
+        break;
+    }
   },
 
   /**

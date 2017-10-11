@@ -1,0 +1,6 @@
+<template name="cell-detail-info">
+  <view class="cell-detail-info">
+    <text class="info-title">{{title}}</text>
+    <text class="info-value">{{value}}</text>
+  </view>
+</template>

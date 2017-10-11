@@ -1,0 +1,23 @@
+.tab-view {
+  display: flex;
+  background: white;
+  height: 80rpx;
+  position: fixed;
+  top: 0rpx;
+  width: 100%;
+  align-items: center;
+}
+
+.tab-item {
+  display: flex;
+  flex-grow: 1;
+  font-size: 30rpx;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #494848;
+}
+
+.tab-item.border {
+  border-right: 0.5rpx solid #f3f4f5;
+}

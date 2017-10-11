@@ -1,0 +1,13 @@
+.cell-detail-info {
+  display: flex;
+}
+
+.cell-detail-info .info-title {
+  font-size: 26rpx;
+  color: #494848;
+}
+
+.cell-detail-info .info-value {
+  font-size: 26rpx;
+  color: #090909;
+}

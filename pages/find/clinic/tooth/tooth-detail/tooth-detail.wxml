@@ -1,0 +1,74 @@
+<import src='/pages/find/clinic/cell-detail-time/cell-detail-time.wxml' />
+<import src='/pages/find/clinic/cell-detail-title/cell-detail-title.wxml' />
+<import src='/pages/find/clinic/cell-detail-info/cell-detail-info.wxml' />
+<import src='/pages/find/clinic/cell-detail-discuss/cell-detail-discuss.wxml' />
+
+<view class='view-root'>
+  <!--提问时间-->
+  <view class="view-time">
+    <template is="cell-detail-time" data="{{title:'提问时间：',value:detailInfo.CreateTime}}" />
+  </view>
+  <!--解答时间-->
+  <view class="view-time" wx:if="{{detailInfo.IsAns=='True'}}">
+    <template is="cell-detail-time" data="{{title:'解答时间：',value:detailInfo.NewAnsTime}}" />
+  </view>
+
+  <!--宝宝信息  -->
+  <view class="view-title">
+    <template is="cell-detail-title" data="{{icon:'/res/img/find/find-clinic/find-clinic-baby-info-icon.png',title:'宝宝信息'}}" />
+  </view>
+  <view>
+    <view class="view-info">
+      <template is="cell-detail-info" data="{{title:'宝宝姓名：',value:detailInfo.BabyName}}" />
+    </view>
+    <view class="view-info">
+      <template is="cell-detail-info" data="{{title:'年龄：',value:detailInfo.BabyAge}}" />
+    </view>
+    <view class="view-info">
+      <template is="cell-detail-info" data="{{title:'出牙个数：',value:detailInfo.TeethingNumber}}" />
+    </view>
+  </view>
+
+  <!--详细描述-->
+  <view class="view-title" wx:if="{{detailInfo.AdvisoryDetail.length>0}}">
+    <template is="cell-detail-title" data="{{icon:'/res/img/find/find-clinic/find-clinic-other-supplements-icon.png',title:'详细描述',value:detailInfo.AdvisoryDetail}}" />
+  </view>
+
+  <!--附加图片-->
+  <view class='view-images' wx:if="{{imagesArray.length>0}}">
+    <view class='view-images-title' catchtap="onExpandListener">
+      <text class='images-title'>点击展开图片</text>
+      <image class='images-arrow' src="{{isExpand?'/res/img/find/find-clinic/find-clinic-arrow-up-icon.png':'/res/img/find/find-clinic/find-clinic-arrow-down-icon.png'}}" mode="aspectFit" />
+    </view>
+    <view class="view-images-list" wx:if="{{isExpand}}">
+      <block wx:for="{{imagesArray}}" wx:key='unique'>
+        <image src="{{item.imageUrl}}" class="cell-image" mode="aspectFill" />
+      </block>
+    </view>
+  </view>
+
+  <!--专家诊断结果-->
+  <view class="view-title" wx:if="{{detailInfo.Result.length>0}}">
+    <template is="cell-detail-title" data="{{icon:'/res/img/find/find-clinic/find-clinic-expert-icon.png',title:'专家诊断结果',value:detailInfo.Result}}" />
+  </view>
+
+  <!--喂养建议-->
+  <view class="view-title" wx:if="{{detailInfo.Suggest.length>0}}">
+    <template is="cell-detail-title" data="{{icon:'/res/img/find/find-clinic/find-clinic-expert-icon.png',title:'喂养建议',value:detailInfo.Suggest}}" />
+  </view>
+
+  <!--温馨提示-->
+  <text class="view-tips">温馨提示:宝宝便便咨询结果只是根据上传的照片诊断的结果，如果宝宝出现异常状况的话，要及时到医院就诊。</text>
+
+  <!--留言  -->
+  <view class='view-discuss' wx:if="{{discussArray.length>0}}">
+    <text class='discuss-title'>留言</text>
+    <view class='discuss-list'>
+      <template is="cell-detail-discuss" data="{{...item,index}}" wx:for="{{discussArray}}" wx:key='unique' />
+    </view>
+  </view>
+</view>
+
+<view class='view-send'>
+  <input class='input-send' value='{{discussContent}}' placeholder='添加留言' confirm-type='send' catchconfirm='onSendListener' data-id='{{detailInfo.Id}}' />
+</view>

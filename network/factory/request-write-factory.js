@@ -342,4 +342,24 @@ export default class RequestWriteFactory {
       return req;
     }
 
+    //新增便便诊所评论
+    static addAdvisoryDiscuss(requestData) {
+      let operation = Operation.sharedInstance().advisoryDiscussAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'Advisory_Message', requestData, operation, null);
+      req.name = '新增便便诊所评论';
+      return req;
+    }
+
+    //新增爱牙卫士评论
+    static addToothDiscuss(requestData) {
+      let operation = Operation.sharedInstance().toothDiscussAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'ToothAdvisoryMessage', requestData, operation, null);
+      req.name = '新增爱牙卫士评论';
+      return req;
+    }
+
 }

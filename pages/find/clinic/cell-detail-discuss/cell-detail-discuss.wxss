@@ -1,0 +1,39 @@
+.cell-detail-discuss {
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.cell-detail-discuss.top {
+  border-top: 0.5rpx solid #f7f7f7;
+  padding-top: 20rpx;
+}
+
+.cell-detail-discuss .avatar-img {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 40rpx;
+  flex: none;
+}
+
+.cell-detail-discuss .avatar-info {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.avatar-info .name {
+  font-size: 28rpx;
+  color: #090909;
+}
+
+.avatar-info .time {
+  font-size: 24rpx;
+  color: #acadaa;
+}
+
+.avatar-info .content {
+  font-size: 28rpx;
+  color: black;
+  margin-top: 10rpx;
+}

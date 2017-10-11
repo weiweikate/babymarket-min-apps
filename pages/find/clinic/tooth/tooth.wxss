@@ -1,0 +1,28 @@
+@import '/pages/find/clinic/tab-view/tab-view.wxss' ;
+@import '/components/empty-view/empty-view.wxss';
+@import '/pages/find/clinic/cell-clinic/cell-clinic.wxss';
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.view-root .view-scroll {
+  display: flex;
+  margin-top: 85rpx;
+  height: 100%;
+}
+
+.view-scroll .scroll {
+  height: 100%;
+}
+
+.view-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.view-empty {
+  height: 100%;
+}

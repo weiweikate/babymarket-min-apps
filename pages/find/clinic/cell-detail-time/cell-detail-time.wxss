@@ -1,0 +1,13 @@
+.cell-detail-time {
+  display: flex;
+}
+
+.cell-detail-time .time-title {
+  font-size: 26rpx;
+  color: #acadaa;
+}
+
+.cell-detail-time .time-value {
+  font-size: 26rpx;
+  color: #494848;
+}

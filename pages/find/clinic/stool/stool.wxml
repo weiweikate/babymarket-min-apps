@@ -1,12 +1,9 @@
+<import src='/pages/find/clinic/tab-view/tab-view.wxml' />
 <import src='/pages/find/clinic/cell-clinic/cell-clinic.wxml' />
 <import src='/components/empty-view/empty-view.wxml' />
 
 <view class="view-root">
-  <view class="view-tab">
-    <view class="tab-item border" catchtap="onTabListener" data-position='0'>发起咨询</view>
-    <view class="tab-item border" catchtap="onTabListener" data-position='1'>我的咨询</view>
-    <view class="tab-item" catchtap="onTabListener" data-position='2'>知识库</view>
-  </view>
+  <template is="tab-view" />
   <view class='view-scroll'>
     <scroll-view class="scroll" scroll-y bindscrolltolower="onScrollReachBottom">
       <view class="view-list" wx:if="{{listArray.length>0}}">

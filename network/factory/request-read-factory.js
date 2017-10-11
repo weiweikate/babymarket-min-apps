@@ -35,6 +35,33 @@ export default class RequestReadFactory {
         return req;
     }
 
+    //附件
+    static attachmentsRead(theId) {
+      let operation = Operation.sharedInstance().attachmentsReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": "${RelevancyId} == '" + theId + "' && ${RelevancyBizElement} == 'Attachments'",
+        "Order": '${CreateTime} ASC'
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '附件';
+      req.items = ['Id'];
+
+      //修改返回结果，为返回结果添加imageUrls字段
+      req.preprocessCallback = (req) => {
+        let Datas = req.responseObject.Datas;
+        let imageUrls = [];
+        if (global.Tool.isValidArr(Datas)) {
+          Datas.forEach((data) => {
+            data.imageUrl = global.Tool.imageURLForId(data.Id);
+            imageUrls.push(data.imageUrl);
+          });
+        }
+        req.responseObject.imageUrls = imageUrls;
+      }
+      return req;
+    }
+
     //积分查询
     static pointUploadRead(theId) {
         let operation = Operation.sharedInstance().pointReadOperation;
@@ -152,35 +179,6 @@ export default class RequestReadFactory {
         }
         let req = new RequestRead(bodyParameters);
         req.name = '宝贝码头 搜索特定的规格';//用于日志输出
-        return req;
-    }
-
-    //附件
-    static attachmentsRead(theId, count = 20, index = 0) {
-        let operation = Operation.sharedInstance().bmAttachmentsReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "Condition": "${RelevancyId} == '" + theId + "' && ${RelevancyBizElement} == 'Attachments'",
-            "MaxCount": count,
-            "StartIndex": index,
-            "Order": '${CreateTime} ASC'
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '附件';
-        req.items = ['Id'];
-
-        //修改返回结果，为返回结果添加imageUrls字段
-        req.preprocessCallback = (req) => {
-            let Datas = req.responseObject.Datas;
-            let imageUrls = [];
-            if (global.Tool.isValidArr(Datas)) {
-                Datas.forEach((data) => {
-                    data.imageUrl = global.Tool.imageURLForId(data.Id);
-                    imageUrls.push(data.imageUrl);
-                });
-            }
-            req.responseObject.imageUrls = imageUrls;
-        }
         return req;
     }
 
@@ -669,7 +667,58 @@ export default class RequestReadFactory {
         return req;
     }
 
-    // 便便诊所查询
+    // 便便诊所详情查询
+    static advisoryDetailRead(id) {
+      let operation = Operation.sharedInstance().advisoryReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": id 
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '便便诊所详情查询';
+      req.items = ["Id", "CreateTime", "Result", "Else_Add", "Nurse_Condition", "Milk_Powder_Brand",
+        "Assisted_Food", "Cacation_Number", "Pull_Expression", "Suggest", "Answer_Time", "BabyAge", "Name_baby", "WaterIntake","Is_Answer"];
+      return req;
+    }
+
+    // 便便诊所留言查询
+    static advisoryDiscussRead(id) {
+      let operation = Operation.sharedInstance().advisoryDiscussReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "AdvisoryId": id,
+        "Order": "${CreateTime} DESC",
+        "Appendixes": {
+          "+Member_Message": [
+            "NickName"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '便便诊所留言查询';
+      req.items = ["Id", "Content", "CreateTime", "Member_Message_ImgId","Member_MessageId"];
+      req.appendixesKeyMap = { 'Member': 'Member_MessageId' };//可以多个
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.Member_Message_ImgId);
+          item.time = item.CreateTime;
+          item.content = item.Content;
+        });
+      }
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'Member') {
+          //给data添加新属性
+          item.name = appendixe.NickName;
+        }
+      };
+      return req;
+    }
+
+    // 爱牙卫士查询
     static toothAdvisoryRead() {
       let operation = Operation.sharedInstance().toothAdvisoryReadOperation;
       let bodyParameters = {
@@ -711,6 +760,58 @@ export default class RequestReadFactory {
       req.appendixesBlock = (item, appendixe, key, id) => {
         if (key === 'Member') {
           //给data添加新属性
+          item.name = appendixe.NickName;
+        }
+      };
+      return req;
+    }
+
+    // 爱牙卫士详情查询
+    static toothDetailRead(id) {
+      let operation = Operation.sharedInstance().toothAdvisoryReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": id
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '爱牙卫士详情查询';
+      req.items = ["Id", "CreateTime", "NewAnsTime", "BabyName", "BabyAge", "TeethingNumber",
+        "AdvisoryDetail", "Result", "Suggest", "IsAns"];
+      return req;
+    }
+
+    // 爱牙卫士留言查询
+    static toothDiscussRead(id) {
+      let operation = Operation.sharedInstance().toothDiscussReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "ToothAdvisoryId": id,
+        "Order": "${CreateTime} DESC",
+        "Appendixes": {
+          "+MemberMessage": [
+            "NickName",
+            "ImgId"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '爱牙卫士留言查询';
+      req.items = ["Id", "Content", "CreateTime", "MemberMessageId"];
+      req.appendixesKeyMap = { 'Member': 'MemberMessageId' };//可以多个
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.time = item.CreateTime;
+          item.content = item.Content;
+        });
+      }
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'Member') {
+          //给data添加新属性
+          item.headImgUrl = global.Tool.imageURLForId(appendixe.ImgId);
           item.name = appendixe.NickName;
         }
       };

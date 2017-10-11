@@ -1,0 +1,27 @@
+.cell-detail-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.cell-detail-title .view-icon-title {
+  display: flex;
+  align-items: center;
+}
+
+.view-icon-title .title-icon {
+  width: 35rpx;
+  height: 35rpx;
+  flex: none;
+}
+
+.view-icon-title .title-title {
+  color: #494848;
+  font-size: 30rpx;
+  margin-left: 8rpx;
+}
+
+.cell-detail-title .title-value {
+  font-size: 28rpx;
+  color: #090909;
+  margin-top: 15rpx;
+}

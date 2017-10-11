@@ -1,0 +1,9 @@
+<template name="cell-detail-title">
+  <view class="cell-detail-title">
+    <view class="view-icon-title">
+      <image mode="aspectFit" class='title-icon' src='{{icon}}' />
+      <text class="title-title">{{title}}</text>
+    </view>
+    <text class="title-value" wx:if="{{value.length>0}}">{{value}}</text>
+  </view>
+</template>

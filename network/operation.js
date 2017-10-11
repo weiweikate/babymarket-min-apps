@@ -16,10 +16,21 @@ export default class Operation {
     constructor() {
         if (__instance()) return __instance();
 
+        //附件
+        this.attachmentsReadOperation = '3a3bf362-b406-47a4-a6d2-a642010374b5';
+
         // 便便诊所
         this.advisoryReadOperation = 'de9167ca-44b6-42da-bf20-a63d0116325d';
+        // 便便诊所,留言查询
+        this.advisoryDiscussReadOperation = '932411a2-b3fe-4554-9272-a63d0117be75';
+        // 便便诊所,留言新增
+        this.advisoryDiscussAddOperation = 'acfaaeb9-0be4-44f8-bed9-a63d0117dced';
         // 爱牙卫士
         this.toothAdvisoryReadOperation = '34fe93b4-dd36-4289-a1bd-a6c60123a429';
+        // 便便诊所,留言查询
+        this.toothDiscussReadOperation = '016b409c-4044-4304-b622-a6c60124b535';
+        // 便便诊所,留言新增
+        this.toothDiscussAddOperation = '85450a21-1609-464c-bf4d-a6c6012519fd';
         // 宝妈圈-贴子查询
         this.postReadOperation = '459fcf50-c9db-40a1-8cf7-a63d0119205d';
         // 宝妈圈-贴子新增
@@ -72,9 +83,6 @@ export default class Operation {
 
         //规格组 读取
         this.productSpecificationGroupRead = '41222433-4d44-089d-3ca0-3c6800f1d60a';
-
-        //宝贝码头附件
-        this.bmAttachmentsReadOperation = '7eba4898-2f70-05b4-0b17-009a002e71ad';
 
         //老友码头 商品的国家信息
         this.bmNationReadOperation = 'c5cb5117-b585-0160-2ab2-3c1f0016ec87';

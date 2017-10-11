@@ -1,0 +1,6 @@
+<template name="cell-detail-time">
+  <view class="cell-detail-time">
+    <text class="time-title">{{title}}</text>
+    <text class="time-value">{{value}}</text>
+  </view>
+</template>

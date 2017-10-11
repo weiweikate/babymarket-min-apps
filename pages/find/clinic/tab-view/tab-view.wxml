@@ -1,0 +1,7 @@
+<template name="tab-view">
+  <view class="tab-view">
+    <view class="tab-item border" catchtap="onTabListener" data-position='0'>发起咨询</view>
+    <view class="tab-item border" catchtap="onTabListener" data-position='1'>我的咨询</view>
+    <view class="tab-item" catchtap="onTabListener" data-position='2'>知识库</view>
+  </view>
+</template>
