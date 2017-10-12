@@ -1,0 +1,17 @@
+.cell-add-input {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1rpx solid gainsboro;
+  margin-top: 30rpx;
+}
+
+.cell-add-input .input-title {
+  color: #494848;
+  font-size: 24rpx;
+}
+
+.cell-add-input .input-value {
+  color: #090909;
+  font-size: 28rpx;
+  padding: 15rpx 0rpx 15rpx 0rpx;
+}

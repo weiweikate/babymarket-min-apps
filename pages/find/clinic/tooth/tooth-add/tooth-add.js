@@ -1,66 +1,53 @@
-// pages/find/clinic/tooth/tooth-add/tooth-add.js
+let { Tool, Event, Storage, RequestReadFactory, RequestWriteFactory } = global;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 新增咨询
    */
-  onReady: function () {
-  
+  requestAddTooth: function (requestData) {
+    let task = RequestWriteFactory.addTooth(requestData);
+    task.finishBlock = (req) => {
+      Tool.showSuccessToast("咨询成功！");
+    };
+    task.addToQueue();
   },
 
   /**
-   * 生命周期函数--监听页面显示
+   * 提交
    */
-  onShow: function () {
-  
-  },
+  onSubmitAction: function (e) {
+    let info = e.detail.value;
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
+    // 判断是否填写信息
+    if (Tool.isEmptyStr(info.TeethingNumber)) {
+      Tool.showAlert("请填写出牙个数");
+      return false;
+    };
+    if (Tool.isEmptyStr(info.AdvisoryDetail)) {
+      Tool.showAlert("请填写咨询详情");
+      return false;
+    };
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
+    // Tool.showLoading();
+    // let requestData = new Object();
+    // requestData.Member_MessageId = Storage.memberId();
+    // requestData.TeethingNumber = info.TeethingNumber;
+    // requestData.AdvisoryDetail = info.AdvisoryDetail;
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    // this.requestAddTooth(requestData);
   }
 })

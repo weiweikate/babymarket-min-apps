@@ -52,12 +52,14 @@ Page({
     switch (position) {
       case "0":
         //发起咨询
-        // wx.navigateTo({
-        //   url: '../clinic/add-clinic/add-clinic',
-        // })
-        // wx.navigateTo({
-        //   url: '/pages/find/clinic/stool/stool-add/stool-add'
-        // })
+        if (Storage.didLogin()) {
+          wx.navigateTo({
+            url: '/pages/find/clinic/stool/stool-add/stool-add',
+          })
+        } else {
+          //请先登录
+          Tool.showAlert("请先登录");
+        }
         break;
       case "1":
         //我的咨询

@@ -53,12 +53,14 @@ Page({
     switch (position) {
       case "0":
         //发起咨询
-        // wx.navigateTo({
-        //   url: '../clinic/add-tooth-concult/add-tooth-concult',
-        // })
-        // wx.navigateTo({
-        //   url: '/pages/find/clinic/tooth/tooth-add/tooth-add'
-        // })
+        if (Storage.didLogin()) {
+          wx.navigateTo({
+            url: '/pages/find/clinic/tooth/tooth-add/tooth-add',
+          })
+        } else {
+          //请先登录
+          Tool.showAlert("请先登录");
+        }
         break;
       case "1":
         //我的咨询

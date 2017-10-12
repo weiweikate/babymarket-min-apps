@@ -1,0 +1,9 @@
+<template name="cell-add-select">
+  <view class="cell-add-select">
+    <text class="select-title">{{title}}</text>
+    <view class="select-value-arrow" catchtap="onSelectClickListener" data-position="{{position}}">
+      <input name="{{key}}" class="select-value" placeholder="{{hint}}" disabled="true" placeholder-style="color:#dbdbdb" />
+      <image class="select-arrow" src="/res/img/common/common-arrow-gray-right.png" mode="aspectFit" />
+    </view>
+  </view>
+</template>

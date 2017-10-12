@@ -1,0 +1,29 @@
+.cell-add-select {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1rpx solid gainsboro;
+  margin-top: 30rpx;
+}
+
+.cell-add-select .select-title {
+  color: #494848;
+  font-size: 24rpx;
+}
+
+.cell-add-select .select-value-arrow {
+  display: flex;
+  align-items: center;
+}
+
+.select-value-arrow .select-value {
+  color: #090909;
+  font-size: 28rpx;
+  flex-grow: 1;
+  padding: 15rpx 0rpx 15rpx 0rpx;
+}
+
+.select-value-arrow .select-arrow {
+  width: 17rpx;
+  height: 30rpx;
+  flex: none;
+}

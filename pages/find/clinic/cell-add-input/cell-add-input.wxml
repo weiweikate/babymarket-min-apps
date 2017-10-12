@@ -1,0 +1,6 @@
+<template name="cell-add-input">
+  <view class="cell-add-input">
+    <text class="input-title">{{title}}</text>
+    <input class="input-value" name="{{key}}" placeholder="{{hint}}" placeholder-style="color:#dbdbdb" type="{{type}}" />
+  </view>
+</template>

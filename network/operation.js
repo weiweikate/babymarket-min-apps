@@ -21,12 +21,16 @@ export default class Operation {
 
         // 便便诊所
         this.advisoryReadOperation = 'de9167ca-44b6-42da-bf20-a63d0116325d';
+        // 便便诊所，新增
+        this.advisoryAddOperation = 'e3aa7396-a6cc-41b2-a9ea-a63d01171b91';
         // 便便诊所,留言查询
         this.advisoryDiscussReadOperation = '932411a2-b3fe-4554-9272-a63d0117be75';
         // 便便诊所,留言新增
         this.advisoryDiscussAddOperation = 'acfaaeb9-0be4-44f8-bed9-a63d0117dced';
         // 爱牙卫士
         this.toothAdvisoryReadOperation = '34fe93b4-dd36-4289-a1bd-a6c60123a429';
+        // 爱牙卫士，新增
+        this.toothAdvisoryAddOperation = 'd78c77c3-dcb9-46e6-8ade-a6c60124f92d';
         // 爱牙卫士,留言查询
         this.toothDiscussReadOperation = '016b409c-4044-4304-b622-a6c60124b535';
         // 爱牙卫士,留言新增

@@ -1,2 +1,13 @@
-<!--pages/find/clinic/tooth/tooth-add/tooth-add.wxml-->
-<text>pages/find/clinic/tooth/tooth-add/tooth-add.wxml</text>
+<import src='/pages/find/clinic/cell-add-input/cell-add-input.wxml' />
+
+<view class="view-root">
+  <form catchsubmit="onSubmitAction">
+    <!--出牙个数-->
+    <template is="cell-add-input" data="{{title:'出牙个数',hint:'请输入出牙个数',key:'TeethingNumber',type:'number'}}" />
+    <!--辅食添加结构-->
+    <template is="cell-add-input" data="{{title:'咨询详情',hint:'请填写咨询详情',key:'AdvisoryDetail'}}" />
+
+    <!--底部按钮保存-->
+    <button class="view-submit" form-type="submit">提交</button>
+  </form>
+</view>

@@ -1,1 +1,24 @@
-/* pages/find/clinic/stool/stool-add/stool-add.wxss */
+@import '/pages/find/clinic/cell-add-select/cell-add-select.wxss';
+@import '/pages/find/clinic/cell-add-input/cell-add-input.wxss';
+
+page {
+  background-color: white;
+}
+
+.view-root {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx 60rpx 30rpx 60rpx;
+  border-top: 1rpx solid #f3f4f5;
+}
+
+.view-submit {
+  color: #f55;
+  border: 1rpx solid #f55;
+  background: white;
+  border-radius: 6rpx;
+  font-size: 28rpx;
+  margin: 60rpx 0rpx 30rpx 0rpx;
+  padding: 8rpx 0rpx 8rpx 0rpx;
+}
