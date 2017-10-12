@@ -152,5 +152,19 @@ Page({
             };
             r.addToQueue();
         }
+    },
+
+    cellTap:function(e){
+        let index = e.currentTarget.dataset.index;
+        let datas;
+        if (this.data.currentIndex == 0){
+            datas = this.data.questionListDatas[index];
+        }else{
+            datas = this.data.replyListDatas[index];
+        }
+        wx.navigateTo({
+            url: '/pages/question/question-detail/question-detail?Id=' + datas.Id,
+        })
     }
+
 })

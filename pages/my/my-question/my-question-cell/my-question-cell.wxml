@@ -1,7 +1,7 @@
 <import src='/pages/question/question-base-cell/question-base-cell.wxml' />
 
 <template name="my-question-cell">
-    <view class="my-question-cell" catchtap="latestCellTap" data-index="{{index}}">
+    <view class="my-question-cell" bindtap="cellTap" data-index="{{index}}">
         <template is="question-base-cell" data="{{item:item}}"></template>
         <view class="bottom-view">
             <view class="question-time">{{item.HandleTime}}</view>
