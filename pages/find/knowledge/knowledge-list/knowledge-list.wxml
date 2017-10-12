@@ -1,0 +1,5 @@
+<import src='/pages/find/knowledge/cell-item/cell-item.wxml' />
+
+<view class="view-root">
+  <template is="cell-item" data="{{listArray:listArray}}" />
+</view>

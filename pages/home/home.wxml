@@ -1,6 +1,4 @@
-
-<!--顶部导航栏-->
-<import src='tab-layout/tab-layout.wxml' />
+<import src='/components/tab-layout/tab-layout.wxml' />
 <!--首页-->
 <import src='cell-home/cell-home.wxml' />
 <!--分类-->

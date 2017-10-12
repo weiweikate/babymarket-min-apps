@@ -27,10 +27,16 @@ export default class Operation {
         this.advisoryDiscussAddOperation = 'acfaaeb9-0be4-44f8-bed9-a63d0117dced';
         // 爱牙卫士
         this.toothAdvisoryReadOperation = '34fe93b4-dd36-4289-a1bd-a6c60123a429';
-        // 便便诊所,留言查询
+        // 爱牙卫士,留言查询
         this.toothDiscussReadOperation = '016b409c-4044-4304-b622-a6c60124b535';
-        // 便便诊所,留言新增
+        // 爱牙卫士,留言新增
         this.toothDiscussAddOperation = '85450a21-1609-464c-bf4d-a6c6012519fd';
+        // 专题列表
+        this.specialTopicReadOperation = '2d096526-3bb8-4e8c-b372-a69a0118ab2d';
+        // 知识列表
+        this.knowledgeReadOperation = '5b960cdc-33ae-45f8-ba5b-a69a0118db39';
+        // 知识分类
+        this.knowledgeClassifyReadOperation = 'fa08a7f6-5bd3-4a76-b1e1-a6ad00bf92f9';
         // 宝妈圈-贴子查询
         this.postReadOperation = '459fcf50-c9db-40a1-8cf7-a63d0119205d';
         // 宝妈圈-贴子新增

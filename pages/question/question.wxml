@@ -1,5 +1,5 @@
 <!--question.wxml-->
-<import src='/pages/home/tab-layout/tab-layout.wxml' />
+<import src='/components/tab-layout/tab-layout.wxml' />
 <import src='/pages/question/question-latest-cell/question-latest-cell.wxml' />
 <import src='/pages/question/question-best-cell/question-best-cell.wxml' />
 

@@ -1,4 +1,4 @@
-let { Tool, Event, RequestReadFactory } = global;
+let { Tool, Event, Storage, RequestReadFactory, RequestWriteFactory } = global;
 Page({
 
   /**
@@ -56,12 +56,26 @@ Page({
         // wx.navigateTo({
         //   url: '../clinic/add-tooth-concult/add-tooth-concult',
         // })
+        // wx.navigateTo({
+        //   url: '/pages/find/clinic/tooth/tooth-add/tooth-add'
+        // })
         break;
       case "1":
         //我的咨询
+        if (Storage.didLogin()) {
+          wx.navigateTo({
+            url: '/pages/find/clinic/tooth/tooth-list/tooth-list',
+          })
+        } else {
+          //请先登录
+          Tool.showAlert("请先登录");
+        }
         break;
       case "2":
         //知识库
+        wx.navigateTo({
+          url: '/pages/find/clinic/tooth/tooth-knowledge/tooth-knowledge',
+        })
         break;
     }
   }

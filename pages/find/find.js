@@ -21,13 +21,11 @@ Page({
     let position = e.currentTarget.dataset.position;
     switch (position) {
       case "0":
-        console.log("0")
         wx.navigateTo({
           url: '/pages/find/clinic/stool/stool'
         })
         break;
       case "1":
-        console.log("1")
         wx.navigateTo({
           url: '/pages/find/clinic/tooth/tooth'
         })
@@ -39,25 +37,39 @@ Page({
    * 点击进入详情
    */
   onMenuItemListener: function (e) {
-    let position = e.currentTarget.dataset.index;
-    console.log("=======" + position);
-
-    if (position == 0) {
+    let position = e.currentTarget.dataset.position;
+    let url = undefined;
+    switch (position) {
+      case 0:
+        //天天转盘
+        url = '../find/lottery/lottery';
+        break;
+      case 1:
+        //TOP秒杀
+        break;
+      case 2:
+        //TOP众筹
+        break;
+      case 3:
+        //TOP团购
+        break;
+      case 4:
+        //黄金便征集令
+        url = '../find/levy/levy';
+        break;
+      case 5:
+        //育儿工具
+        url = '../find/tool/tool';
+        break;
+      case 6:
+        //知识库
+        url = '/pages/find/knowledge/knowledge';
+        break;
+    }
+    if (url != undefined) {
       wx.navigateTo({
-        url: '../find/lottery/lottery',
+        url: url
       })
-    } else if (position == 1) {
-    } else if (position == 2) {
-    } else if (position == 3) {
-    } else if (position == 4) {
-      wx.navigateTo({
-        url: '../find/levy/levy',
-      })
-    } else if (position == 5) {
-      wx.navigateTo({
-        url: '../find/tool/tool',
-      })
-    } else if (position == 6) {
     }
   },
   /**

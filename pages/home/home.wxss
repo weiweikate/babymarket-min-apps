@@ -1,8 +1,6 @@
 /*搜索*/
 @import "/components/search-field/search-field.wxss";
-
-/*顶部导航栏*/
-@import "tab-layout/tab-layout.wxss";
+@import '/components/tab-layout/tab-layout.wxss';
 
 /*首页*/
 @import "cell-home/cell-home.wxss";

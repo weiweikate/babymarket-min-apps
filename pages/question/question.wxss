@@ -1,5 +1,5 @@
 /* question.wxss */
-@import '/pages/home/tab-layout/tab-layout.wxss';
+@import '/components/tab-layout/tab-layout.wxss';
 @import '/pages/question/question-latest-cell/question-latest-cell.wxss';
 @import '/pages/question/question-best-cell/question-best-cell.wxss';
 

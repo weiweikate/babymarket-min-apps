@@ -1,0 +1,10 @@
+@import '/pages/find/knowledge/cell-knowledge/cell-knowledge.wxss';
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-top: 1rpx;
+  height: 100%;
+  padding: 40rpx;
+}

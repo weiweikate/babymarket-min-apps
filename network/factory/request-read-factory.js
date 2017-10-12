@@ -620,7 +620,7 @@ export default class RequestReadFactory {
     }
 
     // 便便诊所查询
-    static advisoryRead(){
+    static advisoryRead(isMy=false){
         let operation = Operation.sharedInstance().advisoryReadOperation;
         let bodyParameters = {
             "Operation": operation,
@@ -631,6 +631,9 @@ export default class RequestReadFactory {
                 ]
             },
         };
+        if(isMy){
+          bodyParameters.MemberId = global.Storage.memberId();
+        }
         let req = new RequestRead(bodyParameters);
         req.name = '便便诊所查询';
         req.items = ["Id","CreateTime","Head_PictureId","Is_Answer","Else_Add","MemberId",
@@ -719,7 +722,7 @@ export default class RequestReadFactory {
     }
 
     // 爱牙卫士查询
-    static toothAdvisoryRead() {
+    static toothAdvisoryRead(isMy = false) {
       let operation = Operation.sharedInstance().toothAdvisoryReadOperation;
       let bodyParameters = {
         "Operation": operation,
@@ -730,6 +733,9 @@ export default class RequestReadFactory {
           ]
         },
       };
+      if (isMy) {
+        bodyParameters.MemberId = global.Storage.memberId();
+      }
       let req = new RequestRead(bodyParameters);
       req.name = '便便诊所查询';
       req.items = ["Id", "CreateTime", "MemberImgId", "IsAns", "AdvisoryDetail", "MemberId",
@@ -815,6 +821,75 @@ export default class RequestReadFactory {
           item.name = appendixe.NickName;
         }
       };
+      return req;
+    }
+
+    /**
+     * 知识库
+     */
+    static knowledgeRead(key) {
+      let operation = Operation.sharedInstance().specialTopicReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "ClassifyKey": key,
+        "Order": "${Ordinal} ASC",
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '知识库';
+      req.items = ["Id", "Name"];
+
+      return req;
+    }
+
+    /**
+     * 知识列表
+     */
+    static knowledgeListRead(specialId) {
+      let operation = Operation.sharedInstance().knowledgeReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "SpecialTopicId": specialId
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '知识列表';
+      req.items = ["Id", "Title", "ImgId","Content"];
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.ImgId);
+        });
+      }
+      return req;
+    }
+
+    /**
+     * 知识列表内容
+     */
+    static knowledgeContentRead(id) {
+      let operation = Operation.sharedInstance().knowledgeReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": id
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '知识列表内容';
+      req.items = ["Content"];
+      return req;
+    }
+
+    /**
+     * 知识分类
+     */
+    static knowledgeClassifyRead() {
+      let operation = Operation.sharedInstance().knowledgeClassifyReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Order": "${Ordinal} ASC",
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '知识分类';
+      req.items = ["Value", "Name"];
       return req;
     }
 

@@ -1,0 +1,18 @@
+@import '/components/empty-view/empty-view.wxss';
+@import '/pages/find/clinic/cell-clinic/cell-clinic.wxss';
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.view-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+}
+
+.view-empty {
+  height: 100%;
+}

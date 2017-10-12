@@ -1,0 +1,60 @@
+@import '/components/tab-layout/tab-layout.wxss';
+@import '/pages/find/knowledge/cell-knowledge/cell-knowledge.wxss';
+
+page {
+  background-color: white;
+}
+
+.root-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.top {
+  position: fixed;
+  top: 0;
+  z-index: 20;
+}
+
+.swiper-view {
+  margin-top: 96rpx;
+  height: 100%;
+}
+
+.swiper-view .swiper-container {
+  height: 100%;
+}
+
+.swiper-view .swiper-container .scroll {
+  height: 100%;
+}
+
+.view-cell {
+  padding: 40rpx;
+}
+
+.tab-layout {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  flex-direction: row;
+  flex: none;
+  white-space: nowrap;
+  border-bottom: 2rpx solid #eee;
+}
+
+.tab-layout .tab {
+  display: inline-flex;
+  font-size: 30rpx;
+  color: #494848;
+  height: 90rpx;
+  width: 187rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-layout .tab.select {
+  color: #f55;
+  border-bottom: 4rpx solid #f55;
+}

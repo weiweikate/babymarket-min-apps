@@ -1,0 +1,21 @@
+<import src='/components/tab-layout/tab-layout.wxml' />
+<import src='/pages/find/knowledge/cell-knowledge/cell-knowledge.wxml' />
+
+<view class="root-view">
+  <view class="top">
+    <template is="tab-layout" data="{{items:oneSortData,currentTab}}" />
+  </view>
+  <view class="swiper-view">
+    <swiper class="swiper-container" bindchange="onTabChangeListener" current="{{currentTab}}">
+      <block wx:for="{{oneSortData}}" wx:key="unique">
+        <swiper-item>
+          <scroll-view class="scroll" scroll-y>
+            <view class='view-cell'>
+              <template is="cell-knowledge" data="{{listArray:listArray}}" />
+            </view>
+          </scroll-view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>

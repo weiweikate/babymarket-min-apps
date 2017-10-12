@@ -1,9 +1,9 @@
 <!--mom.wxml-->
-<import src='/pages/home/tab-layout/tab-layout.wxml' />
+<import src='/components/tab-layout/tab-layout.wxml' />
+<import src='/components/empty-view/empty-view.wxml' />
 <import src='/pages/mom/cell-post/cell-post.wxml' />
 <import src='/pages/mom/cell-circle/cell-circle.wxml' />
 <import src='/pages/eat/search-cell/search-cell.wxml' />
-<import src='/components/empty-view/empty-view.wxml' />
 
 <view class="root-view">
   <image src="/res/img/mother-circle/mother-circle-create-post-icon.png" class="create-post-image" catchtap="createPostTap"></image>

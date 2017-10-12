@@ -1,0 +1,23 @@
+.cell-item {
+  background: white;
+  display: flex;
+  padding: 20rpx;
+  align-items: center;
+}
+
+.cell-item.top {
+  border-top: 15rpx solid #f3f4f5;
+}
+
+.cell-item .item-img {
+  flex: none;
+  width: 140rpx;
+  height: 140rpx;
+  background-color: #f3f4f5;
+}
+
+.cell-item .item-title {
+  font-size: 30rpx;
+  color: #090909;
+  margin-left: 15rpx;
+}

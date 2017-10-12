@@ -44,7 +44,7 @@ Page({
         this.setData({
           postData: postData
         });
-        WxParse.wxParse('article', 'html', postData.Article_Content, self, 0);
+        WxParse.wxParse('article', 'html', postData.Article_Content, self, 5);
       }
       self.requestPostDiscuss(id);
     };

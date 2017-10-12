@@ -1,0 +1,13 @@
+.cell-knowledge {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell-knowledge .knowledge-name {
+  font-size: 28rpx;
+  color: #494848;
+  border:1px solid #494848;
+  border-radius: 6rpx;
+  padding: 10rpx 30rpx 10rpx 30rpx;
+  margin: 10rpx;
+}

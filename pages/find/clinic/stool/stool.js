@@ -1,4 +1,4 @@
-let { Tool, Event, RequestReadFactory } = global;
+let { Tool, Event, Storage, RequestReadFactory, RequestWriteFactory } = global;
 Page({
   /**
    * 页面的初始数据
@@ -55,15 +55,26 @@ Page({
         // wx.navigateTo({
         //   url: '../clinic/add-clinic/add-clinic',
         // })
+        // wx.navigateTo({
+        //   url: '/pages/find/clinic/stool/stool-add/stool-add'
+        // })
         break;
       case "1":
         //我的咨询
-        // wx.navigateTo({
-        //   url: '../clinic/my-clinic/my-clinic',
-        // })
+        if (Storage.didLogin()) {
+          wx.navigateTo({
+            url: '/pages/find/clinic/stool/stool-list/stool-list',
+          })
+        } else {
+          //请先登录
+          Tool.showAlert("请先登录");
+        }
         break;
       case "2":
         //知识库
+        wx.navigateTo({
+          url: '/pages/find/clinic/stool/stool-knowledge/stool-knowledge',
+        })
         break;
     }
   }

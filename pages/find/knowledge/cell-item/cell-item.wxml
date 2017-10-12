@@ -1,0 +1,6 @@
+<template name="cell-item">
+  <view class="{{index==0?'cell-item':'cell-item top'}}" catchtap="onItemClickListener" data-id="{{item.Id}}" data-title="{{item.Title}}" wx:for="{{listArray}}" wx:key="unique">
+    <image src="{{item.headImgUrl}}" class="item-img" mode="aspectFill" />
+    <text class="item-title">{{item.Title}}</text>
+  </view>
+</template>

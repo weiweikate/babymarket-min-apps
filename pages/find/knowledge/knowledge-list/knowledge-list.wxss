@@ -1,0 +1,7 @@
+@import '/pages/find/knowledge/cell-item/cell-item.wxss';
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+}

@@ -1,0 +1,5 @@
+<template name="cell-knowledge">
+  <view class="cell-knowledge">
+    <text class="knowledge-name" wx:for="{{listArray}}" wx:key="unique" catchtap="onItemClickListener" data-id="{{item.Id}}" data-title="{{item.Name}}">{{item.Name}}</text>
+  </view>
+</template>

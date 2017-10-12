@@ -2,7 +2,7 @@
   <view class="{{index==0?'cell-detail-discuss':'cell-detail-discuss top'}}">
     <!--头像／姓名／时间/内容-->
     <!--头像  -->
-    <image src="{{headImgUrl.length>0?headImgUrl:'/res/img/common/common-avatar-default-icon.png'}}" class="avatar-img" />
+    <image src="{{headImgUrl.length>0?headImgUrl:'/res/img/common/common-avatar-default-icon.png'}}" class="avatar-img" mode="aspectFill"/>
     <view class="avatar-info">
       <!--姓名  -->
       <text class="name">{{name}}</text>

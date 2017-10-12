@@ -1,0 +1,10 @@
+@import "/libs/wxParse/wxParse.wxss";
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  background-color: white;
+}

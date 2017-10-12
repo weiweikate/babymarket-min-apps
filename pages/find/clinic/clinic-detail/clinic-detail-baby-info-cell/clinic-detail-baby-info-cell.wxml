@@ -1,6 +1,0 @@
-<template name="clinic-detail-baby-info-cell">
-    <view class="clinic-detail-baby-info-cell">
-        <view class="name">{{name}}</view>
-        <view class="value">{{value}}</view>
-    </view>
-</template>
