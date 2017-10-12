@@ -362,4 +362,37 @@ export default class RequestWriteFactory {
       return req;
     }
 
+    //新增孕育问答
+    static addQuestion(content, isExpertAns, isAnonymity, queId) {
+        let operation = Operation.sharedInstance().questionAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "Id": queId,
+            "AskMemberId": global.Storage.memberId(),
+            "Que": content,
+            "IsExpertAns": isExpertAns,
+            "IsAnonymity": isAnonymity
+        }
+
+        let req = new RequestWrite(status, 'BreedQueAns', params, null);
+        req.name = '新增孕育问答';
+        return req;
+    }
+
+    //新增孕育问答回复
+    static addQuestion(content, breedQueAnsId) {
+        let operation = Operation.sharedInstance().questionAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "ReplierMemberId": global.Storage.memberId(),
+            "BreedQueAnsId": breedQueAnsId,
+            "Ans": content
+        }
+
+        let req = new RequestWrite(status, 'BreedQueAns', params, null);
+        req.name = '新增孕育问答回复';
+        return req;
+    }
 }

@@ -1,12 +1,12 @@
 <import src='/pages/question/question-base-cell/question-base-cell.wxml' />
 
 <template name="my-question-cell">
-    <view class="my-question-cell" catchtap="latestCellTap" data-index="{{index}}">
-        <template is="question-base-cell"></template>
+    <view class="my-question-cell" bindtap="cellTap" data-index="{{index}}">
+        <template is="question-base-cell" data="{{item:item}}"></template>
         <view class="bottom-view">
-            <view class="question-time">2017-08-08</view>
+            <view class="question-time">{{item.HandleTime}}</view>
             <view class="right-view">
-                <view class="read-num">0</view>
+                <view class="read-num">{{item.ReplierNumber}}</view>
                 <image src="/res/img/index/index-reply-black-icon.png" style="width:17rpx;height:17rpx"></image>
             </view>
         </view> 
