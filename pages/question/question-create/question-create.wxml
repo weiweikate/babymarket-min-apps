@@ -1,0 +1,13 @@
+<!--question-create.wxml-->
+
+<textarea class="input-area" placeholder="为了更好的解决您的问题，请在提问时更详尽地表述症状，必要时附上图片。" bindinput='inputTap'/>
+
+<view class="picture-line-view">
+    <image src="/res/img/question/question-camera-logo.png" class="camera-logo"></image>
+    <view class="right-view" catchtap="nimingTap">
+        <view>匿名</view>
+        <image src="{{isHideName?'/res/img/question/question-niming-select-icon.png':'/res/img/question/question-niming-normal-icon.png'}}" class="niming-image"></image>
+    </view>
+</view>
+
+<view class="question-button" catchtap="questionTap">提问</view>

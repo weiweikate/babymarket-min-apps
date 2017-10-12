@@ -1,0 +1,20 @@
+<!--question-reply.wxml-->
+
+<view class="question-info-view">
+    <view class="creator-info-view">
+        <image src="{{datas.AvatarUrl}}" class="avatar"></image>
+        <view class="name-age">
+            <view class="name">{{datas.NickName}}</view>
+            <view class="age">{{datas.MonthDay}}</view>
+        </view>
+    </view>
+
+    <view class="content">{{datas.Que}}</view>
+    <view class="create-time">{{datas.HandleTime}}</view>
+</view>
+
+<view class="reply-text-view">
+    <textarea class="reply-input" placeholder="回复#{{datas.NickName}}（回答10字以上，即可获得2金币）" bindinput = 'inputTap'/>
+</view>
+
+<view class="reply-button" catchtap="replyTap">回答</view>

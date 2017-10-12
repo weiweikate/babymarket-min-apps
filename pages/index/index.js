@@ -117,7 +117,18 @@ Page({
      * 我要提问
      */
     questionTap:function(){
-        console.log('我要提问');
+        wx.showActionSheet({
+            itemList: ['向专家提问', '向其他宝妈提问'],
+            success: function (res) {
+                console.log(res.tapIndex)
+                wx.navigateTo({
+                    url: '/pages/question/question-create/question-create?index=' + res.tapIndex,
+                })
+            },
+            fail: function (res) {
+                console.log(res.errMsg)
+            }
+        })
     },
 
     questionListTap:function(){

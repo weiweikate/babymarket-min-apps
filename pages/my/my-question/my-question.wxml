@@ -8,12 +8,12 @@
 
 <view class="list-view" wx:if="{{currentIndex == 0}}">
     <block wx:for="{{questionListDatas}}" wx:key="unique">
-        <template is="my-question-cell" data="{{item:questionListDatas, index:index}}" />
+        <template is="my-question-cell" data="{{item:item, index:index}}" />
     </block>
 </view>
 
 <view class="list-view" wx:else>
     <block wx:for="{{replyListDatas}}" wx:key="unique">
-        <template is="my-question-cell" data="{{item:replyListDatas, index:index}}" />
+        <template is="my-question-cell" data="{{item:item, index:index}}" />
     </block>
 </view>

@@ -1,0 +1,26 @@
+/* question-detail.wxss */
+@import "/libs/wxParse/wxParse.wxss";
+
+.content-web {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.bottom-view{
+    background: white;
+    width: 100%;
+    height: 120rpx;
+    position: fixed;
+    bottom: 0rpx;
+}
+.reply-button{
+    margin: 20rpx 22rpx;
+    width: 706rpx;
+    height: 80rpx;
+    font-size: 32rpx;
+    color: white;
+    background: #ff5555;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 10rpx;
+}
