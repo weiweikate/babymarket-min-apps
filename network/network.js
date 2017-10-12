@@ -41,6 +41,9 @@ export default class Network {
         this.statusNew = 'New';
         this.statusDelete = 'Deleted';
 
+        //详情页
+        this.questionURL = this.domain + 'QueAnsDetails.aspx';
+
         __instance(this);
     }
 

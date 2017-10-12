@@ -1,0 +1,10 @@
+<!--question-detail.wxml-->
+<import src="/libs/wxParse/wxParse.wxml" />
+
+<view class='content-web'>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+</view>
+
+<view class="bottom-view">
+    <view class="reply-button" catchtap="replyTap">我来回答</view>
+</view>

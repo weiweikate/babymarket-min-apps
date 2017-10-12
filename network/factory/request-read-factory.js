@@ -1,7 +1,6 @@
 /**
  * Created by coin on 1/13/17.
  */
-
 import RequestRead from '../base-requests/request-read'
 import Operation from '../operation'
 import RequestLogin from '../requests/request-login'
@@ -1250,12 +1249,88 @@ export default class RequestReadFactory {
 
         //匹配成功函数
         req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
+            
             if (key === 'Member') {
                 //给data添加新属性
                 data.NickName = appendixe.NickName;
+                if (Tool.isTrue(data.IsAnonymity)){
+                    data.NickName = '匿名';
+                }
+                data.ImgId = appendixe.ImgId;
+                data.AvatarUrl = Tool.imageURLForId(appendixe.ImgId, '/res/img/common/common-avatar-default-icon.png');
             }
         };
+
+        req.preprocessCallback = (req) => {
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                let createTime = item.CreateTime;
+                createTime = createTime.substring(5, 16);
+                item.HandleTime = createTime;
+
+
+            });
+        }
+
         return req;
     }
-    
+
+    //我的孕育问答回答 查询
+    static requestMyQAReplyWithCondition(index, count) {
+        let operation = Operation.sharedInstance().questionReplyReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${CreateTime} DESC",
+            "MaxCount": count,
+            "StartIndex": index,
+            "Appendixes": {
+                "+AskMember": [
+                    "ImgId",
+                    "NickName"
+                ],
+                "+ReplierMember": [
+                    "NickName",
+                    "ImgId"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '我的孕育问答回答 查询';
+        req.appendixesKeyMap = { 'Member': 'AskMemberId', 'ReplierMember': 'ReplierMemberId' };//可以多个
+        req.items = ["Id",
+                    "AskMemberId",
+                    "CreateTime",
+                    "QueDigest",
+                    "MonthDay",
+                    "ReplierNumber",
+                    "ReplierMemberId",
+                    "IsAnonymity",
+                    "BreedQueAnsId",
+                    "Attachments"];
+
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
+
+            if (key === 'Member') {
+                //给data添加新属性
+                data.NickName = appendixe.NickName;
+                data.ImgId = appendixe.ImgId;
+                data.AvatarUrl = Tool.imageURLForId(appendixe.ImgId, '/res/img/common/common-avatar-default-icon.png');
+            }
+        };
+
+        req.preprocessCallback = (req) => {
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                let createTime = item.CreateTime;
+                createTime = createTime.substring(5, 16);
+                item.HandleTime = createTime;
+                item.Que = item.QueDigest;
+            });
+        }
+
+        return req;
+    }
 }

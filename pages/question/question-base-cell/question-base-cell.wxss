@@ -9,6 +9,12 @@
     color: #acadaa;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.question-base-cell .top-view .left-view{
+    display: flex;
+    align-items: center;
 }
 
 .question-base-cell .content{
@@ -19,9 +25,4 @@
 
 .top-view .name{
     margin-left: 15rpx;
-}
-
-.top-view .age{
-    right: 22rpx;
-    position: fixed;
 }

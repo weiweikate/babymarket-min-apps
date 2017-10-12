@@ -1,22 +1,38 @@
 /* question.wxss */
 @import '/pages/home/tab-layout/tab-layout.wxss';
+@import '/components/empty-view/empty-view.wxss';
 @import '/pages/question/question-latest-cell/question-latest-cell.wxss';
 @import '/pages/question/question-best-cell/question-best-cell.wxss';
 
+
+.root-view{
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+}
+
 .swiper-view {
     height: 100%;
+    border-top: 2rpx solid #dbdbdb;
 }
 
 .swiper-view .swiper-container {
     height: 100%;
 }
 
-.sepline{
-    background: #dbdbdb;
-    height: 2rpx;
+.swiper-view .swiper-container .scroll{
+    height: 100%;
 }
 
 .tab-layout .tab {
   height: 80rpx;
 }
 
+.create-question-image {
+  z-index: 20;
+  position: fixed;
+  width: 128rpx;
+  height: 128rpx;
+  left: 591rpx;
+  top: 920rpx;
+}

@@ -1,0 +1,71 @@
+/* question-reply.wxss */
+
+.question-info-view{
+    background: white;
+    padding: 28rpx 22rpx;
+}
+
+.question-info-view .creator-info-view {
+    display: flex;
+}
+
+.creator-info-view .name-age{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10rpx 20rpx;
+    font-size: 30rpx;
+    color: #090909;
+}
+
+.creator-info-view .avatar{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 120rpx;
+    flex-shrink: 0;
+}
+
+.creator-info-view .name-age .age{
+    color: #494848;
+    font-size: 26rpx;
+}
+
+.question-info-view .content{
+    font-size: 30rpx;
+    color: #494848;
+    margin-top: 40rpx;
+}
+
+.question-info-view .create-time{
+    font-size: 30rpx;
+    color: #acadaa;
+    margin-top: 60rpx;
+    margin-bottom: 20rpx;
+}
+
+.reply-text-view{
+    margin: 30rpx 22rpx;
+    padding: 20rpx;
+    height: 360rpx;
+    background: white;
+}
+
+.reply-button{
+    width: 118rpx;
+    height: 56rpx;
+    background: #5caad3;
+    color: white;
+    font-size: 32rpx;
+    line-height: 56rpx;
+    text-align: center;
+    border-radius: 5rpx;
+    margin-top: 20rpx;
+    margin-left: 608rpx;
+}
+
+.reply-input{
+    font-size: 30rpx;
+    color: #494848;
+    width: 666rpx;
+    height: 360rpx;
+}
