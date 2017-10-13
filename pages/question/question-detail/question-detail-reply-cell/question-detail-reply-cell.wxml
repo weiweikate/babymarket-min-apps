@@ -1,0 +1,27 @@
+<import src='/pages/question/question-detail/question-detail-cell/question-detail-cell.wxml' />
+
+<template name="question-detail-reply-cell">
+    <view class="question-detail-cell-view">
+        <template is="question-detail-cell" data="{{item:item}}"></template>
+
+        <view class="like-view" catchtap="likeTap" data-index="{{index}}">
+            <image src="{{item.isLiked?'/res/img/mom/mom-praise-s.png':'/res/img/mom/mom-praise-n.png'}}" class="like-icon"></image>
+            <view class="like-num">有用{{item.likeNum}}</view>
+        </view>
+
+        <view class="reply-button" catchtap="replyAnswerTap" data-index="{{index}}">回复</view>
+
+        <!-- 评论的回复-->
+        <block wx:for='{{item.commentList}}' wx:key='unique' wx:for-index="idx" wx:for-item="itemName">
+            <template is="reply-comment-cell" data="{{commentDatas:itemName, commentIdx:idx}}"></template>
+        </block>
+    </view>
+</template>
+
+<!-- 评论的回复 模板-->
+<template name="reply-comment-cell">
+    <view class="reply-comment-cell">
+        <view class="commenter-name">{{commentDatas.NickName}}</view>
+        <view class="commenter-content">{{commentDatas.Ans}}</view>
+    </view>
+</template>

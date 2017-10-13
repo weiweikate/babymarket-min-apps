@@ -1,0 +1,49 @@
+@import '/pages/question/question-detail/question-detail-cell/question-detail-cell.wxss';
+
+.question-detail-cell-view{
+    margin-top: 20rpx;
+    background: white;
+    padding-bottom: 20rpx;
+}
+
+.question-detail-cell-view .like-view{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10rpx;
+    margin-right: 22rpx;
+}
+
+.like-view .like-icon{
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 5rpx;
+}
+
+.like-view .like-num{
+    font-size: 28rpx;
+    color: #090909;
+}
+
+.question-detail-cell-view .reply-button{
+    color: #5caad3;
+    font-size: 28rpx;
+    width: 728rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    margin-right: 22rpx;
+    text-align: right;
+}
+
+/*回复评论*/
+.reply-comment-cell{
+    margin: 10rpx 22rpx;
+    padding: 25rpx 20rpx;
+    background: #f0fcfc;
+    font-size: 26rpx;
+    color: #090909;
+}
+
+.reply-comment-cell .commenter-name{
+    color: #98dedb;
+    margin-bottom: 20rpx;
+}

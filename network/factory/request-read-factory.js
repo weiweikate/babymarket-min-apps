@@ -1300,7 +1300,7 @@ export default class RequestReadFactory {
     }
 
     //孕育问答 查询
-    static requestQAWithCondition(condition, index, count) {
+    static requestQAWithCondition(condition, index, count, isAnswer=false) {
         let operation = Operation.sharedInstance().questionReadOperation;
         let bodyParameters = {
             "Operation": operation,
@@ -1322,16 +1322,21 @@ export default class RequestReadFactory {
         let req = new RequestRead(bodyParameters);
         req.name = '孕育问答 查询';
         req.appendixesKeyMap = { 'Member': 'AskMemberId', 'ReplierMember': 'ReplierMemberId' };//可以多个
+        if(isAnswer){
+            req.appendixesKeyMap = { 'Member': 'ReplierMemberId'};//可以多个
+        }
         req.items = ["Id", 
             "AskMemberId",
             "CreateTime",
             "Que",
+            "Ans",
             "MonthDay",
             "ReplierNumber",
             "ReplierMemberId",
             "IsAnonymity",
             "Attachments",
             "BreedQueAnsId",
+            "BelongAnswerId",
             "IsHandpick"];
 
         //匹配成功函数
@@ -1356,6 +1361,9 @@ export default class RequestReadFactory {
                 createTime = createTime.substring(5, 16);
                 item.HandleTime = createTime;
 
+                if (item.Que == '') {
+                    item.Que = item.Ans;
+                }
 
             });
         }
@@ -1418,6 +1426,22 @@ export default class RequestReadFactory {
             });
         }
 
+        return req;
+    }
+
+    //孕育问答详情评论点赞 查询
+    static requestQuestionLike(BreedQueAnsId) {
+        let operation = Operation.sharedInstance().questionLikeReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "BreedQueAnsId": BreedQueAnsId,
+            "MaxCount": 1,
+            "StartIndex": 0,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '孕育问答详情评论点赞 查询';
+        req.items = ["Id",
+            "MemberId","BreedQueAnsId"]
         return req;
     }
 }

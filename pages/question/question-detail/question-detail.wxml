@@ -1,8 +1,16 @@
 <!--question-detail.wxml-->
-<import src="/libs/wxParse/wxParse.wxml" />
+<import src='/pages/question/question-detail/question-detail-cell/question-detail-cell.wxml' />
+<import src='/pages/question/question-detail/question-detail-reply-cell/question-detail-reply-cell.wxml' />
 
-<view class='content-web'>
-    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+<view class="root-view">
+    <view class="question-detail-view">
+        <template is="question-detail-cell" data="{{item:datas}}"></template>
+        <view class="reply-num">{{datas.ReplierNumber}}条回复</view>
+    </view>
+
+    <block wx:for='{{replyList}}' wx:key='unique'>
+        <template is="question-detail-reply-cell" data="{{item:item, index:index}}"></template>
+    </block>
 </view>
 
 <view class="bottom-view">
