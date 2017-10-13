@@ -1,0 +1,13 @@
+<template name="question-detail-cell">
+    <view class="question-detail-cell">
+        <view class="creator-info-view">
+            <image src="{{item.AvatarUrl}}" class="avatar"></image>
+            <view class="name-age">
+                <view class="name">{{item.NickName}}</view>
+                <view class="age">{{item.CreateTime}}</view>
+            </view>
+        </view>
+
+        <view class="content">{{item.Que}}</view>
+    </view>
+</template>

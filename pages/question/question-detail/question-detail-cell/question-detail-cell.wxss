@@ -1,0 +1,35 @@
+.question-detail-cell{
+    background: white;
+    padding: 28rpx 22rpx;
+}
+
+.question-detail-cell .creator-info-view {
+    display: flex;
+}
+
+.creator-info-view .name-age{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10rpx 20rpx;
+    font-size: 30rpx;
+    color: #090909;
+}
+
+.creator-info-view .avatar{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 120rpx;
+    flex-shrink: 0;
+}
+
+.creator-info-view .name-age .age{
+    color: #090909;
+    font-size: 26rpx;
+}
+
+.question-detail-cell .content{
+    font-size: 26rpx;
+    color: #090909;
+    margin-top: 40rpx;
+}

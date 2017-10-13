@@ -163,12 +163,6 @@ Page({
         let self = this;
         r.finishBlock = (req) => {
             let datas = req.responseObject.Datas;
-            datas.forEach((item, index) => {
-
-
-                  
-                
-            });
 
             let arry = self.data.dataArry;
             arry.splice(tabIndex,1,datas);
