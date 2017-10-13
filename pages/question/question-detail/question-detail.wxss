@@ -1,9 +1,9 @@
 /* question-detail.wxss */
-@import "/libs/wxParse/wxParse.wxss";
+@import '/pages/question/question-detail/question-detail-cell/question-detail-cell.wxss';
+@import '/pages/question/question-detail/question-detail-reply-cell/question-detail-reply-cell.wxss';
 
-.content-web {
-  padding-left: 30rpx;
-  padding-right: 30rpx;
+.root-view{
+    margin-bottom: 180rpx;
 }
 
 .bottom-view{
@@ -13,7 +13,7 @@
     position: fixed;
     bottom: 0rpx;
 }
-.reply-button{
+.bottom-view .reply-button{
     margin: 20rpx 22rpx;
     width: 706rpx;
     height: 80rpx;
@@ -23,4 +23,17 @@
     line-height: 80rpx;
     text-align: center;
     border-radius: 10rpx;
+}
+
+.question-detail-view{
+    background: white;
+    padding-bottom: 25rpx;
+}
+
+.reply-num{
+    font-size: 28rpx;
+    color: #090909;
+    width: 728rpx;
+    margin-right: 22rpx;
+    text-align: right;
 }

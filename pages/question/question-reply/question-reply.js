@@ -11,6 +11,7 @@ Page({
         datas:''
     },
     content: '',
+    isReplyComment:false,
 
     /**
      * 生命周期函数--监听页面加载
@@ -20,9 +21,13 @@ Page({
 
         if (Tool.isEmpty(datas)){
             let Id = options.Id;
+            this.isReplyComment = Tool.isTrue(options.isReplyComment);
 
-            //获取问题详情
-            this.requestQuestionDetail(Id);
+            if (Tool.isValidStr(Id)){
+                //获取问题详情
+                this.requestQuestionDetail(Id);
+            }
+
         }else{
             wx.setNavigationBarTitle({
                 title: '回复' + datas.NickName,
@@ -110,7 +115,12 @@ Page({
         }
 
         if (Storage.didLogin()) {
-            let rq = RequestWriteFactory.addQuestion(this.content, this.data.datas.Id);
+            let belongAnswerId = '';
+            if (this.isReplyComment){
+                belongAnswerId = this.data.datas.Id;
+            }
+
+            let rq = RequestWriteFactory.addQuestionReply(this.content, this.data.datas.BreedQueAnsId, belongAnswerId);
             rq.finishBlock = (req) => {
                 wx.navigateBack({
                     delta: 1,
@@ -135,7 +145,7 @@ Page({
     requestQuestionDetail: function (Id) {
         let condition = "${Id} == '" + Id + "'";
 
-        let r = RequestReadFactory.requestQAWithCondition(condition, 0, 1);
+        let r = RequestReadFactory.requestQAWithCondition(condition, 0, 1, this.isReplyComment);
         let self = this;
         r.finishBlock = (req, firstData) => {
             self.setData({

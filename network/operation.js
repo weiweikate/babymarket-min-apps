@@ -76,6 +76,9 @@ export default class Operation {
         this.questionAddOperation = 'e8967308-a160-4b0d-8f7b-a68600b5b469'
         //我的孕育问答回答
         this.questionReplyReadOperation = '6fce86ea-15f2-488d-a105-a68f00aa58fd'
+        //孕育问答点赞
+        this.questionLikeReadOperation = 'd2a5b35f-3d8f-05c8-33ae-3f9e01e560f3'
+        this.questionLikeAddOperation = 'a17faf8c-244e-4d6b-b455-a76f00a6101d'
 
         //首页-广告位
         this.homeAdReadOperation = 'b412ff1c-c19b-4250-b479-a61e0085a868';

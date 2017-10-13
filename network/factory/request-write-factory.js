@@ -401,18 +401,34 @@ export default class RequestWriteFactory {
     }
 
     //新增孕育问答回复
-    static addQuestion(content, breedQueAnsId) {
+    static addQuestionReply(content, breedQueAnsId, BelongAnswerId) {
         let operation = Operation.sharedInstance().questionAddOperation;
         let status = Network.sharedInstance().statusNew;
         let params = {
             "Operation": operation,
             "ReplierMemberId": global.Storage.memberId(),
             "BreedQueAnsId": breedQueAnsId,
-            "Ans": content
+            "Ans": content,
+            "BelongAnswerId": BelongAnswerId
         }
 
         let req = new RequestWrite(status, 'BreedQueAns', params, null);
         req.name = '新增孕育问答回复';
+        return req;
+    }
+
+    //新增孕育问答回复点赞
+    static addQuestionReplyLike(BelongAnswerId) {
+        let operation = Operation.sharedInstance().questionLikeAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "MemberId": global.Storage.memberId(),
+            "BreedQueAnsId": BelongAnswerId
+        }
+
+        let req = new RequestWrite(status, 'QueAnsLike', params, null);
+        req.name = '新增孕育问答回复点赞';
         return req;
     }
 }

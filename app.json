@@ -68,7 +68,9 @@
     "pages/find/levy/levy-winner/levy-winner",
     "pages/find/levy/levy-apply/levy-apply",
     "pages/mom/circle-detail/circle-detail",
-    "pages/mom/post-detail/post-detail"
+    "pages/mom/post-detail/post-detail",
+    "pages/question/question-detail/question-detail",
+    "pages/question/question-reply/question-reply"
   ],
   "window": {
     "backgroundTextStyle": "light",
