@@ -343,11 +343,36 @@ export default class RequestWriteFactory {
     }
 
     //新增便便诊所咨询
-    static addAdvisory(requestData) {
+    static addAdvisory(requestData, temporaryIdArray) {
       let operation = Operation.sharedInstance().advisoryAddOperation;
       let status = Network.sharedInstance().statusNew;
 
-      let req = new RequestWrite(status, 'Advisory', requestData, operation, null);
+      let relevancies = null;
+
+      if (temporaryIdArray != undefined) {
+        let requestId = requestData.Id;
+        relevancies = new Array();
+        temporaryIdArray.forEach((item) => {
+          let relevancy = new Object();
+          relevancy.EntityName = "Attachment";
+          relevancy.Status = Network.sharedInstance().statusNew;
+
+          let itemId = Tool.guid();
+
+          let items = new Object();
+          items.FileName = itemId + ".png";
+          items.RelevancyId = requestId;
+          items.RelevancyType = 'Advisory';
+          items.RelevancyBizElement = 'Attachments';
+          items.$FILE_BYTES = item;
+          items.Id = itemId;
+          relevancy.Items = items;
+
+          relevancies.push(relevancy);
+        });
+      }
+
+      let req = new RequestWrite(status, 'Advisory', requestData, operation, relevancies);
       req.name = '新增便便诊所咨询';
       return req;
     }
@@ -363,11 +388,36 @@ export default class RequestWriteFactory {
     }
 
     //新增爱牙卫士咨询
-    static addTooth(requestData) {
+    static addTooth(requestData, temporaryIdArray) {
       let operation = Operation.sharedInstance().toothAdvisoryAddOperation;
       let status = Network.sharedInstance().statusNew;
 
-      let req = new RequestWrite(status, 'ToothAdvisory', requestData, operation, null);
+      let relevancies = null;
+
+      if (temporaryIdArray != undefined){
+        let requestId = requestData.Id;
+        relevancies = new Array();
+        temporaryIdArray.forEach((item) => {
+          let relevancy = new Object();
+          relevancy.EntityName = "Attachment";
+          relevancy.Status = Network.sharedInstance().statusNew;
+
+          let itemId = Tool.guid();
+
+          let items = new Object();
+          items.FileName = itemId + ".png";
+          items.RelevancyId = requestId;
+          items.RelevancyType = 'Advisory';
+          items.RelevancyBizElement = 'Attachments';
+          items.$FILE_BYTES = item;
+          items.Id = itemId;
+          relevancy.Items = items;
+
+          relevancies.push(relevancy);
+        });
+      }
+
+      let req = new RequestWrite(status, 'ToothAdvisory', requestData, operation, relevancies);
       req.name = '新增爱牙卫士咨询';
       return req;
     }

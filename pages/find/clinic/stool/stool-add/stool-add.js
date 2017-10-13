@@ -1,26 +1,76 @@
 let { Tool, Event, Storage, RequestReadFactory, RequestWriteFactory } = global;
+import ImagePicker from '../../../../../components/image-picker/image-picker';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    typeArray:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.imagePicker = new ImagePicker(this);
 
+    this.requestAdvisoryType();
+  },
+
+  /**
+   * 查询咨询
+   */
+  requestAdvisoryType: function () {
+    let task = RequestReadFactory.advisoryTypeRead();
+    task.finishBlock = (req) => {
+      let responseData = req.responseObject.Datas;
+      let typeArray = new Array();
+      responseData.forEach((item, index) => {
+        console.log(item.Select.split(';'));
+        switch (item.Value){
+          case "0":
+          //哺乳
+            console.log("哺乳");
+            typeArray[0] = item.Select.split(';');
+          break;
+          case "1":
+            //排便次数
+            typeArray[3] = item.Select.split(';');
+            break;
+          case "2":
+            //辅食添加结构
+            typeArray[1] = item.Select.split(';');
+            break;
+          case "3":
+            //饮水量
+            typeArray[2] = item.Select.split(';');
+            break;
+          case "4":
+            //拉粑粑时的表情
+            typeArray[4] = item.Select.split(';');
+            break;
+        }
+      });
+      this.setData({
+        typeArray: typeArray
+      });
+      console.log(typeArray);
+    }
+    task.addToQueue();
   },
 
   /**
    * 新增咨询
    */
-  requestAddAdvisory: function (requestData) {
-    let task = RequestWriteFactory.addAdvisory(requestData);
+  requestAddAdvisory: function (requestData, temporaryIdArray) {
+    let task = RequestWriteFactory.addAdvisory(requestData, temporaryIdArray);
     task.finishBlock = (req) => {
       Tool.showSuccessToast("咨询成功！");
+      Tool.navigationPop();
+
+      Event.emit('refreshClinicList');//发出通知
     };
     task.addToQueue();
   },
@@ -29,6 +79,8 @@ Page({
    * 提交
    */
   onSubmitAction: function (e) {
+    let self = this;
+
     let info = e.detail.value;
 
     // 判断是否填写信息
@@ -57,17 +109,19 @@ Page({
       return false;
     };
 
-    // Tool.showLoading();
-    // let requestData = new Object();
-    // requestData.Member_MessageId = Storage.memberId();
-    // requestData.Nurse_Condition = info.Nurse_Condition;
-    // requestData.Milk_Powder_Brand = info.Milk_Powder_Brand;
-    // requestData.Assisted_Food = info.Assisted_Food;
-    // requestData.WaterIntake = info.WaterIntake;
-    // requestData.Cacation_Number = info.Cacation_Number;
-    // requestData.Pull_Expression = info.Pull_Expression;
-
-    // this.requestAddAdvisory(requestData);
+    Tool.showLoading();
+    self.imagePicker.onUploadAction((temporaryIdArray) => {
+      let requestData = new Object();
+      requestData.Id = Tool.guid();
+      requestData.Member_MessageId = Storage.memberId();
+      requestData.Nurse_Condition = info.Nurse_Condition;
+      requestData.Milk_Powder_Brand = info.Milk_Powder_Brand;
+      requestData.Assisted_Food = info.Assisted_Food;
+      requestData.WaterIntake = info.WaterIntake;
+      requestData.Cacation_Number = info.Cacation_Number;
+      requestData.Pull_Expression = info.Pull_Expression;
+      self.requestAddAdvisory(requestData, temporaryIdArray);
+    });
   },
 
   /**

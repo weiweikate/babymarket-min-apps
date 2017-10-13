@@ -618,6 +618,18 @@ export default class RequestReadFactory {
         return req;
     }
 
+    //咨询类型
+    static advisoryTypeRead() {
+      let operation = Operation.sharedInstance().advisoryTypeReadOperation;
+      let bodyParameters = {
+        "Operation": operation
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '咨询类型';
+      req.items = ['Value', 'Select'];
+      return req;
+    }
+
     // 便便诊所查询
     static advisoryRead(isMy=false){
         let operation = Operation.sharedInstance().advisoryReadOperation;

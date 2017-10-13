@@ -1,0 +1,9 @@
+<template name="image-picker">
+  <view class="image-picker">
+  <view wx:for="{{imageArray}}" wx:key="unique" class='image-delete'>
+  <image class="item-image" src="{{item}}" mode='aspectFill' catchtap="onPickerItemListener" data-position="{{index}}" data-url="{{item}}"  />
+  <image class="item-image-delete" src="/res/img/common/comm-image-picker-delete.png" mode='aspectFill'  catchtap="onPickerDeleteListener" data-position="{{index}}"/>
+  </view>
+    <image class="item-image" src="/res/img/common/comm-image-picker.png" mode='scaleToFill' wx:if="{{imageArray.length<maxCount}}" catchtap="onPickerClickListener" />
+  </view>
+</template>

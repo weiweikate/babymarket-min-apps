@@ -1,0 +1,24 @@
+.image-picker {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-image {
+  width: 170rpx;
+  height: 170rpx;
+  flex: none;
+  margin: 10rpx;
+}
+
+.image-delete {
+  position: relative;
+}
+
+.item-image-delete {
+  width: 36rpx;
+  height: 36rpx;
+  flex: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

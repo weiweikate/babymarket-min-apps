@@ -34,6 +34,9 @@ export default class Network {
         //获取系统时间
         this.getSystemTimeURL = this.domain + "Libra.Web.AppSync.AppSyncNow.aspx";
 
+        //上传附件
+        this.uploadURL = this.domain + "Libra.Web.Api.ApiWriteBlob.aspx";
+
         //物流信息
         this.expressURL = 'https://v.juhe.cn/exp/index';
 

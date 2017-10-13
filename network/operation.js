@@ -19,6 +19,8 @@ export default class Operation {
         //附件
         this.attachmentsReadOperation = '3a3bf362-b406-47a4-a6d2-a642010374b5';
 
+        // 便便诊所，咨询类型
+        this.advisoryTypeReadOperation = '8445b839-c622-40cb-8dbc-a63d0115a365';
         // 便便诊所
         this.advisoryReadOperation = 'de9167ca-44b6-42da-bf20-a63d0116325d';
         // 便便诊所，新增

@@ -1,4 +1,5 @@
 @import '/pages/find/clinic/cell-add-input/cell-add-input.wxss';
+@import '/components/image-picker/image-picker.wxss';
 
 page {
   background-color: white;
@@ -20,4 +21,18 @@ page {
   font-size: 28rpx;
   margin: 60rpx 0rpx 30rpx 0rpx;
   padding: 8rpx 0rpx 8rpx 0rpx;
+}
+
+.view-image {
+  margin-top: 30rpx;
+}
+
+.view-image .image-title {
+  color: #494848;
+  font-size: 24rpx;
+}
+
+.view-image .image-picker {
+  margin-top: 10rpx;
+  padding-left: 10rpx;
 }

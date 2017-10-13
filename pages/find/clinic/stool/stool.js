@@ -12,6 +12,15 @@ Page({
    */
   onLoad: function (options) {
     this.requestData();
+
+    Event.on('refreshClinicList', this.requestAdvisoryInfo, this)
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    Event.off('refreshClinicList', this.requestAdvisoryInfo)
   },
 
   /**

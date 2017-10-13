@@ -1,5 +1,6 @@
 <import src='/pages/find/clinic/cell-add-select/cell-add-select.wxml' />
-<import src='/pages/find/clinic/cell-add-input/cell-add-input.wxml' />
+<import src='/pages/find/clinic/cell-add-input/cell-add-input.wxml' /> 
+<import src='/components/image-picker/image-picker.wxml'/>
 
 <view class="view-root">
   <form catchsubmit="onSubmitAction">
@@ -17,7 +18,11 @@
     <template is="cell-add-select" data="{{title:'拉粑粑时的表情',hint:'请选择',key:'Pull_Expression',position:4}}" />
     <!--详细描述（如精神状态等）-->
     <template is="cell-add-input" data="{{title:'详细描述（如精神状态等）',hint:'请填写详细描述',key:'Else_Add'}}" />
-
+    <!--上传照片（最多9张）-->
+    <view class='view-image'>
+      <text class="image-title">上传照片（最多9张）</text>
+      <template is="image-picker" data="{{maxCount:maxCount,imageArray:imageArray}}" />
+    </view>
     <!--底部按钮保存-->
     <button class="view-submit" form-type="submit">提交</button>
   </form>
