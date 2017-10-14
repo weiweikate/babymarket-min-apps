@@ -431,4 +431,37 @@ export default class RequestWriteFactory {
         req.name = '新增孕育问答回复点赞';
         return req;
     }
+
+    //新增首页文章点赞
+    static addArticalLike(articalId) {
+        let operation = Operation.sharedInstance().homeArticalLikeAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "MemberId": global.Storage.memberId(),
+            "IndexArticleId": articalId,
+            "IsUseful": "True"
+        }
+
+        let req = new RequestWrite(status, 'IndexArticleSub', params, null);
+        req.name = '新增首页文章点赞';
+        return req;
+    }
+
+    //新增首页文章吐槽
+    static addArticalComplain(articalId, content) {
+        let operation = Operation.sharedInstance().homeArticalLikeAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "MemberId": global.Storage.memberId(),
+            "IndexArticleId": articalId,
+            "IsUseful": "False",
+            "ComplainWord": content,
+        }
+
+        let req = new RequestWrite(status, 'IndexArticleSub', params, null);
+        req.name = '新增首页文章吐槽';
+        return req;
+    }
 }

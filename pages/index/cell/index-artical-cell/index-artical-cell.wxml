@@ -1,6 +1,6 @@
 <template name="index-artical-cell">
     <view class="sepline" wx:if="{{index != 0}}"></view>
-    <view class="index-artical-cell-view">
+    <view class="index-artical-cell-view" catchtap="articalCellTap" data-index="{{index}}">
         <image src="/res/img/index/index-cell-teach-icon.png" class="left-icon"></image>
 
         <view class="right-view">

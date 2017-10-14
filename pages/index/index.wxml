@@ -46,6 +46,7 @@
     
 </view>
 
+<!--首页文章cell  -->
 <view wx:for="{{listDatas}}" wx:key='unique' class="index-artical-cell">
     <template is="index-artical-cell" data="{{...item, index:index}}"></template>
 </view>

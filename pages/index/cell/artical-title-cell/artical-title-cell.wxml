@@ -1,0 +1,11 @@
+<!--顶部横向滚动的tab-->
+<template name="artical-title-cell">
+  <scroll-view class="tab-layout" scroll-x>
+    <view class="{{index==currentTab?'tab select':'tab'}}" catchtap="onTabChangeListener" 
+    wx:for="{{items}}" data-current="{{index}}" wx:key="unique">
+    
+        <view class="{{item.isToday&&index!=currentTab?'line-one today':'line-one'}}">{{item.MonthDay}}</view>
+        <view class="{{item.isToday&&index!=currentTab?'line-two today':'line-two'}}">{{item.date}}</view>
+    </view>
+  </scroll-view>
+</template>
