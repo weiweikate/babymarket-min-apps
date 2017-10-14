@@ -114,6 +114,20 @@ Page({
     },
 
     /**
+     * 首页文章点击
+     */
+    articalCellTap:function(e){
+        let index = e.currentTarget.dataset.index;
+        let datas = this.data.listDatas[index];
+        let title = datas.ArticalName;
+
+        wx.navigateTo({
+            url: '/pages/index/index-artical/index-artical?Id=' + datas.IndexArticleClassifyId 
+            + '&title=' + title + '&currentDay=' + this.days,
+        })
+    },
+
+    /**
      * 我要提问
      */
     questionTap:function(){

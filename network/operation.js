@@ -72,6 +72,8 @@ export default class Operation {
         this.babyAgeDespReadOperation = '5685c0ea-609e-4844-a2e4-a68600aae0ed';
         // 首页-文章查询
         this.homeArticalReadOperation = '568b4f34-2b12-48ff-b8dc-a68600af2af9';
+        // 首页-文章查询点赞新增
+        this.homeArticalLikeAddOperation = '81eb7bb6-36af-49f8-88d4-a6da0122b069';
 
         // 孕育问答 查询
         this.questionReadOperation = '5107b45e-6f9d-4383-bdfa-a68600b56711'

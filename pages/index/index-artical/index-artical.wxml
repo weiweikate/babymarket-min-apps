@@ -1,0 +1,40 @@
+<!--index-artical.wxml-->
+<import src='/pages/index/cell/artical-title-cell/artical-title-cell.wxml' />
+<import src="/libs/wxParse/wxParse.wxml" />
+
+<view class="root-view">
+    <view class="title-view">
+        <template is="artical-title-cell" data="{{items:titleList,currentTab, defaultIndex}}" />
+        <image src="{{item.articalUrl}}" style="width:100%;height:100%"></image>
+    </view>
+
+    <view class="artical">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+
+    <!--有用吐槽-->
+    <view class="view-btns">
+        <image class="collect-icon" src="{{isCollect?'/res/img/mom/mom-collect-s.png':'/res/img/mom/mom-collect-n.png'}}" mode="aspectFit" catchtap="onCollectListener" />
+
+        <image class="praise-icon" src="{{isPraise?'/res/img/mom/mom-praise-s.png':'/res/img/mom/mom-praise-n.png'}}" mode="aspectFit" catchtap="onPraiseListener" />
+        
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{notLikeList}}">
+            <image class="discuss-icon" src="/res/img/mom/mom-discuss-n.png" mode="aspectFit"></image>
+        </picker>
+    </view>
+
+    <!--猜你喜欢-->
+    <view class='view-guess' catchtap="guessTap">
+        <!--<text class='guess-tips'>猜你喜欢</text>
+        <text class="guess-title" catchtap="onGuessListener" data-id="{{postData.RecommendId}}">{{postData.RecommendTitle}}</text>
+        <view class='guess-total'>
+            <text class="texts">文章</text>
+            <image class="read-icon" src="/res/img/mother-circle/mother-circle-eye-icon.png" mode="aspectFit" />
+            <text class="read-count">{{postData.readNum}}</text>
+        </view>-->
+
+        <template is="wxParse" data="{{wxParseData:guess.nodes}}" />
+
+    </view>
+
+</view>

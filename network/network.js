@@ -46,6 +46,7 @@ export default class Network {
 
         //详情页
         this.questionURL = this.domain + 'QueAnsDetails.aspx';
+        this.articalURL = this.domain + 'IndexArticleDetails.aspx';
 
         __instance(this);
     }

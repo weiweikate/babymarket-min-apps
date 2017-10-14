@@ -1264,7 +1264,7 @@ export default class RequestReadFactory {
         return req;
     }
 
-    //首页文章 查询
+    //指定天数首页文章 查询
     static requestHomeArticalWithDays(days) {
         let operation = Operation.sharedInstance().homeArticalReadOperation;
         let bodyParameters = {
@@ -1280,7 +1280,7 @@ export default class RequestReadFactory {
             },
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '首页文章 查询';
+        req.name = '指定天数首页文章 查询';
         req.appendixesKeyMap = { 'IndexArticleClassify': 'IndexArticleClassifyId', 'BirthMonthDay': 'BirthMonthDayId' };//可以多个
         req.items = ["Id", "MainTitle", "SubTitle", "IndexArticleClassifyId", "BirthMonthDayId", "Day"];
 
@@ -1291,6 +1291,51 @@ export default class RequestReadFactory {
                 data.ArticalName = appendixe.Name;
             }
 
+            if (key === 'BirthMonthDay') {
+                //给data添加新属性
+                data.MonthDay = appendixe.MonthDay;
+            }
+        };
+        return req;
+    }
+
+    //首页文章最大天数 查询
+    static requestHomeArticalCount(typeId) {
+        let operation = Operation.sharedInstance().homeArticalReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": "${IndexArticleClassifyId} == '" + typeId + "'",
+            "Order":"${Day} DESC",
+            "MaxCount": '1',
+            "StartIndex": 0,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '首页文章最大天数 查询';
+        req.items = ["Day"];
+        return req;
+    }
+
+    //首页文章 查询
+    static requestHomeArticalList(condition) {
+        let operation = Operation.sharedInstance().homeArticalReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "MaxCount": '9999',
+            "StartIndex": 0,
+            "Appendixes": {
+                "+BirthMonthDay": [
+                    "MonthDay"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '首页文章 查询';
+        req.appendixesKeyMap = {'BirthMonthDay': 'BirthMonthDayId' };//可以多个
+        req.items = ["Id", "MainTitle", "BirthMonthDayId", "Day"];
+
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
             if (key === 'BirthMonthDay') {
                 //给data添加新属性
                 data.MonthDay = appendixe.MonthDay;
@@ -1440,8 +1485,7 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '孕育问答详情评论点赞 查询';
-        req.items = ["Id",
-            "MemberId","BreedQueAnsId"]
+        req.items = ["Id","MemberId","BreedQueAnsId"]
         return req;
     }
 }
