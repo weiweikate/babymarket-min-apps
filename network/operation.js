@@ -84,6 +84,12 @@ export default class Operation {
         this.questionLikeReadOperation = 'd2a5b35f-3d8f-05c8-33ae-3f9e01e560f3'
         this.questionLikeAddOperation = 'a17faf8c-244e-4d6b-b455-a76f00a6101d'
 
+        // 能不能吃食物分类 查询
+        this.foodSortReadOperation = '6f8be012-8000-476a-8828-a68600b0da39'
+        // 食物列表 查询
+        this.foodReadOperation = '670b88f4-1858-464f-9ef0-a68600b039ad'
+
+
         //首页-广告位
         this.homeAdReadOperation = 'b412ff1c-c19b-4250-b479-a61e0085a868';
         //首页-分类

@@ -28,8 +28,6 @@ page {
 .tool-cell-view .image{
     width: 148rpx;
     height: 148rpx;
-    border: 2rpx solid #f55;
-    border-radius: 74rpx;
     margin-top: 29rpx;
 }
 

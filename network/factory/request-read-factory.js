@@ -1488,4 +1488,106 @@ export default class RequestReadFactory {
         req.items = ["Id","MemberId","BreedQueAnsId"]
         return req;
     }
+
+    //食物分类 查询
+    static requestFoodSort() {
+        let operation = Operation.sharedInstance().foodSortReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '食物分类 查询';
+        req.items = ["Id","Value","ImgId","Name"];
+        req.preprocessCallback = (req) => {
+            let { Tool } = global;
+
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                
+                item.title = item.Name;
+                item.imageUrl = Tool.imageURLForId(item.ImgId, '/res/img/common/common-avatar-default-icon.png');
+            });
+        }
+        return req;
+    }
+
+    //食物列表 查询
+    static requestFoodList(index, count, condition) {
+        let operation = Operation.sharedInstance().foodReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "MaxCount": count,
+            "StartIndex": index,
+            "Condition": condition,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '食物列表 查询';
+        /*req.items = ["Id",
+                    "FootClassifyId",
+                    "Name",
+                    "OtherName",
+                    "ImgId",
+                    "FetationEatStateKey",
+                    "LyinginEatStateKey",
+                    "LactationEatStateKey",
+                    "BabyEatStateKey",
+                    "Hunt"];*/
+
+        req.preprocessCallback = (req) => {
+            let { Tool } = global;
+
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                item.imageUrl = Tool.imageURLForId(item.ImgId, '/res/img/common/common-avatar-default-icon.png');
+                
+                let yesUrl = '/res/img/index/index-eat-yes-icon.png';
+                let littleUrl = '/res/img/index/index-eat-little-icon.png';
+                let noUrl = '/res/img/index/index-eat-no-icon.png';
+
+                let fetationEat = '';
+                if (item.FetationEatStateKey == '1'){
+                    fetationEat = yesUrl;
+                } else if (item.FetationEatStateKey == '2'){
+                    fetationEat = littleUrl;
+                } else{
+                    fetationEat = noUrl;
+                }
+
+                let lyingEat = '';
+                if (item.LyinginEatStateKey == '1') {
+                    lyingEat = yesUrl;
+                } else if (item.LyinginEatStateKey == '2') {
+                    lyingEat = littleUrl;
+                } else {
+                    lyingEat = noUrl;
+                }
+                
+                let babyEat = '';
+                if (item.BabyEatStateKey == '1') {
+                    babyEat = yesUrl;
+                } else if (item.BabyEatStateKey == '2') {
+                    babyEat = littleUrl;
+                } else {
+                    babyEat = noUrl;
+                }
+
+                item.eatLists = [{
+                    'name': '孕妇',
+                    'imgUrl': fetationEat,
+                    'explain': item.FetationExplain
+                },
+                {
+                    'name': '产妇',
+                    'imgUrl': lyingEat,
+                    'explain': item.LyinginExplain
+                },
+                {
+                    'name': '婴幼儿',
+                    'imgUrl': babyEat,
+                    'explain': item.BabyExplain
+                }];
+            });
+        }
+        return req;
+    }
 }

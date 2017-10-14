@@ -1,21 +1,25 @@
-// eat.js
-let { Tool, Storage, RequestReadFactory } = global
-
+// food-detail.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        listDatas: [],
-        placeholder: '请输入食物名称，例如“奇异果”'
+        datas:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.requestFoodSort();
+        let datas = wx.getStorageSync('foodDatas');
+        this.setData({
+            datas:datas
+        })
+        
+        wx.setNavigationBarTitle({
+            title: datas.Name + '能不能吃',
+        })
     },
 
     /**
@@ -43,7 +47,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        wx.removeStorageSync('foodDatas');
     },
 
     /**
@@ -65,29 +69,5 @@ Page({
      */
     onShareAppMessage: function () {
 
-    },
-
-    toolCellTap: function (e) {
-        let index = e.currentTarget.dataset.index;
-        let item = this.data.listDatas[index];
-        
-        wx.navigateTo({
-            url: '../eat/eat-food-list/eat-food-list?mainId=' + item.Id,
-        })
-    },
-    
-    /**
-     * 食物分类查询
-     */
-    requestFoodSort: function () {
-        let r = RequestReadFactory.requestFoodSort();
-        let self = this;
-        r.finishBlock = (req) => {
-            let datas = req.responseObject.Datas;
-            self.setData({
-                listDatas: datas
-            })
-        };
-        r.addToQueue();
-    },
+    }
 })

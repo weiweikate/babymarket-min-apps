@@ -1,11 +1,11 @@
 <template name="eat-food-list-cell">
-    <view class="eat-food-list-cell-view">
-        <image src="" style="width:187rpx;height:187rpx;background:red"></image>
+    <view class="eat-food-list-cell-view" catchtap="cellTap" data-index="{{index}}">
+        <image src="{{item.imageUrl}}" style="width:187rpx;height:187rpx"></image>
         <view class="desp-view">
-            <view class="name">玉米</view>
-            <view class="desp OverFlowTwoLine">加快了极大了房间睡啦到家乐福撒娇法律框架撒激发快乐的撒</view>
+            <view class="name">{{item.Name}}</view>
+            <view class="desp OverFlowTwoLine">{{item.OtherName}}</view>
             <view class="eat-or-not-view">
-                <block wx:for="{{eatList}}" wx:key='unique'>
+                <block wx:for="{{item.eatLists}}" wx:key='unique'>
                     <template is="eat-or-not-cell" data="{{...item}}"></template>
                 </block>
             </view>

@@ -1,0 +1,21 @@
+<!--food-detail.wxml-->
+<image src="{{datas.imageUrl}}" class="food-picture" mode="aspectFit"></image>
+
+<view class="food-desp">{{datas.OtherName}}</view>
+
+<block wx:for="{{datas.eatLists}}" wx:key="unique">
+    <template is="food-detail-cell" data="{{...item}}"></template>
+</block>
+
+<template name="food-detail-cell">
+    <view class="food-detail-cell">
+        <view class="title">{{name}}能吃么?</view>
+
+        <view class="eat-or-not">
+            <image src="{{imgUrl}}" style="width:30rpx;height:30rpx;"></image>
+            能吃
+        </view>
+        <view class="eat-desp">{{explain}}</view>
+    </view>
+</template>
+

@@ -9,4 +9,12 @@
 .top-view {
     background: white;
     padding: 30rpx 22rpx;
+    position: fixed;
+    width: 706rpx;
+    top: 0rpx;
+    z-index: 1000;
+}
+
+.list{
+    margin-top: 120rpx;
 }

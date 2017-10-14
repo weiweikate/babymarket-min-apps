@@ -1,0 +1,39 @@
+/* food-detail.wxss */
+.food-picture{
+    width: 100%;
+    height: 450rpx;
+    background: white;
+    padding-top: 20rpx;
+}
+
+.food-desp{
+    padding: 30rpx;
+    font-size: 28rpx;
+    color: #494848;
+    line-height: 130%;
+    background: white;
+}
+
+.food-detail-cell{
+    margin-top: 25rpx;
+    background: white;
+    padding: 30rpx;
+}
+
+.food-detail-cell .title{
+    font-size: 38rpx;
+    color: #090909;
+}
+
+.food-detail-cell .eat-or-not{
+    font-size: 30rpx;
+    color: #090909;
+    margin-top: 20rpx;
+}
+
+.food-detail-cell .eat-desp{
+    font-size: 28rpx;
+    color: #494848;
+    margin-top: 20rpx;
+    line-height: 130%;
+}

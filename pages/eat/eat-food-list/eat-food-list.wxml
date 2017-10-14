@@ -3,9 +3,11 @@
 <import src='/pages/eat/eat-food-list/eat-food-list-cell/eat-food-list-cell.wxml' />
 
 <view class="top-view">
-    <template is="search-cell"></template>
+    <template is="search-cell" data="{{placeholder:'请输入食物名称，例如“奇异果”'}}"></template>
 </view>
 
-<block wx:for="{{listDatas}}" wx:key='unique'>
-    <template is="eat-food-list-cell" data="{{...item, index:index, eatList:eatLists}}"></template>
-</block>
+<view class="list">
+    <block wx:for="{{listDatas}}" wx:key='unique'>
+        <template is="eat-food-list-cell" data="{{item:item, index:index}}"></template>
+    </block>
+</view>

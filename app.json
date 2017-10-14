@@ -71,7 +71,8 @@
         "pages/mom/post-detail/post-detail",
         "pages/question/question-detail/question-detail",
         "pages/question/question-reply/question-reply",
-        "pages/index/index-artical/index-artical"
+        "pages/index/index-artical/index-artical",
+        "pages/eat/food-detail/food-detail"
     ],
     "window": {
         "backgroundTextStyle": "light",
