@@ -8,8 +8,8 @@ Page({
      */
     data: {
         isHideName:false,
+        content: '',
     },
-    content: '',
     index: 0,
 
     /**
@@ -18,6 +18,11 @@ Page({
     onLoad: function (options) {
         let index = options.index;
         this.index = index;
+
+        let content = options.content;
+        this.setData({
+            content: content
+        })
     },
 
     /**
@@ -77,11 +82,13 @@ Page({
 
     inputTap:function(e){
         console.log(e.detail);
-        this.content = e.detail.value;
+        this.setData({
+            content: e.detail.value
+        })
     },
 
     questionTap:function(){
-        if (Tool.isEmptyStr(this.content)) {
+        if (Tool.isEmptyStr(this.data.content)) {
             wx.showToast({
                 title: '请输入内容'
             })
@@ -93,7 +100,7 @@ Page({
             let isExpertAns = this.index==0?'True':'False';
             let isAnonymity = this.data.isHideName?'True':'False';
 
-            let rq = RequestWriteFactory.addQuestion(this.content, isExpertAns, isAnonymity, queId);
+            let rq = RequestWriteFactory.addQuestion(this.data.content, isExpertAns, isAnonymity, queId);
             rq.finishBlock = (req) => {
                 wx.navigateBack({
                     delta:1
@@ -102,6 +109,9 @@ Page({
                 Tool.showSuccessToast("提问成功");
 
                 //跳转到问题详情页面 todo
+                wx.navigateTo({
+                    url: '/pages/question/question-detail/question-detail?Id=' + queId,
+                })
 
                 Event.emit('LocalNotification_QA_Updated');
             };

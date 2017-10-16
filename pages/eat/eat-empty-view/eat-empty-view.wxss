@@ -1,0 +1,31 @@
+/* eat-empty-view.wxss */
+ @import '/pages/eat/search-cell/search-cell.wxss'; 
+
+page {
+    background: #fafafa;
+}
+
+.top-view {
+    background: white;
+    padding: 30rpx 22rpx;
+}
+
+.eat-empty-view .empty-tips{
+    font-size: 28rpx;
+    color: #acadaa;
+    margin: 20rpx 22rpx;
+    line-height: 130%;
+}
+
+.eat-empty-view .question-button{
+    background: #ff5555;
+    width: 180rpx;
+    height: 70rpx;
+    color: white;
+    font-size: 30rpx;
+    line-height: 70rpx;
+    text-align: center;
+    margin-top: 100rpx;
+    margin-left: 285rpx;
+    border-radius: 10rpx;
+}
