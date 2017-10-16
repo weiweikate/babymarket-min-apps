@@ -1,5 +1,4 @@
-@import '/pages/home/ad/home-ad.wxss';
-@import '/pages/product-detail/ad/product-ad.wxss';
+@import '/components/banner/banner.wxss';
 @import 'slogan/product-slogan.wxss';
 @import '/components/product-specification/product-specification.wxss';
 

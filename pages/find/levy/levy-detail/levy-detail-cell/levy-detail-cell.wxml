@@ -1,6 +1,0 @@
-<template name='levy-detail-cell'>
-    <view class='levy-detail-cell' catchtap='levyDetailCellTap' data-title='{{item}}'>
-        <view>{{item}}</view>
-        <image src='/res/img/common/common-accessory-icon.png' class='icon'></image>
-    </view>
-</template>

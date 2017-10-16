@@ -37,6 +37,10 @@ export default class Operation {
         this.toothDiscussReadOperation = '016b409c-4044-4304-b622-a6c60124b535';
         // 爱牙卫士,留言新增
         this.toothDiscussAddOperation = '85450a21-1609-464c-bf4d-a6c6012519fd';
+        // 黄金便征集令查询
+        this.levyReadOperation = 'a3dba460-900e-44a9-af99-a64400bbf081';
+        // 黄金便征集令申请查询
+        this.levyApplyReadOperation = 'f096b173-23c4-48a4-9ec7-a64400bee7e1';
         // 专题列表
         this.specialTopicReadOperation = '2d096526-3bb8-4e8c-b372-a69a0118ab2d';
         // 知识列表

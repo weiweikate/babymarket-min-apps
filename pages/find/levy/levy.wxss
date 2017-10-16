@@ -1,2 +1,7 @@
-/* levy.wxss */
-@import '/pages/find/levy/levy-item/levy-item.wxss';
+@import '/pages/find/levy/cell-levy/cell-levy.wxss';
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+}

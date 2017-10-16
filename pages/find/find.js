@@ -55,7 +55,7 @@ Page({
         break;
       case 4:
         //黄金便征集令
-        url = '../find/levy/levy';
+        url = '/pages/find/levy/levy';
         break;
       case 5:
         //育儿工具

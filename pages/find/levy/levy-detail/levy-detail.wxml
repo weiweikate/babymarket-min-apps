@@ -1,36 +1,33 @@
-<!--levy-detail.wxml-->
-<import src='/pages/product-detail/ad/product-ad.wxml' />
-<import src='/pages/find/levy/levy-detail/levy-detail-cell/levy-detail-cell.wxml' />
-<import src='/components/bottom-btn/bottom-btn.wxml' />
+<import src='/components/banner/banner.wxml' />
+<import src='/components/cell/cell-menu/cell-menu.wxml' />
 
-<view class="levy-detail-view-container">
+<view class="view-root">
+  <view class="product-info">
     <!--轮播图  -->
-    <template is="product-ad" data="{{adArray:images}}"></template>
+    <template is="banner" data="{{bannerArray:bannerArray}}" />
 
-    <view class="product-info">
-        <view class="product-title">乐天大贵族奶粉1段绿贵</view>
-        <view class="number-view">
-            <view>总份数:</view>
-            <view class="total-number">5</view>
-            <view>份</view>
-        </view>
-        <view class="now-price-view">
-            <view>现积分:</view>
-            <view class="now-price">0</view>
-            <view class="orignal-price">原积分:6000</view>
-        </view>
+    <view class="product-title">{{detailInfo.Name}}</view>
+    <view class="number-view">
+      <view>总份数:</view>
+      <view class="total-number">{{detailInfo.Max_Number}}</view>
+    </view>
+    <view class="now-price-view">
+      <view>现积分:</view>
+      <view class="now-price">0</view>
+      <view class="orignal-price">原积分:{{detailInfo.Normal_Price}}</view>
     </view>
 
     <!--申请状态  -->
     <view class='apply-status'>您没有参与此次试用</view>
 
-    <block wx:for='{{tableList}}' wx:key='unique'>
-        <template is='levy-detail-cell' data='{{item}}'></template>
-    </block>
+    <view class='view-menu'>
+      <template is="cell-menu" data="{{...item,index}}" wx:for="{{menuArray}}" wx:key="unique" />
+    </view>
+  </view>
 
-    <view class='sepline'></view>
+  <!--底部按钮  -->
+  <view class='view-bottom'>
+    <view class="{{detailInfo.buttonType == 0?'view-btn enabled':'view-btn'}}" catchtap="onApplyClickListener" data-id="{{Id}}" data-type="{{detailInfo.buttonType}}">{{detailInfo.buttonText}}</view>
+  </view>
 
-    <!--底部按钮  -->
-    <template is='bottom-btn' data='{{bottomBtn}}'></template> 
-    
 </view>

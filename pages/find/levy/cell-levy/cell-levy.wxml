@@ -1,0 +1,24 @@
+<!--征集令列表-->
+<template name="cell-levy">
+  <view class="cell-levy" catchtap="onItemClickListener" data-id="{{Id}}">
+    <image class="{{imgUrl.length>0?'levy-image':'image-empty'}}" src="{{imgUrl}}" mode="aspectFit" />
+
+    <view class="levy-info">
+      <text class="title">{{Name}}</text>
+
+      <view class="view-integral">
+        <view class="now-title">现积分: </view>
+        <view class="now-integral">{{0}}</view>
+        <view class="old-title">原积分: </view>
+        <view class="old-integral">{{Normal_Price}}</view>
+      </view>
+
+      <view class="view-bottom">
+        <view>总共(份):</view>
+        <view class="total-num">{{Max_Number}}</view>
+        <view class="{{buttonType == 0?'buy-button enabled':'buy-button'}}" catchtap="onApplyClickListener" data-id="{{Id}}" data-type="{{buttonType}}">{{buttonText}}</view>
+      </view>
+    </view>
+
+  </view>
+</template>

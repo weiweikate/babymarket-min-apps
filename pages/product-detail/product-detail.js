@@ -223,10 +223,6 @@ Page({
     onSubmitListener: function (e) {
         console.log("确认下单")
         this.productSpecification.showWithAction('Buy');
-    },
-
-    homeADClicked(){
-
     }
 
 })

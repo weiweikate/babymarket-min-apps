@@ -1,6 +1,5 @@
-<!--levy.wxml-->
-<import src='/pages/find/levy/levy-item/levy-item.wxml' />
+<import src='/pages/find/levy/cell-levy/cell-levy.wxml' />
 
-<view wx:for="{{dataList}}" wx:key="{{index}}">
-    <template is="levy-item" data="{{item,index:index}}"></template>
+<view class='view-root'>
+  <template is="cell-levy" data="{{...item}}" wx:for="{{listArray}}" wx:key="unique" />
 </view>

@@ -35,11 +35,11 @@ export default class RequestReadFactory {
     }
 
     //附件
-    static attachmentsRead(theId) {
+    static attachmentsRead(theId, bizElement ='Attachments') {
       let operation = Operation.sharedInstance().attachmentsReadOperation;
       let bodyParameters = {
         "Operation": operation,
-        "Condition": "${RelevancyId} == '" + theId + "' && ${RelevancyBizElement} == 'Attachments'",
+        "Condition": "${RelevancyId} == '" + theId + "' && ${RelevancyBizElement} == '" + bizElement+"'",
         "Order": '${CreateTime} ASC'
       };
       let req = new RequestRead(bodyParameters);
@@ -901,6 +901,129 @@ export default class RequestReadFactory {
       let req = new RequestRead(bodyParameters);
       req.name = '知识分类';
       req.items = ["Value", "Name"];
+      return req;
+    }
+
+    // 黄金便征集令查询
+    static levyRead(time,applyArray=undefined) {
+      let operation = Operation.sharedInstance().levyReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": "${Is_End} == 'False'" + " && ${Remain_Number} > '0'",
+        "Order": "${CreateTime} DESC",
+        "Appendixes": {
+          "+Product": [
+            "Attachments",
+            "ImgId"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '黄金便征集令查询';
+      req.items = ["Id", "ProductId", "Name", "Normal_Price", "Max_Number", "DateTime_End", "Is_End"];
+      req.appendixesKeyMap = { 'Product': 'ProductId' };//可以多个
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          if (time > item.DateTime_End){
+            item.buttonText = '已结束';
+            item.buttonType = 1;
+          }else{
+            item.buttonText = '立即申请';
+            item.buttonType = 0;
+          }
+          if (applyArray!=undefined){
+            applyArray.forEach((item2, index) => {
+              if (item.Id == item2.Wind_AlarmId){
+                item.buttonText = '已申请';
+                item.buttonType = 2;
+              }
+            });
+          }
+        });
+      }
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'Product') {
+          //给data添加新属性
+          item.imgUrl = global.Tool.imageURLForId(appendixe.ImgId);
+        }
+      };
+      return req;
+    }
+
+    // 黄金便征集令详情查询
+    static levyDetailRead(id,time, apply = undefined) {
+      let operation = Operation.sharedInstance().levyReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": id,
+        "Appendixes": {
+          "+Product": [
+            "Attachments",
+            "ImgId"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '黄金便征集令详情查询';
+      req.items = ["Id", "ProductId", "Name", "Normal_Price", "Max_Number", "DateTime_End", "Is_End"];
+      req.appendixesKeyMap = { 'Product': 'ProductId' };//可以多个
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          if (time > item.DateTime_End) {
+            item.buttonText = '已结束';
+            item.buttonType = 1;
+          } else {
+            item.buttonText = '立即申请';
+            item.buttonType = 0;
+          }
+          if (global.Storage.memberId()){
+            if (apply != undefined) {
+              item.buttonText = '已申请';
+              item.buttonType = 2;
+
+              if (time > apply.Win_End_Time){
+                if (apply.Is_Win=='True'){
+                  item.status = '恭喜您中奖,请在' + apply.Report_DateTime_End +'之前完成试用报告';
+                }else{
+                  item.status = '抱歉,您没有中奖';
+                }
+              }else{
+                item.status = '您申请的商品还未开奖';
+              }
+            } else {
+              item.status = '您没有参与此次试用';
+            }
+          }else{
+            item.status = '当前未登录,请先登录';
+          }
+        });
+      }
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'Product') {
+          //给data添加新属性
+          item.imgUrl = global.Tool.imageURLForId(appendixe.ImgId);
+        }
+      };
+      return req;
+    }
+
+    // 黄金便征集令申请查询
+    static levyApplyRead(id = undefined) {
+      let operation = Operation.sharedInstance().levyApplyReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MemberId": global.Storage.memberId()
+      };
+      if (id!=undefined){
+        bodyParameters.Wind_AlarmId = id;
+      }
+      let req = new RequestRead(bodyParameters);
+      req.name = '黄金便征集令申请查询';
+      req.items = ["Id", "Wind_AlarmId", "Is_Win", "Report_DateTime_End"];
       return req;
     }
 
