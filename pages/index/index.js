@@ -159,7 +159,11 @@ Page({
         console.log(title);
         if(title == '能不能吃'){
             wx.navigateTo({
-                url: '../eat/eat',
+                url: '/pages/eat/eat',
+            })
+        } else if (title == '辅食大全') {
+            wx.navigateTo({
+                url: '/pages/baby-food/baby-food',
             })
         }
     },

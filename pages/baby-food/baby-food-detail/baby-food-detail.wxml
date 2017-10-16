@@ -1,0 +1,8 @@
+<!--baby-food-detail.wxml-->
+<import src="/libs/wxParse/wxParse.wxml" />
+
+<!--<image src="{{datas.imageUrl}}" class="food-image" mode="aspectFit"></image>-->
+
+<view class="artical">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+</view>

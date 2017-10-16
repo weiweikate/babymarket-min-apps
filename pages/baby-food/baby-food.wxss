@@ -1,0 +1,29 @@
+/* baby-food.wxss */
+@import '/components/tab-layout/tab-layout.wxss';
+@import '/pages/baby-food/baby-food-cell/baby-food-cell.wxss';
+
+.tab-layout {
+  background-color: #dbdbdb;
+  position: fixed;
+  top: 0rpx;
+  height: 80rpx;
+}
+
+.tab-layout .tab {
+  font-size: 28rpx;
+  color: #494848;
+  height: 60rpx;
+  width: 120rpx;
+  margin-top: 10rpx;
+}
+
+.tab-layout .tab.select {
+  color: white;
+  background: #ff5555;
+  border-radius: 10rpx;
+  border: none;
+}
+
+.list-view{
+  margin-top: 80rpx;  
+}
