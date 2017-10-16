@@ -90,4 +90,50 @@ Page({
         };
         r.addToQueue();
     },
+
+    /**
+     * 搜索
+     */
+    onConfirmAction:function(e){
+        console.log(e.detail.value);
+        let value = e.detail.value;
+
+        if (Tool.isEmptyStr(value)){
+            Tool.showSuccessToast('请输入搜索关键字');
+            return;
+        }
+
+        this.searchFood(value);
+    },
+
+    /**
+     * 食物查询
+     */
+    searchFood: function (text) {
+        let condition = "StringIndexOf(${Hunt},'" + text + "') > 0";
+
+        let r = RequestReadFactory.requestFoodList(0, 1, condition);
+        let self = this;
+        r.finishBlock = (req) => {
+            let datas = req.responseObject.Datas;
+            let total = req.responseObject.Total;
+            
+            if(total <= 0){//没有搜索记录，跳转到空页面
+                wx.navigateTo({
+                    url: '../eat/eat-empty-view/eat-empty-view?searchKey=' + text,
+                })
+            }else if(total == 1){//只有1条记录，跳转到食物详情页
+                wx.setStorageSync('foodDatas', datas[0]);
+
+                wx.navigateTo({
+                    url: '/pages/eat/food-detail/food-detail',
+                })
+            }else{//有多条记录，跳转到列表页
+                wx.navigateTo({
+                    url: '../eat/eat-food-list/eat-food-list?searchKey=' + text,
+                })
+            }
+        };
+        r.addToQueue();
+    }
 })

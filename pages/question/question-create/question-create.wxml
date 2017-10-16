@@ -1,6 +1,7 @@
 <!--question-create.wxml-->
 
-<textarea class="input-area" placeholder="为了更好的解决您的问题，请在提问时更详尽地表述症状，必要时附上图片。" bindinput='inputTap'/>
+<textarea class="input-area" placeholder="为了更好的解决您的问题，请在提问时更详尽地表述症状，必要时附上图片。" value="{{content}}" 
+bindinput='inputTap'/>
 
 <view class="picture-line-view">
     <image src="/res/img/question/question-camera-logo.png" class="camera-logo"></image>

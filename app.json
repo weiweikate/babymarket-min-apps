@@ -72,7 +72,9 @@
         "pages/question/question-detail/question-detail",
         "pages/question/question-reply/question-reply",
         "pages/index/index-artical/index-artical",
-        "pages/eat/food-detail/food-detail"
+        "pages/eat/food-detail/food-detail",
+        "pages/eat/eat-empty-view/eat-empty-view",
+        "pages/question/question-create/question-create"
     ],
     "window": {
         "backgroundTextStyle": "light",

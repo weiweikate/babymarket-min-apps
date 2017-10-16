@@ -116,11 +116,15 @@ Page({
 
         if (Storage.didLogin()) {
             let belongAnswerId = '';
+            let belongQueAnswerId = '';
             if (this.isReplyComment){
                 belongAnswerId = this.data.datas.Id;
+                belongQueAnswerId = this.data.datas.BreedQueAnsId;
+            }else{
+                belongQueAnswerId = this.data.datas.Id;
             }
 
-            let rq = RequestWriteFactory.addQuestionReply(this.content, this.data.datas.BreedQueAnsId, belongAnswerId);
+            let rq = RequestWriteFactory.addQuestionReply(this.content, belongQueAnswerId, belongAnswerId);
             rq.finishBlock = (req) => {
                 wx.navigateBack({
                     delta: 1,
