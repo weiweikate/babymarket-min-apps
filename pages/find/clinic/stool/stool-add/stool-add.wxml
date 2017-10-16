@@ -1,21 +1,21 @@
 <import src='/pages/find/clinic/cell-add-select/cell-add-select.wxml' />
-<import src='/pages/find/clinic/cell-add-input/cell-add-input.wxml' /> 
-<import src='/components/image-picker/image-picker.wxml'/>
+<import src='/pages/find/clinic/cell-add-input/cell-add-input.wxml' />
+<import src='/components/image-picker/image-picker.wxml' />
 
 <view class="view-root">
   <form catchsubmit="onSubmitAction">
     <!--哺乳-->
-    <template is="cell-add-select" data="{{title:'哺乳',hint:'请选择',key:'Nurse_Condition',position:0}}" />
+    <template is="cell-add-select" data="{{title:'哺乳',hint:'请选择',value:Nurse_Condition,key:'Nurse_Condition',position:0,array:typeArray[0]}}" />
     <!--奶粉品牌及奶量-->
     <template is="cell-add-input" data="{{title:'奶粉品牌及奶量',hint:'请输入奶粉品牌及奶量',key:'Milk_Powder_Brand'}}" />
     <!--辅食添加结构-->
-    <template is="cell-add-select" data="{{title:'辅食添加结构',hint:'请选择',key:'Assisted_Food',position:1}}" />
+    <template is="cell-add-select" data="{{title:'辅食添加结构',hint:'请选择',value:Assisted_Food,key:'Assisted_Food',position:1,array:typeArray[1]}}" />
     <!--饮水量-->
-    <template is="cell-add-select" data="{{title:'饮水量',hint:'请选择',key:'WaterIntake',position:2}}" />
+    <template is="cell-add-select" data="{{title:'饮水量',hint:'请选择',value:WaterIntake,key:'WaterIntake',position:2,array:typeArray[2]}}" />
     <!--排便次数-->
-    <template is="cell-add-select" data="{{title:'排便次数',hint:'请选择',key:'Cacation_Number',position:3}}" />
+    <template is="cell-add-select" data="{{title:'排便次数',hint:'请选择',value:Cacation_Number,key:'Cacation_Number',position:3,array:typeArray[3]}}" />
     <!--拉粑粑时表情-->
-    <template is="cell-add-select" data="{{title:'拉粑粑时的表情',hint:'请选择',key:'Pull_Expression',position:4}}" />
+    <template is="cell-add-select" data="{{title:'拉粑粑时的表情',hint:'请选择',value:Pull_Expression,key:'Pull_Expression',position:4,array:typeArray[4]}}" />
     <!--详细描述（如精神状态等）-->
     <template is="cell-add-input" data="{{title:'详细描述（如精神状态等）',hint:'请填写详细描述',key:'Else_Add'}}" />
     <!--上传照片（最多9张）-->

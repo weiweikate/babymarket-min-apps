@@ -7,7 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    typeArray:[]
+    typeArray: [],
+    Nurse_Condition:'',
+    Assisted_Food: '',
+    WaterIntake: '',
+    Cacation_Number: '',
+    Pull_Expression: '',
   },
 
   /**
@@ -28,13 +33,11 @@ Page({
       let responseData = req.responseObject.Datas;
       let typeArray = new Array();
       responseData.forEach((item, index) => {
-        console.log(item.Select.split(';'));
-        switch (item.Value){
+        switch (item.Value) {
           case "0":
-          //哺乳
-            console.log("哺乳");
+            //哺乳
             typeArray[0] = item.Select.split(';');
-          break;
+            break;
           case "1":
             //排便次数
             typeArray[3] = item.Select.split(';');
@@ -56,7 +59,6 @@ Page({
       this.setData({
         typeArray: typeArray
       });
-      console.log(typeArray);
     }
     task.addToQueue();
   },
@@ -113,13 +115,14 @@ Page({
     self.imagePicker.onUploadAction((temporaryIdArray) => {
       let requestData = new Object();
       requestData.Id = Tool.guid();
-      requestData.Member_MessageId = Storage.memberId();
+      requestData.MemberId = Storage.memberId();
       requestData.Nurse_Condition = info.Nurse_Condition;
       requestData.Milk_Powder_Brand = info.Milk_Powder_Brand;
       requestData.Assisted_Food = info.Assisted_Food;
       requestData.WaterIntake = info.WaterIntake;
       requestData.Cacation_Number = info.Cacation_Number;
       requestData.Pull_Expression = info.Pull_Expression;
+      requestData.Else_Add = info.Else_Add;
       self.requestAddAdvisory(requestData, temporaryIdArray);
     });
   },
@@ -129,21 +132,33 @@ Page({
    */
   onSelectClickListener: function (e) {
     let position = e.currentTarget.dataset.position;
+    let typeArray = this.data.typeArray[position];
+    let select = typeArray[e.detail.value];
     switch (position) {
       case 0:
-        console.log(0)
+        this.setData({
+          Nurse_Condition: select
+        });
         break;
       case 1:
-        console.log(1)
+        this.setData({
+          Assisted_Food: select
+        });
         break;
       case 2:
-        console.log(2)
+        this.setData({
+          WaterIntake: select
+        });
         break;
       case 3:
-        console.log(3)
+        this.setData({
+          Cacation_Number: select
+        });
         break;
       case 4:
-        console.log(4)
+        this.setData({
+          Pull_Expression: select
+        });
         break;
     }
   },
