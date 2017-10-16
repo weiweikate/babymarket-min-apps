@@ -1,6 +1,13 @@
-<!--my-reply-post.wxml-->
-<import src='/pages/my/my-create-post/cell/my-create-post-cell.wxml' />
+<import src='/components/empty-view/empty-view.wxml' />
+<import src='/pages/mom/cell-post/cell-post.wxml' />
 
-<block wx:for="{{listDatas}}" wx:key="unique">
-    <template is="my-create-post-cell" data="{{...item, index:index}}"></template>
-</block>
+<view class="view-root">
+  <view wx:if="{{postArray.length>0}}">
+    <block wx:for="{{postArray}}" wx:key="unique">
+      <template is="cell-post" data="{{...item}}" />
+    </block>
+  </view>
+  <view wx:else class="no-data">
+    <template is="empty-view" data="{{title:'这里还什么都没有哦～'}}" />
+  </view>
+</view>

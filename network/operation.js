@@ -49,6 +49,8 @@ export default class Operation {
         this.knowledgeClassifyReadOperation = 'fa08a7f6-5bd3-4a76-b1e1-a6ad00bf92f9';
         // 宝妈圈-贴子查询
         this.postReadOperation = '459fcf50-c9db-40a1-8cf7-a63d0119205d';
+        // 宝妈圈-我回复的帖子查询
+        this.postMineReplyReadOperation = 'df2e994f-1a73-4182-a0bb-a68e012119c5';
         // 宝妈圈-贴子新增
         this.postAddOperation = '9f0deed4-76cc-4a3f-9340-a63d01193c7d';
         // 宝妈圈-贴子点赞新增

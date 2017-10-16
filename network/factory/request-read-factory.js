@@ -1048,6 +1048,57 @@ export default class RequestReadFactory {
       return req;
     }
 
+    // 宝妈圈-查询我发表的帖子
+    static postMyRead() {
+      let operation = Operation.sharedInstance().postReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Member_Article_SendId": global.Storage.memberId(),
+        "Belong_ArticleId":"00000000-0000-0000-0000-000000000000"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询我发表的帖子';
+      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "Article_Abstract", "TotalViews",
+        "Commemt_Number", "Img_Member_Article_SendId"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        this.parseMomPostData(responseData);
+        responseData.forEach((item, index) => {
+          item.isReply = true;
+          item.replyNum = item.Commemt_Number;
+        });
+      }
+      return req;
+    }
+
+    // 宝妈圈-查询我回复的帖子
+    static postMyReplyRead() {
+      let operation = Operation.sharedInstance().postMineReplyReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Order": "${ReplyTime} DESC",
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询我回复的帖子';
+      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "Article_Abstract", "TotalViews",
+        "Commemt_Number", "Img_Member_Article_SendId", "ReplyTime","CreateTime"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        this.parseMomPostData(responseData);
+        responseData.forEach((item, index) => {
+          item.isReply = true;
+          item.replyNum = item.Commemt_Number;
+        });
+      }
+      return req;
+    }
+
     // 宝妈圈-查询置顶帖子
     static postTopRead(circleId) {
       let operation = Operation.sharedInstance().postReadOperation;

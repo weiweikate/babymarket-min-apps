@@ -1,71 +1,43 @@
-// my-create-post.js
+//宝妈圈
+let { Tool, Event, Storage, RequestReadFactory, RequestWriteFactory } = global;
 Page({
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        listDatas:['','']
-    },
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    postArray: []
+  },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    Tool.showLoading();
+    this.requestPost();
+  },
+  /**
+   * 查询我发表的帖子
+   */
+  requestPost: function () {
+    let task = RequestReadFactory.postMyRead();
+    task.finishBlock = (req) => {
+      let responseData = req.responseObject.Datas;
 
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    },
-
-    cellTap:function(e){
-        let index = e.currentTarget.dataset.index;
-        console.log(index);
-    }
+      this.setData({
+        postArray: responseData
+      });
+    };
+    task.addToQueue();
+  },
+  /**
+   * item点击事件
+   */
+  onItemClickListener: function (e) {
+    let id = e.currentTarget.dataset.id;
+    //进入帖子详情
+    wx.navigateTo({
+      url: '/pages/mom/post-detail/post-detail?id=' + id
+    })
+  },
 })

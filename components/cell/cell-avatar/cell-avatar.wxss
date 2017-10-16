@@ -13,6 +13,7 @@
   margin-left: 20rpx;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .avatar-info .name {
@@ -36,8 +37,8 @@
 }
 
 .reply-view .reply-icon {
-  width: 32rpx;
-  height: 32rpx;
+  width: 22rpx;
+  height: 22rpx;
   flex: none;
 }
 

@@ -1,0 +1,6 @@
+@import "/libs/wxParse/wxParse.wxss";
+
+.view-root {
+  background-color: white;
+  margin-top: 1rpx;
+}

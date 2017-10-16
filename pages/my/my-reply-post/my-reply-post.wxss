@@ -1,2 +1,13 @@
-/* my-reply-post.wxss */
-@import '/pages/my/my-create-post/cell/my-create-post-cell.wxss';
+@import '/components/empty-view/empty-view.wxss';
+@import '/pages/mom/cell-post/cell-post.wxss';
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+  height: 100%;
+}
+
+.no-data {
+  height: 100%;
+}

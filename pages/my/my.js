@@ -130,7 +130,7 @@ Page({
 
     } else if (title == '发表的帖子') {
       wx.navigateTo({
-        url: '../my/my-create-post/my-create-post',
+        url: '/pages/my/my-create-post/my-create-post',
       })
 
     } else if (title == '回复的帖子') {

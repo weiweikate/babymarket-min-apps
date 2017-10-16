@@ -118,6 +118,8 @@ Page({
     switch (position) {
       case 0:
         //图文详情
+        let id = this.data.detailInfo.Id;
+        url = '/pages/find/levy/levy-product-detail/levy-product-detail?id=' + id;
         break;
       case 1:
         //用户的试用报告
