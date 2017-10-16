@@ -1,0 +1,13 @@
+<!--baby-food.wxml-->
+<import src='/components/tab-layout/tab-layout.wxml' />
+<import src='/pages/baby-food/baby-food-cell/baby-food-cell.wxml' />
+
+<view class="root-view">
+    <template is="tab-layout" data="{{items:navTabs,currentTab}}" />
+
+    <view class="list-view">
+        <block wx:for="{{listDatas}}" wx:key="unique">
+            <template is="baby-food-cell" data="{{item:item, index:index}}"></template>
+        </block>
+    </view>
+</view>

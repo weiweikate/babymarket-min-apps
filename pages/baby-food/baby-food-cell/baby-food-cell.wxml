@@ -1,0 +1,10 @@
+<template name="baby-food-cell">
+    <view class="baby-food-cell-view" catchtap="cellTap" data-index="{{index}}">
+        <image src="{{item.imageUrl}}" style="width:150rpx;height:120rpx"></image>
+        <view class="desp-view">
+            <view class="name">{{item.Title}}</view>
+            <view class="desp OverFlowTwoLine">{{item.Digest}}</view>
+        </view>
+        <image src="/res/img/common/common-accessory-icon.png" style="width:16rpx;height:26rpx"></image>
+    </view>
+</template>

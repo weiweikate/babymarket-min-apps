@@ -72,7 +72,11 @@
         "pages/question/question-detail/question-detail",
         "pages/question/question-reply/question-reply",
         "pages/index/index-artical/index-artical",
-        "pages/eat/food-detail/food-detail"
+        "pages/eat/food-detail/food-detail",
+        "pages/eat/eat-empty-view/eat-empty-view",
+        "pages/question/question-create/question-create",
+        "pages/baby-food/baby-food",
+        "pages/baby-food/baby-food-detail/baby-food-detail"
     ],
     "window": {
         "backgroundTextStyle": "light",

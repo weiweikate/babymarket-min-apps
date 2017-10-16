@@ -1,0 +1,12 @@
+/* baby-food-detail.wxss */
+@import "/libs/wxParse/wxParse.wxss";
+
+.food-image{
+    width: 100%;
+    height: 450rpx;
+}
+
+.artical{
+    padding: 20rpx 25rpx;
+    background: white;
+}

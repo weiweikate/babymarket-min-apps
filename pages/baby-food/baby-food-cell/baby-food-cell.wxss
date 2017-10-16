@@ -1,0 +1,24 @@
+.baby-food-cell-view{
+    display: flex;
+    align-items: center;
+    margin-top: 2rpx;
+    padding: 22rpx;
+    background: white; 
+}
+
+.desp-view{
+    margin-left: 30rpx;
+    margin-right: 30rpx;
+    width: 470rpx;
+}
+
+.desp-view .name{
+    font-size: 32rpx;
+    color: #090909;
+}
+
+.desp-view .desp{
+    margin-top: 20rpx;
+    font-size: 28rpx;
+    color: #494848;
+}

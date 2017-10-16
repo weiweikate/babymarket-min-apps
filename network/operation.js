@@ -93,6 +93,8 @@ export default class Operation {
         // 食物列表 查询
         this.foodReadOperation = '670b88f4-1858-464f-9ef0-a68600b039ad'
 
+        // 查询辅食大全
+        this.babyFoodReadOperation = '9db096be-1b31-432e-a5cc-a69a01054015'
 
         //首页-广告位
         this.homeAdReadOperation = 'b412ff1c-c19b-4250-b479-a61e0085a868';

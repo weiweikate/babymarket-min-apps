@@ -1,4 +1,4 @@
-// eat-food-list.js
+// eat-empty-view.js
 let { Tool, Storage, RequestReadFactory } = global
 
 Page({
@@ -7,20 +7,17 @@ Page({
      * 页面的初始数据
      */
     data: {
-        listDatas: []
+        searchKey: ''
     },
-    mainId: '',
-    searchKey:'',
-    hasMore:true,
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.mainId = options.mainId;
-        this.searchKey = options.searchKey;
-
-        this.requestData(false);
+        let searchKey = options.searchKey;
+        this.setData({
+            searchKey: searchKey
+        })
     },
 
     /**
@@ -62,9 +59,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-        if (hasMore) {
-            this.requestData(true);
-        }
+
     },
 
     /**
@@ -75,48 +70,18 @@ Page({
     },
 
     /**
-     * 食物查询
+     * 问问宝妈们
      */
-    requestData: function (isLoadMore) {
-        let index = 0;
-        if(isLoadMore){
-            index = this.data.listDatas.length;
-        }
-        let condition = "${FootClassifyId} == '" + this.mainId + "'";
-        if (Tool.isEmptyStr(this.mainId)){
-            condition = "StringIndexOf(${Hunt},'" + this.searchKey + "') > 0";
-        }
-
-        let r = RequestReadFactory.requestFoodList(index, 20, condition);
-        let self = this;
-        r.finishBlock = (req) => {
-            let datas = req.responseObject.Datas;
-            let arry = self.data.listDatas;
-            arry = arry.concat(datas);
-            self.setData({
-                listDatas: arry
-            })
-
-            if (arry.length >= req.responseObject.Total){
-                this.hasMore = false;
-            }
-        };
-        r.addToQueue();
-    },
-
-    cellTap:function(e){
-        let index = e.currentTarget.dataset.index;
-        let datas = this.data.listDatas[index];
-        wx.setStorageSync('foodDatas', datas);
-
+    questionTap:function(){
+        let content = this.data.searchKey + '能不能吃？';
         wx.navigateTo({
-            url: '/pages/eat/food-detail/food-detail',
+            url: '/pages/question/question-create/question-create?content=' + content + '&index=1',
         })
     },
 
     /**
-     * 搜索
-     */
+  * 搜索
+  */
     onConfirmAction: function (e) {
         console.log(e.detail.value);
         let value = e.detail.value;
@@ -142,8 +107,8 @@ Page({
             let total = req.responseObject.Total;
 
             if (total <= 0) {//没有搜索记录，跳转到空页面
-                wx.navigateTo({
-                    url: '/pages/eat/eat-empty-view/eat-empty-view?searchKey=' + text,
+                this.setData({
+                    searchKey: text
                 })
             } else if (total == 1) {//只有1条记录，跳转到食物详情页
                 wx.setStorageSync('foodDatas', datas[0]);

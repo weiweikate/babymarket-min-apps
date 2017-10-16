@@ -1713,4 +1713,55 @@ export default class RequestReadFactory {
         }
         return req;
     }
+
+    //辅食大全月份列表查询
+    static requestBabyFoodMonth() {
+        let operation = Operation.sharedInstance().babyFoodReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": "${IsMonthShow} == 'true'",
+            "Order": "${AgeMonth} ASC",
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '辅食大全月份列表查询';
+        req.items = ["AgeMonth"];
+        req.preprocessCallback = (req) => {
+            let { Tool } = global;
+
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+
+                item.Name = item.AgeMonth + '个月';
+            });
+        }
+        return req;
+    }
+
+    //辅食大全查询
+    static requestBabyFoodList(index, count, condition) {
+        let operation = Operation.sharedInstance().babyFoodReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "MaxCount": count,
+            "StartIndex": index,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '辅食大全月份列表查询';
+        req.items = ["AgeMonth",
+                        "Id",
+                        "ImgId",
+                        "Digest",
+                        "Title",
+                        "Content"];
+        req.preprocessCallback = (req) => {
+            let { Tool } = global;
+
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                item.imageUrl = Tool.imageURLForId(item.ImgId, '/res/img/common/common-avatar-default-icon.png');
+            });
+        }
+        return req;
+    }
 }
