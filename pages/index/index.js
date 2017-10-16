@@ -161,9 +161,17 @@ Page({
             wx.navigateTo({
                 url: '/pages/eat/eat',
             })
+        } else if (title == '宝贝疫苗') {
+            wx.navigateTo({
+                url: 'pages/find/knowledge/knowledge',
+            })
         } else if (title == '辅食大全') {
             wx.navigateTo({
                 url: '/pages/baby-food/baby-food',
+            })
+        } else if (title == '工具库') {
+            wx.navigateTo({
+                url: 'pages/find/knowledge/knowledge',
             })
         }
     },
