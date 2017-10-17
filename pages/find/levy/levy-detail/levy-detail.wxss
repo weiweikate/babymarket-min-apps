@@ -28,7 +28,7 @@
 }
 
 .number-view .total-number {
-  color: #f55;
+  color: #ff5555;
 }
 
 .now-price-view {
@@ -39,7 +39,7 @@
 }
 
 .now-price-view .now-price {
-  color: #f55;
+  color: #ff5555;
 }
 
 .now-price-view .now-price {
@@ -99,5 +99,5 @@
 .view-btn.enabled {
   font-size: 30rpx;
   color: white;
-  background: #f55;
+  background: #ff5555;
 }

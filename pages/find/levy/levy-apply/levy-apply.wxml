@@ -1,14 +1,21 @@
-<!--pages/find/levy/levy-apply/levy-apply.wxml-->
-<import src='/pages/address/info/address-info.wxml' />
+<view class="view-root">
+  <view class='view-address-root'>
+    <image src='/res/img/my/order-detail/my-order-detail-address-icon.png' class='address-icon' mode="aspectFit" />
+    <view class="view-address" bindtap="onAddressClickListener">
+      <view class="address-row">
+        <text class="address-name">{{addressInfo.Consignee}}</text>
+        <text class="address-mobile">{{addressInfo.Mobile}}</text>
+      </view>
+      <text class="address-detail OverFlowTwoLine">{{addressInfo.Address}}</text>
+    </view>
+    <image class="address-arrow" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit" />
+  </view>
 
-<view class='rceive-address-view'>
-    <image src='/res/img/my/order-detail/my-order-detail-address-icon.png' class='address-icon'></image>
-    <template is='address-info' data='{{...address}}'></template>
+  <form bindsubmit='onSubmitAction'>
+    <view class='view-form'>
+      <textarea class='input-content' placeholder='请填写您的申请理由' name='Content' />
+    </view>
+    <!--底部按钮保存-->
+    <button class="view-submit" form-type="submit">提交</button>
+  </form>
 </view>
-
-<form bindsubmit='submitTap'>
-    <textarea class='input-area-view' placeholder='请填写您的申请理由' name='input'></textarea>
-    <button class='submit-button' form-type='submit'>提交</button>
-</form>
-
-

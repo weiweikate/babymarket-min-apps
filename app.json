@@ -1,5 +1,4 @@
 {
-
   "pages": [
     "pages/index/index",
     "pages/home/home",
@@ -80,7 +79,8 @@
     "pages/question/question-create/question-create",
     "pages/baby-food/baby-food",
     "pages/baby-food/baby-food-detail/baby-food-detail",
-    "pages/find/confinement-food/confinement-food"
+    "pages/find/confinement-food/confinement-food",
+    "pages/find/levy/levy-detail/levy-report/levy-report-add/levy-report-add"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -133,5 +133,4 @@
     ]
   },
   "debug": true
-
 }

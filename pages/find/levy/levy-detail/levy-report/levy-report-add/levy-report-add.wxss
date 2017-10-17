@@ -1,4 +1,3 @@
-@import '/pages/find/clinic/cell-add-input/cell-add-input.wxss';
 @import '/components/image-picker/image-picker.wxss';
 
 page {
@@ -9,18 +8,14 @@ page {
   background: white;
   display: flex;
   flex-direction: column;
-  padding: 30rpx 60rpx 30rpx 60rpx;
+  padding: 30rpx;
   border-top: 1rpx solid #f3f4f5;
 }
 
-.view-submit {
-  color: #ff5555;
-  border: 1rpx solid #ff5555;
-  background: white;
-  border-radius: 8rpx;
+.input-value {
+  width: 100%;
+  color: #090909;
   font-size: 28rpx;
-  margin: 60rpx 0rpx 30rpx 0rpx;
-  padding: 8rpx 0rpx 8rpx 0rpx;
 }
 
 .view-image {
@@ -35,4 +30,14 @@ page {
 .view-image .image-picker {
   margin-top: 10rpx;
   padding-left: 10rpx;
+}
+
+.view-submit {
+  color: #ff5555;
+  border: 1rpx solid #ff5555;
+  background: white;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  margin: 60rpx 0rpx 30rpx 0rpx;
+  padding: 8rpx 0rpx 8rpx 0rpx;
 }

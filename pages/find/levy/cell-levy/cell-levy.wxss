@@ -39,7 +39,7 @@
 }
 
 .now-integral {
-  color: #f55;
+  color: #ff5555;
   margin-left: 10rpx;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .total-num {
-  color: #f55;
+  color: #ff5555;
   margin-left: 10rpx;
   flex-grow: 1;
 }
@@ -79,5 +79,5 @@
 .buy-button.enabled {
   font-size: 30rpx;
   color: white;
-  background: #f55;
+  background: #ff5555;
 }

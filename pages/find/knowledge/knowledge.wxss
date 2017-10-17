@@ -55,6 +55,6 @@ page {
 }
 
 .tab-layout .tab.select {
-  color: #f55;
-  border-bottom: 4rpx solid #f55;
+  color: #ff5555;
+  border-bottom: 4rpx solid #ff5555;
 }

@@ -1,35 +1,83 @@
-/* pages/find/levy/levy-apply/levy-apply.wxss */
 @import '/pages/address/info/address-info.wxss';
 
-.rceive-address-view{
-    display: flex;
-    padding-left: 22rpx;
-    align-items: center;
-    background: white;
+page {
+  background-color: white;
 }
 
-.address-icon{
-    width: 31rpx;
-    height: 31rpx;
+.view-root {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-top: 1rpx solid #f3f4f5;
 }
 
-.input-area-view{
-    height: 300rpx;
-    width: 706rpx;
-    padding: 50rpx 22rpx 22rpx 22rpx;
-    background: white;
-    font-size: 30rpx;
-    color: #090909;
-    border-top: 2rpx solid #eeeeee;
+.view-address-root {
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #f3f4f5;
+  padding: 20rpx;
 }
 
-.submit-button{
-    font-size: 32rpx;
-    color: white;
-    background: #ff5555;
-    border-radius: 10rpx;
-    margin: 40rpx 22rpx 0rpx 22rpx;
-    height: 80rpx;
-    line-height: 80rpx;
-    text-align: center;
+.address-icon {
+  width: 31rpx;
+  height: 31rpx;
+  flex: none;
+}
+
+.view-address {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  flex-grow: 1;
+}
+
+.address-row {
+  display: flex;
+}
+
+.address-name {
+  font-size: 30rpx;
+  color: topic;
+  flex-grow: 1;
+}
+
+.address-mobile {
+  font-size: 30rpx;
+  color: #454950;
+}
+
+.address-detail {
+  margin-top: 20rpx;
+  color: #5e5e5f;
+  font-size: 28rpx;
+  flex-wrap: wrap;
+}
+
+.address-arrow {
+  width: 17rpx;
+  height: 29rpx;
+  flex: none;
+}
+
+.view-form {
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx;
+}
+
+.input-content {
+  width: 100%;
+  height: 300rpx;
+  font-size: 28rpx;
+  color: #090909;
+}
+
+.view-submit {
+  color: white;
+  background: #f55;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  margin: 60rpx 20rpx 20rpx 20rpx;
+  padding: 8rpx 0rpx 8rpx 0rpx;
 }

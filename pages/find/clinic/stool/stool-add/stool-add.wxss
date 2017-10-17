@@ -15,10 +15,10 @@ page {
 }
 
 .view-submit {
-  color: #f55;
-  border: 1rpx solid #f55;
+  color: #ff5555;
+  border: 1rpx solid #ff5555;
   background: white;
-  border-radius: 6rpx;
+  border-radius: 8rpx;
   font-size: 28rpx;
   margin: 60rpx 0rpx 30rpx 0rpx;
   padding: 8rpx 0rpx 8rpx 0rpx;

@@ -17,18 +17,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let levyId = options.id;
+    let applyId = options.applyId;
     this.setData({
-      levyId: options.id,
-      applyId: options.applyId,
+      levyId: levyId,
+      applyId: applyId,
       isWin: options.isWin == 'false' ? false : true
     });
 
-    this.createBtn = new CreateBtn(this, "/pages/find/levy/levy-detail/levy-report-detail/levy-report-detail");
+    let addUrl = "/pages/find/levy/levy-detail/levy-report/levy-report-add/levy-report-add?levyId=" + levyId + "&applyId=" + applyId;
+
+    this.createBtn = new CreateBtn(this, addUrl);
     if (!this.data.isWin) {
       this.createBtn.setHide();
     }
 
     this.requestList();
+
+    Event.on('refreshReportList', this.requestList, this)
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    Event.off('refreshReportList', this.requestList)
   },
 
   /**

@@ -41,7 +41,7 @@ Page({
   requestAttachments: function (id) {
     let task = RequestReadFactory.attachmentsByIdRead(id);
     task.finishBlock = (req) => {
-      let responseData = req.responseObject.Datas;
+      let responseData = req.responseObject.imageUrls;
       this.setData({
         imagesArray: responseData
       });

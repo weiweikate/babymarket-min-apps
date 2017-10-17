@@ -1,0 +1,15 @@
+<import src='/components/image-picker/image-picker.wxml' />
+
+<view class="view-root">
+  <form catchsubmit="onSubmitAction">
+    <textarea class="input-value" name="Content" placeholder="请填写内容" placeholder-style="color:#dbdbdb" auto-height maxlength="-1" />
+
+    <!--上传照片（最多9张）-->
+    <view class='view-image'>
+      <text class="image-title">上传照片（最多9张）</text>
+      <template is="image-picker" data="{{maxCount:maxCount,imageArray:imageArray}}" />
+    </view>
+    <!--底部按钮保存-->
+    <button class="view-submit" form-type="submit">提交</button>
+  </form>
+</view>
