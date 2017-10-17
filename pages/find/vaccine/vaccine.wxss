@@ -1,0 +1,87 @@
+/* vaccine.wxss */
+
+page{
+    background: white;
+}
+
+.next-time-view{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 728rpx;
+    padding-right: 22rpx;
+    height: 60rpx;
+    font-size: 26rpx;
+    color: #acadaa;
+    border-bottom: 2rpx solid #acadaa;
+}
+
+.next-time-view .days{
+    color: #ff5555;
+}
+
+.vaccine-cell{
+    border-bottom: 20rpx solid #fff8f4;
+    padding: 0rpx 22rpx;
+}
+
+.vaccine-cell .title{
+    font-size: 28rpx;
+    color: #acadaa;
+    height: 120rpx;
+    line-height: 120rpx;
+}
+
+.title.select{
+    color: #ff5555;
+}
+
+.vaccine-item{
+    display: flex;
+    height: 130rpx;
+}
+
+.vaccine-item .must{
+    background: #8adad6;
+    color: white;
+    width: 80rpx;
+    height: 40rpx;
+    border-radius: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    flex-shrink: 0;
+    font-size: 20rpx;
+    margin-left: 15rpx;
+}
+
+.vaccine-item .check-button{
+    width: 80rpx;
+    height: 80rpx;
+    flex-shrink: 0;
+}
+
+.vaccine-item .mid-view{
+    width: 530rpx;
+}
+
+.mid-view .title-times{
+    display: flex;
+}
+
+.mid-view .title-times .vaccine-title{
+    font-size: 30rpx;
+    color: #090909;
+}
+
+.mid-view .title-times .times{
+    font-size: 20rpx;
+    color: #acadaa;
+    margin-left: 20rpx;
+    margin-top: 10rpx;
+}
+
+.mid-view .desp{
+    font-size: 28rpx;
+    color: #494848;
+    margin-top: 18rpx;
+}
