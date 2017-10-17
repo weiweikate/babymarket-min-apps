@@ -35,6 +35,33 @@ export default class RequestReadFactory {
     }
 
     //附件
+    static attachmentsByIdRead(theId) {
+      let operation = Operation.sharedInstance().attachmentsReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": "${RelevancyId} == '" + theId + "'",
+        "Order": '${CreateTime} ASC'
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '附件';
+      req.items = ['Id'];
+
+      //修改返回结果，为返回结果添加imageUrls字段
+      req.preprocessCallback = (req) => {
+        let Datas = req.responseObject.Datas;
+        let imageUrls = [];
+        if (global.Tool.isValidArr(Datas)) {
+          Datas.forEach((data) => {
+            data.imageUrl = global.Tool.imageURLForId(data.Id);
+            imageUrls.push(data.imageUrl);
+          });
+        }
+        req.responseObject.imageUrls = imageUrls;
+      }
+      return req;
+    }
+
+    //附件
     static attachmentsRead(theId, bizElement ='Attachments') {
       let operation = Operation.sharedInstance().attachmentsReadOperation;
       let bodyParameters = {
@@ -967,11 +994,12 @@ export default class RequestReadFactory {
       };
       let req = new RequestRead(bodyParameters);
       req.name = '黄金便征集令详情查询';
-      req.items = ["Id", "ProductId", "Name", "Normal_Price", "Max_Number", "DateTime_End", "Is_End"];
+      req.items = ["Id", "ProductId", "Name", "Normal_Price", "Max_Number", "DateTime_End", "Is_End", "Report_DateTime_End"];
       req.appendixesKeyMap = { 'Product': 'ProductId' };//可以多个
       req.preprocessCallback = (req) => {
         let responseData = req.responseObject.Datas;
         responseData.forEach((item, index) => {
+          item.isWin = false;
           if (time > item.DateTime_End) {
             item.buttonText = '已结束';
             item.buttonType = 1;
@@ -986,6 +1014,8 @@ export default class RequestReadFactory {
 
               if (time > apply.Win_End_Time){
                 if (apply.Is_Win=='True'){
+                  item.isWin = true;
+                  item.applyId = apply.Id;
                   item.status = '恭喜您中奖,请在' + apply.Report_DateTime_End +'之前完成试用报告';
                 }else{
                   item.status = '抱歉,您没有中奖';
@@ -1024,6 +1054,106 @@ export default class RequestReadFactory {
       let req = new RequestRead(bodyParameters);
       req.name = '黄金便征集令申请查询';
       req.items = ["Id", "Wind_AlarmId", "Is_Win", "Report_DateTime_End"];
+      return req;
+    }
+
+    // 黄金便征集令申请查询
+    static levyWinRead(id, reportArray) {
+      let operation = Operation.sharedInstance().levyApplyReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Is_Win": "True",
+        "Wind_AlarmId":id,
+        "Appendixes": {
+          "+Member": [
+            "Name",
+            "ImgId",
+            "NickName"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '黄金便征集令申请查询';
+      req.items = ["Id", "MemberId", "Report_DateTime_End"];
+      req.appendixesKeyMap = { 'Member': 'MemberId' };//可以多个
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.hasReport = false;
+          reportArray.forEach((item2, index) => {
+            if (item.MemberId == item2.MemberId){
+              item.hasReport = true;
+              return;
+            }
+          });
+        });
+      }
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'Member') {
+          //给data添加新属性
+          item.headImgUrl = global.Tool.imageURLForId(appendixe.ImgId);
+          item.Name = appendixe.NickName.length > 0 ? appendixe.NickName : appendixe.Name;
+        }
+      };
+      return req;
+    }
+
+    // 黄金便征集令报告查询
+    static levyReportRead(id) {
+      let operation = Operation.sharedInstance().levyReportReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Wind_AlarmId": id,
+        "Order": "${CreateTime} DESC",
+        "Appendixes": {
+          "+Member": [
+            "NickName",
+            "ImgId"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '黄金便征集令报告查询';
+      req.items = ["Id", "MemberId", "CreateTime", "Content"];
+      req.appendixesKeyMap = { 'Member': 'MemberId' };//可以多个
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'Member') {
+          //给data添加新属性
+          item.headImgUrl = global.Tool.imageURLForId(appendixe.ImgId);
+          item.Name = appendixe.NickName;
+        }
+      };
+      return req;
+    }
+
+    // 黄金便征集令报告详情查询
+    static levyReportDetailRead(id) {
+      let operation = Operation.sharedInstance().levyReportReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": id,
+        "Appendixes": {
+          "+Member": [
+            "NickName",
+            "ImgId"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '黄金便征集令报告详情查询';
+      req.items = ["Id", "MemberId", "CreateTime", "Content"];
+      req.appendixesKeyMap = { 'Member': 'MemberId' };//可以多个
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'Member') {
+          //给data添加新属性
+          item.headImgUrl = global.Tool.imageURLForId(appendixe.ImgId);
+          item.Name = appendixe.NickName;
+        }
+      };
       return req;
     }
 

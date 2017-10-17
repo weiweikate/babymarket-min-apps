@@ -1,0 +1,22 @@
+@import '/components/cell/cell-avatar/cell-avatar.wxss';
+@import '/components/create-btn/create-btn.wxss';
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+}
+
+.view-list {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 15rpx solid #f3f4f5;
+  background-color: white;
+  padding: 20rpx;
+}
+
+.content {
+  font-size: 30rpx;
+  color: #494848;
+  margin-top: 40rpx;
+}

@@ -48,6 +48,7 @@ export default class Network {
         this.questionURL = this.domain + 'QueAnsDetails.aspx';
         this.articalURL = this.domain + 'IndexArticleDetails.aspx';
         this.levyDetailURL = this.domain + 'Wind_Alarm_Detail.aspx';
+        this.levyRuleURL = this.domain + 'Wind_Alarm_Rule.aspx';
 
         __instance(this);
     }

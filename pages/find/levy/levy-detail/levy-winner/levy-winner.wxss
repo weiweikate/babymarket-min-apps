@@ -1,0 +1,26 @@
+@import '/pages/find/levy/levy-detail/levy-winner/levy-winner-cell/levy-winner-cell.wxss';
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+  background-color: white;
+}
+
+.view-tips {
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f3f4f5;
+}
+
+.view-tips .tips-title {
+  font-size: 30rpx;
+  color: #090909;
+}
+
+.view-tips .tips-subtitle {
+  font-size: 24rpx;
+  color: #494848;
+  margin-top: 20rpx;
+}

@@ -1,6 +1,0 @@
-<!--pages/find/levy/levy-report-detail/levy-report-detail.wxml-->
-<import src='/pages/find/levy/levy-report/levy-report-cell/levy-report-cell.wxml' />
-<import src='/components/grid-image-view/grid-image-view.wxml' />
-
-<template is='levy-report-cell'></template>
-<template is='grid-image-view' data='{{imageDatas:imageDatas}}'></template>

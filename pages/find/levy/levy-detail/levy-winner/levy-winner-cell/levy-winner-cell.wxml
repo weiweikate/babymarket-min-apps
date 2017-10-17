@@ -1,0 +1,7 @@
+<template name='levy-winner-cell'>
+  <view class='levy-winner-cell'>
+    <image src="{{headImgUrl.length>0?headImgUrl:'/res/img/common/common-avatar-default-icon.png'}}" class="avatar-img" mode="aspectFill" />
+    <text class='name'>{{Name}}</text>
+    <text class='status' wx:if="{{hasReport}}">已提交</text>
+  </view>
+</template>

@@ -1,0 +1,25 @@
+.levy-winner-cell {
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.avatar-img {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 44rpx;
+  flex: none;
+}
+
+.name {
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  color: #090909;
+  flex-grow: 1;
+}
+
+.status {
+  font-size: 28rpx;
+  color: #494848;
+}

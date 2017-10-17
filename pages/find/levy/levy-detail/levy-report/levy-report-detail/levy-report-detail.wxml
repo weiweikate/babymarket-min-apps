@@ -1,0 +1,10 @@
+<import src='/components/image-gallery/image-gallery.wxml' />
+<import src='/components/cell/cell-avatar/cell-avatar.wxml' />
+
+<view class="view-root">
+  <template is="cell-avatar" data="{{headImgUrl:detailInfo.headImgUrl,name:detailInfo.Name,age:detailInfo.CreateTime}}" />
+  <text class='content'>{{detailInfo.Content}}</text>
+  <view class='view-image'>
+    <template is='image-gallery' data='{{imagesArray:imagesArray}}' />
+  </view>
+</view>

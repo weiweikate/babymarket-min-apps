@@ -1,0 +1,3 @@
+<template name="create-btn">
+  <image class="create-btn" src="{{icon}}" catchtap="onCreateClickListener" mode='aspectFill' wx:if="{{!isHide}}"/>
+</template>

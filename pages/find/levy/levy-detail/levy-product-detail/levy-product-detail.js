@@ -1,5 +1,5 @@
-import WxParse from '../../../../libs/wxParse/wxParse.js';
-import Network from '../../../../network/network.js'
+import WxParse from '../../../../../libs/wxParse/wxParse.js';
+import Network from '../../../../../network/network.js'
 
 let { Tool, Storage, RequestReadFactory, RequestWriteFactory, Event } = global;
 Page({

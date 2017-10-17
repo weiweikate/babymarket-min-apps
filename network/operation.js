@@ -41,6 +41,8 @@ export default class Operation {
         this.levyReadOperation = 'a3dba460-900e-44a9-af99-a64400bbf081';
         // 黄金便征集令申请查询
         this.levyApplyReadOperation = 'f096b173-23c4-48a4-9ec7-a64400bee7e1';
+        // 黄金便征集令报告查询
+        this.levyReportReadOperation = '8e89a7fc-176a-4968-89f3-a64400c31a7d';
         // 专题列表
         this.specialTopicReadOperation = '2d096526-3bb8-4e8c-b372-a69a0118ab2d';
         // 知识列表

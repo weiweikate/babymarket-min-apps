@@ -63,9 +63,11 @@
     "pages/my/my-award/award-detail/award-detail",
     "pages/find/lottery/lottery",
     "pages/find/levy/levy-detail/levy-detail",
-    "pages/find/levy/levy-report/levy-report",
-    "pages/find/levy/levy-report-detail/levy-report-detail",
-    "pages/find/levy/levy-winner/levy-winner",
+    "pages/find/levy/levy-detail/levy-product-detail/levy-product-detail",
+    "pages/find/levy/levy-detail/levy-report/levy-report",
+    "pages/find/levy/levy-detail/levy-report/levy-report-detail/levy-report-detail",
+    "pages/find/levy/levy-detail/levy-winner/levy-winner",
+    "pages/find/levy/levy-detail/levy-rule/levy-rule",
     "pages/find/levy/levy-apply/levy-apply",
     "pages/mom/circle-detail/circle-detail",
     "pages/mom/post-detail/post-detail",
@@ -76,8 +78,7 @@
     "pages/eat/eat-empty-view/eat-empty-view",
     "pages/question/question-create/question-create",
     "pages/baby-food/baby-food",
-    "pages/baby-food/baby-food-detail/baby-food-detail",
-    "pages/find/levy/levy-product-detail/levy-product-detail"
+    "pages/baby-food/baby-food-detail/baby-food-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

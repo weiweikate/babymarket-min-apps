@@ -115,22 +115,27 @@ Page({
   onMenuItemListener: function (e) {
     let position = e.currentTarget.dataset.position;
     let url = undefined;
+    let id = this.data.detailInfo.Id;
+
     switch (position) {
       case 0:
         //图文详情
-        let id = this.data.detailInfo.Id;
-        url = '/pages/find/levy/levy-product-detail/levy-product-detail?id=' + id;
+        url = '/pages/find/levy/levy-detail/levy-product-detail/levy-product-detail?id=' + id;
         break;
       case 1:
         //用户的试用报告
-        url = '/pages/find/levy/levy-report/levy-report';
+        let isWin = this.data.detailInfo.isWin;
+        let applyId = this.data.detailInfo.applyId;
+        url = '/pages/find/levy/levy-detail/levy-report/levy-report?id=' + id + "&isWin=" + isWin + "&applyId=" + applyId;
         break;
       case 2:
         //中奖的用户
-        url = '/pages/find/levy/levy-winner/levy-winner';
+        let time = this.data.detailInfo.Report_DateTime_End;
+        url = '/pages/find/levy/levy-detail/levy-winner/levy-winner?id=' + id + "&time=" + time;
         break;
       case 3:
         //试用规则
+        url = '/pages/find/levy/levy-detail/levy-rule/levy-rule';
         break;
     }
     if (url != undefined) {

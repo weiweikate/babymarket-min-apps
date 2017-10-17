@@ -1,0 +1,5 @@
+<template name='image-gallery'>
+  <view class='image-gallery'>
+    <image src='{{item}}' class='gallery-image' mode='aspectFill' wx:for='{{imagesArray}}' wx:key='unique' />
+  </view>
+</template>

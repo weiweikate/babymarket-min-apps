@@ -7,6 +7,7 @@
   width: 88rpx;
   height: 88rpx;
   border-radius: 44rpx;
+  flex: none;
 }
 
 .cell-avatar .avatar-info {

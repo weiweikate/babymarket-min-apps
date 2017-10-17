@@ -1,0 +1,12 @@
+<import src='/components/cell/cell-avatar/cell-avatar.wxml' />
+<import src='/components/create-btn/create-btn.wxml' />
+
+<view class="view-root">
+  <view class='view-list' wx:for='{{listArray}}' wx:key='unique' catchtap="onItemClickListener" data-id="{{item.Id}}">
+    <template is="cell-avatar" data="{{headImgUrl:item.headImgUrl,name:item.Name,age:item.CreateTime}}" />
+    <text class='content'>{{item.Content}}</text>
+  </view>
+
+  <template is="create-btn" data="{{navigateUrl:navigateUrl,icon:icon,isHide:isHide}}" />
+
+</view>

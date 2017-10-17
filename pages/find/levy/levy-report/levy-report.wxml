@@ -1,6 +1,0 @@
-<!--pages/find/levy/levy-detail/levy-report/levy-report.wxml-->
-<import src='/pages/find/levy/levy-report/levy-report-cell/levy-report-cell.wxml' />
-
-<block wx:for='{{listDatas}}' wx:key='unique'>
-    <template is='levy-report-cell' data='{{index:index}}'></template>
-</block>

@@ -1,0 +1,10 @@
+<import src='/pages/find/levy/levy-detail/levy-winner/levy-winner-cell/levy-winner-cell.wxml' />
+
+<view class='view-root'>
+  <view class='view-tips'>
+    <text class='tips-title'>请以下用户在{{endTime}}日结束前提交试用报告</text>
+    <text class='tips-subtitle'>（按时提交试用报告将提高您之后获取试用的几率）</text>
+  </view>
+
+  <template is='levy-winner-cell' data="{{...item}}" wx:for='{{listArray}}' wx:key='unique' />
+</view>
