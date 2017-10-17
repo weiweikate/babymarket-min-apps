@@ -1641,4 +1641,19 @@ export default class RequestReadFactory {
         }
         return req;
     }
+
+    //月子餐天数查询
+    static requestConfinementFoodDays() {
+        let operation = Operation.sharedInstance().confinementFoodReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "MaxCount": 50,
+            "StartIndex": 0,
+            "Order": "${Day} ASC",
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '月子餐天数查询';
+        //req.items = ["Id", "MonthDay", "Abstract", "Content"];
+        return req;
+    }
 }

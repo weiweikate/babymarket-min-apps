@@ -1,0 +1,55 @@
+/* confinement-food.wxss */
+/* index-artical.wxss */
+@import '/pages/index/cell/artical-title-cell/artical-title-cell.wxss';
+@import "/libs/wxParse/wxParse.wxss";
+
+.root-view{
+    height: 100%;
+}
+
+.root-view .title-view{
+    width: 100%;
+    height: 120rpx;
+    background: #dbdbdb;
+    position: fixed;
+    top: 0rpx;
+    z-index: 1000;
+}
+
+.artical{
+    margin-top: 120rpx;
+    padding: 40rpx 22rpx;
+    background: white;
+}
+
+.tab-layout .tab {
+    width: 140rpx;
+}
+
+.today-view{
+    margin-top: 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.menu{
+    margin-top: 60rpx;
+    margin-bottom: 30rpx;
+}
+
+.recomend{
+    background: #9ad9d8;
+    font-size: 34rpx;
+    color: white;
+    width: 200rpx;
+    height: 70rpx;
+    border-radius: 10rpx;
+    line-height: 70rpx;
+    text-align: center;
+}
+
+.today-food{
+    margin:25rpx 20rpx;
+    font-size: 28rpx;
+    color: #090909;
+}
+

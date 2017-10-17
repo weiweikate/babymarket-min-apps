@@ -1,0 +1,26 @@
+<!--confinement-food.wxml-->
+<import src='/pages/index/cell/artical-title-cell/artical-title-cell.wxml' />
+<import src="/libs/wxParse/wxParse.wxml" />
+
+<view class="root-view">
+    <view class="title-view">
+        <template is="artical-title-cell" data="{{items:titleList,currentTab, defaultIndex}}" />
+    </view>
+
+    <!--文章-->
+    <view class="artical">
+        <!--今日菜单-->
+        <view class="today-view">
+            <view class="recomend">今日菜单</view>
+            <view class="today-food">早餐：{{datas.Breakfast}}</view>
+            <view class="today-food">中餐：{{datas.Lunch}}</view>
+            <view class="today-food">中间加餐：{{datas.AddMeal}}</view>
+            <view class="today-food">晚餐：{{datas.Dinner}}</view>
+            <view class="today-food">晚间加餐：{{datas.DinnerAdd}}</view>
+        </view>
+
+        <view class="recomend menu">推荐菜谱</view>
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+
+</view>

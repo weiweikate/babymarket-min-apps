@@ -30,10 +30,14 @@ Page({
 
         } else if (index == 1) {
             // 月子餐
-
+            wx.navigateTo({
+                url: '/pages/find/confinement-food/confinement-food',
+            })
         } else if (index == 2) {
             // 辅食大全
-
+            wx.navigateTo({
+                url: '/pages/baby-food/baby-food',
+            })
         }
     }
 })
