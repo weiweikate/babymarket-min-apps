@@ -1,4 +1,5 @@
 {
+
   "pages": [
     "pages/index/index",
     "pages/home/home",
@@ -78,7 +79,8 @@
     "pages/eat/eat-empty-view/eat-empty-view",
     "pages/question/question-create/question-create",
     "pages/baby-food/baby-food",
-    "pages/baby-food/baby-food-detail/baby-food-detail"
+    "pages/baby-food/baby-food-detail/baby-food-detail",
+    "pages/find/confinement-food/confinement-food"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -131,4 +133,5 @@
     ]
   },
   "debug": true
+
 }

@@ -4,8 +4,7 @@
 
 <view class="root-view">
     <view class="title-view">
-        <template is="artical-title-cell" data="{{items:titleList,currentTab, defaultIndex}}" />
-        <image src="{{item.articalUrl}}" style="width:100%;height:100%"></image>
+        <template is="artical-title-cell" data="{{items:titleList,currentTab}}" />
     </view>
 
     <view class="artical">
