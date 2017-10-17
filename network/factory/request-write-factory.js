@@ -498,7 +498,7 @@ export default class RequestWriteFactory {
         return req;
     }
 
-    //新增首页文章吐槽
+   //新增首页文章吐槽
     static addArticalComplain(articalId, content) {
         let operation = Operation.sharedInstance().homeArticalLikeAddOperation;
         let status = Network.sharedInstance().statusNew;
@@ -512,6 +512,35 @@ export default class RequestWriteFactory {
 
         let req = new RequestWrite(status, 'IndexArticleSub', params, null);
         req.name = '新增首页文章吐槽';
+        return req;
+    } 
+
+    //疫苗记录取消
+    static cancelVaccineRecord(vaccineId) {
+        let operation = Operation.sharedInstance().vaccineRecordDeleteOperation;
+        let status = Network.sharedInstance().statusDelete;
+        let params = {
+            "Operation": operation,
+            "Id": vaccineId,
+        }
+
+        let req = new RequestWrite(status, 'VaccineRecord', params, null);
+        req.name = '疫苗记录取消';
+        return req;
+    }
+
+    //疫苗记录新增
+    static addVaccineRecord(vaccineId) {
+        let operation = Operation.sharedInstance().vaccineRecordAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "VaccineId": vaccineId,
+            "MemberId": global.Storage.memberId(),
+        }
+
+        let req = new RequestWrite(status, 'VaccineRecord', params, null);
+        req.name = '疫苗记录新增';
         return req;
     }
 

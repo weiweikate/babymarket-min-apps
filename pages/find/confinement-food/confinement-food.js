@@ -1,5 +1,5 @@
 // confinement-food.js
-let { Tool, Storage, RequestReadFactory, Network } = global
+let { Tool, Storage, RequestReadFactory } = global
 import WxParse from '../../../libs/wxParse/wxParse.js';
 
 Page({

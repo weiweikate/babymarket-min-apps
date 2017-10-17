@@ -27,7 +27,9 @@ Page({
         let index = e.currentTarget.dataset.index;
         if (index == 0) {
             // 疫苗
-
+            wx.navigateTo({
+                url: '/pages/find/vaccine/vaccine',
+            })
         } else if (index == 1) {
             // 月子餐
             wx.navigateTo({

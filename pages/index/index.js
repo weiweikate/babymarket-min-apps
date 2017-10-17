@@ -163,7 +163,7 @@ Page({
             })
         } else if (title == '宝贝疫苗') {
             wx.navigateTo({
-                url: 'pages/find/knowledge/knowledge',
+                url: '/pages/find/vaccine/vaccine',
             })
         } else if (title == '辅食大全') {
             wx.navigateTo({

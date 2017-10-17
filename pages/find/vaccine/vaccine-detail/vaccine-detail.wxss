@@ -1,0 +1,10 @@
+/* vaccine-detail.wxss */
+@import "/libs/wxParse/wxParse.wxss";
+
+page{
+    background: white;
+}
+
+.root-view{
+    margin: 0rpx 22rpx;
+}

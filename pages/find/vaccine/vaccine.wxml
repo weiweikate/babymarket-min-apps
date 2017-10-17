@@ -1,0 +1,41 @@
+<!--vaccine.wxml-->
+<view class="next-time-view">
+    <view>距离下次疫苗还有</view>
+    <view class="days">{{toDay}}</view>
+    <view>天</view>
+</view>
+
+<block wx:for="{{listDatas}}" wx:key="unique">
+    <template is="vaccine-cell" data="{{item, index}}"></template>
+</block>
+
+
+<!--vaccine-cell-->
+<template name="vaccine-cell">
+    <view class="vaccine-cell">
+        <view class="{{item.select?'title select':'title'}}">{{item.time}}</view>
+        <block wx:for="{{item.Sub}}" wx:key="unique" wx:for-item="subItem" wx:for-index="subIndex">
+            <template is="vaccine-item" data="{{subItem:subItem, subIndex, index}}"></template>
+        </block>
+    </view>
+</template>
+
+<!--vaccine-item-->
+<template name="vaccine-item">
+    <view class="vaccine-item" catchtap="vaccineCellTap" data-subIdx="{{subIndex}}" data-mainIndex="{{index}}">
+        <view class="check-button" catchtap="checkButtonTap" data-subIdx="{{subIndex}}" data-mainIndex="{{index}}">
+            <image src="{{subItem.isFinish?'/res/img/common/comm-icon-check-select.png':'/res/img/common/comm-icon-check-normal.png'}}" 
+            style="width:40rpx;height:40rpx"></image>
+        </view>
+        
+        <view class="mid-view">
+            <view class="title-times">
+                <view class="vaccine-title">{{subItem.Vaccine}}</view>
+                <view class="times">第{{subItem.Number}}次</view>
+            </view>
+            <view class="desp">{{subItem.Effect}}</view>
+        </view>
+        
+        <view class="must" wx:if="{{subItem.IsMust=='True'}}">必打</view>
+    </view>
+</template>

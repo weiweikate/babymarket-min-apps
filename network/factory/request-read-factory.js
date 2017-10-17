@@ -1957,7 +1957,31 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '月子餐天数查询';
-        //req.items = ["Id", "MonthDay", "Abstract", "Content"];
+        return req;
+    }
+
+    //疫苗时间表查询
+    static requestVaccineTime() {
+        let operation = Operation.sharedInstance().vacineeReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Day} ASC",
+            "IsIncludeSubtables": true,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '疫苗时间表查询';
+        return req;
+    }
+
+    //打疫苗记录查询
+    static requestVaccineRecord() {
+        let operation = Operation.sharedInstance().vaccineRecordReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '打疫苗记录查询';
+        req.items = ["Id", "MemberId", "VaccineId"];
         return req;
     }
 }

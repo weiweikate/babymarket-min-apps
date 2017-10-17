@@ -106,6 +106,14 @@ export default class Operation {
         // 查询月子餐
         this.confinementFoodReadOperation = '0dd116fb-2bcf-4f6d-8873-a69a00fc033d'
 
+        // 查询疫苗主表
+        this.vacineeReadOperation = '8d73e0ce-6532-4682-8a81-a69a0113ee49'
+        // 增加疫苗记录
+        this.vaccineRecordAddOperation = 'b30dac6c-714d-479f-ae22-a69a0116fe45'
+        // 查询疫苗记录
+        this.vaccineRecordReadOperation = 'c7abca9f-89e7-4cd9-ae98-a69a01171de9'
+        // 取消疫苗记录
+        this.vaccineRecordDeleteOperation = 'c6883d4c-7ab7-4822-ba8a-a69b01095a15'
 
         //首页-广告位
         this.homeAdReadOperation = 'b412ff1c-c19b-4250-b479-a61e0085a868';
