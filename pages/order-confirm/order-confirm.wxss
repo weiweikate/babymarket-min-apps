@@ -1,5 +1,5 @@
 /*确认订单*/
-@import '/pages/address/info/address-info.wxss';
+@import '/pages/address/cell-address/cell-address.wxss';
 @import '/pages/order-confirm/cell-order/cell-order.wxss';
 @import '/pages/my/myOrder/settlement-cell/settlement-cell.wxss';
 

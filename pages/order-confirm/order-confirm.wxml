@@ -1,5 +1,5 @@
 <!--确认订单-->
-<import src='/pages/address/info/address-info.wxml' />
+<import src='/pages/address/cell-address/cell-address.wxml' />
 <import src='/pages/order-confirm/cell-order/cell-order.wxml' />
 <import src='/pages/my/myOrder/settlement-cell/settlement-cell.wxml' />
 
