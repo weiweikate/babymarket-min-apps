@@ -1,15 +1,7 @@
+<import src='/pages/address/cell-address/cell-address.wxml' />
+
 <view class="view-root">
-  <view class='view-address-root'>
-    <image src='/res/img/my/order-detail/my-order-detail-address-icon.png' class='address-icon' mode="aspectFit" />
-    <view class="view-address" bindtap="onAddressClickListener">
-      <view class="address-row">
-        <text class="address-name">{{addressInfo.Consignee}}</text>
-        <text class="address-mobile">{{addressInfo.Mobile}}</text>
-      </view>
-      <text class="address-detail OverFlowTwoLine">{{addressInfo.Address}}</text>
-    </view>
-    <image class="address-arrow" src="/res/img/my/my-address-arrow-icon.png" mode="aspectFit" />
-  </view>
+  <template is="cell-address" data="{{Id:addressInfo.Id,Consignee:addressInfo.Consignee,Mobile:addressInfo.Mobile,ReciptAddress:addressInfo.ReciptAddress,hasArrow:true,isSelectMode:true}}" />
 
   <form bindsubmit='onSubmitAction'>
     <view class='view-form'>

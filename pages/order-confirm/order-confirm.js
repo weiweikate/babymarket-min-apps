@@ -366,12 +366,12 @@ Page({
         if (num == 1) {
             // 选择地址
             wx.navigateTo({
-                url: '../address/select-address/select-address',
+                url: '/pages/address/address?door=1',
             })
         } else {
             //添加地址
             wx.navigateTo({
-                url: '../address/add-address/add-address',
+              url: '/pages/address/add-address/add-address',
             })
         }
     },

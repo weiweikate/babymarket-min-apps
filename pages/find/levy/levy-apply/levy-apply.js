@@ -5,13 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    levyId:undefined,
-    addressInfo: {
-      'Id':'123123123123213123213',
-      'Consignee': '普艳芳',
-      'Mobile': '13646837967',
-      'Address': '浙江省杭州市西湖区天目山路313号杭州照相机研究所8号楼培康食品'
-    }
+    levyId: undefined,
+    addressInfo: undefined
   },
 
   /**
@@ -21,13 +16,46 @@ Page({
     this.setData({
       levyId: options.id
     });
+
+    this.requestAddressInfo();
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    let addressInfo = this.data.addressInfo;
+    if (global.Tool.isValidObject(addressInfo)) {
+      this.setData({
+        addressInfo: addressInfo
+      })
+    }
+  },
+
+  /**
+   * 查询地址
+   */
+  requestAddressInfo: function () {
+    let self = this;
+    let r = RequestReadFactory.addressRead();
+    r.finishBlock = (req) => {
+      if (req.responseObject.Count > 0) {
+        let responseData = req.responseObject.Datas;
+        this.setData({
+          addressInfo: responseData[0]
+        });
+      }
+    }
+    r.addToQueue();
   },
 
   /**
    * 地址选择
    */
   onAddressClickListener: function (e) {
-
+    wx.navigateTo({
+      url: '/pages/address/address?door=1'
+    })
   },
 
   /**
@@ -52,13 +80,13 @@ Page({
     let addressInfo = this.data.addressInfo;
 
     // 判断地址填写信息
-    if (addressInfo==undefined) {
+    if (addressInfo == undefined) {
       Tool.showAlert("请选择地址");
       return false;
     };
     // 判断是否填写信息
     if (Tool.isEmptyStr(info.Content)) {
-      Tool.showAlert("请填写内容");
+      Tool.showAlert("请填写申请理由");
       return false;
     };
 

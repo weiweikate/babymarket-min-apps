@@ -1,0 +1,80 @@
+.cell-address {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.address-btn {
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #f3f4f5;
+  padding: 20rpx;
+}
+
+.address-btn .address-default {
+  width: 40rpx;
+  height: 40rpx;
+  flex: none;
+}
+
+.address-btn .address-status {
+  margin-left: 15rpx;
+  font-size: 28rpx;
+  color: #494848;
+  flex-grow: 1;
+}
+
+.address-btn .address-delete {
+  width: 46rpx;
+  height: 46rpx;
+  flex: none;
+}
+
+.address-info {
+  display: flex;
+  align-items: center;
+  border-bottom: 15rpx solid #f3f4f5;
+  padding: 20rpx;
+}
+
+.address-info .address-location {
+  width: 31rpx;
+  height: 31rpx;
+  flex: none;
+  margin-right: 20rpx;
+}
+
+.address-info .name-mobile-detail {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.name-mobile-detail .name-mobile {
+  display: flex;
+}
+
+.name-mobile .address-name {
+  font-size: 30rpx;
+  color: #090909;
+  flex-grow: 1;
+}
+
+.name-mobile .address-mobile {
+  font-size: 28rpx;
+  color: #090909;
+}
+
+.name-mobile-detail .address-detail {
+  margin-top: 20rpx;
+  color: #5e5e5f;
+  font-size: 26rpx;
+  flex-wrap: wrap;
+}
+
+.address-info .address-arrow {
+  width: 17rpx;
+  height: 30rpx;
+  flex: none;
+  margin-left: 20rpx;
+}

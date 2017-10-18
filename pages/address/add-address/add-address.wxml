@@ -1,39 +1,17 @@
-<!--新增收货地址-->
-<view class="address-add-main">
-  <form class="view_bottom" bindsubmit="addAddress">
-    <!--填写地址信息-->
-    <view class="address-add-box">
-      <!--收货人姓名-->
-      <view class="addresser-type">
-        <text class="addresser-type-text">收货人姓名：</text>
-        <input name="addressname" class="addresser-name-input" placeholder="填写正确的收货人" type="text" placeholder-style="color:#CCCCCC" value="{{name}}" />
-      </view>
-      <view class="address-divide"></view>
+<import src='/components/cell/cell-add-select/cell-add-select.wxml' />
+<import src='/components/cell/cell-add-input/cell-add-input.wxml' />
 
-      <!--手机号码-->
-      <view class="addresser-type">
-        <text class="addresser-type-text">手机号码：</text>
-        <input name="addressmobile" class="addresser-name-input" placeholder="填写正确的手机号码" type="number" placeholder-style="color:#CCCCCC" value="{{mobile}}"/>
-      </view>
-      <view class="address-divide"></view>
-
-      <!--省市区-->
-      <view class="addresser-type">
-        <text class="addresser-type-text">省市区：</text>
-        <text class="addresser-select" bindtap="selectProvinces">{{provinces}}</text>
-      </view>
-      <view class="address-divide"></view>
-
-      <!--详细地址-->
-      <view class="addresser-type">
-        <text class="addresser-type-text">详细地址：</text>
-        <input name="addressdetail" class="addresser-name-input" placeholder="请填写详细地址" type="text" placeholder-style="color:#CCCCCC" value="{{detail}}"/>
-      </view>
-    </view>
-
+<view class="view-root">
+  <form bindsubmit="onSubmitAction">
+    <!--收货人姓名-->
+    <template is="cell-add-input" data="{{title:'收货人姓名',hint:'请输入收货人姓名',value:addressInfo.Consignee,key:'Consignee'}}" />
+    <!--手机号码-->
+    <template is="cell-add-input" data="{{title:'手机号码',hint:'请输入手机号码',value:addressInfo.Mobile,key:'Mobile'}}" />
+    <!--省市区-->
+    <template is="cell-add-select" data="{{title:'省市区',hint:'请选择',value:selectRegion.FullName,key:'Address',isDisabled:true}}" />
+    <!--详细地址-->
+    <template is="cell-add-input" data="{{title:'详细地址',hint:'请输入详细地址',value:addressInfo.Street,key:'Street'}}" />
     <!--底部按钮保存-->
-    <view class="address-add">
-      <button class="address-add-bt" form-type="submit">保存</button>
-    </view>
+    <button class="view-submit" form-type="submit">提交</button>
   </form>
 </view>

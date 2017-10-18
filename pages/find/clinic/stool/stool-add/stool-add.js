@@ -130,7 +130,7 @@ Page({
   /**
    * 添加咨询
    */
-  onSelectClickListener: function (e) {
+  onSelectChangeListener: function (e) {
     let position = e.currentTarget.dataset.position;
     let typeArray = this.data.typeArray[position];
     let select = typeArray[e.detail.value];

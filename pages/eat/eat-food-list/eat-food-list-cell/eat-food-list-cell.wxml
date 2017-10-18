@@ -10,7 +10,7 @@
                 </block>
             </view>
         </view>
-        <image src="/res/img/common/common-accessory-icon.png" style="width:16rpx;height:26rpx"></image>
+        <image src="/res/img/common/comm-arrow-gray-right.png" style="width:16rpx;height:26rpx"></image>
     </view>
 </template>
 

@@ -1,4 +1,4 @@
-@import '/pages/address/info/address-info.wxss';
+@import '/pages/address/cell-address/cell-address.wxss';
 
 page {
   background-color: white;
@@ -9,55 +9,6 @@ page {
   display: flex;
   flex-direction: column;
   border-top: 1rpx solid #f3f4f5;
-}
-
-.view-address-root {
-  display: flex;
-  align-items: center;
-  border-bottom: 1rpx solid #f3f4f5;
-  padding: 20rpx;
-}
-
-.address-icon {
-  width: 31rpx;
-  height: 31rpx;
-  flex: none;
-}
-
-.view-address {
-  display: flex;
-  flex-direction: column;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
-  flex-grow: 1;
-}
-
-.address-row {
-  display: flex;
-}
-
-.address-name {
-  font-size: 30rpx;
-  color: topic;
-  flex-grow: 1;
-}
-
-.address-mobile {
-  font-size: 30rpx;
-  color: #454950;
-}
-
-.address-detail {
-  margin-top: 20rpx;
-  color: #5e5e5f;
-  font-size: 28rpx;
-  flex-wrap: wrap;
-}
-
-.address-arrow {
-  width: 17rpx;
-  height: 29rpx;
-  flex: none;
 }
 
 .view-form {

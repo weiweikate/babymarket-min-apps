@@ -66,7 +66,7 @@ export default class RequestWriteFactory {
             "Id": id,
         };
 
-        let req = new RequestWrite(status, 'Delivery_address', params, null);
+        let req = new RequestWrite(status, 'ReceiptAddress', params, null);
         req.name = '修改地址默认';
 
         return req;
@@ -78,64 +78,33 @@ export default class RequestWriteFactory {
         let status = Network.sharedInstance().statusExisted;
         let params = {
             "Operation": operation,
-            "Delete": "True",
+            "Deleted": "True",
             "Id": id,
         };
 
-        let req = new RequestWrite(status, 'Delivery_address', params, null);
+        let req = new RequestWrite(status, 'ReceiptAddress', params, null);
         req.name = '删除地址';
 
         return req;
     }
 
     //新增地址
-    static addAddress(id,name, mobile, area, address, areaId, card) {
+    static addAddress(requestData) {
         let operation = Operation.sharedInstance().addressAddOperation;
         let status = Network.sharedInstance().statusNew;
-        let params = {
-            "Operation": operation,
-            "Default": "False",
-            "MemberId": global.Storage.memberId(),
-            "Consignee": name,
-            "Mobile": mobile,
-            "FullName": area,
-            "Address1": address,
-            "Address": area + address,
-            "DistrictId": areaId,
-            "Card": card,
-            "Name": "未指定",
-            "Id":id,
-        };
 
-        let req = new RequestWrite(status, 'Delivery_address', params, null);
+        let req = new RequestWrite(status, 'ReceiptAddress', requestData, operation, null);
         req.name = '新增地址';
-
         return req;
     }
 
     //修改地址
-    static modifyDetailAddress(isDefault, name, mobile, area, address, areaId, id, card) {
+    static modifyAddress(requestData) {
         let operation = Operation.sharedInstance().addressModifyOperation;
         let status = Network.sharedInstance().statusExisted;
-        let params = {
-            "Operation": operation,
-            "Address": area + address,
-            "Address1": address,
-            "Card": card,
-            "Consignee": name,
-            "Default": isDefault,
-            "Delete": "False",
-            "DistrictId": areaId,
-            "FullName": area,
-            "Id": id,
-            "MemberId": global.Storage.memberId(),
-            "Mobile": mobile,
-            "Name": "未指定"
-        };
 
-        let req = new RequestWrite(status, 'Delivery_address', params, null);
+        let req = new RequestWrite(status, 'ReceiptAddress', requestData, operation, null);
         req.name = '修改地址';
-
         return req;
     }
 

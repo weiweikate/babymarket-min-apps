@@ -1,175 +1,162 @@
-// address.js
-let {Tool, RequestReadFactory, RequestWriteFactory} = global;
+let { Tool, Event, Storage, RequestReadFactory, RequestWriteFactory } = global;
+
+import CreateBtn from '../../components/create-btn/create-btn';
 
 Page({
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        addresses: [], // 购物车列表
-        hasAddress: false, // 是否有购物车数据
-        num: 0, // 当num为1时是新增地址，需要刷新页面
-    },
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    addressArray: [],
+    isSelectMode: false
+  },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        this.requestData();
-    },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      isSelectMode: options.door == '1'
+    });
 
-    /**
- * 生命周期函数--监听页面显示
- */
-    onShow: function () {
-        let num = this.data.num;
-        if (num == 1) {
-            this.requestAddressInfo();
+    this.createBtn = new CreateBtn(this, '/pages/address/add-address/add-address');
+    if (this.data.isSelectMode) {
+      this.createBtn.setHide();
+    }
+
+    this.requestData();
+
+    Event.on('refreshAddressList', this.requestData, this)
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    Event.off('refreshAddressList', this.requestData)
+  },
+
+  /**
+   * 数据请求
+   */
+  requestData: function () {
+    this.requestAddressInfo();
+  },
+
+  /**
+   * 查询地址
+   */
+  requestAddressInfo: function () {
+    let self = this;
+    let r = RequestReadFactory.addressRead();
+    r.finishBlock = (req) => {
+      let responseData = req.responseObject.Datas;
+      this.setData({
+        addressArray: responseData
+      });
+    }
+    r.addToQueue();
+  },
+
+  /**
+   * 设置默认地址
+   */
+  requestAddressDefault: function (id, position) {
+    let self = this;
+    let r = RequestWriteFactory.modifyDefaultAddress(id);
+    r.finishBlock = (req) => {
+      let addressArray = self.data.addressArray;
+      addressArray.forEach((item, index) => {
+        if (index == position) {
+          item.isDefault = true;
+        } else {
+          item.isDefault = false;
         }
-        this.setData({
-            num: 0
-        })
-    },
+      });
 
-    /**
-    * 页面相关事件处理函数--监听用户下拉动作
-    */
-    onPullDownRefresh: function () {
-        this.requestData();
-    },
+      this.setData({
+        addressArray: addressArray
+      });
+      Tool.showSuccessToast("设置成功");
+    }
+    r.addToQueue();
+  },
 
-    /**
-      * 数据请求
-      */
-    requestData: function () {
-        this.requestAddressInfo();
-    },
+  /**
+   * 删除地址
+   */
+  requestAddressDelete: function (id, position) {
+    let self = this;
+    let r = RequestWriteFactory.deleteAddress(id);
+    r.finishBlock = (req) => {
+      let addressArray = self.data.addressArray;
+      addressArray.splice(position, 1);
 
-    /**
-     * 查询地址
-     */
-    requestAddressInfo: function () {
-        let self = this;
-        let r = RequestReadFactory.addressRead();
-        r.finishBlock = (req) => {
-            let datas = req.responseObject.Datas;
-            if (datas.length > 0) {
-                for (let i = 0; i < datas.length; i++) {
-                    datas[i].isShow = true;
-                    if (global.Tool.isEmptyStr(datas[i].Card)) {
-                        datas[i].isAuthentication = false;
-                        datas[i].authentication = "未认证";
-                    } else {
-                        datas[i].isAuthentication = true;
-                        datas[i].authentication = "已认证";
-                    }
-                }
-                this.setData({
-                    hasAddress: true,
-                    addresses: datas,
-                });
-            }
-            this.setStatus();
+      this.setData({
+        addressArray: addressArray
+      });
+      Tool.showSuccessToast("删除成功");
+    }
+    r.addToQueue();
+  },
+
+  /**
+   * 设置默认地址
+   */
+  onDefaultClickLitener: function (e) {
+    let id = e.currentTarget.dataset.id;
+    let position = e.currentTarget.dataset.position;
+    let addressInfo = this.data.addressArray[position];
+    if (!addressInfo.isDefault) {
+      Tool.showLoading();
+      this.requestAddressDefault(id, position);
+    }
+  },
+
+  /**
+   * 删除地址
+   */
+  onDeleteClickListener: function (e) {
+    let self = this;
+
+    let id = e.currentTarget.dataset.id;
+    let position = e.currentTarget.dataset.position;
+    wx.showModal({
+      title: '提示',
+      content: '确认删除该地址吗？',
+      success: function (res) {
+        if (res.confirm) {
+          Tool.showLoading();
+          self.requestAddressDelete(id, position);
         }
-        r.addToQueue();
-    },
+      }
+    })
+  },
 
-    /**
-     * 设置默认文字
-     */
-    setStatus: function () {
-        var addresses = this.data.addresses;
-        for (let i = 0; i < addresses.length; i++) {
-            if (addresses[i].Default == "True") {
-                addresses[i].status = "当前默认";
-                addresses[i].selected = true;
-            } else {
-                addresses[i].status = "设为默认";
-                addresses[i].selected = false;
-            }
-        }
-        this.setData({
-            addresses: addresses,
-        });
-    },
+  /**
+   * 进入地址详情修改
+   */
+  onAddressClickListener: function (e) {
+    let id = e.currentTarget.dataset.id;
+    let position = e.currentTarget.dataset.position;
 
-    /**
-     * 选择默认地址
-     */
-    selectAddress: function (e) {
-        let self = this;
-        let addresses = self.data.addresses;
-        let index = e.currentTarget.dataset.index;
-        // 修改数据默认地址
-        let r = RequestWriteFactory.modifyDefaultAddress(addresses[index].Id);
-        r.finishBlock = (req) => {
-            let selected = addresses[index].selected;
-            for (let i = 0; i < addresses.length; i++) {
-                if (index == i) {
-                    addresses[i].selected = true;
-                    addresses[i].status = "当前默认";
-                } else {
-                    addresses[i].selected = false;
-                    addresses[i].status = "设为默认";
-                }
-            }
-            self.setData({
-                addresses: addresses,
-            });
-        }
-        r.addToQueue();
-    },
-
-    /**
-     * 删除地址
-     */
-    deleteAddress: function (e) {
-        let self = this;
-        wx.showModal({
-            title: '提示',
-            content: '确认删除该地址吗？',
-            success: function (res) {
-                if (res.confirm) {
-                    let index = e.currentTarget.dataset.index;
-                    let addresses = self.data.addresses;
-                    // 修改数据删除地址
-                    let r = RequestWriteFactory.deleteAddress(addresses[index].Id);
-                    r.finishBlock = (req) => {
-                        addresses.splice(index, 1);
-                        self.setData({
-                            addresses: addresses
-                        });
-                        if (!addresses.length) {
-                            self.setData({
-                                hasAddress: false
-                            });
-                        }
-                    }
-                    r.addToQueue();
-                }
-            }
-        })
-    },
-
-    /**
-     * 进入地址详情修改
-     */
-    addressInfo: function (e) {
-        let index = e.currentTarget.dataset.index;
-        let addresses = this.data.addresses;
-        wx.navigateTo({
-            url: '../address/add-address/add-address?extra=' + JSON.stringify(addresses[index]),
-        })
-    },
-
-    /**
-     * 新建收货地址
-     */
-    addAddress: function () {
-        wx.navigateTo({
-            url: '../address/add-address/add-address',
-        })
-    },
+    let addressInfo = this.data.addressArray[position];
+    if (this.data.isSelectMode) {
+      //选择模式，返回数据
+      let pages = getCurrentPages();
+      let pageBOne = pages[pages.length - 2];// 前一页
+      pageBOne.setData({
+        addressInfo: addressInfo
+      })
+      wx.navigateBack({
+        delta: 1
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/address/add-address/add-address?extra=' + JSON.stringify(addressInfo),
+      })
+    }
+  },
 
 })

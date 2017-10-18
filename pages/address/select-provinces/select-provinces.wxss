@@ -1,19 +1,13 @@
-.main {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
-.areas-list {
+.view-root {
   display: flex;
-  align-items: center;
-  padding: 20rpx 20rpx 20rpx 20rpx;
-  border-bottom: 2rpx solid #f5f7f7;
-  background: white;
+  flex-direction: column;
+  margin-top: 1rpx;
 }
 
 .area-name {
   font-size: 26rpx;
   color: #5e5e5f;
-  width: 100%;
+  padding: 20rpx;
+  background: white;
+  border-bottom: 1rpx solid #f3f4f5;
 }

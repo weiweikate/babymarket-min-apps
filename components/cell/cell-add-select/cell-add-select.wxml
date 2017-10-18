@@ -1,10 +1,10 @@
 <template name="cell-add-select">
   <view class="cell-add-select">
     <text class="select-title">{{title}}</text>
-    <picker catchchange="onSelectClickListener" range="{{array}}" data-position="{{position}}">
+    <picker catchchange="onSelectChangeListener" catchtap="onSelectClickListener" range="{{array}}" data-position="{{position}}" disabled="{{isDisabled}}">
       <view class="select-value-arrow">
         <input name="{{key}}" class="select-value" value="{{value}}" placeholder="{{hint}}" disabled="true" placeholder-style="color:#dbdbdb" />
-        <image class="select-arrow" src="/res/img/common/common-arrow-gray-right.png" mode="aspectFit" />
+        <image class="select-arrow" src="/res/img/common/comm-arrow-gray-right.png" mode="aspectFit" />
       </view>
     </picker>
   </view>

@@ -1,5 +1,5 @@
-<import src='/pages/find/clinic/cell-add-select/cell-add-select.wxml' />
-<import src='/pages/find/clinic/cell-add-input/cell-add-input.wxml' />
+<import src='/components/cell/cell-add-select/cell-add-select.wxml' />
+<import src='/components/cell/cell-add-input/cell-add-input.wxml' />
 <import src='/components/image-picker/image-picker.wxml' />
 
 <view class="view-root">

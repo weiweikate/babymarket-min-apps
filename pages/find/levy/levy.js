@@ -84,29 +84,26 @@ Page({
     let typed = e.currentTarget.dataset.type;
     let id = e.currentTarget.dataset.id;
 
-    wx.navigateTo({
-      url: '/pages/find/levy/levy-apply/levy-apply?id='+id
-    })
-    // switch (typed) {
-    //   case 0:
-    //     if (Storage.didLogin()) {
-    //       //立即申请
-    //       wx.navigateTo({
-    //         url: '/pages/find/levy/levy-apply/levy-apply?id='+id
-    //       })
-    //     } else {
-    //       //请先登录
-    //       Tool.showAlert("请先登录");
-    //     }
-    //     break;
-    //   case 1:
-    //     //已结束
-    //     Tool.showAlert('该商品申请已结束');
-    //     break;
-    //   case 2:
-    //     //已申请
-    //     Tool.showAlert('您已申请了该商品');
-    //     break;
-    // }
+    switch (typed) {
+      case 0:
+        if (Storage.didLogin()) {
+          //立即申请
+          wx.navigateTo({
+            url: '/pages/find/levy/levy-apply/levy-apply?id=' + id
+          })
+        } else {
+          //请先登录
+          Tool.showAlert("请先登录");
+        }
+        break;
+      case 1:
+        //已结束
+        Tool.showAlert('该商品申请已结束');
+        break;
+      case 2:
+        //已申请
+        Tool.showAlert('您已申请了该商品');
+        break;
+    }
   }
 })

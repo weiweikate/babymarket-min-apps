@@ -1,6 +1,6 @@
 <template name="address-cell">
   <view class="address-view" bindtap="addressViewTap">
-    <image class="left-icon" src="/res/img/my/my-order-detail-address-icon.png" mode="aspectFit"></image>
+    <image class="left-icon" src="/res/img/address/address-location.png" mode="aspectFit"></image>
     <view class="right-view">
       <view class="address-row">
         <view class="address-name">{{name}}</view>

@@ -1,36 +1,15 @@
-<!--地址管理-->
-<import src='/pages/address/info/address-info.wxml' />
+<import src='/pages/address/cell-address/cell-address.wxml' />
+<import src='/components/create-btn/create-btn.wxml' />
+<import src='/components/empty-view/empty-view.wxml' />
 
-<view class="address-main">
-  <view wx:if="{{hasAddress}}">
-    <!--购物车商品列表-->
-    <view class="address-box">
-      <view class="address-list" wx:for="{{addresses}}" wx:key="{{index}}">
-        <!--wx:if 是否选择默认地址-->
-        <view class="address-select-delete">
-          <image src="/res/img/address/address-select-s.png" wx:if="{{item.selected}}" class="address-select" bindtap="selectAddress" data-index="{{index}}" mode="aspectFill" />
-          <image src="/res/img/address/address-select-n.png" wx:else class="address-select" bindtap="selectAddress" data-index="{{index}}" mode="aspectFill" />
-          <text class="address-status">{{item.status}}</text>
-          <view class="address-delete" bindtap="deleteAddress" data-index="{{index}}">
-            <image src="/res/img/address/address-delete.png" class="address-img-delete" mode="aspectFill"></image>
-          </view>
-        </view>
-        <!--分割线-->
-        <view class="address-divide"></view>
-        <!--地址信息-->
-        <template is="address-info" data="{{...item,index:index}}"></template>
-      </view>
-    </view>
-    
+<view class="view-root">
+  <view wx:if="{{addressArray.length>0}}">
+    <template is="cell-address" data="{{...item,position:index,isSelectMode:isSelectMode}}" wx:for="{{addressArray}}" wx:key="unique" />
   </view>
 
-  <!--无数据-->
-  <view wx:else class="address-no-data">
-    <text>您还没有添加收货地址！</text>
+  <view wx:else class="no-data">
+    <template is="empty-view" data="{{title:'您还没有添加收货地址~'}}" />
   </view>
-
-   <!--底部按钮新建收货地址-->
-    <view class="address-add">
-      <view bindtap="addAddress" class="address-add-bt">新建收货地址</view>
-    </view>
 </view>
+
+<template is="create-btn" data="{{navigateUrl:navigateUrl,icon:icon,isHide:isHide}}" />

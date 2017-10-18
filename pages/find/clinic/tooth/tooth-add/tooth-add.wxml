@@ -1,4 +1,4 @@
-<import src='/pages/find/clinic/cell-add-input/cell-add-input.wxml' />
+<import src='/components/cell/cell-add-input/cell-add-input.wxml' />
 <import src='/components/image-picker/image-picker.wxml' />
 
 <view class="view-root">

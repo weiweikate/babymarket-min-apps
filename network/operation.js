@@ -160,13 +160,12 @@ export default class Operation {
         this.cartViewReadOperation = '0a8ed48f-088f-0ca3-0c43-3c290052b69b';
 
         //地址
-        this.addressReadOperation = '881d520d-bb5d-04e2-29a8-3c29005a359b';
-        this.addressAddOperation = '065e13dd-93fe-0a89-1671-3c2701995222';
-        this.addressModifyOperation = '91ef9bde-6fe7-0955-2ecc-3c24004dd20e';
-        this.addressDeleteOperation = '4f91a738-50f3-0dc0-231e-3c24018bc622';
+        this.addressReadOperation = 'e4d97b85-5133-4304-a799-a62c00f67819';
+        this.addressAddOperation = 'dc785d02-c9cd-07f5-0f1c-3f25019d80fa';
+        this.addressModifyOperation = '4bc9d501-35d4-0429-37a1-3f26004900d6';
 
         //地区
-        this.areaReadOperation = '7e179d1c-ab1c-0352-0a44-393c01c0abf4';
+        this.areaReadOperation = 'd7e69a1e-5040-48c8-a5ac-a62c00f70f45';
 
         //订单
         this.orderAddOperation = 'c65c46b6-b12e-0e57-28fe-3c1900223872';

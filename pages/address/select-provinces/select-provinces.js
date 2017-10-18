@@ -69,7 +69,7 @@ Page({
         } else {
             //继续向下一层
             wx.redirectTo({
-                url: '../select-provinces/select-provinces?extra=' + JSON.stringify(areas[index]),
+              url: '/pages/address/select-provinces/select-provinces?extra=' + JSON.stringify(areas[index]),
             })
         }
     },

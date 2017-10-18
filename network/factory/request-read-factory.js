@@ -488,6 +488,18 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '收货地址查询';
+        req.items = ['Id', 'Consignee', 'Mobile', 'ReciptAddress', 'Street', 'Name', 'AreaId','Default'];
+        //修改返回结果
+        req.preprocessCallback = (req) => {
+          let responseData = req.responseObject.Datas;
+          responseData.forEach((item, index) => {
+            if (item.Default == "True") {
+              item.isDefault = true;
+            } else {
+              item.isDefault = false;
+            }
+          });
+        }
         return req;
     }
 

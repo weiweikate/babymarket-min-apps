@@ -1,5 +1,5 @@
-@import '/pages/find/clinic/cell-add-select/cell-add-select.wxss';
-@import '/pages/find/clinic/cell-add-input/cell-add-input.wxss';
+@import '/components/cell/cell-add-select/cell-add-select.wxss';
+@import '/components/cell/cell-add-input/cell-add-input.wxss';
 @import '/components/image-picker/image-picker.wxss';
 
 page {

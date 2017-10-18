@@ -1,4 +1,4 @@
-@import '/pages/find/clinic/cell-add-input/cell-add-input.wxss';
+@import '/components/cell/cell-add-input/cell-add-input.wxss';
 @import '/components/image-picker/image-picker.wxss';
 
 page {

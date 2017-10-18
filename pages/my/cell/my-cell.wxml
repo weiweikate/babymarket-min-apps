@@ -8,7 +8,7 @@
         <template is="markup-text" data="{{...detail}}"></template>
     </view>
 
-    <!--<image class="{{arrowHidden==true?'arrow active':'arrow'}}" src="/res/img/my/my-address-arrow-icon.png" style="width:15rpx;height:26rpx" mode="aspectFit"></image>-->
-    <image class="arrow" src="/res/img/my/my-address-arrow-icon.png" style="width:15rpx;height:26rpx" mode="aspectFit" hidden="{{arrowHidden}}"></image>
+    <!--<image class="{{arrowHidden==true?'arrow active':'arrow'}}" src="/res/img/common/comm-arrow-gray-right.png" style="width:15rpx;height:26rpx" mode="aspectFit"></image>-->
+    <image class="arrow" src="/res/img/common/comm-arrow-gray-right.png" style="width:15rpx;height:26rpx" mode="aspectFit" hidden="{{arrowHidden}}"></image>
   </view>
 </template>
