@@ -1,17 +1,13 @@
-<!--广告位-->
-<import src='/pages/home/ad/home-ad.wxml' />
-<!--码头快报-->
+<import src='/components/banner/banner.wxml' />
 <import src='/pages/home/cell-title/cell-title.wxml' />
 <import src='/pages/home/cell-product/cell-product.wxml' />
 
 <template name="cell-home">
   <view class="cell-home">
-    <view>
-      <template is="home-ad" data="{{adArray:adArray}}" />
-      <block wx:for="{{oneSortData}}" wx:key="unique">
-        <template is="cell-title" data="{{title:item.Name,position:index}}" wx:if="{{index>0}}" />
-        <template is="cell-product" data="{{productArray:item.productData,groupPosition:index,isMore:true,title:item.Name,categoryId:item.Id}}" wx:if="{{index>0}}" />
-      </block>
+    <template is="banner" data="{{bannerArray:bannerArray}}" />
+    <view class="{{index>0?'view-list divider':'view-list'}}" wx:for="{{targetArray}}" wx:key="unique" wx:if="{{item.productArray.length>0}}">
+      <template is="cell-title" data="{{title:item.Name,position:index,id:item.Id}}" />
+      <template is="cell-product" data="{{productArray:item.productArray,parentId:item.Id}}" />
     </view>
   </view>
 </template>

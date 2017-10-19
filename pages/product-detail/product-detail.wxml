@@ -1,52 +1,35 @@
 <import src='/components/banner/banner.wxml' />
-<import src='slogan/product-slogan.wxml'/>
-<import src='/components/product-specification/product-specification.wxml'/>
+<import src='/components/product-specification/product-specification.wxml' />
+<import src="/libs/wxParse/wxParse.wxml" />
 
-<view class="root-view">
-
-    <view class="product-info">
-
-        <!--广告-->
-        <template is="banner" data="{{bannerArray:images}}"/>
-
-        <view class="info">
-            <text class="name">{{product.ShowName}}</text>
-            <text class="detail" wx:if="{{product.Subtitle.length > 0}}">{{product.Subtitle}}</text>
-            <view class="price">
-                <text class="bmpi-price">￥{{price + pricePrefix}}</text>
-                <text class="bmpi-old-price">{{oldPrice}}</text>
-            </view>
-
-            <view class="bmpi-country-base">
-                <view class="bmpi-country">{{supplyText}}</view>
-            </view>
-
-            <view class="bmpi-express-base">
-                <view class="bmpi-location">配送费：{{product.Warehouse}} 到 {{province}}</view>
-                <view class="bmpi-express">{{expressText}}</view>
-                <view class="bmpi-tax">{{rateText}}</view>
-            </view>
-
-
-            <template is="product-slogan" data="{{isImport}}"/>
-        </view>
+<view class="view-root">
+  <template is="banner" data="{{bannerArray:bannerArray}}" />
+  <view class="view-product">
+    <text class="product-name">{{productInfo.Name}}</text>
+    <text class="product-detail" wx:if="{{productInfo.Summary.length > 0}}">{{productInfo.Summary}}</text>
+    <view class="view-price">
+      <text class="price-title">需要积分：</text>
+      <text class="price-value">{{productInfo.Price}}</text>
     </view>
-
-    <!--底部bar-->
-    <view class="bottom-bar">
-        <view class="go-cart-view" catchtap="onGoCartListener">
-            <image class="cart-image" src="/res/img/product-detail/product-detail-gocart.png" mode="aspectFit" />
-            <text class="cart-name">购物车</text>
-        </view>
-        <view class="btn-two">
-            <view class="btn-addcart" catchtap="onAddCartListener">
-                加入购物车</view>
-            <view class="btn-submit" catchtap="onSubmitListener">
-                确认下单</view>
-        </view>
-    </view>
+    <text class="product-express">运费：包邮</text>
+  </view>
+  <view class='view-detail'>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
 </view>
 
-<template is="product-specification" data="{{visiable:showProductSpecification,innerTitle,categoryArray,allSepcificationArray,innerCount,specificationData}}"/>
+<!--底部bar-->
+<view class="view-btn">
+  <view class="go-cart-view" catchtap="onGoCartListener">
+    <image class="cart-image" src="/res/img/product-detail/product-detail-gocart.png" mode="aspectFit" />
+    <text class="cart-name">购物车</text>
+  </view>
+  <view class="btn-two">
+    <view class="btn-addcart" catchtap="onAddCartListener">
+      加入购物车</view>
+    <view class="btn-submit" catchtap="onSubmitListener">
+      确认下单</view>
+  </view>
+</view>
 
-
+<template is="product-specification" data="{{visiable:showProductSpecification,innerTitle,categoryArray,allSepcificationArray,innerCount,specificationData}}" />

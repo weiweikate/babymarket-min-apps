@@ -1,5 +1,5 @@
 <template name="cell-title">
-  <view class="cell-title" data-position="{{position}}">
+  <view class="cell-title" data-position="{{position}}" data-id="{{id}}" catchtap="onGroupClickListener">
     {{title}}
   </view>
 </template>

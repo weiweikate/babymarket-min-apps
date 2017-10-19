@@ -2,5 +2,6 @@
   text-align: center;
   font-size: 30rpx;
   color: black;
-  padding: 30rpx;
+  padding: 25rpx;
+  background-color: white;
 }

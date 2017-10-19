@@ -1,18 +1,35 @@
-/*广告位*/
-@import "/pages/home/ad/home-ad.wxss";
 @import "/pages/home/cell-title/cell-title.wxss";
 @import "/pages/home/cell-product/cell-product.wxss";
 
 .cell-sort {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
 }
 
-.bottom {
-  color: #5e6064;
+.view-list{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.view-list.divider{
+  border-top: 15rpx solid #f3f4f5;
+}
+
+.poster-image {
+  width: 100%;
+  height: 400rpx;
+  flex: none;
+  background-color: white;
+}
+
+.poster-image.empty {
+  background-color: #f3f3f4;
+}
+
+.bottom-tips {
+  color: #acadaa;
   text-align: center;
-  font-size: 23rpx;
+  font-size: 22rpx;
   padding: 30rpx;
 }

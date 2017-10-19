@@ -1,195 +1,155 @@
-// home.js
-
-/**
- * 首页
- */
-import ProductSpecification from '../../components/product-specification/product-specification';
-
-let {Tool, Storage, RequestReadFactory} = global;
+let { Tool, Storage, RequestReadFactory } = global;
 
 Page({
-    data: {
-        //海报数据
-        adArray: null,
-        // 当前选中的tab
-        currentTab: 0,
-        //一级分类数据
-        oneSortData: null
-    },
-    onLoad: function () {
-        Tool.showLoading();
-        this.requestOneSortData();
-        this.requestHomeAdData();
-    },
+  data: {
+    //海报数据
+    bannerArray: [],
+    // 当前选中的tab
+    currentTab: 0,
+    //一级分类数据
+    oneSortData: [],
+    //首页标签
+    targetArray: []
+  },
+  onLoad: function () {
+    Tool.showLoading();
+    this.requestOneSortData();
+  },
 
-    onShow(){
-        let r = RequestReadFactory.memberInfoRead();
-        r.addToQueue();
-    },
+  /**
+   * 获取一级分类数据
+   */
+  requestOneSortData: function () {
+    let task = RequestReadFactory.homeOneSortRead(1);
+    task.finishBlock = (req) => {
+      let responseData = req.responseObject.Datas;
+      this.setData({
+        oneSortData: responseData
+      });
 
-    /**
-     * 获取一级分类数据
-     */
-    requestOneSortData: function () {
-        let task = RequestReadFactory.homeOneSortRead();
-        task.finishBlock = (req) => {
-            let responseData = req.responseObject.Datas;
-            this.setData({
-                oneSortData: responseData
-            });
+      this.requestHomeBannerData();
+    };
+    task.addToQueue();
+  },
 
-            //循环请求分类的产品
-            responseData.forEach((item, index) => {
-                if (index > 0) {
-                    this.requestOneSortProductData(item.Id, item.MaxShow, index);
-                }
-            });
-        };
-        task.addToQueue();
-    },
-    /**
-     * 请求一级分类里面产品数据
-     */
-    requestOneSortProductData: function (categoryId, maxCount, index) {
-        let task = RequestReadFactory.homeOneSortProductRead(categoryId, maxCount);
-        task.finishBlock = (req) => {
-            let responseData = req.responseObject.Datas;
-            let oneSortData = this.data.oneSortData;
-            oneSortData[index].productData = responseData;
-            this.setData({
-                oneSortData: oneSortData
-            });
-        };
-        task.addToQueue();
-    },
-    /**
-     * 请求分类广告位数据
-     */
-    requestSortAdData: function (categoryId) {
-        let task = RequestReadFactory.sortAdRead(categoryId);
-        task.finishBlock = (req) => {
-            let responseData = req.responseObject.Datas;
-            let oneSortData = this.data.oneSortData;
-            let bodyData = new Object();
-            bodyData.adData = responseData;
-            let oneSort = oneSortData[this.data.currentTab];
-            oneSort.bodyData = bodyData;
-            this.setData({
-                oneSortData: oneSortData
-            });
-            //请求商品分类
-            this.requestSortCategoryData(oneSort.Id);
-        };
-        task.addToQueue();
-    },
-    /**
-     * 请求分类里面产品的分类数据
-     */
-    requestSortCategoryData: function (parentId) {
-        let task = RequestReadFactory.homeTwoSortRead(parentId);
-        task.finishBlock = (req) => {
-            let responseData = req.responseObject.Datas;
-            responseData.forEach((item, index) => {
-                //查询每个分类对应的商品
-                this.requestTwoSortProductData(item.Id, index);
-            });
-            let oneSortData = this.data.oneSortData;
-            let bodyData = oneSortData[this.data.currentTab].bodyData;
-            bodyData.sortData = responseData;
-            this.setData({
-                oneSortData: oneSortData
-            });
-        };
-        task.addToQueue();
-    },
-    /**
-     * 请求分类里面产品数据
-     */
-    requestTwoSortProductData: function (categoryId, index) {
-        let task = RequestReadFactory.homeTwoSortProductRead(categoryId);
-        task.finishBlock = (req) => {
-            let responseData = req.responseObject.Datas;
-            let oneSortData = this.data.oneSortData;
-            oneSortData[this.data.currentTab].bodyData.sortData[index].productData = responseData;
-            this.setData({
-                oneSortData: oneSortData
-            });
-        };
-        task.addToQueue();
-    },
-    /**
-    * 查询首页海报数据
-    */
-    requestHomeAdData: function () {
-        let task = RequestReadFactory.homeAdRead();
-        task.finishBlock = (req) => {
-            let adArray = req.responseObject.Datas;
-            this.setData({
-                adArray: adArray
-            });
-        };
-        task.addToQueue();
-    },
-    /**
-     * swiper切换事件
-     */
-    onTabChangeListener: function (e) {
-        let currentIndex = e.detail.current;
-        if (currentIndex == undefined) {
-            currentIndex = e.currentTarget.dataset.current;
-        }
-        this.setData({
-            currentTab: currentIndex
-        });
+  /**
+   * 查询首页海报数据
+   */
+  requestHomeBannerData: function () {
+    let task = RequestReadFactory.homeBannerRead();
+    task.finishBlock = (req) => {
+      let bannerArray = req.responseObject.bannerArray;
+      this.setData({
+        bannerArray: bannerArray
+      });
 
-        //如果分类的主体数据为空，那么去请求主体数据
-        let oneSort = this.data.oneSortData[currentIndex];
-        if (oneSort.bodyData == undefined && currentIndex > 0) {
-            Tool.showLoading();
-            this.requestSortAdData(oneSort.Id);
-        }
-    },
-    /**
-     * 列表子视图点击事件
-     */
-    onChildClickListener: function (e) {
-        let productId = e.currentTarget.dataset.id;
-        wx.navigateTo({
-            url: '/pages/product-detail/product-detail?productId=' + productId
-        })
-    },
-    /**
-     * 添加到购物车
-     */
-    onAddCartClickListener: function (e) {
-        let productId = e.currentTarget.dataset.id;
+      this.requestHomeTargetData();
+    };
+    task.addToQueue();
+  },
 
-        let self = this;
-        this.productSpecification = new ProductSpecification(this, productId);
-        this.productSpecification.finishBlock = (specificationId, product, count, price) => {
-            global.Tool.showAlert(specificationId);
-        };
+  /**
+   * 查询首页标签数据
+   */
+  requestHomeTargetData: function () {
+    let task = RequestReadFactory.homeTargetRead();
+    task.finishBlock = (req) => {
+      let targetArray = req.responseObject.Datas;
+      this.setData({
+        targetArray: targetArray
+      });
 
-        this.productSpecification.showWithAction('ShoppingCart');
-    },
-    /**
-     * 更多
-     */
-    onMoreClickListener: function (e) {
-        let categoryId = e.currentTarget.dataset.id;
-        let title = e.currentTarget.dataset.title;
-        //跳到更多
-        wx.navigateTo({
-            url: '/pages/home/product-more/product-more?id=' + categoryId + "&title=" + title
-        })
-    },
-    /**
-     * 搜索点击
-     */
-    searchClicked: function (e) {
-  //跳出搜索界面
-        wx.navigateTo({
-            url: '/pages/search/search'
-        })
+      //循环请求标签产品数据
+      targetArray.forEach((item, index) => {
+        this.requestHomeTargetProductData(item.Id, item.ArrangementModeKey, index);
+      });
+    };
+    task.addToQueue();
+  },
+
+  /**
+   * 查询首页标签产品数据
+   */
+  requestHomeTargetProductData: function (id, typeId, index) {
+    let task = RequestReadFactory.homeTargetProductRead(id, typeId == "1" ? 4 : 3);
+    task.finishBlock = (req) => {
+      let responseData = req.responseObject.Datas;
+      let targetArray = this.data.targetArray;
+      targetArray[index].productArray = responseData;
+      this.setData({
+        targetArray: targetArray
+      });
+    };
+    task.addToQueue();
+  },
+
+  /**
+   * 获取二级分类数据
+   */
+  requestTwoSortData: function (id) {
+    let self = this;
+    let task = RequestReadFactory.homeTwoSortRead(id);
+    task.finishBlock = (req) => {
+      let responseData = req.responseObject.Datas;
+      let oneSortData = self.data.oneSortData;
+      let currentTab = self.data.currentTab;
+      oneSortData[currentTab].twoSortArray = responseData;
+      self.setData({
+        oneSortData: oneSortData
+      });
+
+      //查询二级分类的商品
+      responseData.forEach((item, index) => {
+        self.requestTwoSortProductData(item.Id, index);
+      });
+    };
+    task.addToQueue();
+  },
+
+  /**
+   * 获取二级分类数据
+   */
+  requestTwoSortProductData: function (id, index) {
+    let task = RequestReadFactory.productByCategoryIdRead(id);
+    task.finishBlock = (req) => {
+      let responseData = req.responseObject.Datas;
+      let oneSortData = this.data.oneSortData;
+      let currentTab = this.data.currentTab;
+      oneSortData[currentTab].twoSortArray[index].productArray = responseData;
+      this.setData({
+        oneSortData: oneSortData
+      });
+      console.log(oneSortData)
+    };
+    task.addToQueue();
+  },
+
+  /**
+   * swiper切换事件
+   */
+  onTabChangeListener: function (e) {
+    let currentIndex = e.detail.current;
+    if (currentIndex == undefined) {
+      currentIndex = e.currentTarget.dataset.current;
     }
+    this.setData({
+      currentTab: currentIndex
+    });
+
+    //如果分类的主体数据为空，那么去请求主体数据
+    let oneSort = this.data.oneSortData[currentIndex];
+    if (oneSort.twoSortArray == undefined && currentIndex > 0) {
+      Tool.showLoading();
+      this.requestTwoSortData(oneSort.Id);
+    }
+  },
+  /**
+   * 列表子视图点击事件,进入商品详情
+   */
+  onChildClickListener: function (e) {
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/product-detail/product-detail?id=' + id
+    })
+  }
 })

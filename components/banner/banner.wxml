@@ -3,7 +3,7 @@
     <swiper indicator-active-color="#e4c240" indicator-color="#eaebec" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{4000}}" duration="{{500}}">
       <block wx:for="{{bannerArray}}" wx:key="unique">
         <swiper-item>
-          <image class="{{item.length>0?'banner-image':'banner-image empty'}}" src="{{item}}" catchtap="onBannerClickListener" data-position="{{index}}" mode="aspectFit" />
+          <image class="{{item.length>0?'banner-image':'banner-image empty'}}" src="{{item}}" catchtap="onBannerClickListener" data-position="{{index}}" mode="aspectFill" />
         </swiper-item>
       </block>
     </swiper>

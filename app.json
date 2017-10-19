@@ -19,7 +19,6 @@
         "pages/address/address",
         "pages/address/add-address/add-address",
         "pages/address/select-provinces/select-provinces",
-        "pages/home/product-more/product-more",
         "pages/pay-success/pay-success",
         "pages/my/my-award/my-award",
         "pages/search/search",

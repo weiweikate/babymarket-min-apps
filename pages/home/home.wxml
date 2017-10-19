@@ -1,10 +1,6 @@
 <import src='/components/tab-layout/tab-layout.wxml' />
-<!--首页-->
 <import src='cell-home/cell-home.wxml' />
-<!--分类-->
 <import src='cell-sort/cell-sort.wxml' />
-
-<import src='/components/product-specification/product-specification.wxml' />
 
 <view class="root-view">
   <template is="tab-layout" data="{{items:oneSortData,currentTab}}" />
@@ -14,7 +10,7 @@
         <swiper-item>
           <scroll-view class="scroll" scroll-y>
             <view wx:if="{{index ==0}}">
-              <template is="cell-home" data="{{oneSortData:oneSortData,adArray:adArray}}" />
+              <template is="cell-home" data="{{oneSortData:oneSortData,bannerArray:bannerArray,targetArray:targetArray}}" />
             </view>
             <view wx:else>
               <template is="cell-sort" data="{{...item}}" />
@@ -25,5 +21,3 @@
     </swiper>
   </view>
 </view>
-
-<template is="product-specification" data="{{visiable:showProductSpecification,innerTitle,categoryArray,allSepcificationArray,innerCount}}"/>

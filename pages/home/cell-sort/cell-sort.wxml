@@ -1,17 +1,13 @@
-<!--广告位-->
-<import src='/pages/home/ad/home-ad.wxml' />
 <import src='/pages/home/cell-title/cell-title.wxml' />
 <import src='/pages/home/cell-product/cell-product.wxml' />
 
 <template name="cell-sort">
   <view class="cell-sort">
-    <view>
-      <template is="home-ad" data="{{adArray:bodyData.adData}}" />
-      <block wx:for="{{bodyData.sortData}}" wx:key="unique">
-        <template is="cell-title" data="{{title:item.Name,position:index}}" />
-        <template is="cell-product" data="{{productArray:item.productData,groupPosition:index}}" />
-      </block>
-      <text class="bottom">———\t\t更多内容, 敬请期待\t\t———</text>
+    <image class="{{imageUrl.length>0?'poster-image':'poster-image empty'}}" src="{{imageUrl}}" catchtap="onBannerClickListener" mode="aspectFill" />
+    <view class="{{index>0?'view-list divider':'view-list'}}" wx:for="{{twoSortArray}}" wx:key="unique" >
+      <template is="cell-title" data="{{title:item.Name,id:item.Id}}" />
+      <template is="cell-product" data="{{productArray:item.productArray,parentId:item.Id}}" />
     </view>
+    <text class="bottom-tips">———\t\t更多内容, 敬请期待\t\t———</text>
   </view>
 </template>

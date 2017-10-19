@@ -103,7 +103,7 @@ export default class ProductSpecification {
      */
     getProductInfo(){
         let self = this;
-        let r = global.RequestReadFactory.productDetailRead(this.productId);
+        let r = global.RequestReadFactory.productByIdRead(this.page.data.productId);
         r.finishBlock = (req,firstData) =>{
             self.page.setData({
                 innerProduct:firstData,

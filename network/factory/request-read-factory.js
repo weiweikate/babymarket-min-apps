@@ -67,7 +67,7 @@ export default class RequestReadFactory {
       let bodyParameters = {
         "Operation": operation,
         "Condition": "${RelevancyId} == '" + theId + "' && ${RelevancyBizElement} == '" + bizElement+"'",
-        "Order": '${CreateTime} ASC'
+        "Order": '${Ordinal} DESC'
       };
       let req = new RequestRead(bodyParameters);
       req.name = '附件';
@@ -99,32 +99,6 @@ export default class RequestReadFactory {
         let req = new RequestRead(bodyParameters);
         req.name = '积分查询';//用于日志输出
         req.items = ['Id', 'Reason', 'SFJHCG'];
-        return req;
-    }
-
-    //宝贝码头商品详情
-    static productDetailRead(theId) {
-        let operation = Operation.sharedInstance().bmProductReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "Id": theId,
-            "MaxCount": '1',
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头商品详情';//用于日志输出
-        req.items = ['Id', 'ShowName', 'LYPrice', 'SalePrice', 'ImgId', 'Warehouse', 'Des1', 'Des', 'Tax', 'Subtitle', 'NationalKey', 'StoreId', 'TaxRate', 'Import', 'PriceInside'];
-        req.preprocessCallback = (req, firstData) => {
-            if (global.Tool.isValidObject(firstData)) {
-                if (global.Storage.didLogin()) {
-                    let tempPrice = firstData.SalePrice;
-                    firstData.SalePrice = firstData.LYPrice;
-                    firstData.LYPrice = tempPrice;
-                }
-                else {
-                    firstData.LYPrice = "0";
-                }
-            }
-        }
         return req;
     }
 
@@ -208,36 +182,6 @@ export default class RequestReadFactory {
         return req;
     }
 
-    //老友码头 商品的国家信息
-    static productNationRead(theKey) {
-        let operation = Operation.sharedInstance().bmNationReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "Value": theKey,
-            "MaxCount": 1,
-            "StartIndex": 0
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '老友码头 商品的国家信息';//用于日志输出
-        req.items = ['Name'];
-        return req;
-    }
-
-    //老友码头 运费
-    static expressRuleRead(warehouseId, city) {
-        let operation = Operation.sharedInstance().bmExpressRuleReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "Condition": "StringIndexOf(${Area_Name},'" + city + "') > 0 && ${WarehouseId} == '" + warehouseId + "'",
-            "MaxCount": 1,
-            "StartIndex": 0
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '老友码头 运费';//用于日志输出
-        req.items = ['Express_Fee'];
-        return req;
-    }
-
     //登录用户信息查询
     static memberInfoRead() {
         let operation = Operation.sharedInstance().memberInfoReadOperation;
@@ -255,59 +199,94 @@ export default class RequestReadFactory {
         return req;
     }
 
-    //首页海报查询
-    static homeAdRead() {
-        let operation = Operation.sharedInstance().homeAdReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "IsHomePageShow": 'True'
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '首页海报查询';
-        req.items = ['Id', 'ImgId', 'LinkTypeKey', 'KeyWord', 'Url', 'ProductId', 'Name'];
-        //修改返回结果
-        req.preprocessCallback = (req) => {
-            let responseData = req.responseObject.Datas;
-            responseData.forEach((item, index) => {
-                item.imageUrl = global.Tool.imageURLForId(item.ImgId);
-            });
-        }
-        return req;
+    //积分商城-海报查询
+    static homeBannerRead() {
+      let operation = Operation.sharedInstance().homeAdReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "IsUse": 'True',
+        "IsAppearIndex": 'True'
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '积分商城-海报查询';
+      req.items = ['Id', 'ImgId', 'Ref001Type', 'Ref001Id'];
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        let bannerArray = [];
+        responseData.forEach((item, index) => {
+          item.imageUrl = global.Tool.imageURLForId(item.ImgId);
+          bannerArray.push(item.imageUrl);
+        });
+        req.responseObject.bannerArray = bannerArray;
+      }
+      return req;
     }
 
-    //分类海报查询
-    static sortAdRead(categoryId) {
-        let operation = Operation.sharedInstance().homeAdReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "ProductCategoryId": categoryId
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '分类海报查询';
-        req.items = ['Id', 'ImgId', 'LinkTypeKey', 'KeyWord', 'Url', 'ProductId', 'Name'];
-        //修改返回结果
-        req.preprocessCallback = (req) => {
-            let responseData = req.responseObject.Datas;
-            responseData.forEach((item, index) => {
-                item.imageUrl = global.Tool.imageURLForId(item.ImgId);
-            });
-        }
-        return req;
+    //积分商城-标签
+    static homeTargetRead() {
+      let operation = Operation.sharedInstance().homeTargetReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "IsShow": 'True',
+        "Order": "${Ordinal} ASC"
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '积分商城-标签';
+      req.items = ['Id', 'Name', 'IsShow', 'ArrangementModeKey', 'ImgId'];
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.imageUrl = global.Tool.imageURLForId(item.ImgId);
+        });
+      }
+      return req;
     }
 
-    //首页-一级分类
-    static homeOneSortRead() {
+    //积分商城-标签产品
+    static homeTargetProductRead(targetId, maxCount) {
+      let operation = Operation.sharedInstance().homeTargetProductReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "LabelId": targetId,
+        "MaxCount": maxCount,
+        "Appendixes": {
+          "+Product": [
+            "Name",
+            "ImgId",
+            "Price",
+            "Summary"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '积分商城-标签产品';
+      req.items = ['Id', 'ProductId', 'LabelId'];
+      req.appendixesKeyMap = { 'Product': 'ProductId' };//可以多个
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'Product') {
+          //给data添加新属性
+          item.Name = appendixe.Name;
+          item.imageUrl = global.Tool.imageURLForId(appendixe.ImgId);
+          item.Price = appendixe.Price;
+          item.Summary = appendixe.Summary;
+        }
+      };
+      return req;
+    }
+
+    //积分商城-一级分类
+    static homeOneSortRead(tier) {
         let operation = Operation.sharedInstance().homeSortReadOperation;
         let bodyParameters = {
             "Operation": operation,
-            "Hierarchy": '1',
-            "IsShow": 'True',
-            "ShowInHomepage": 'True',
-            "Order": "${Order} ASC"
+            "Tier": tier
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '首页-一级分类';
-        req.items = ['Id', 'Name', 'ImgId', 'MaxShow'];
+        req.name = '积分商城-一级分类';
+        req.items = ['Id', 'Name', 'IsIndexShow', 'ImgId','MaxShowNumber'];
         //修改返回结果
         req.preprocessCallback = (req) => {
             let responseData = req.responseObject.Datas;
@@ -319,6 +298,66 @@ export default class RequestReadFactory {
             responseData.unshift(home);
         }
         return req;
+    }
+
+    //积分商城-二级分类
+    static homeTwoSortRead(id) {
+      let operation = Operation.sharedInstance().homeSortReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "ParentId": id
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '积分商城-二级分类';
+      req.items = ['Id', 'Name', 'IsIndexShow', 'ImgId', 'MaxShowNumber'];
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.imageUrl = global.Tool.imageURLForId(item.ImgId);
+        });
+      }
+      return req;
+    }
+
+    //积分商城-根据分类ID查询商品
+    static productByCategoryIdRead(categoryId) {
+      let operation = Operation.sharedInstance().productReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "CategoryId": categoryId
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '积分商城-根据分类ID查询商品';
+      req.items = ['Id', 'Name', 'ImgId', 'Price'];
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.imageUrl = global.Tool.imageURLForId(item.ImgId);
+        });
+      }
+      return req;
+    }
+
+    //积分商城-根据ID查询商品
+    static productByIdRead(productId) {
+      let operation = Operation.sharedInstance().productReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": productId
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '积分商城-根据ID查询商品';
+      req.items = ['Id', 'Name', 'ImgId', 'Price', 'Description', 'Attachments', 'Summary', 'Attachments2', 'InventoryNumber', 'ExistSize', 'OutSold'];
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.imageUrl = global.Tool.imageURLForId(item.ImgId);
+        });
+      }
+      return req;
     }
 
     //首页-单个一级分类
@@ -334,65 +373,6 @@ export default class RequestReadFactory {
         let req = new RequestRead(bodyParameters);
         req.name = '首页-一级分类';
         req.items = ['Id', 'Name', 'ImgId', 'MaxShow'];
-        return req;
-    }
-
-    //首页-二级分类
-    static homeTwoSortRead(parentId) {
-        let operation = Operation.sharedInstance().homeSortReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "ParentId": parentId,
-            "IsShow": 'True',
-            "Order": "${Order} ASC"
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '首页-二级分类';
-        req.items = ['Id', 'Name', 'ImgId', 'Description'];
-        return req;
-    }
-
-    //首页-一级分类商品
-    static homeOneSortProductRead(categoryId, maxCount) {
-        let operation = Operation.sharedInstance().productReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "FirstCategoryId": categoryId,
-            "MaxCount": maxCount,
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '一级分类商品';
-        req.items = ['Id', 'ShowName', 'ImgId', 'SalePrice', 'LYPrice', 'PriceInside', 'Inv', 'Unit', 'Import'];
-        //修改返回结果
-        let that = this;
-        req.preprocessCallback = (req) => {
-            let responseData = req.responseObject.Datas;
-            that.parseProductInfo(responseData);
-        }
-        return req;
-    }
-
-    //首页-二级分类商品
-    static homeTwoSortProductRead(categoryId) {
-        let operation = Operation.sharedInstance().productReadOperation;
-        let condition = "${Product_CategoryId} == '" + categoryId + "'";
-        //如果是内部员工
-        if (global.Storage.isInsideMember()) {
-            condition = "${Product_CategoryId} == '" + categoryId + "' || ${ProductCategoryInsideId} == '" + categoryId + "'";
-        }
-        let bodyParameters = {
-            "Operation": operation,
-            "Condition": condition
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '二级分类商品';
-        req.items = ['Id', 'ShowName', 'ImgId', 'SalePrice', 'LYPrice', 'PriceInside', 'Inv', 'Unit', 'Import'];
-        //修改返回结果
-        let that = this;
-        req.preprocessCallback = (req) => {
-            let responseData = req.responseObject.Datas;
-            that.parseProductInfo(responseData);
-        }
         return req;
     }
 

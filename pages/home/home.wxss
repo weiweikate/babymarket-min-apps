@@ -1,27 +1,16 @@
-/*搜索*/
-@import "/components/search-field/search-field.wxss";
 @import '/components/tab-layout/tab-layout.wxss';
-
-/*首页*/
 @import "cell-home/cell-home.wxss";
-
-/*分类*/
 @import "cell-sort/cell-sort.wxss";
-@import '/components/product-specification/product-specification.wxss';
 
 .root-view {
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-.search-bar {
-  padding: 10rpx;
+  margin-top: 1rpx;
 }
 
 .swiper-view {
   height: 100%;
-  border-top: 6rpx solid #eeeeee;
 }
 
 .swiper-view .swiper-container {

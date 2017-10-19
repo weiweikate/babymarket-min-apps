@@ -116,9 +116,13 @@ export default class Operation {
         this.vaccineRecordDeleteOperation = 'c6883d4c-7ab7-4822-ba8a-a69b01095a15'
 
         //首页-广告位
-        this.homeAdReadOperation = 'b412ff1c-c19b-4250-b479-a61e0085a868';
+        this.homeAdReadOperation = 'f7caf922-5a10-4d98-bdc8-a65800b955b5';
         //首页-分类
-        this.homeSortReadOperation = '4293f401-3425-4d6b-bf67-a618018b764a';
+        this.homeSortReadOperation = 'c2e1f45e-1096-4ca9-b065-a6320104409d';
+        //首页-标签
+        this.homeTargetReadOperation = '331a858b-db16-48e4-9603-a69e00e5ffb1';
+        //首页-标签产品
+        this.homeTargetProductReadOperation = '9310cb28-7e14-4f46-97dd-a69e00bff0b9';
 
         //搜索-热门搜索
         this.searchHotReadOperation = 'c8abee85-11ab-0bba-1bcd-3c4701ec76cb';
@@ -142,7 +146,7 @@ export default class Operation {
         this.bmExpressRuleReadOperation = '91972a34-2e32-0928-156f-3c3501e55857';
 
         //产品查询
-        this.productReadOperation = 'de9362a8-395e-09a4-087d-3c1701f9da63';
+        this.productReadOperation = '9992fecc-286b-47c2-97fa-a62c00fa3201';
 
         //购物车新增
         this.cartAddWriteOperation = '';
