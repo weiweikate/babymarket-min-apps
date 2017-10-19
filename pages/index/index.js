@@ -237,7 +237,7 @@ Page({
      */
     signTap:function(){
         wx.navigateTo({
-            url: '../my/sign/sign',
+            url: '/pages/my/sign/sign',
         })
     },
 

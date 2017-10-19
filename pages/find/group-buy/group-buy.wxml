@@ -1,0 +1,28 @@
+<!--group-buy.wxml-->
+<import src='/components/banner/banner.wxml' />
+<import src='/pages/find/group-buy/group-buy-cell/group-buy-cell.wxml' />
+<import src='/components/tab-layout/tab-layout.wxml' />
+<import src='/components/empty-view/empty-view.wxml' />
+
+<view class="group-buy-view">
+    <template is="banner" data="{{bannerArray:bannerArray}}" />
+    <template is="tab-layout" data="{{items:navTabs,currentTab}}" />
+
+    <view class="swiper-view">
+        <swiper class="swiper-container" bindchange="onTabChangeListener" current="{{currentTab}}">
+            <block wx:for="{{navTabs}}" wx:key="unique">
+                <swiper-item>
+                    <scroll-view class="scroll" scroll-y wx:if="{{listDatas.length > 0}}">
+                        <view>
+                            <block wx:for="{{listDatas}}" wx:key="unique">
+                                <template is="group-buy-cell" data="{{item:item, index:index}}" />
+                            </block>
+                        </view>
+                    </scroll-view>
+                    <template is="empty-view" wx:else data="{{title:'敬请期待...'}}"></template>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+</view>
+
