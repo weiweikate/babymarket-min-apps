@@ -1,0 +1,39 @@
+/* group-buy.wxss */
+@import '/components/banner/banner.wxss';
+@import '/pages/find/group-buy/group-buy-cell/group-buy-cell.wxss';
+@import '/components/tab-layout/tab-layout.wxss';
+@import '/components/empty-view/empty-view.wxss';
+
+page{
+    background: white;
+}
+
+.group-buy-view{
+    height: 100%;
+}
+
+.group-buy-view .banner{
+    height: 400rpx;
+    border-bottom: 20rpx solid #f3f3f4;
+}
+
+.group-buy-view .swiper-view {
+    height: 100%;
+    border-top: 2rpx solid #dbdbdb;
+}
+
+.swiper-view .swiper-container {
+    height: 100%;
+}
+
+.swiper-view .swiper-container .scroll {
+    height: 100%;
+}
+
+.group-buy-view .tab-layout .tab {
+  height: 80rpx;
+}
+
+.group-buy-view .swiper-view .swiper-container .empty-view{
+    height: 500rpx;
+}

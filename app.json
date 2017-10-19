@@ -81,7 +81,11 @@
         "pages/baby-food/baby-food-detail/baby-food-detail",
         "pages/find/confinement-food/confinement-food",
         "pages/find/vaccine/vaccine",
-        "pages/find/vaccine/vaccine-detail/vaccine-detail"
+        "pages/find/vaccine/vaccine-detail/vaccine-detail",
+        "pages/find/levy/levy-detail/levy-report/levy-report-add/levy-report-add",
+        "pages/find/group-buy/group-buy",
+        "pages/find/group-buy/group-buy-detail/group-buy-detail",
+        "pages/find/group-buy/group-buy-rule/group-buy-rule"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -52,6 +52,7 @@ Page({
         break;
       case 3:
         //TOP团购
+        url = '/pages/find/group-buy/group-buy';
         break;
       case 4:
         //黄金便征集令

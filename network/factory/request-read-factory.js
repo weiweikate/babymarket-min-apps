@@ -35,12 +35,12 @@ export default class RequestReadFactory {
     }
 
     //附件
-    static attachmentsByIdRead(theId) {
+    static attachmentsByIdRead(condition) {
       let operation = Operation.sharedInstance().attachmentsReadOperation;
       let bodyParameters = {
         "Operation": operation,
-        "Condition": "${RelevancyId} == '" + theId + "'",
-        "Order": '${CreateTime} ASC'
+        "Condition": condition,
+        "Order": '${CreateTime} ASC',
       };
       let req = new RequestRead(bodyParameters);
       req.name = '附件';
@@ -1994,6 +1994,51 @@ export default class RequestReadFactory {
         let req = new RequestRead(bodyParameters);
         req.name = '打疫苗记录查询';
         req.items = ["Id", "MemberId", "VaccineId"];
+        return req;
+    }
+
+    //团购首页轮播图查询
+    static requestWelfareCycle() {
+        let operation = Operation.sharedInstance().welfareCycleReadOperation;
+        let condition = "${IsUse} == 'True' && ${Ref001Type} == 'Activity'";
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Ordinal} ASC",
+            "Condition": condition,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '团购首页轮播图查询';
+        req.items = ["Id", "ImgId", "Ref001Id"];
+        return req;
+    }
+
+    //团购首页活动查询
+    static requestActivityList(index, count, isEnd) {
+        let operation = Operation.sharedInstance().activityReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Ended": isEnd,
+            "MaxCount": count,
+            "StartIndex": index,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '团购首页活动查询';
+        //req.items = ["Id", "ImgId"];
+        return req;
+    }
+
+    //团购首页活动详情查询
+    static requestActivityDetail(mainId) {
+        let operation = Operation.sharedInstance().activityReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Id":mainId,
+            "MaxCount": 1,
+            "StartIndex": 0,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '团购首页活动详情查询';
+        //req.items = ["Id", "ImgId"];
         return req;
     }
 }
