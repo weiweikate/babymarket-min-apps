@@ -2041,4 +2041,20 @@ export default class RequestReadFactory {
         //req.items = ["Id", "ImgId"];
         return req;
     }
+
+    //签到记录查询
+    static requestSignRecord() {
+        let operation = Operation.sharedInstance().signRecordReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "CreatorId": global.Storage.memberId(),
+            "Order":"${Date} DESC",
+            "MaxCount": 1,
+            "StartIndex": 0,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '签到记录查询';
+        req.items = ["Id", "CreatorId", "SignDays", "Days", "Coin", "Date"];
+        return req;
+    }
 }

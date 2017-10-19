@@ -1,11 +1,13 @@
 // sign.js
+let { Tool, Storage, RequestReadFactory, RequestWriteFactory } = global;
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        award: '100',
+        award: '0',
         coinsList: [
             {
                 'coin': '5'
@@ -32,15 +34,21 @@ Page({
                 'coin': '10'
             },
         ],
-        signDays: 3,//连续签到天数,
+        signDays: 0,//连续签到天数,
         todaySign:false
     },
+    thisCoins:'',
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.requestSignRecords();
 
+        let memberInfo = Storage.currentMember();
+        this.setData({
+            award: memberInfo.Coin
+        })
     },
 
     /**
@@ -92,11 +100,60 @@ Page({
 
     },
 
+    /**
+     * 立即签到
+     */
     signTap:function(){
-        let days = this.data.signDays + 1;
-        this.setData({
-            signDays:days,
-            todaySign:true
-        });
-    }
+        if (!this.data.todaySign){
+            this.addSignRecords();
+        }
+    },
+
+    /**
+     * 签到记录查询
+     */
+    requestSignRecords: function () {
+        let r = RequestReadFactory.requestSignRecord();
+        let self = this;
+        r.finishBlock = (req, firstData) => {
+
+            //判断今天是否已签到
+            let date = Tool.timeStringForDateString(firstData.Date, "YYYY-MM-DD");
+            let nowStr = Tool.timeStringForDate(new Date(), "YYYY-MM-DD");
+
+            let hasSign = false;
+            if (date === nowStr){//今天已签到
+                hasSign = true;
+            }
+
+            self.setData({
+                signDays: firstData.Days,
+                todaySign: hasSign
+            })
+            this.thisCoins = firstData.Coin;
+        };
+        r.addToQueue();
+    },
+
+    /**
+     * 新增签到记录
+     */
+    addSignRecords: function () {
+        let task = RequestWriteFactory.addSignRecord();
+        task.finishBlock = (req) => {
+            let coins = parseInt(this.data.award) + parseInt(this.thisCoins);
+
+            this.setData({
+                todaySign: true,
+                signDays: this.data.signDays + 1,
+                award: coins
+            });
+
+            //修改本地数据库信息
+            let memberInfo = Storage.currentMember();
+            memberInfo.Coin = coins;
+            Storage.setCurrentMember(memberInfo);
+        };
+        task.addToQueue();
+    },
 })

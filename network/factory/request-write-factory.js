@@ -513,6 +513,20 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //签到记录新增
+    static addSignRecord() {
+        let operation = Operation.sharedInstance().signRecordAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "MemberId": global.Storage.memberId(),
+        }
+
+        let req = new RequestWrite(status, 'Sign', params, null);
+        req.name = '签到记录新增';
+        return req;
+    }
+
     //新增黄金便征集令报告
     static addLevyReport(requestData, temporaryIdArray) {
       let operation = Operation.sharedInstance().levyReportAddOperation;

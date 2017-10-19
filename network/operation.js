@@ -127,6 +127,11 @@ export default class Operation {
         // 限时购订单 修改
         this.activityOrderModifyOperation = 'bfb69850-f8df-4288-ae15-a769001ebbf8'
 
+        // 签到记录 查询
+        this.signRecordReadOperation = '80618989-184d-0b9e-3fe8-3f5b01db72b3'
+        // 签到记录 新增
+        this.signRecordAddOperation = '0e22c859-30ee-05f5-0031-3f550018150a'
+
         //首页-广告位
         this.homeAdReadOperation = 'b412ff1c-c19b-4250-b479-a61e0085a868';
         //首页-分类
