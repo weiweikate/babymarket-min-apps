@@ -1,0 +1,6 @@
+<!--group-buy-rule.wxml-->
+<import src="/libs/wxParse/wxParse.wxml" />
+
+<view class="root-view">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+</view>

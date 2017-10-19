@@ -29,7 +29,8 @@ Page({
           detailInfo: responseData[0]
         });
         //请求附件数据
-        this.requestAttachments(id);
+        let conditon = "${RelevancyId} == '" + id + "'"
+        this.requestAttachments(conditon);
       }
     }
     task.addToQueue();

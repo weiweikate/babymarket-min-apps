@@ -1,0 +1,52 @@
+<!--group-buy-detail.wxml-->
+<import src='/components/banner/banner.wxml' />
+<import src="/libs/wxParse/wxParse.wxml" />
+
+<view class="root-view">
+
+    <view class="product-info">
+
+        <!--广告-->
+        <template is="banner" data="{{bannerArray:images}}"/>
+
+        <view class="info">
+            <text class="name">{{product.Title}}</text>
+            <view class="price-view">
+                <view class="price-now">￥</view>
+                <view class="price-now price">{{product.Price}}</view>
+                <view class="price-now">元/件</view>
+                <view class="price-orignal">原价：￥{{product.PriceOriginal}}</view>
+            </view>
+            <view class="dsp">{{product.Subject}}</view>
+
+            <view class="slogan-view">
+                <view class="slogan left">
+                    <image src="/res/img/find/group-buy/group-buy-left-icon.png" style="width:24rpx;height:24rpx;"></image>
+                    <view>全场包邮</view>
+                </view>
+                <view class="slogan mid">
+                    <image src="/res/img/find/group-buy/group-buy-mid-icon.png" style="width:24rpx;height:24rpx;"></image>
+                    <view>100%正品</view>
+                </view>
+                <view class="slogan right">
+                    <image src="/res/img/find/group-buy/group-buy-right-icon.png" style="width:24rpx;height:24rpx;"></image>
+                    <view>超值回馈</view>
+                </view>
+            </view>
+
+        </view> 
+
+        <view class="rule" catchtap="ruleTap">
+            <view>团购规则</view>
+            <image src="/res/img/common/common-arrow-gray-right.png" style="width:17rpx;height:30rpx;"></image>
+        </view>
+
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+
+    <!--底部bar-->
+    <view class="bottom-bar">立即参与</view>
+</view>
+
+
+

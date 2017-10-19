@@ -1,0 +1,95 @@
+/* group-buy-detail.wxss */
+@import '/components/banner/banner.wxss';
+@import "/libs/wxParse/wxParse.wxss";
+
+.root-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: white;
+}
+
+.product-info .info {
+    display: flex;
+    flex-direction: column;
+    padding: 22rpx 22rpx 0rpx 22rpx;
+    background-color: white;
+    margin-top: 2rpx;
+}
+
+.info .name {
+    font-size: 32rpx;
+    color: #494848;
+    margin-top: 25rpx;
+}
+
+.info .price-view{
+    margin-top: 30rpx;
+    display: flex;
+}
+
+.info .price-view .price-now{
+    color: #ff5555;
+    font-size: 24rpx;
+}
+
+.info .price-view .price-now.price{
+    font-size: 36rpx;
+    margin-top: -6rpx;
+}
+
+.info .price-view .price-orignal{
+    color: #acadaa;
+    font-size: 26rpx;
+    margin-left: 20rpx;
+}
+
+.info .dsp {
+    font-size: 26rpx;
+    color: #494848;
+    margin-top: 20rpx;
+}
+
+.root-view .bottom-bar {
+    color: white;
+    background: #ff5555;
+    height: 80rpx;
+    width: 706rpx;
+    line-height: 80rpx;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    font-size: 32rpx;
+    margin: 22rpx;
+    border-radius: 10rpx;
+}
+
+.info .slogan-view{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50rpx;
+    margin-bottom: 50rpx;
+}
+
+.slogan-view .slogan{
+    display: flex;
+    font-size: 28rpx;
+    color: #494848;
+    height: 100%;
+}
+
+.rule{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80rpx;
+    font-size: 30rpx;
+    color: #090909;
+    line-height: 80rpx;
+    background: #eeeeee;
+    padding-left: 22rpx;
+    padding-right: 22rpx;
+    border-bottom: 30rpx;
+}
+

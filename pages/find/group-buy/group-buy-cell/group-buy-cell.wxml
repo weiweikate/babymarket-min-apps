@@ -1,0 +1,22 @@
+<template name="group-buy-cell">
+    <view class="group-buy-cell" catchtap="groupBuyCellTap" data-index="{{index}}">
+        <image src="{{item.imageUrl}}" class="picrure" mode="aspectFit"></image>
+        <view class="title">{{item.Title}}</view>
+
+        <view class="price-view">
+            <view class="price-now">￥</view>
+            <view class="price-now price">{{item.Price}}</view>
+            <view class="price-now">元/件</view>
+            <view class="price-orignal">原价：￥{{item.PriceOriginal}}</view>
+        </view>
+
+        <view class="number-buy-view">
+            <view class="number-view">
+                <view>限量（件）：</view>
+                <view class="number">{{item.MaxQnty}}</view>
+            </view>
+            <view class="{{item.Ended=='False'?'buy-button':'buy-button disable'}}" 
+            catchtap="buyButtonTap" data-index="{{index}}">立即参与</view>
+        </view>
+    </view>
+</template> 

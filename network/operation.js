@@ -112,8 +112,20 @@ export default class Operation {
         this.vaccineRecordAddOperation = 'b30dac6c-714d-479f-ae22-a69a0116fe45'
         // 查询疫苗记录
         this.vaccineRecordReadOperation = 'c7abca9f-89e7-4cd9-ae98-a69a01171de9'
-        // 取消疫苗记录
+        // 取消疫苗记录 
         this.vaccineRecordDeleteOperation = 'c6883d4c-7ab7-4822-ba8a-a69b01095a15'
+
+        // 团购首页 轮播图查询
+        this.welfareCycleReadOperation = 'f7caf922-5a10-4d98-bdc8-a65800b955b5'
+
+        // 限时购活动 查询
+        this.activityReadOperation = '4a2a4f46-6feb-4418-bfc0-a769001d5308'
+        // 限时购订单 查询
+        this.activityOrderReadOperation = 'cc223268-ef4e-4891-bebb-a769001e5e38'
+        // 限时购订单 新增
+        this.activityOrderAddOperation = '2646f5c3-da95-0f8a-2a95-3e64004ecd3d'
+        // 限时购订单 修改
+        this.activityOrderModifyOperation = 'bfb69850-f8df-4288-ae15-a769001ebbf8'
 
         //首页-广告位
         this.homeAdReadOperation = 'b412ff1c-c19b-4250-b479-a61e0085a868';

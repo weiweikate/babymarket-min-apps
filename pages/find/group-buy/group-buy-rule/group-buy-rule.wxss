@@ -1,0 +1,10 @@
+/* group-buy-rule.wxss */
+@import "/libs/wxParse/wxParse.wxss";
+
+page{
+    background: white;
+}
+
+.root-view{
+    margin: 22rpx;
+}
