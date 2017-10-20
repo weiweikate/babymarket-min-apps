@@ -2057,4 +2057,57 @@ export default class RequestReadFactory {
         req.items = ["Id", "CreatorId", "SignDays", "Days", "Coin", "Date"];
         return req;
     }
+
+    //秒杀时间段 查询
+    static requestSecKillTime() {
+        let operation = Operation.sharedInstance().secKillTimeReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Seckill_Datetime} ASC"
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '秒杀时间段 查询';
+        //req.items = ["Id", "CreatorId", "SignDays", "Days", "Coin", "Date"];
+        return req;
+    }
+
+    //秒杀商品列表 查询
+    static requestSecKillProducts(count, index, timeId) {
+        let operation = Operation.sharedInstance().secKillProductsReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "TimeId": timeId,
+            "MaxCount": count,
+            "StartIndex": index,
+            "IsReturnTotal":true,
+            "Appendixes": {
+                "+Product": [
+                    "Name",
+                    "ImgId",
+                    "Price",
+                    "Description",
+                    "Attachments",
+                    "Summary"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '秒杀商品列表 查询';
+        req.appendixesKeyMap = { 'Product': 'ProductId'};
+        //req.items = ["Id", "CreatorId", "SignDays", "Days", "Coin", "Date"];
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
+
+            if (key === 'Product') {
+                //给data添加新属性
+                data.orignalPrice = appendixe.Price;
+                data.Summary = appendixe.Summary;
+                data.Description = appendixe.Description;
+                data.imgUrl = Tool.imageURLForId(appendixe.ImgId, '/res/img/common/comm-defualt_loading_square_icon.png');
+            }
+        };
+
+        return req;
+    }
 }

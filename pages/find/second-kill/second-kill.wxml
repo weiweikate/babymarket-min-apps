@@ -1,0 +1,25 @@
+<!--second-kill.wxml-->
+<import src='/pages/find/second-kill/second-kill-cell/second-kill-cell.wxml' />
+<import src='/pages/index/cell/artical-title-cell/artical-title-cell.wxml' />
+<import src='/components/empty-view/empty-view.wxml' />
+
+<view class="second-kill-view">
+    <template is="artical-title-cell" data="{{items:navTabs,currentTab}}" />
+
+    <view class="swiper-view">
+        <swiper class="swiper-container" bindchange="onTabChangeListener" current="{{currentTab}}">
+            <block wx:for="{{navTabs}}" wx:key="unique">
+                <swiper-item>
+                    <scroll-view class="scroll" scroll-y wx:if="{{listDatas.length > 0}}">
+                        <view>
+                            <block wx:for="{{listDatas}}" wx:key="unique">
+                                <template is="second-kill-cell" data="{{...item, index:index}}" />
+                            </block>
+                        </view>
+                    </scroll-view>
+                    <template is="empty-view" wx:else data="{{title:'暂无数据...'}}"></template>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+</view>

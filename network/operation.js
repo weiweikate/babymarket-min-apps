@@ -132,6 +132,11 @@ export default class Operation {
         // 签到记录 新增
         this.signRecordAddOperation = '0e22c859-30ee-05f5-0031-3f550018150a'
 
+        // 秒杀时间段 查询
+        this.secKillTimeReadOperation = '94b1a9c8-c840-4f16-8b4d-a64e01109a55'
+        // 秒杀商品列表 查询
+        this.secKillProductsReadOperation = 'a5db1a6b-3345-4f87-b61a-a64e010f1fd1'
+
         //首页-广告位
         this.homeAdReadOperation = 'b412ff1c-c19b-4250-b479-a61e0085a868';
         //首页-分类

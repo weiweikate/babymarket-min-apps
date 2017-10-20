@@ -1,0 +1,86 @@
+.second-kill-cell {
+  display: flex;
+  background: white;
+  border-bottom: 15rpx solid #f3f4f5;
+  padding: 20rpx;
+}
+
+.levy-image {
+  background: white;
+  width: 236rpx;
+  height: 236rpx;
+  flex: none;
+}
+
+.image-empty {
+  background: #f3f3f4;
+}
+
+.levy-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  flex-grow: 1;
+  margin-top: 10rpx;
+}
+
+.title {
+  font-size: 30rpx;
+  color: #494848;
+}
+
+.view-integral {
+  display: flex;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+}
+
+.now-title {
+  color: #494848;
+}
+
+.now-integral {
+  color: #ff5555;
+  margin-left: 10rpx;
+}
+
+.old-title {
+  color: #dbdbdb;
+  margin-left: 30rpx;
+}
+
+.old-integral {
+  color: #dbdbdb;
+  margin-left: 10rpx;
+}
+
+.view-bottom {
+  display: flex;
+  font-size: 28rpx;
+  color: #090909;
+  align-items: center;
+  margin-top: 60rpx;
+}
+
+.total-num {
+  color: #ff5555;
+  margin-left: 10rpx;
+  flex-grow: 1;
+  font-size: 38rpx;
+}
+
+.buy-button {
+  padding: 15rpx 40rpx 15rpx 40rpx;
+  border-radius: 10rpx;
+  background: #eee;
+  text-align: center;
+  font-size: 30rpx;
+  color: #acadaa;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.buy-button.enabled {
+  color: white;
+  background: #ff5555;
+}

@@ -64,6 +64,10 @@
     border-radius: 10rpx;
 }
 
+.root-view .bottom-bar.disable{
+    background: #dbdbdb;
+}
+
 .info .slogan-view{
     display: flex;
     justify-content: space-around;
