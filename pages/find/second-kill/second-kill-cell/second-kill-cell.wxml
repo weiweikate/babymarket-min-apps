@@ -1,0 +1,36 @@
+<!--秒杀列表-->
+<template name="second-kill-cell">
+  <view class="second-kill-cell" catchtap="onItemClickListener" data-id="{{Id}}" data-index="{{index}}">
+    <image class="{{imgUrl.length>0?'levy-image':'image-empty'}}" src="{{imgUrl}}" mode="aspectFit" />
+
+    <view class="levy-info">
+      <text class="title">{{Name}}</text>
+
+      <view class="view-integral">
+        <view class="now-title">积分: </view>
+        <view class="now-integral">{{Need_Points}}</view>
+        <view class="old-title">原价: </view>
+        <view class="old-integral">{{orignalPrice}}</view>
+      </view>
+
+      <view class="view-bottom">
+        <view>剩余数量:</view>
+        <view class="total-num">{{Surplus_Number}}</view>
+        
+        <view wx:if="{{buyStatus == 0}}" class="buy-button enabled" 
+        catchtap="onApplyClickListener" data-index="{{index}}" 
+        data-type="{{buyStatus}}">马上抢</view>
+        
+        <view wx:elif="{{buyStatus == 1}}" class="buy-button" 
+        catchtap="onApplyClickListener" data-index="{{index}}" 
+        data-type="{{buyStatus}}">已结束</view>
+        
+        <view wx:elif="{{buyStatus == 2}}" class="buy-button" 
+        catchtap="onApplyClickListener" data-index="{{index}}" 
+        data-type="{{buyStatus}}">即将开始</view>
+
+      </view>
+    </view>
+
+  </view>
+</template>

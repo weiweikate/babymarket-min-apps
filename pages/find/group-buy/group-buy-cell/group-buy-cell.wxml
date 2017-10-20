@@ -15,8 +15,9 @@
                 <view>限量（件）：</view>
                 <view class="number">{{item.MaxQnty}}</view>
             </view>
-            <view class="{{item.Ended=='False'?'buy-button':'buy-button disable'}}" 
-            catchtap="buyButtonTap" data-index="{{index}}">立即参与</view>
+
+            <view class="buy-button disable" catchtap="buyButtonTap" data-index="{{index}}" wx:if="{{item.Ended=='True'}}">已结束</view>
+            <view class="buy-button" catchtap="buyButtonTap" data-index="{{index}}" wx:else>立即参与</view>
         </view>
     </view>
 </template> 

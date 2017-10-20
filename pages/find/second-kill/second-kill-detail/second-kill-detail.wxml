@@ -1,0 +1,39 @@
+<import src='/components/banner/banner.wxml' />
+<import src="/libs/wxParse/wxParse.wxml" />
+
+<view class="root-view">
+
+    <view class="product-info">
+
+        <!--广告-->
+        <template is="banner" data="{{bannerArray:images}}" />
+
+        <view class="info">
+            <view class="name">{{product.Name}}</view>
+            <view class="detail">{{product.Summary}}</view>
+            <view class="price">
+                <view class="now-price">需要积分：
+                    <view class="now-price-points">{{product.Need_Points}}</view>
+                </view>
+                <view class="old-price">原价：{{product.orignalPrice}}</view>
+            </view>
+
+            <view class="surplus-number-view">
+                <view>剩余件数：{{product.Surplus_Number}}件</view>
+                <view class="no-express">包邮</view>
+            </view>
+        </view>
+
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+
+    <!--底部bar-->
+    <view wx:if="{{product.buyStatus == 0}}" class="buy-button enabled" 
+    catchtap="onApplyClickListener" data-index="{{index}}" data-type="{{product.buyStatus}}">马上抢</view>
+
+    <view wx:elif="{{product.buyStatus == 1}}" class="buy-button" 
+    catchtap="onApplyClickListener" data-index="{{index}}" data-type="{{product.buyStatus}}">已结束</view>
+
+    <view wx:elif="{{product.buyStatus == 2}}" class="buy-button" 
+    catchtap="onApplyClickListener" data-index="{{index}}" data-type="{{product.buyStatus}}">即将开始</view>
+</view>
