@@ -1,0 +1,38 @@
+.raise-cell{
+    width: 355rpx;
+    height: 548rpx;
+    padding: 0rpx 10rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.raise-cell .name{
+    margin-top: 15rpx;
+    font-size: 32rpx;
+    color: #494848;
+}
+
+.raise-cell .need-number{
+    font-size: 22rpx;
+    color: #494848;
+    margin-top: 20rpx;
+    display: flex;
+}
+
+.raise-cell .number{
+    color: #ff5555;
+    font-size: 32rpx;
+}
+
+.raise-cell .join-button{
+    margin-top: 25rpx;
+    color: white;
+    background: #ff5555;
+    border-radius: 10rpx;
+    width: 260rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    font-size: 32rpx;
+}

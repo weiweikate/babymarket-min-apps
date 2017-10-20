@@ -1,0 +1,13 @@
+<template name="raise-cell">
+    <view class="raise-cell">
+        <image src="" style="width:100%;height:325rpx;background:red"></image>
+        <view class="name">紫贵1段</view>
+        <view class="need-number">
+            <view>还需要：</view>
+            <view class="number">1</view>
+            <view>人次</view>
+        </view>
+
+        <view class="join-button">立即参与</view>
+    </view>
+</template>

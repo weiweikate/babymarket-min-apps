@@ -1,0 +1,95 @@
+/* raise.wxss */
+@import '/components/banner/banner.wxss';
+@import '/components/tab-layout/tab-layout.wxss';
+@import '/components/empty-view/empty-view.wxss';
+@import '/pages/find/raise/raise-cell/raise-cell.wxss';
+
+page{
+    background: white;
+}
+
+.win-info-view-bg{
+    width: 710rpx;
+    height: 74rpx;
+    background: #eeeeee;
+    padding: 20rpx;
+}
+
+.win-info-view{
+    display: flex;
+    background: white;
+    align-items: center;
+    font-size: 28rpx;
+    color: #494848;
+    height: 100%;
+    border-radius: 10rpx;
+}
+
+.win-info-view .win{
+    background: #ff5555;
+    color: white;
+    border-radius: 8rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    padding: 5rpx 10rpx;
+    margin-left: 20rpx;
+    margin-right: 10rpx;
+}
+
+.win-info-view .gongxi{
+    color: #ff5555;
+}
+
+.win-info-view .win-cycle-view{
+    background: #acadaa;
+    height: 100%;
+    width: 353rpx;
+    margin-right: 30rpx;
+}
+
+/* 列表 */
+.raise-view{
+    height: 100%;
+}
+
+.raise-view .swiper-view {
+    height: 100%;
+    padding-top: 20rpx;
+}
+
+.swiper-view .swiper-container {
+    height: 100%;
+}
+
+.swiper-view .swiper-container .scroll {
+    height: 100%;
+}
+
+.raise-list-view{
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.raise-view .tab-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: none;
+    white-space: nowrap;
+    border-bottom: 2rpx solid #acadaa;
+}
+
+.raise-view .tab-layout .tab {
+    color: #acadaa;
+    height: 80rpx;
+    align-items: center;
+}
+
+.raise-view .tab-layout .tab.select {
+    color: #ff5555;
+}
+
+.raise-view .swiper-view .swiper-container .empty-view{
+    height: 1006rpx;
+}

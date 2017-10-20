@@ -85,7 +85,8 @@
         "pages/find/group-buy/group-buy-detail/group-buy-detail",
         "pages/find/group-buy/group-buy-rule/group-buy-rule",
         "pages/find/second-kill/second-kill",
-        "pages/find/second-kill/second-kill-detail/second-kill-detail"
+        "pages/find/second-kill/second-kill-detail/second-kill-detail",
+        "pages/find/raise/raise"
     ],
     "window": {
         "backgroundTextStyle": "light",
