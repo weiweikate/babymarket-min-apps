@@ -1,0 +1,64 @@
+/* second-kill.wxss */
+
+@import '/pages/index/cell/artical-title-cell/artical-title-cell.wxss';
+@import '/components/empty-view/empty-view.wxss';
+@import '/pages/find/second-kill/second-kill-cell/second-kill-cell.wxss';
+
+page{
+    background: white;
+}
+
+.second-kill-view{
+    height: 100%;
+}
+
+.second-kill-view .swiper-view {
+    height: 100%;
+    padding-top: 20rpx;
+}
+
+.swiper-view .swiper-container {
+    height: 100%;
+}
+
+.swiper-view .swiper-container .scroll {
+    height: 100%;
+}
+
+.second-kill-view .tab-layout {
+    background-color: #acadaa;
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    flex-direction: row;
+    flex: none;
+    white-space: nowrap;
+}
+
+.second-kill-view .tab-layout .tab {
+    display: inline-flex;
+    flex-direction: column;
+    font-size: 28rpx;
+    color: #494848;
+    height: 100%;
+    align-items: center;
+    margin-top: 0rpx;
+}
+
+.second-kill-view .tab-layout .tab.select {
+    color: white;
+    background: #ff5555;
+    border-radius: 0rpx;
+}
+
+.second-kill-view .tab-layout .tab .line-one {
+    font-size: 32rpx;
+}
+
+.second-kill-view .tab-layout .tab .line-two {
+    font-size: 28rpx;
+}
+
+.second-kill-view .swiper-view .swiper-container .empty-view{
+    height: 1006rpx;
+}

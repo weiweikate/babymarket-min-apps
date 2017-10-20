@@ -38,14 +38,15 @@
 
         <view class="rule" catchtap="ruleTap">
             <view>团购规则</view>
-            <image src="/res/img/common/common-arrow-gray-right.png" style="width:17rpx;height:30rpx;"></image>
+            <image src="/res/img/common/comm-arrow-gray-right.png" style="width:17rpx;height:30rpx;"></image>
         </view>
 
         <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
 
     <!--底部bar-->
-    <view class="bottom-bar">立即参与</view>
+    <view class="bottom-bar disable" catchtap="buyButtonTap" data-index="{{index}}" wx:if="{{product.Ended=='True'}}">已结束</view>
+    <view class="bottom-bar" catchtap="buyButtonTap" data-index="{{index}}" wx:else>立即参与</view>
 </view>
 
 

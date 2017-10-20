@@ -1,0 +1,90 @@
+@import '/components/banner/banner.wxss';
+@import "/libs/wxParse/wxParse.wxss";
+
+.root-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.root-view .product-info .image {
+    width: 100%;
+    height: 600rpx;
+    flex: none;
+    background-color: white;
+}
+
+.root-view .product-info .image.empty {
+    background-color: #f3f3f4;
+}
+
+.product-info .info {
+    padding: 22rpx;
+    background-color: white;
+    margin-top: 2rpx;
+}
+
+.info .name {
+    font-size: 32rpx;
+    color: #090909;
+}
+
+.info .detail {
+    font-size: 28rpx;
+    color: #acadaa;
+    margin-top: 20rpx;
+}
+
+.info .price {
+    display: flex;
+    align-items: center;
+    margin-top: 50rpx;
+}
+
+.info .price .now-price {
+    font-size: 32rpx;
+    color: #090909;
+    display: flex;
+}
+
+.now-price .now-price-points{
+    color: #ff5555;
+}
+
+.info .price .old-price {
+    font-size: 28rpx;
+    color: #acadaa;
+    margin-left: 30rpx;
+}
+
+.root-view .surplus-number-view {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 30rpx;
+    color: #090909;
+}
+
+.surplus-number-view .no-express{
+    font-size: 28rpx;
+    color: #acadaa;
+}
+
+.buy-button {
+    border-radius: 10rpx;
+    background: #acadaa;
+    text-align: center;
+    font-size: 30rpx;
+    color: white;
+    height: 80rpx;
+    width: 706rpx;
+    margin-left: 22rpx;
+    margin-bottom: 22rpx;
+    line-height: 80rpx;
+    position: fixed;
+    bottom: 0;
+}
+
+.buy-button.enabled {
+    background: #f55;
+}

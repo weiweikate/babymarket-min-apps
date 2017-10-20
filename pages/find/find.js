@@ -46,6 +46,7 @@ Page({
         break;
       case 1:
         //TOP秒杀
+        url = '/pages/find/second-kill/second-kill';
         break;
       case 2:
         //TOP众筹
