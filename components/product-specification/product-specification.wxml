@@ -1,5 +1,4 @@
-<!--product-specification.wxml-->
-<import src='/pages/shopping-cart/count/cart-count.wxml' />
+<import src='/components/cell/cell-quantity/cell-quantity.wxml' />
 <import src='/components/submit-btn/submit-btn.wxml'/>
 <import src="/components/product-specification/thumb/product-sp-thumb.wxml"/>
 <import src='/components/adder-subtractor/adder-subtractor.wxml'/>

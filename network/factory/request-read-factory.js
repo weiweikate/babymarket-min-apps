@@ -112,6 +112,9 @@ export default class RequestReadFactory {
             "ProductId": theId,
             "IsReturnTotal":true,
             "IsIncludeSubtables":true,
+            // "View": {
+            //   "EntityName": "ShoppingCart_View",
+            // }
         };
         let req = new RequestRead(bodyParameters);
         req.name = '宝贝码头商品规格组';//用于日志输出
@@ -335,6 +338,7 @@ export default class RequestReadFactory {
         let responseData = req.responseObject.Datas;
         responseData.forEach((item, index) => {
           item.imageUrl = global.Tool.imageURLForId(item.ImgId);
+          item.ProductId = item.Id;
         });
       }
       return req;
@@ -431,30 +435,56 @@ export default class RequestReadFactory {
         return req;
     }
 
-    //查询购物车视图
-    static cartViewRead() {
-        let operation = Operation.sharedInstance().cartViewReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "View": {
-                "EntityName": "ShoppingCart_View",
-            }
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '查询购物车视图';
-        return req;
-    }
-
     //查询购物车
     static cartRead() {
         let operation = Operation.sharedInstance().cartReadOperation;
         let bodyParameters = {
             "Operation": operation,
-            "Condition": "${MemberId} == '" + global.Storage.memberId() + "' && ${Useful} == 'True'",
+            "MemberId": global.Storage.memberId(),
+            "Bought": "False",
+            "OutSold": "False",
             "Order": "${CreateTime} DESC",
+            "Appendixes": {
+              "+Product": [
+                "Name",
+                "ImgId",
+                "InventoryNumber"
+              ],
+              "+ProductSize": [
+                "FullName",
+                "Quantity"
+              ]
+            },
         };
         let req = new RequestRead(bodyParameters);
         req.name = '查询购物车';
+        req.items = ['Id', 'ProductId', 'Price', 'Qnty', 'Points', 'ProductSizeId'];
+        req.appendixesKeyMap = { 'Product': 'ProductId', 'ProductSize': 'ProductSizeId'};//可以多个
+        //匹配成功函数
+        req.appendixesBlock = (item, appendixe, key, id) => {
+          if (key === 'Product') {
+            //给data添加新属性
+            item.ProductName = appendixe.Name;
+            item.imageUrl = global.Tool.imageURLForId(appendixe.ImgId);
+            item.ProductInventoryNumber = appendixe.InventoryNumber;
+          } else if (key === 'ProductSize'){
+            item.ProductSizeFullName = appendixe.FullName;
+            item.ProductSizeQuantity = appendixe.Quantity;
+          }
+        };
+        //修改返回结果
+        req.preprocessCallback = (req) => {
+          let responseData = req.responseObject.Datas;
+          responseData.forEach((item, index) => {
+            // 当有规格名时显示规格名,无规格名时显示产品名
+            if (item.ProductSizeFullName.length > 0) {
+              item.Name = item.ProductSizeFullName;
+            } else {
+              item.Name = item.ProductName;
+            }
+            item.isSelect = false;
+          });
+        }
         return req;
     }
 

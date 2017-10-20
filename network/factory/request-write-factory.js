@@ -29,30 +29,34 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //修改购物车
+    static modifyCart(requestData) {
+      let operation = Operation.sharedInstance().cartModifyOperation;
+      let status = Network.sharedInstance().statusExisted;
+
+      let req = new RequestWrite(status, 'ShopCart', requestData, operation, null);
+      req.name = '修改购物车';
+      return req;
+    }
+
     //修改购物车数量
-    static modifyCartQnty(id, qnty) {
-        let operation = Operation.sharedInstance().cartModifyOperation;
-        let status = Network.sharedInstance().statusExisted;
-        let params = {
-            "Operation": operation,
-            "Id": id,
-            "Qnty": qnty,
-        };
-
-        let req = new RequestWrite(status, 'Shopping_Cart', params, null);
-        req.name = '修改购物车数量';
-
-        return req;
+    static modifyCartQuantity(id, quantity) {
+      let requestData = {
+        "Id": id,
+        "Qnty": quantity + ""
+      };
+      return this.modifyCart(requestData);
     }
 
     //删除购物车
-    static deleteCart(requestData) {
+    static deleteCart(id) {
         let operation = Operation.sharedInstance().cartDeleteOperation;
         let status = Network.sharedInstance().statusDelete;
-
-        let req = new RequestWrite(status, 'Shopping_Cart', requestData, operation, null);
+        let requestData = {
+          "Id": id
+        };
+        let req = new RequestWrite(status, 'ShopCart', requestData, operation, null);
         req.name = '删除购物车';
-
         return req;
     }
 

@@ -154,7 +154,7 @@ export default class Operation {
         this.productSpecificationRead = '3b61a23d-e130-00cd-320f-3c6800fbe982';
 
         //规格组 读取
-        this.productSpecificationGroupRead = '41222433-4d44-089d-3ca0-3c6800f1d60a';
+        this.productSpecificationGroupRead = '05fac52c-6d7d-0acb-1173-3e3201d4fe8f';
 
         //老友码头 商品的国家信息
         this.bmNationReadOperation = 'c5cb5117-b585-0160-2ab2-3c1f0016ec87';
@@ -172,13 +172,10 @@ export default class Operation {
         this.memberInfoReadOperation = 'cf71ab3d-ed28-4541-819b-a62c00f4ed2d';
 
         //购物车
-        this.cartReadOperation = '0a8ed48f-088f-0ca3-0c43-3c290052b69b';
-        this.cartAddOperation = '';
-        this.cartModifyOperation = '137c1d5c-dc35-0114-0b27-3c240045510e';
-        this.cartDeleteOperation = 'cd0221ba-e321-0581-06f5-3c2401834522';
-
-        //购物车视图
-        this.cartViewReadOperation = '0a8ed48f-088f-0ca3-0c43-3c290052b69b';
+        this.cartReadOperation = 'd85baa92-d73c-42de-a91c-a62c0115803d';
+        this.cartAddOperation = '88282f4f-a1d7-07c2-250f-3f2501f1e80e';
+        this.cartModifyOperation = '4ebbf890-ded4-4610-a9c6-a633012f2065';
+        this.cartDeleteOperation = '7f7bb361-4a1f-4434-8dbb-a633012b0d6d';
 
         //地址
         this.addressReadOperation = 'e4d97b85-5133-4304-a799-a62c00f67819';

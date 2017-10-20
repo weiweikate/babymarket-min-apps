@@ -23,7 +23,6 @@ Page({
       productId: productId
     });
 
-    // let self = this;
     // this.productSpecification = new ProductSpecification(this, productId);
     // this.productSpecification.finishBlock = (specificationId, product, count, price) => {
     // };
@@ -81,9 +80,9 @@ Page({
    * 进入购物车
    */
   onGoCartListener: function (e) {
-    console.log("进入购物车");
-
-    global.Tool.switchTab('/pages/shopping-cart/shopping-cart');
+    wx.navigateTo({
+      url: '/pages/shopping-cart/shopping-cart'
+    })
   },
 
   /**
@@ -95,10 +94,10 @@ Page({
   },
 
   /**
-   * 确认下单
+   * 立即兑换
    */
   onSubmitListener: function (e) {
-    console.log("确认下单")
+    console.log("立即兑换")
     this.productSpecification.showWithAction('Buy');
   }
 

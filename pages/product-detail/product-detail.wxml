@@ -28,7 +28,7 @@
     <view class="btn-addcart" catchtap="onAddCartListener">
       加入购物车</view>
     <view class="btn-submit" catchtap="onSubmitListener">
-      确认下单</view>
+      立即兑换</view>
   </view>
 </view>
 

@@ -1,6 +1,4 @@
-/* product-specification.wxss */
-
-@import '/pages/shopping-cart/count/cart-count.wxss';
+@import '/components/cell/cell-quantity/cell-quantity.wxss';
 @import '/components/submit-btn/submit-btn.wxss';
 @import '/components/adder-subtractor/adder-subtractor.wxss';
 @import "/components/product-specification/thumb/product-sp-thumb.wxss";

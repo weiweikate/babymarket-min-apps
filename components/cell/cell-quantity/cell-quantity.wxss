@@ -1,0 +1,25 @@
+.cell-quantity {
+  display: flex;
+  border: 1rpx solid #acadaa;
+  border-radius: 8rpx;
+  align-items: center;
+}
+
+.cell-quantity .quantity-minus {
+  font-size: 28rpx;
+  color: #acadaa;
+  padding: 10rpx 20rpx;
+}
+
+.cell-quantity .quantity-plus {
+  font-size: 28rpx;
+  color: #acadaa;
+  padding: 10rpx 20rpx;
+}
+
+.cell-quantity .quantity-value {
+  width: 60rpx;
+  font-size: 28rpx;
+  text-align: center;
+  color: #090909;
+}

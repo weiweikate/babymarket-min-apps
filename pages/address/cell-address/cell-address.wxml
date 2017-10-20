@@ -1,7 +1,7 @@
 <template name="cell-address">
   <view class='cell-address'>
     <view class='address-btn' wx:if="{{!isSelectMode}}">
-      <image class="address-default" src="{{isDefault?'/res/img/common/comm-icon-check-select.png':'/res/img/common/comm-icon-check-normal.png'}}" catchtap="onDefaultClickLitener" data-id="{{Id}}" data-position="{{position}}" mode="aspectFill" />
+      <image class="address-default" src="{{isDefault?'/res/img/common/comm-icon-check-select.png':'/res/img/common/comm-icon-check-normal.png'}}" catchtap="onDefaultClickLitener" data-id="{{Id}}" data-position="{{position}}" mode="aspectFit" />
       <text class="address-status">{{isDefault?'当前默认':'设为默认'}}</text>
       <image class="address-delete" src="/res/img/address/address-delete.png" catchtap="onDeleteClickListener" data-id="{{Id}}" data-position="{{position}}" mode="aspectFit" />
     </view>

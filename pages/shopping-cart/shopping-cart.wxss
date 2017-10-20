@@ -1,74 +1,74 @@
-/* shopping-cart.wxss */
-@import '/pages/shopping-cart/cell-group/cell-group.wxss';
+@import '/pages/shopping-cart/cell-cart/cell-cart.wxss';
+@import '/components/empty-view/empty-view.wxss';
 
-.main {
-  position: relative;
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+  margin-bottom: 100rpx;
+}
+
+.no-data {
   height: 100%;
+}
+
+.view-btn {
+  display: flex;
   width: 100%;
-}
-
-.cart-box {
-  padding-bottom: 90rpx;
-}
-
-.cart-footer {
+  height: 100rpx;
+  background-color: white;
   position: fixed;
+  bottom: 0rpx;
+  align-items: center;
+}
+
+.view-btn .view-check{
+ display: flex;
+ align-items: center;
+ height: 99rpx;
+ flex-grow: 1;
+ border-top: 1rpx solid #f3f3f4;
+}
+
+.view-btn .all-select {
+  width: 40rpx;
+  height: 100%;
+  flex: none;
+  padding: 0rpx 20rpx;
+}
+
+.view-btn .all-select-title {
+  font-size: 32rpx;
+  color: #090909;
+  flex-grow: 1;
+}
+
+.view-btn .view-total {
   display: flex;
   align-items: center;
-  bottom: 0;
-  width: 100%;
-  height: 90rpx;
-  background: white;
-  z-index: 20;
-  justify-content: space-between;
+  margin: 0rpx 20rpx;
 }
 
-.left, .right {
+.view-total .total-title {
+  color: #494848;
+  font-size: 26rpx;
+}
+
+.view-total .total-value {
+  color: #f55;
+  font-size: 30rpx;
+}
+
+.view-btn .view-submit {
+  height: 100%;
+  background-color: #f55;
   display: flex;
   align-items: center;
-  height: 100%;
+  justify-content: center;
+  width: 280rpx;
 }
 
-.left-select {
-  width: 35rpx;
-  height: 35rpx;
-  margin-right: 20rpx;
-  margin-left: 20rpx;
-}
-
-.left-text {
-  font-size: 24rpx;
-  color: #454950;
-}
-
-.cart-total-order {
-  height: 100%;
-  background: #af8327;
+.view-submit .total-submit {
   font-size: 30rpx;
   color: white;
-  justify-content: center;
-  display: flex;
-  padding-left: 50rpx;
-  padding-right: 50rpx;
-  align-items: center;
-}
-
-.cart-total-price {
-  margin-left: 10rpx;
-  margin-right: 20rpx;
-  font-size: 24rpx;
-  color: #af8327;
-}
-
-.cart-total-text {
-  font-size: 24rpx;
-  color: #454950;
-}
-
-.cart-no-data {
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
 }

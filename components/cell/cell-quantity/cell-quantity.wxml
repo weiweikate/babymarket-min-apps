@@ -1,0 +1,7 @@
+<template name="cell-quantity">
+  <view class="cell-quantity">
+    <text class="quantity-minus" catchtap="onQuantityMinusListener" data-position="{{position}}">-</text>
+    <text class="quantity-value">{{quantity}}</text>
+    <text class="quantity-plus" catchtap="onQuantityPlusListener" data-position="{{position}}">+</text>
+  </view>
+</template>
