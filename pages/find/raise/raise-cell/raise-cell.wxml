@@ -1,0 +1,14 @@
+<template name="raise-cell">
+    <view class="raise-cell" catchtap="raiseCellTap" data-index="{{index}}">
+        <image src="{{imageUrl}}" style="width:100%;height:325rpx"></image>
+        <view class="name">{{Name}}</view>
+        <view class="need-number">
+            <view>还需要：</view>
+            <view class="number">{{Remain_Need_Count}}</view>
+            <view>人次</view>
+        </view>
+
+        <view class="join-button" wx:if="{{isStart}}" catchtap="joinTap" data-index="{{index}}">立即参与</view>
+        <view class="join-button disable" wx:else>即将开始</view>
+    </view>
+</template>

@@ -1,0 +1,11 @@
+.cell-text-arrow{
+    width: 706rpx;
+    height: 80rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0rpx 22rpx;
+    font-size: 32rpx;
+    color: #494848;
+    border-bottom: 2rpx solid #eeeeee;
+}

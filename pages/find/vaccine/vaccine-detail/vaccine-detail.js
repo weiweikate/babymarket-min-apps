@@ -1,5 +1,6 @@
 // vaccine-detail.js
 import WxParse from '../../../../libs/wxParse/wxParse.js';
+let { Tool } = global
 
 Page({
 
@@ -17,9 +18,11 @@ Page({
         let datas = wx.getStorageSync('vaccineDatas');
         WxParse.wxParse('article', 'html', datas.Content, this, 5);
 
-        wx.setNavigationBarTitle({
-            title: datas.Vaccine,
-        })
+        if (Tool.isValidStr(datas.Vaccine)){
+            wx.setNavigationBarTitle({
+                title: datas.Vaccine,
+            })
+        }
     },
 
     /**

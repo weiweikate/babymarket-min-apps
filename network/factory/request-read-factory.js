@@ -2008,9 +2008,8 @@ export default class RequestReadFactory {
     }
 
     //团购首页轮播图查询
-    static requestWelfareCycle() {
+    static requestWelfareCycle(condition) {
         let operation = Operation.sharedInstance().welfareCycleReadOperation;
-        let condition = "${IsUse} == 'True' && ${Ref001Type} == 'Activity'";
         let bodyParameters = {
             "Operation": operation,
             "Order": "${Ordinal} ASC",
@@ -2018,7 +2017,7 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '团购首页轮播图查询';
-        req.items = ["Id", "ImgId", "Ref001Id"];
+        req.items = ["Id", "ImgId", "Ref001Id", "Ref001Type"];
         return req;
     }
 
@@ -2120,4 +2119,137 @@ export default class RequestReadFactory {
 
         return req;
     }
+
+    //众筹商品详情 查询
+    static requestRaiseProducts(raiseId) {
+        let operation = Operation.sharedInstance().raiseReadOperation;
+        let condition = "${Id} == '" + raiseId + "'";
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "MaxCount": 1,
+            "StartIndex": 0,
+            "IsReturnTotal": true,
+            "Appendixes": {
+                "+Product": [
+                    "Attachments2"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '众筹商品详情 查询';
+        req.items = ["Id", "Product_ImgId", "Name", "Remain_Need_Count", "Need_Count", "DateTime_Start", "ProductId", "Join_Proportion"];
+        req.appendixesKeyMap = { 'Product': 'ProductId' };
+
+        req.preprocessCallback = (req) => {
+            let { Tool } = global;
+
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                item.imageUrl = Tool.imageURLForId(item.Product_ImgId, '/res/img/common/common-avatar-default-icon.png');
+
+                if (Tool.timeIntervalFromString(item.DateTime_Start) 
+                    >= Tool.timeIntervalFromDate(new Date(), 0)){//即将开始
+                    item.isStart = false;   
+                }else{
+                    item.isStart = true; 
+                }
+            });
+        }
+
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
+
+            if (key === 'Product') {
+                //给data添加新属性
+                data.Attachments2 = appendixe.Attachments2;
+            }
+        };
+
+        return req;
+    }
+
+    //众筹商品列表 查询
+    static requestRaiseProducts(count, index, order) {
+        let operation = Operation.sharedInstance().raiseReadOperation;
+        let condition = "${Is_End} == 'False' && ${Remain_Need_Count} > '0'";
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "Order": order,
+            "MaxCount": count,
+            "StartIndex": index,
+            "IsReturnTotal": true,
+            "Appendixes": {
+                "+Product": [
+                    "Attachments2"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '众筹商品列表 查询';
+        req.items = ["Id", "Product_ImgId", "Name", "Remain_Need_Count", "Need_Count", "DateTime_Start", "ProductId", "Join_Proportion"];
+        req.appendixesKeyMap = { 'Product': 'ProductId' };
+
+        req.preprocessCallback = (req) => {
+            let { Tool } = global;
+
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                item.imageUrl = Tool.imageURLForId(item.Product_ImgId, '/res/img/common/common-avatar-default-icon.png');
+
+                if (Tool.timeIntervalFromString(item.DateTime_Start)
+                    >= Tool.timeIntervalFromDate(new Date(), 0)) {//即将开始
+                    item.isStart = false;
+                } else {
+                    item.isStart = true;
+                }
+            });
+        }
+
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
+
+            if (key === 'Product') {
+                //给data添加新属性
+                data.Attachments2 = appendixe.Attachments2;
+            }
+        };
+
+        return req;
+    }
+
+    //众筹订单列表 查询
+    static requestRaiseOrderList(condition, count, index) {
+        let operation = Operation.sharedInstance().raiseOrderReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "MaxCount": count,
+            "StartIndex": index,
+            "Appendixes": {
+                "+Member": [
+                    "NickName"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.appendixesKeyMap = { 'Member': 'MemberId' };
+        req.name = '众筹中奖列表 查询';
+        req.items = ["Id", "Product_Name"];
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
+
+            if (key === 'Member') {
+                //给data添加新属性
+                data.NickName = appendixe.NickName;
+            }
+        };
+        return req;
+    }
+
+
 }
