@@ -25,6 +25,8 @@ Page({
             Storage.setMemberId(id);
             Storage.setLoginType(type);
             self.gotoIndex();
+
+            self.requestMemberInfo();
         };
         r.addToQueue();
     },
@@ -57,6 +59,20 @@ Page({
         }
 
         return type
-    }
+    },
+
+    /**
+     * 登录用户信息
+     */
+    requestMemberInfo: function () {
+      let r = RequestReadFactory.memberInfoRead();
+      r.finishBlock = (req) => {
+        let datas = req.responseObject.Datas;
+        if (req.responseObject.Count > 0) {
+          Storage.setCurrentMember(req.responseObject.Datas[0]);
+        }
+      };
+      r.addToQueue();
+    },
 })
 

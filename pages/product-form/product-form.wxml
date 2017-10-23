@@ -1,0 +1,26 @@
+<import src='/components/cell/cell-quantity/cell-quantity.wxml' />
+
+<template name="product-form">
+  <view class='product-form' wx:if="{{form.isShowForm}}" catchtap='dismiss'>
+    <view class="product-form-root" catchtap='onNoActionListener'>
+      <view class="form-price-stock">
+        <text class='form-price-title'>需要积分：</text>
+        <text class='form-price-value'>{{form.innerPrice}}</text>
+        <text class='form-stock-value'>(库存{{form.innerStock}}件)</text>
+      </view>
+      <view class='form-list'>
+        <text class='list-title'>规格</text>
+        <view class='list-value'>
+          <text class="{{index==form.selectFormPosition?'list-value-cell current':'list-value-cell'}}" wx:for="{{form.formArray}}" wx:key="unique" catchtap='onFormItemClickListener' data-id='{{item.Id}}' data-position='{{index}}'>{{item.Size}}</text>
+        </view>
+      </view>
+      <view class='form-quantity'>
+        <text class='quantity-title'>数量</text>
+        <template is='cell-quantity' data="{{quantity:form.innerQuantity}}" />
+      </view>
+      <view class='form-view-btn' catchtap='onFormSubmitListener'>
+        <text class='form-btn-text'>{{form.innerType==0?'加入购物车':'立即兑换'}}</text>
+      </view>
+    </view>
+  </view>
+</template>

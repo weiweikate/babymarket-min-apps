@@ -1,190 +1,58 @@
-/*确认订单*/
-@import '/pages/address/cell-address/cell-address.wxss';
 @import '/pages/order-confirm/cell-order/cell-order.wxss';
-@import '/pages/my/myOrder/settlement-cell/settlement-cell.wxss';
+@import '/components/empty-view/empty-view.wxss';
+@import '/pages/address/cell-address/cell-address.wxss';
 
-.main {
-  position: relative;
-  height: 100%;
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+  margin-bottom: 100rpx;
+}
+
+.view-btn {
+  display: flex;
   width: 100%;
-}
-
-/*顶部地址*/
-
-.order-address {
-  display: flex;
-  background: white;
-  align-items: center;
-  border-bottom: 10rpx solid #f5f7f7;
-  padding: 0 20rpx 0 20rpx;
-}
-
-.order-address-icon {
-  width: 40rpx;
-  height: 40rpx;
-}
-
-.order-address-info {
-  flex-grow: 1;
-}
-
-.order-address-arrow {
-  width: 20rpx;
-  height: 20rpx;
-}
-
-/*中间订单详情*/
-
-.order-list {
-  display: flex;
-  height: 150rpx;
-  border-bottom: 2rpx solid #f5f7f7;
-  padding: 20rpx 20rpx 20rpx 20rpx;
-  background: white;
-}
-
-/*优惠劵*/
-
-.coupon {
-  display: flex;
-  padding: 20rpx 20rpx 20rpx 20rpx;
-  justify-content: space-between;
-  border-bottom: 10rpx solid #f5f7f7;
-  border-top: 10rpx solid #f5f7f7;
-  background: white;
-  align-items: center;
-}
-
-.coupon-select {
-  display: flex;
-}
-
-.coupon-text {
-  font-size: 26rpx;
-  color: #1a1c1f;
-}
-
-.couponDefault {
-  font-size: 24rpx;
-  color: #b0b1b3;
-  margin-left: 15rpx;
-}
-
-.couponSelect {
-  font-size: 24rpx;
-  color: #715329;
-  margin-left: 15rpx;
-}
-
-/*结算*/
-
-.settment-text {
-  width: 100%;
-  line-height: 62rpx;
-  padding-left: 20rpx;
-  font-size: 26rpx;
-  color: #b0b1b3;
-  background: white;
-  border-bottom: 2rpx solid #fafafa;
-}
-
-.settlement-view-cell {
-  height: 62rpx;
-  background: white;
-  border-bottom: 2rpx solid #fafafa;
-}
-
-.bgview {
-  padding: 0rpx 20rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 710rpx;
-  height: 100%;
-}
-
-.footer-bg-view {
-  width: 100%;
-  padding: 20rpx 0 20rpx 0rpx;
-  background: white;
-  border-bottom: 10rpx solid #f5f7f7;
-}
-
-.pay-finnal {
-  font-size: 24rpx;
-  color: #454950;
-  text-align: right;
-  margin-right: 20rpx;
-}
-
-.rule {
-  font-size: 26rpx;
-  padding: 20rpx 20rpx 20rpx 20rpx;
-  color: red;
-}
-
-/*授信钱包*/
-
-.credit {
-  display: flex;
-  justify-content: space-between;
-  padding: 20rpx 20rpx 20rpx 20rpx;
-  background: white;
-  align-items: center;
-  border-bottom: 2rpx solid #fafafa;
-}
-
-.credit-value {
-  font-size: 26rpx;
-  color: #1a1c1f;
-}
-
-.credit-switch {
-}
-
-.balance {
-  display: flex;
-  justify-content: space-between;
-  padding: 20rpx 20rpx 20rpx 20rpx;
-  background: white;
-  align-items: center;
-  margin-bottom: 200rpx;
-}
-
-/*底部结算*/
-
-.order-footer {
+  height: 100rpx;
+  background-color: white;
   position: fixed;
+  bottom: 0rpx;
+  align-items: center;
+}
+
+.view-btn .view-total {
   display: flex;
   align-items: center;
-  bottom: 0;
-  width: 100%;
-  height: 90rpx;
-  background: white;
-  z-index: 20;
-}
-
-.order-footer-text {
-  font-size: 26rpx;
-  margin-left: 20rpx;
-  color: #3c3d3d;
-}
-
-.order-footer-total {
-  font-size: 26rpx;
-  color: #af8327;
+  height: 99rpx;
   flex-grow: 1;
+  border-top: 1rpx solid #f3f3f4;
+  padding: 0rpx 20rpx;
 }
 
-.order-confirm-bt {
+.view-total .total-title {
+  color: #494848;
+  font-size: 28rpx;
+}
+
+.view-total .total-value {
+  color: #f55;
+  font-size: 28rpx;
+}
+
+.view-total .total-value-used {
+  color: #acadaa;
+  font-size: 28rpx;
+}
+
+.view-btn .view-submit {
   height: 100%;
-  margin-left: 40rpx;
-  background: #af8327;
-  color: white;
-  font-size: 30rpx;
-  justify-content: center;
+  background-color: #f55;
   display: flex;
-  padding-left: 30rpx;
-  padding-right: 30rpx;
   align-items: center;
+  justify-content: center;
+  width: 260rpx;
+}
+
+.view-submit .total-submit {
+  font-size: 30rpx;
+  color: white;
 }

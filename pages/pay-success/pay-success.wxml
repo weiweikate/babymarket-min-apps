@@ -1,35 +1,23 @@
-<!--支付成功-->
-
-<view class="main">
-  <!--顶部-->
-  <view class="pay-method-top">
-    <image src="/res/img/pay-success/pay-success-icon.png" class="top-icon" mode="aspectFit"></image>
-    <text class="top-text">付款成功，打包发货中...</text>
+<view class="view-root">
+  <view class='view-row'>
+    <image src="/res/img/pay-success/pay-success-icon.png" class="tips-icon" mode="aspectFit" />
+    <text class="tips-value">兑换成功，打包发货中...</text>
+  </view>
+  <view class='view-row'>
+    <text class="title">订单号：</text>
+    <text class="value">{{orderInfo.Number}}</text>
+  </view>
+  <view class='view-row'>
+    <text class="title">消耗积分：</text>
+    <text class="value">{{orderInfo.Points}}</text>
+  </view>
+  <view class='view-row'>
+    <text class="title">发放方式：</text>
+    <text class="value">{{orderInfo.ReciptTypeName}}</text>
   </view>
 
-  <view class="no">
-    <text class="info-no-title">订单号：</text>
-    <text class="info-no-value">{{no}}</text>
-  </view>
-  <view class="money">
-    <text class="info-no-title">订单金额：</text>
-    <text class="info-no-value">{{price}}</text>
-  </view>
-
-  <!--支付明细-->
-  <view class="pay-info">
-    <text class="pay-info-text">支付明细</text>
-    <!--分割线-->
-    <view class="divide"></view>
-    <!--明细-->
-    <view class="pay-info-list" wx:for="{{infos}}" wx:key="{{index}}">
-      <text class="pay-info-title">{{item.title}}</text>
-      <text class="pay-info-value">{{item.value}}</text>
-    </view>
-    <!--按钮-->
-    <view class="pay-bt">
+  <view class="view-btn">
       <view bindtap="lookOrder" class="bt-left">查看订单</view>
       <view bindtap="goBuy" class="bt-right">去逛逛</view>
     </view>
-  </view>
 </view>

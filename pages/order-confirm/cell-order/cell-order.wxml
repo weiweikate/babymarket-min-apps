@@ -1,16 +1,14 @@
+<import src='/components/cell/cell-quantity/cell-quantity.wxml' />
+
 <template name="cell-order">
-  <view class="cell-order" >
-    <!--选择框和图片-->
-    <image class="{{item.image.length>0?'cart-image':'image-empty'}}" src="{{item.image}}" mode="aspectFit" />
-    <!--产品信息-->
-    <view class="cart-describe">
-      <view class="cart-name">
-        <text class="cart-title OverFlowTwoLine">{{item.Product_ShowName}}</text>
-        <text class="cart-size">{{item.S_Name}}</text>
-      </view>
-      <view class="cart-price-count">
-        <text class="cart-price">￥{{item.Price}}</text>
-        <text class="cart-count">X{{item.Qnty}}</text>
+  <view class="{{position>0?'cell-order top':'cell-order'}}" catchtap="onItemClickLitener" catchlongpress="onItemLongLitener" data-id="{{Id}}" data-product-id="{{ProductId}}" data-position="{{position}}">
+    <image class="product-image" src="{{ProductImgId}}" mode="aspectFit" />
+    <view class='view-product'>
+      <text class='product-name'>{{ProductName}}</text>
+      <view class='price-count'>
+        <text class='price-title'>积分：</text>
+        <text class='price-value'>{{Price}}</text>
+        <template is="cell-quantity" data="{{quantity:Qnty,position:position}}" />
       </view>
     </view>
   </view>

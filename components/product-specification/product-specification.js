@@ -67,8 +67,10 @@ export default class ProductSpecification {
             p.counterAddClicked = this._counterAddClicked.bind(this);
         }
 
-        //请求数据
-        this.requestData();
+        // //请求数据
+        // this.requestData();
+
+        this.requestProductForm();
     }
 
     setSpecificationData(specificationData){
@@ -114,18 +116,18 @@ export default class ProductSpecification {
     }
 
     /**
-     * 规格组
+     * 获取产品规格
      */
-    getSpecificationGroup(){
+    requestProductForm(){
         let self = this;
-        let r = RequestReadFactory.specificationGroup(this.productId);
-        r.finishBlock = (req) => {
-            let {Datas} = req.responseObject;
-            self.page.setData({
-                categoryArray:Datas,
-            })
+        let task = RequestReadFactory.productFormRead(this.page.data.productId);
+        task.finishBlock = (req) => {
+            // let {Datas} = req.responseObject;
+            // self.page.setData({
+            //     categoryArray:Datas,
+            // })
         }
-        r.addToQueue();
+        task.addToQueue();
     }
 
     /**

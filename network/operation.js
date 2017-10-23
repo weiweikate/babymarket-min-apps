@@ -149,23 +149,8 @@ export default class Operation {
         //搜索-热门搜索
         this.searchHotReadOperation = 'c8abee85-11ab-0bba-1bcd-3c4701ec76cb';
 
-        //专题
-        this.specialReadOperation = '1120e650-629e-4af0-ab39-a650012db775';
-
-        //宝贝码头商品详情
-        this.bmProductReadOperation = 'de9362a8-395e-09a4-087d-3c1701f9da63';
-
         //规格读取
-        this.productSpecificationRead = '3b61a23d-e130-00cd-320f-3c6800fbe982';
-
-        //规格组 读取
-        this.productSpecificationGroupRead = '05fac52c-6d7d-0acb-1173-3e3201d4fe8f';
-
-        //老友码头 商品的国家信息
-        this.bmNationReadOperation = 'c5cb5117-b585-0160-2ab2-3c1f0016ec87';
-
-        //老友码头 运费
-        this.bmExpressRuleReadOperation = '91972a34-2e32-0928-156f-3c3501e55857';
+        this.productFormRead = '05fac52c-6d7d-0acb-1173-3e3201d4fe8f';
 
         //产品查询
         this.productReadOperation = '9992fecc-286b-47c2-97fa-a62c00fa3201';
@@ -191,13 +176,13 @@ export default class Operation {
         this.areaReadOperation = 'd7e69a1e-5040-48c8-a5ac-a62c00f70f45';
 
         //订单
-        this.orderAddOperation = 'c65c46b6-b12e-0e57-28fe-3c1900223872';
+        this.orderAddOperation = '7026e5da-2db7-0e59-3831-3f25018afab2';
         this.orderDeleteOperation = '';
-        this.orderReadOperation = '481f0766-998d-003c-1727-3c1701e15fcb';
-        this.orderModifyOperation = '51edceb5-4d37-0d8b-1043-3c1a01f6b85e';
+        this.orderReadOperation = '318450a4-715f-463d-b1f9-a62c01176565';
+        this.orderModifyOperation = '3095ff42-bece-47e2-b435-a62c011818b1';
 
         //订单明细
-        this.orderLineAddOperation = '6a5ba01b-d63c-0e45-230f-3c19005015b1';
+        this.orderLineAddOperation = 'cc995cdf-115c-01b3-30cb-3f2500426b35';
 
         //完善信息
         this.informationCompleteReadOperation = '';

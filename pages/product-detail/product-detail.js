@@ -1,5 +1,5 @@
 // 商品详情
-import ProductSpecification from '../../components/product-specification/product-specification';
+import ProductForm from '../product-form/product-form';
 import WxParse from '../../libs/wxParse/wxParse.js';
 
 let { Tool, Storage, RequestReadFactory, RequestWriteFactory } = global;
@@ -11,7 +11,7 @@ Page({
   data: {
     productId: undefined,
     productInfo: undefined,
-    bannerArray:[]
+    bannerArray: []
   },
 
   /**
@@ -23,9 +23,13 @@ Page({
       productId: productId
     });
 
-    // this.productSpecification = new ProductSpecification(this, productId);
-    // this.productSpecification.finishBlock = (specificationId, product, count, price) => {
-    // };
+    this.productForm = new ProductForm(this);
+    this.productForm.finishBlock = (formId, innerType, quantity, price) => {
+      //结束当前页面，跳转到订单确认界面
+      wx.redirectTo({
+        url: '/pages/order-confirm/order-confirm'
+      })
+    };
 
     this.requestProductInfo();
   },
@@ -42,11 +46,11 @@ Page({
         self.setData({
           productInfo: responseData
         });
-        if (responseData.OutSold=="True"){
-          Tool.showAlert('商品已下架', () =>{
+        if (responseData.OutSold == "True") {
+          Tool.showAlert('商品已下架', () => {
             Tool.navigationPop();
           });
-        }else{
+        } else {
           //查询附件
           self.requestAttatchments();
 
@@ -66,7 +70,7 @@ Page({
   //附件
   requestAttatchments() {
     let self = this;
-    let task = RequestReadFactory.attachmentsRead(self.data.productId,"Attachments2");
+    let task = RequestReadFactory.attachmentsRead(self.data.productId, "Attachments2");
     task.finishBlock = (req) => {
       let bannerArray = req.responseObject.imageUrls;
       self.setData({
@@ -89,16 +93,14 @@ Page({
    * 添加购物车
    */
   onAddCartListener: function (e) {
-    console.log("添加购物车")
-    this.productSpecification.showWithAction('ShoppingCart');
+    this.productForm.show(0, this.data.productInfo);
   },
 
   /**
    * 立即兑换
    */
   onSubmitListener: function (e) {
-    console.log("立即兑换")
-    this.productSpecification.showWithAction('Buy');
+    this.productForm.show(1, this.data.productInfo);
   }
 
 })

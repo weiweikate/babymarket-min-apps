@@ -103,85 +103,19 @@ export default class RequestReadFactory {
     }
 
     /**
-     * 规格组
+     * 积分商城-商品规格
      */
-    static specificationGroup(theId){
-        let operation = Operation.sharedInstance().productSpecificationGroupRead;
+    static productFormRead(productId){
+      let operation = Operation.sharedInstance().productFormRead;
         let bodyParameters = {
             "Operation": operation,
-            "ProductId": theId,
-            "IsReturnTotal":true,
-            "IsIncludeSubtables":true,
-            // "View": {
-            //   "EntityName": "ShoppingCart_View",
-            // }
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头商品规格组';//用于日志输出
-
-        return req;
-    }
-
-    /**
-     * 全部规格
-     */
-    static allSpecificationRead(theId) {
-        let operation = Operation.sharedInstance().productSpecificationRead;
-        let bodyParameters = {
-            "Operation": operation,
-            "ProductId": theId,
-            "IsReturnTotal":true,
-            "IsIncludeSubtables":true,
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头商品全部规格';//用于日志输出
-        req.preprocessCallback = (req)=>{
-            let {Tool:t} = global;
-
-            let {Datas} = req.responseObject;
-            if (t.isValidArr(Datas)) {
-                Datas.forEach((specification) => {
-                    let _levelPrice = '';
-                    let member = global.Storage.currentMember();
-
-                    let price = specification.Price;
-                    if (t.isValidArr(specification.ShopLevelPrice)) {
-                        specification.ShopLevelPrice.forEach((p)=>{
-                            if (p.ShopLevelKey === member.LevelKey) {
-                                price = p.Price2;
-                            }
-                        })
-                    }
-                    _levelPrice = price;
-
-                    //普通会员显示老尤价（LYPrice）
-                    if (global.Storage.didLogin() && member.MemberTypeKey === "0") {
-                        _levelPrice = specification.LYPrice;
-                    }
-                    specification.levelPrice = _levelPrice;
-                })
+            "PrimaryId": productId,
+            "View": {
+              "EntityName": "ProductSize"
             }
-        }
-        return req;
-    }
-
-    /**
-     * 搜索规格
-     */
-    static searchSpecificationRead(theId, specificationsArray) {
-        let operation = Operation.sharedInstance().productSpecificationRead;
-        let bodyParameters = {
-            "Operation": operation,
-            "ProductId": theId,
         };
-        if (global.Tool.isValidArr(specificationsArray)) {
-            specificationsArray.forEach((detail) => {
-                let keyName = 'SpecificationItem' + detail.SpecificationKey + 'Id';
-                bodyParameters[keyName] = detail.Id;
-            });
-        }
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头 搜索特定的规格';//用于日志输出
+        req.name = '积分商城-商品规格';
         return req;
     }
 
@@ -414,27 +348,6 @@ export default class RequestReadFactory {
         return req;
     }
 
-    //专题查询
-    static specialRead() {
-        let operation = Operation.sharedInstance().specialReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "Deleted": "False"
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '专题查询';
-        req.items = ['Id', 'ImgId', 'Img2Id', 'Name', 'Title', 'Subtitle', 'PriceDes'];
-        //修改返回结果
-        req.preprocessCallback = (req) => {
-            let responseData = req.responseObject.Datas;
-            responseData.forEach((item, index) => {
-                item.imageUrl = global.Tool.imageURLForId(item.ImgId);
-                item.imageHeadUrl = global.Tool.imageURLForId(item.Img2Id);
-            });
-        }
-        return req;
-    }
-
     //查询购物车
     static cartRead() {
         let operation = Operation.sharedInstance().cartReadOperation;
@@ -526,19 +439,6 @@ export default class RequestReadFactory {
         return req;
     }
 
-    //地址查询（按默认排序）
-    static addressDefaultRead() {
-        let operation = Operation.sharedInstance().addressReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "Order": "${Default} DESC",
-            "Condition": "${MemberId} == '" + global.Storage.memberId() + "'",
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '地址查询（按默认排序）';
-        return req;
-    }
-
     //我的订单查询
     static myOrderRead(status, index) {
         let operation = Operation.sharedInstance().orderReadOperation;
@@ -569,21 +469,47 @@ export default class RequestReadFactory {
     static orderDetailRead(orderId) {
         let operation = Operation.sharedInstance().orderReadOperation;
 
-        let condition = "${Id} == '" + orderId + "'";
-
         let bodyParameters = {
-            "Operation": operation,
-            "Condition": condition,
-            "IsIncludeSubtables": true,
-            "MaxCount": '1',
-            "StartIndex": 0,
-            "Subtables": [
-                "Line"
+          "Id": orderId,
+          "Operation": operation,
+          "Appendixes": {
+            "+Member": [
+              "Name"
+            ],
+            "+ReceiptAddress": [
+              "Consignee",
+              "Mobile",
+              "ReciptAddress"
+            ],
+            "+ReciptType": [
+              "Name"
+            ],
+            "+Status": [
+              "Name"
             ]
+          },
         };
         let req = new RequestRead(bodyParameters);
         req.name = '订单详情查询';
-        // req.items = ["Id", "OrderNo", "Money", "StatusKey", "Freight", "Due", "Discount", "ExpressSum", "Formal", "Qnty", "Tax", "Total", "Cross_Order", "Tax2", "CrossFee", "Credit", "UseCredit", "Balance", "UseBalance", "Money1", "Money2", "PaywayName", "BuyerCommission"];
+        req.items = ["Id", "Number", "Date", "MemberId", "ReceiptAddressId", "ReciptTypeKey","Qnty", "Points", "StatusKey", "LogisticsCode","LogisticsNumber"];
+        req.appendixesKeyMap = { 'Member': 'MemberId',
+          'ReceiptAddress': 'ReceiptAddressId',
+          'ReciptType': 'ReciptTypeKey',
+          'Status': 'StatusKey' };//可以多个
+        //修改返回结果
+        req.preprocessCallback = (req) => {
+          let responseData = req.responseObject.Datas;
+          responseData.forEach((item, index) => {
+          });
+        }
+        //匹配成功函数
+        req.appendixesBlock = (item, appendixe, key, id) => {
+          if (key === 'Member') {
+          } else if (key === 'ReceiptAddress'){
+          } else if (key === 'ReciptType') {
+          } else if (key === 'Status') {
+          }
+        };
         return req;
     }
 
@@ -591,20 +517,6 @@ export default class RequestReadFactory {
     static orderDeliveryInfoRead(deliveryNo, companyNo) {
         let req = new RequestDeliveryInfoRead(deliveryNo, companyNo);
         req.name = '物流详情查询';
-        return req;
-    }
-
-    //优惠劵查询
-    static couponRead(condition) {
-        let operation = Operation.sharedInstance().couponReadOperation;
-        let bodyParameters = {
-            "Operation": operation,
-            "Condition": condition,
-            "Order": "${Date} DESC"
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '优惠劵查询';
-        req.items = ["Id", "Money", "Useful_Line", "Min_Money", "Overdue", "Used"];
         return req;
     }
 

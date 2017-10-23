@@ -1,6 +1,6 @@
 @import '/components/banner/banner.wxss';
-@import '/components/product-specification/product-specification.wxss';
-@import "/libs/wxParse/wxParse.wxss";
+@import '/pages/product-form/product-form.wxss';
+@import '/libs/wxParse/wxParse.wxss';
 
 .view-root {
   display: flex;

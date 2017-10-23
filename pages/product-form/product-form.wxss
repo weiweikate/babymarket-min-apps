@@ -1,0 +1,105 @@
+@import '/components/cell/cell-quantity/cell-quantity.wxss';
+
+.product-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10002;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.product-form-root {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+  background-color: white;
+}
+
+.form-price-stock {
+  display: flex;
+  align-items: center;
+  padding: 25rpx;
+  border-bottom: 1px solid #f3f4f5;
+  background-color: white;
+}
+
+.form-price-title {
+  color: #f55;
+  font-size: 28rpx;
+}
+
+.form-price-value {
+  color: #090909;
+  font-size: 28rpx;
+}
+
+.form-stock-value {
+  color: #090909;
+  font-size: 28rpx;
+}
+
+.form-list {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 25rpx;
+}
+
+.list-title {
+  color: #090909;
+  font-size: 28rpx;
+}
+
+.list-value {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15rpx;
+}
+
+.list-value-cell {
+  color: #090909;
+  font-size: 26rpx;
+  padding: 6rpx 15rpx;
+  border: 1rpx solid #acadaa;
+  border-radius: 20rpx;
+  margin: 10rpx;
+}
+
+.list-value-cell.current {
+  color: white;
+  border: 0rpx solid #f55;
+  background-color: #f55;
+}
+
+.form-quantity {
+  display: flex;
+  align-items: center;
+  padding: 25rpx;
+  background-color: white;
+}
+
+.quantity-title {
+  color: #090909;
+  font-size: 28rpx;
+  margin-right: 20rpx;
+}
+
+.form-view-btn {
+  display: flex;
+  padding: 30rpx;
+  justify-content: center;
+  align-items: center;
+  background-color: #f55;
+}
+
+.form-btn-text {
+  color: white;
+  font-size: 30rpx;
+}

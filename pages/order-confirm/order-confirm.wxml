@@ -1,61 +1,19 @@
-<!--确认订单-->
-<import src='/pages/address/cell-address/cell-address.wxml' />
+<import src='/components/empty-view/empty-view.wxml' />
 <import src='/pages/order-confirm/cell-order/cell-order.wxml' />
-<import src='/pages/my/myOrder/settlement-cell/settlement-cell.wxml' />
+<import src='/pages/address/cell-address/cell-address.wxml' />
 
-<view class="main">
-  <!--选择订单地址-->
-  <view class="order-address">
-    <image src="/res/img/address/address-location.png" class="order-address-icon" mode="aspectFit"></image>
-    <view class="order-address-info" catchtap="selectAddress">
-      <template is="address-info" data="{{...addressData}}"></template>
-    </view>
-    <image src="/res/img/common/comm-arrow-gray-right.png" class="order-address-arrow" mode="aspectFit"></image>
+<view class="view-root">
+  <template is="cell-address" data="{{Id:addressInfo.Id,Consignee:addressInfo.Consignee,Mobile:addressInfo.Mobile,ReciptAddress:addressInfo.ReciptAddress,hasArrow:true,isSelectMode:true}}" />
+  <template is="cell-order" data="{{...item,position:index}}" wx:for="{{orderLineArray}}" wx:key="unique" />
+</view>
+
+<view class='view-btn'>
+  <view class='view-total'>
+    <text class='total-title'>合计：</text>
+    <text class='total-value'>{{totalPrice}}积分</text>
+    <text class='total-value-used'>(可用积分{{canUsedMoney}})</text>
   </view>
-
-  <!--订单商品列表-->
-  <view class="order-list" wx:for="{{orders}}" wx:key="{{index}}">
-    <!--商品数据布局-->
-    <template is="cell-order" data="{{item}}"></template>
-  </view>
-
-  <!--选择优惠劵-->
-  <view class="coupon" catchtap="selectCoupon">
-    <text class="coupon-text">优惠劵</text>
-    <view class="coupon-select">
-      <text class="{{isSelect==false?'couponDefault':'couponSelect'}}">{{couponData.money}}</text>
-      <image src="/res/img/common/comm-arrow-gray-right.png" class="order-address-arrow" mode="aspectFit"></image>
-    </view>
-  </view>
-
-  <!--结算-->
-  <text class="settment-text">结算</text>
-  <block wx:for="{{settlementList}}" wx:key="unique">
-    <view class="settlement-view-cell">
-      <template is="settlement-cell" data="{{datas:item}}"></template>
-    </view>
-  </block>
-  <view class="footer-bg-view">
-    <text class="pay-finnal">应付总额：¥{{order.Total}}</text>
-  </view>
-
-  <text wx:if="{{isAirProduct}}" class="rule">跨境商品仅支持支付宝支付</text>
-
-  <!--授信钱包-->
-  <view wx:if="{{isInsideMember}}" class="credit">
-    <text class="credit-value">{{order.credit}}</text>
-    <switch class="credit-switch" type="switch" color="#715329" bindchange="creditSwitch" checked="{{creditChecked}}" />
-  </view>
-
-  <view class="balance">
-    <text class="credit-value">{{order.balance}}</text>
-    <switch class="credit-switch" type="switch" color="#715329" bindchange="balanceSwitch" checked="{{balanceChecked}}" />
-  </view>
-
-  <!--订单底部结算-->
-  <view class="order-footer">
-    <text class="order-footer-text">实付：</text>
-    <text class="order-footer-total">￥{{total}}</text>
-    <view bindtap="addOrder" class="order-confirm-bt">提交订单</view>
+  <view class='view-submit' catchtap="onSubmitClickListener">
+    <text class="total-submit">提交订单</text>
   </view>
 </view>

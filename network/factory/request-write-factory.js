@@ -29,6 +29,16 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //新增购物车
+    static addCart(requestData) {
+      let operation = Operation.sharedInstance().cartAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'ShopCart', requestData, operation, null);
+      req.name = '新增购物车';
+      return req;
+    }
+
     //修改购物车
     static modifyCart(requestData) {
       let operation = Operation.sharedInstance().cartModifyOperation;
@@ -113,30 +123,21 @@ export default class RequestWriteFactory {
     }
 
     //订单新增
-    static orderAddRequest(id, addressId, time) {
+    static orderAdd(requestData) {
         let operation = Operation.sharedInstance().orderAddOperation;
         let status = Network.sharedInstance().statusNew;
-        let params = {
-            "Operation": operation,
-            "Formal": "False",
-            "CreatorId": global.Storage.memberId(),
-            "MemberId": global.Storage.memberId(),
-            "Id": id,
-            "Delivery_AddressId": addressId,
-            "Address_Refresh": time,
-        };
 
-        let req = new RequestWrite(status, 'Order', params, null);
+        let req = new RequestWrite(status, 'ExchangeOrder', requestData, operation, null);
         req.name = '订单新增';
         return req;
     }
 
     //订单明细新增
-    static orderLineAddRequest(requestData) {
+    static orderLineAdd(requestData) {
         let operation = Operation.sharedInstance().orderLineAddOperation;
         let status = Network.sharedInstance().statusNew;
 
-        let req = new RequestWrite(status, 'Order_Line', requestData, operation, null);
+        let req = new RequestWrite(status, 'ExchangeOrderDetail', requestData, operation, null);
         req.name = '订单明细新增';
         return req;
     }

@@ -1,5 +1,5 @@
 <import src='/components/banner/banner.wxml' />
-<import src='/components/product-specification/product-specification.wxml' />
+<import src='/pages/product-form/product-form.wxml' />
 <import src="/libs/wxParse/wxParse.wxml" />
 
 <view class="view-root">
@@ -32,4 +32,4 @@
   </view>
 </view>
 
-<template is="product-specification" data="{{visiable:showProductSpecification,innerTitle,categoryArray,allSepcificationArray,innerCount,specificationData}}" />
+<template is="product-form" data="{{form:form}}" />
