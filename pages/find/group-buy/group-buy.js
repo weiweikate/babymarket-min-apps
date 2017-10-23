@@ -113,7 +113,8 @@ Page({
      * 轮播图查询
      */
     requestCyclePictures: function () {
-        let task = RequestReadFactory.requestWelfareCycle();
+        let condition = "${IsUse} == 'True' && ${Ref001Type} == 'Activity'";
+        let task = RequestReadFactory.requestWelfareCycle(condition);
         let self = this;
         task.finishBlock = (req) => {
             let datas = req.responseObject.Datas;

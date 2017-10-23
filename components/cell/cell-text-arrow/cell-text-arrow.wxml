@@ -1,0 +1,6 @@
+<template name="cell-text-arrow">
+    <view class="cell-text-arrow" catchtap="cellTextViewTap" data-index="{{index}}" data-title="{{item}}">
+        <view>{{item}}</view>
+        <image class="arrow" src="/res/img/common/comm-arrow-gray-right.png" style="width:17rpx;height:30rpx;"></image>
+    </view>
+</template>

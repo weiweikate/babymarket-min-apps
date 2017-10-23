@@ -23,6 +23,7 @@
 .raise-cell .number{
     color: #ff5555;
     font-size: 32rpx;
+    margin-top: -5rpx;
 }
 
 .raise-cell .join-button{
@@ -35,4 +36,8 @@
     line-height: 60rpx;
     text-align: center;
     font-size: 32rpx;
+}
+
+.join-button .disable{
+    background: #adadab;
 }

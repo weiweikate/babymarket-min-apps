@@ -41,10 +41,10 @@ page{
 }
 
 .win-info-view .win-cycle-view{
-    background: #acadaa;
-    height: 100%;
-    width: 353rpx;
-    margin-right: 30rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    width: 320rpx;
+    padding: 20rpx;
 }
 
 /* 列表 */

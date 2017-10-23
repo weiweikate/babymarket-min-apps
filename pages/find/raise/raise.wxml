@@ -15,7 +15,14 @@
         <view>信息：</view>
         <view class="gongxi">恭喜</view>
 
-        <view class="win-cycle-view"></view>
+        <swiper class="win-cycle-view" autoplay='true' vertical="true" interval="2000" circular="true">
+            <block wx:for="{{winArry}}" wx:key="unique">
+                <swiper-item>
+                    <view class="win-tab">{{item}}</view>
+                </swiper-item>
+            </block>
+        </swiper>
+
         <view class="rule-view" catchtap="ruleTap">规则 ></view>
     </view>
 </view>
