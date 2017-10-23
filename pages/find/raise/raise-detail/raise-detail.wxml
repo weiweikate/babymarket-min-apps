@@ -1,0 +1,46 @@
+<import src='/components/banner/banner.wxml' />
+<import src='/components/cell/cell-text-arrow/cell-text-arrow.wxml' />
+
+<view class="root-view">
+
+    <view class="product-info">
+
+        <!--广告-->
+        <template is="banner" data="{{bannerArray:images}}" />
+
+        <view class="info">
+            <view class="name">{{product.Name}}</view>
+            <view class="detail">{{product.Summary}}</view>
+            <view class="price">
+                <view class="now-price">总需人数：
+                    <view class="now-price-points">{{product.Need_Count}}</view>人次
+                </view>
+                <view class="period">第2期</view>
+            </view>
+
+            <view class="remain-num-view">
+                <view class="remain-num-flex">剩余人次：
+                    <view class="remain">{{product.Remain_Need_Count}}</view>人次
+                </view>
+                <progress class="rate-view" color="#ff5555" activeColor="#ff5555" percent="{{product.Join_Proportion*100}}"/>
+            </view>
+        </view>
+
+        <!--参与状态-->
+        <view class="join-status-view">{{joinStatus}}</view>
+
+        <!--图文详情、往期揭晓-->
+        <view class="table">
+            <block wx:for="{{tableList}}" wx:key="unique">
+                <template is="cell-text-arrow" data="{{item}}"></template>
+            </block>
+        </view>
+    </view>
+
+    <!--底部bar-->
+    <view wx:if="{{product.isStart}}" class="buy-button enabled" 
+    catchtap="onApplyClickListener" data-index="{{index}}" data-type="{{product.buyStatus}}">立即参与</view>
+
+    <view wx:else class="buy-button" 
+    catchtap="onApplyClickListener" data-index="{{index}}" data-type="{{product.buyStatus}}">即将开始</view>
+</view>

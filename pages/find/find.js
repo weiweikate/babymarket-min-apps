@@ -50,6 +50,7 @@ Page({
         break;
       case 2:
         //TOP众筹
+        url = '/pages/find/raise/raise';
         break;
       case 3:
         //TOP团购

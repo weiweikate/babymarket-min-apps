@@ -137,6 +137,10 @@ export default class Operation {
         // 秒杀商品列表 查询
         this.secKillProductsReadOperation = 'a5db1a6b-3345-4f87-b61a-a64e010f1fd1'
 
+        // 众筹列表 查询
+        this.raiseReadOperation = 'a53f2219-f5a3-4909-9e5f-a6430121b0f1'
+        this.raiseOrderReadOperation = '9f761fbb-3d3e-4cf7-9957-a643012349ed'
+
         //首页-广告位
         this.homeAdReadOperation = 'f7caf922-5a10-4d98-bdc8-a65800b955b5';
         //首页-分类
