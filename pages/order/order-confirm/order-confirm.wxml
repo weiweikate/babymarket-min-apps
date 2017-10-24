@@ -1,0 +1,18 @@
+<import src='/pages/order/cell-order-line/cell-order-line.wxml' />
+<import src='/pages/address/cell-address/cell-address.wxml' />
+
+<view class="view-root">
+  <template is="cell-address" data="{{Id:addressInfo.Id,Consignee:addressInfo.Consignee,Mobile:addressInfo.Mobile,ReciptAddress:addressInfo.ReciptAddress,hasArrow:true,isSelectMode:true,hasLocation:true}}" />
+  <template is="cell-order-line" data="{{...item,position:index,isEdit:true}}" wx:for="{{orderLineArray}}" wx:key="unique" />
+</view>
+
+<view class='view-btn'>
+  <view class='view-total'>
+    <text class='total-title'>合计：</text>
+    <text class='total-value'>{{totalPrice}}积分</text>
+    <text class='total-value-used'>(可用积分{{canUsedMoney}})</text>
+  </view>
+  <view class='view-submit' catchtap="onSubmitClickListener">
+    <text class="total-submit">提交订单</text>
+  </view>
+</view>

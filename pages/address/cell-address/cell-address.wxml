@@ -6,7 +6,7 @@
       <image class="address-delete" src="/res/img/address/address-delete.png" catchtap="onDeleteClickListener" data-id="{{Id}}" data-position="{{position}}" mode="aspectFit" />
     </view>
     <view class='address-info' catchtap="onAddressClickListener" data-id="{{Id}}" data-position="{{position}}">
-      <image class='address-location' src='/res/img/address/address-location.png' mode="aspectFit" wx:if="{{hasArrow}}" />
+      <image class='address-location' src='/res/img/address/address-location.png' mode="aspectFit" wx:if="{{hasLocation}}" />
       <view class="name-mobile-detail">
         <view class="name-mobile">
           <text class="address-name">{{Consignee}}</text>

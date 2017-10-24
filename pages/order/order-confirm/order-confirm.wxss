@@ -1,0 +1,57 @@
+@import '/pages/order/cell-order-line/cell-order-line.wxss';
+@import '/pages/address/cell-address/cell-address.wxss';
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+  margin-bottom: 100rpx;
+}
+
+.view-btn {
+  display: flex;
+  width: 100%;
+  height: 100rpx;
+  background-color: white;
+  position: fixed;
+  bottom: 0rpx;
+  align-items: center;
+}
+
+.view-btn .view-total {
+  display: flex;
+  align-items: center;
+  height: 99rpx;
+  flex-grow: 1;
+  border-top: 1rpx solid #f3f3f4;
+  padding: 0rpx 20rpx;
+}
+
+.view-total .total-title {
+  color: #494848;
+  font-size: 28rpx;
+}
+
+.view-total .total-value {
+  color: #f55;
+  font-size: 28rpx;
+}
+
+.view-total .total-value-used {
+  color: #acadaa;
+  font-size: 28rpx;
+}
+
+.view-btn .view-submit {
+  height: 100%;
+  background-color: #f55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 260rpx;
+}
+
+.view-submit .total-submit {
+  font-size: 30rpx;
+  color: white;
+}

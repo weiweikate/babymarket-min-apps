@@ -17,7 +17,7 @@
   </view>
 
   <view class="view-btn">
-      <view bindtap="lookOrder" class="bt-left">查看订单</view>
-      <view bindtap="goBuy" class="bt-right">去逛逛</view>
-    </view>
+    <text bindtap="onGoOrderClickListener" class="btn-order">查看订单</text>
+    <text bindtap="onGoBugClickListener" class="btn-buy">去逛逛</text>
+  </view>
 </view>

@@ -1,0 +1,55 @@
+@import '/pages/order/cell-order-line/cell-order-line.wxss';
+
+.cell-order {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.cell-order.top {
+  border-top: 15rpx solid #f3f3f4;
+}
+
+.time-status {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f3f3f4;
+}
+
+.time-status .order-time {
+  color: #494848;
+  font-size: 24rpx;
+  flex-grow: 1;
+}
+
+.time-status .order-status {
+  color: #494848;
+  font-size: 24rpx;
+}
+
+.total-btn {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  border-top: 1rpx solid #f3f3f4;
+}
+
+.total-btn .order-total-title {
+  color: #494848;
+  font-size: 26rpx;
+}
+
+.total-btn .order-total-value {
+  color: #f55;
+  font-size: 26rpx;
+  flex-grow: 1;
+}
+
+.total-btn .order-btn {
+  color: #494848;
+  font-size: 26rpx;
+  border: 1rpx solid #494848;
+  border-radius: 8rpx;
+  padding: 12rpx 24rpx;
+}

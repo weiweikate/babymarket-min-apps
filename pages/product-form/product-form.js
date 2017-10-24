@@ -156,14 +156,12 @@ export default class ProductForm {
         requestData = [{
           'MemberId': Storage.memberId(),
           'ProductId': this.page.data.productId,
-          'ProductImgId': this.page.data.productInfo.imageUrl,
+          'ProductImgUrl': this.page.data.productInfo.imageUrl,
           'ProductName': this.page.data.productInfo.Name,
-          'Price': form.innerPrice + '',
-          'Points': form.innerPrice * form.innerQuantity + '',
-          'total': form.innerPrice * form.innerQuantity,
-          'Qnty': form.innerQuantity + '',
-          'ProductSizeId': selectForm.Id,
-          'ProductSizeQuantity': form.innerQuantity + ''
+          'Price': form.innerPrice,
+          'Points': form.innerPrice * form.innerQuantity,
+          'Qnty': form.innerQuantity,
+          'ProductSizeId': selectForm.Id
         }];
 
         Storage.setterFor("orderLine", requestData);

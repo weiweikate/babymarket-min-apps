@@ -1,0 +1,34 @@
+<import src='/pages/order/cell-order-line/cell-order-line.wxml' />
+<import src='/pages/address/cell-address/cell-address.wxml' />
+
+<view class="view-root">
+  <view class="view-info">
+    <image class="order-info-icon" src="/res/img/my/order-detail/my-order-detail-order-icon.png" mode="aspectFit"></image>
+    <view class="order-info">
+      <view class="view-row">
+        <text class='row-title'>订单状态：</text>
+        <text class="row-value">{{orderInfo.StatusName}}</text>
+      </view>
+      <view class="view-row">
+        <text class='row-title'>订单号：</text>
+        <text class="row-value">{{orderInfo.Number}}</text>
+      </view>
+      <view class="view-row">
+        <text class="row-tips-title">如果长时间未发货，您可以联系客服：</text>
+        <text class="row-tips-value">0571-56888866</text>
+      </view>
+    </view>
+  </view>
+
+  <template is="cell-address" data="{{isSelectMode:true,hasLocation:true,Consignee:orderInfo.AddressConsignee,Mobile:orderInfo.AddressMobile,ReciptAddress:orderInfo.AddressDetail}}" />
+  <template is="cell-order-line" data="{{...item,position:index}}" wx:for="{{orderInfo.Detail}}" wx:key="unique" />
+
+  <view class='view-fee'>
+    <text class="fee-title">运费：包邮</text>
+    <text class="fee-title">合计：{{orderInfo.Points}}积分</text>
+  </view>
+
+  <view class='view-btn'>
+    <text class="btn-text" catchtap='onContactClickListener'>联系客服</text>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+@import '/pages/order/cell-order/cell-order.wxss';
+@import '/components/empty-view/empty-view.wxss';
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+}
+
+.no-data {
+  height: 100%;
+}

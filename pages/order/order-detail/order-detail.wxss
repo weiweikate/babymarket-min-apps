@@ -1,0 +1,84 @@
+@import '/pages/order/cell-order-line/cell-order-line.wxss';
+@import '/pages/address/cell-address/cell-address.wxss';
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+  margin-bottom: 100rpx;
+}
+
+.view-info {
+  background: white;
+  display: flex;
+  border-bottom: 15rpx solid #f3f4f5;
+  padding: 20rpx;
+  align-items: center;
+}
+
+.order-info-icon {
+  width: 30rpx;
+  height: 30rpx;
+  flex: none;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.view-row {
+  display: flex;
+  align-items: center;
+  padding: 8rpx 0rpx;
+}
+
+.row-title {
+  font-size: 26rpx;
+  color: #090909;
+}
+
+.row-value {
+  font-size: 26rpx;
+  color: #f55;
+}
+
+.row-tips-title {
+  font-size: 22rpx;
+  color: #acadaa;
+}
+
+.row-tips-value {
+  font-size: 22rpx;
+  color: #5caad3;
+}
+
+.view-fee {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-top: 15rpx solid #f3f4f5;
+  padding: 20rpx;
+}
+
+.fee-title {
+  font-size: 26rpx;
+  color: #acadaa;
+  padding: 8rpx 0rpx;
+}
+
+.view-btn {
+  display: flex;
+  background-color: white;
+  justify-content: flex-end;
+  padding: 20rpx;
+}
+
+.btn-text {
+  color: #494848;
+  font-size: 26rpx;
+  border: 1rpx solid #494848;
+  border-radius: 8rpx;
+  padding: 12rpx 24rpx;
+}

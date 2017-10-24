@@ -1,6 +1,7 @@
 @import '/components/tab-layout/tab-layout.wxss';
 @import "cell-home/cell-home.wxss";
 @import "cell-sort/cell-sort.wxss";
+@import '/components/create-btn/create-btn.wxss';
 
 .root-view {
   display: flex;

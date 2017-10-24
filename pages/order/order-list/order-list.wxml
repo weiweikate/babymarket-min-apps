@@ -1,0 +1,10 @@
+<import src='/components/empty-view/empty-view.wxml' />
+<import src='/pages/order/cell-order/cell-order.wxml' />
+
+<view wx:if="{{orderArray.length>0}}" class="view-root">
+  <template is="cell-order" data="{{...item,position:index}}" wx:for="{{orderArray}}" wx:key="unique" />
+</view>
+
+<view wx:if="{{orderArray.length==0}}" class="no-data">
+  <template is="empty-view" data="{{title:'您还没有积分兑换的商品'}}" />
+</view>

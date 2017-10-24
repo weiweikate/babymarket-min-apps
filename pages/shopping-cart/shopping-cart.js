@@ -1,4 +1,4 @@
-let { Tool, Event, RequestReadFactory, RequestWriteFactory } = global;
+let { Tool, Event, Storage, RequestReadFactory, RequestWriteFactory } = global;
 
 Page({
 
@@ -28,7 +28,6 @@ Page({
       this.setData({
         cartArray: responseData
       });
-      console.log(responseData);
     };
     task.addToQueue();
   },
@@ -62,24 +61,6 @@ Page({
       Tool.showSuccessToast("删除成功");
     };
     task.addToQueue();
-  },
-
-  /**
-   * 合计
-   */
-  getTotalPrice: function () {
-    let viewCarts = this.data.viewCarts;
-    let total = 0;
-    for (let i = 0; i < viewCarts.length; i++) {
-      for (let j = 0; j < viewCarts[i].carts.length; j++) {
-        if (viewCarts[i].carts[j].childSelected) {
-          total += viewCarts[i].carts[j].Qnty * viewCarts[i].carts[j].Price;
-        }
-      }
-    }
-    this.setData({
-      totalPrice: total.toFixed(2)
-    });
   },
 
   /**
@@ -207,7 +188,7 @@ Page({
       cartArray: cartArray,
       isAllSelect: !isAllSelect
     });
-    
+
     this.setTotalPrice();
   },
 
@@ -215,47 +196,39 @@ Page({
    * 提交，去结算
    */
   onSubmitClickListener: function () {
+    let requestData = [];
+    let cartArray = this.data.cartArray;
+    cartArray.forEach((item, index) => {
+      if (item.isSelect) {
+        let request = {
+          'ShopCartId': item.Id,
+          'MemberId': Storage.memberId(),
+          'ProductId': item.ProductId,
+          'ProductImgUrl': item.imageUrl,
+          'ProductName': item.Name,
+          'Price': item.Price,
+          'Points': item.Points,
+          'Qnty': item.Qnty,
+          'ProductSizeId': item.ProductSizeId
+        };
+        requestData.push(request);
+      }
+    });
 
-  },
-
-  /**
-   * 新增订单
-   */
-  addOrder: function () {
-    // 判断是否选择购物车
-    let selectNum = 0;
-    let viewCarts = this.data.viewCarts;
-    let selectCarts = [];
-    let self = this;
-    for (let i = 0; i < viewCarts.length; i++) {
-      for (let j = 0; j < viewCarts[i].carts.length; j++) {
-        if (viewCarts[i].carts[j].childSelected) {
-          // 选中数量
-          selectCarts[selectNum] = viewCarts[i].carts[j];
-          selectNum++;
+    if (requestData.length > 0) {
+      //结束当前页面，跳转到订单确认界面
+      wx.setStorage({
+        key: 'orderLine',
+        data: requestData,
+        success: function (res) {
+          wx.redirectTo({
+            url: '/pages/order/order-confirm/order-confirm',
+          })
         }
-      }
-    }
-    if (selectNum > 0) {
-      self.goConfirm(selectCarts);
+      })
     } else {
-      global.Tool.showAlert("请选择购物车商品");
+      Tool.showAlert("请选择购物车商品");
     }
-  },
-
-  /**
-   * 进入确认订单
-   */
-  goConfirm: function (selectCarts) {
-    wx.setStorage({
-      key: 'selectCarts',
-      data: selectCarts,
-      success: function (res) {
-        wx.navigateTo({
-          url: '../order-confirm/order-confirm?door=1',
-        })
-      }
-    })
   }
 
 })

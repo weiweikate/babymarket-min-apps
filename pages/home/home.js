@@ -1,4 +1,5 @@
 let { Tool, Storage, RequestReadFactory } = global;
+import CreateBtn from '../../components/create-btn/create-btn';
 
 Page({
   data: {
@@ -14,6 +15,8 @@ Page({
   onLoad: function () {
     Tool.showLoading();
     this.requestOneSortData();
+
+    new CreateBtn(this, '/pages/shopping-cart/shopping-cart', '/res/img/shopping-cart/shopping-cart-icon.png');
   },
 
   /**

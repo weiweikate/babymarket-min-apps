@@ -1,0 +1,16 @@
+<import src='/pages/order/cell-order-line/cell-order-line.wxml' />
+
+<template name="cell-order">
+  <view class="{{position>0?'cell-order top':'cell-order'}}" catchtap="onGroupClickLitener" catchlongpress="onGroupLongLitener" data-id="{{Id}}" data-position="{{position}}">
+    <view class='time-status'>
+      <text class='order-time'>{{CreateTime}}</text>
+      <text class='order-status'>{{StatusName}}</text>
+    </view>
+    <template is="cell-order-line" data="{{...item,groupId:Id,groupPosition:position,position:index,isEdit:false}}" wx:for="{{Detail}}" wx:key="unique" />
+    <view class='total-btn'>
+      <text class='order-total-title'>共消耗积分：</text>
+      <text class='order-total-value'>{{Points}}</text>
+      <text class='order-btn' catchtap='onContactClickListener'>联系客服</text>
+    </view>
+  </view>
+</template>

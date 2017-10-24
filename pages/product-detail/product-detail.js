@@ -27,7 +27,7 @@ Page({
     this.productForm.finishBlock = (formId, innerType, quantity, price) => {
       //结束当前页面，跳转到订单确认界面
       wx.redirectTo({
-        url: '/pages/order-confirm/order-confirm'
+        url: '/pages/order/order-confirm/order-confirm'
       })
     };
 

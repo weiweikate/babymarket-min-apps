@@ -439,30 +439,45 @@ export default class RequestReadFactory {
         return req;
     }
 
-    //我的订单查询
-    static myOrderRead(status, index) {
-        let operation = Operation.sharedInstance().orderReadOperation;
+    //订单列表查询
+    static orderListRead() {
+      let operation = Operation.sharedInstance().orderReadOperation;
 
-        let condition = "${CreatorId} == '" + global.Storage.memberId() + "'";;
-        if (typeof (status) != "undefined" && status != "undefined") {
-            condition = "${StatusKey} == '" + status + "' && " + condition;
+      let bodyParameters = {
+        "MemberId": global.Storage.memberId(),
+        "Operation": operation,
+        "Order": "${CreateTime} DESC",
+        "IsIncludeSubtables": true,
+        "Appendixes": {
+          "+Status": [
+            "Name"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '订单详情查询';
+      req.items = ["Id", "StatusKey", "Points", "StatusIdId","CreateTime"];
+      req.appendixesKeyMap = {
+        'DeliveryStatus': 'StatusIdId'
+      };//可以多个
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          let orderLineArray = item.Detail;
+          orderLineArray.forEach((item2, index2) => {
+            item2.ProductName = item2.FullName;
+            item2.ProductImgUrl = global.Tool.imageURLForId(item2.ImgId);
+          });
+        });
+      }
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'DeliveryStatus') {
+          item.StatusName = appendixe.Name;
         }
-
-        if (global.Tool.isValidStr(status) && status != "undefined") {
-            condition = "${StatusKey} == '" + status + "'";
-        }
-
-        let bodyParameters = {
-            "Operation": operation,
-            "Condition": condition,
-            "IsIncludeSubtables": true,
-            "Order": "${CreateTime} DESC",
-            "MaxCount": '2',
-            "StartIndex": index,
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '我的订单查询';
-        return req;
+      };
+      return req;
     }
 
     //订单详情查询
@@ -472,6 +487,7 @@ export default class RequestReadFactory {
         let bodyParameters = {
           "Id": orderId,
           "Operation": operation,
+          "IsIncludeSubtables": true,
           "Appendixes": {
             "+Member": [
               "Name"
@@ -491,23 +507,34 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '订单详情查询';
-        req.items = ["Id", "Number", "Date", "MemberId", "ReceiptAddressId", "ReciptTypeKey","Qnty", "Points", "StatusKey", "LogisticsCode","LogisticsNumber"];
+        req.items = ["Id", "Number", "Date", "MemberId", "ReceiptAddressId", "ReciptTypeIdId", "ReciptTypeKey", "StatusKey", "Qnty", "Points", "StatusIdId", "LogisticsCode", "LogisticsNumber", "LogisticsName", "CreateTime"];
         req.appendixesKeyMap = { 'Member': 'MemberId',
           'ReceiptAddress': 'ReceiptAddressId',
-          'ReciptType': 'ReciptTypeKey',
-          'Status': 'StatusKey' };//可以多个
+          'ReciptType': 'ReciptTypeIdId',
+          'DeliveryStatus': 'StatusIdId' };//可以多个
         //修改返回结果
         req.preprocessCallback = (req) => {
           let responseData = req.responseObject.Datas;
           responseData.forEach((item, index) => {
+            let orderLineArray = item.Detail;
+            orderLineArray.forEach((item2, index2) => {
+              item2.ProductName = item2.FullName;
+              item2.ProductImgUrl = global.Tool.imageURLForId(item2.ImgId);
+            });
           });
         }
         //匹配成功函数
         req.appendixesBlock = (item, appendixe, key, id) => {
           if (key === 'Member') {
+            item.MemberName = appendixe.Name;
           } else if (key === 'ReceiptAddress'){
+            item.AddressConsignee = appendixe.Consignee;
+            item.AddressMobile = appendixe.Mobile;
+            item.AddressDetail = appendixe.ReciptAddress;
           } else if (key === 'ReciptType') {
-          } else if (key === 'Status') {
+            item.ReciptTypeName = appendixe.Name;
+          } else if (key === 'DeliveryStatus') {
+            item.StatusName = appendixe.Name;
           }
         };
         return req;

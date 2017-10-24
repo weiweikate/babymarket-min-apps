@@ -3,6 +3,6 @@
   position: fixed;
   width: 130rpx;
   height: 130rpx;
-  right: 50rpx;
+  right: 20rpx;
   bottom: 100rpx;
 }

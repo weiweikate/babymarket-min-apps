@@ -35,21 +35,23 @@ Page({
     }
     r.addToQueue();
   },
+
   /**
-   * 查看订单
+   * 进入商品详情
    */
-  onGoOrderClickListener: function () {
-    let id = this.data.id;
-    wx.redirectTo({
-      url: '/pages/order/order-detail/order-detail?id=' + id
+  onChildClickLitener: function (e) {
+    let productId = e.currentTarget.dataset.productId;
+    wx.navigateTo({
+      url: '/pages/product-detail/product-detail?id=' + productId
     })
   },
+
   /**
-   * 去逛逛
+   * 联系客服
    */
-  onGoBugClickListener: function () {
-    wx.switchTab({
-      url: '/pages/home/home'
+  onContactClickListener: function () {
+    wx.makePhoneCall({
+      phoneNumber: '0571-56888866'
     })
-  },
+  }
 })

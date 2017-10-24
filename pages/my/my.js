@@ -120,7 +120,7 @@ Page({
 
     } else if (title == '我的积分订单') {
       wx.navigateTo({
-        url: '../my/myOrder/myOrder',
+        url: '/pages/order/order-list/order-list'
       })
 
     } else if (title == '我的问答') {

@@ -1,6 +1,0 @@
-<template name="settlement-cell">
-    <view class="bgview">
-        <text class="name">{{datas.title}}</text>
-        <text class="value">{{datas.value}}</text>
-    </view>
-</template>

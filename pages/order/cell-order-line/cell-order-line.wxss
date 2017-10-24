@@ -1,0 +1,56 @@
+@import '/components/cell/cell-quantity/cell-quantity.wxss';
+
+.cell-order-line {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+}
+
+.cell-order-line.top {
+  border-top: 1rpx solid #f3f3f4;
+}
+
+.product-image {
+  flex: none;
+  background: white;
+  width: 160rpx;
+  height: 160rpx;
+  border: 1rpx solid #f3f3f4;
+  border-radius: 8rpx;
+}
+
+.view-product {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  height: 160rpx;
+  flex-grow: 1;
+}
+
+.view-product .product-name {
+  color: #090909;
+  font-size: 30rpx;
+  flex-grow: 1;
+}
+
+.view-product .price-count {
+  display: flex;
+  align-items: center;
+}
+
+.price-count .price-title {
+  color: #494848;
+  font-size: 26rpx;
+}
+
+.price-count .price-value {
+  color: #f55;
+  font-size: 30rpx;
+  flex-grow: 1;
+}
+
+.quantity-value {
+  color: #494848;
+  font-size: 26rpx;
+}

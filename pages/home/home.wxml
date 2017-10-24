@@ -1,6 +1,7 @@
 <import src='/components/tab-layout/tab-layout.wxml' />
 <import src='cell-home/cell-home.wxml' />
 <import src='cell-sort/cell-sort.wxml' />
+<import src='/components/create-btn/create-btn.wxml' />
 
 <view class="root-view">
   <template is="tab-layout" data="{{items:oneSortData,currentTab}}" />
@@ -21,3 +22,5 @@
     </swiper>
   </view>
 </view>
+
+<template is="create-btn" data="{{navigateUrl:navigateUrl,icon:icon}}" />
