@@ -86,7 +86,9 @@ Page({
    * 消息
    */
   onMessageClickListener: function () {
-    console.log('----消息----');
+    wx.navigateTo({
+      url: '/pages/message/message'
+    })
   },
 
   /**
@@ -149,7 +151,7 @@ Page({
    */
   onCollectClickListener: function () {
     wx.navigateTo({
-      url: '/pages/message/message'
+      url: '/pages/my/collect/collect'
     })
   },
 

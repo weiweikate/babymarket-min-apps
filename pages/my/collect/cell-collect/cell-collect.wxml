@@ -1,0 +1,6 @@
+<template name="cell-collect">
+  <view class="{{position>0?'cell-collect top':'cell-collect'}}" catchtap="onItemClickListener" data-id="{{Id}}" data-position="{{position}}">
+    <text class="collect-title">{{title}}</text>
+    <text class="collect-value OverFlowTwoLine">{{content}}</text>
+  </view>
+</template>

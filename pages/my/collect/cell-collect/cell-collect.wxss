@@ -1,0 +1,22 @@
+.cell-collect {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 22rpx;
+}
+
+.cell-collect.top {
+  border-top: 15rpx solid #f3f4f5;
+}
+
+.collect-title {
+  font-size: 28rpx;
+  color: #090909;
+  background-color: white;
+}
+
+.collect-value {
+  font-size: 26rpx;
+  color: #7d7d7f;
+  margin-top: 15rpx;
+}
