@@ -210,6 +210,7 @@ Page({
         let requestData = new Object();
         requestData.Id = collectId;
         requestData.SourceId = e.currentTarget.dataset.id;
+        requestData.SourceType = "Article";
         requestData.Collect_MemberId = Storage.memberId();
 
         this.requestAddPostCollect(requestData);

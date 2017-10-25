@@ -1,5 +1,7 @@
 //宝妈圈
 let { Tool, Event,Storage, RequestReadFactory, RequestWriteFactory } = global;
+import CreateBtn from '../../components/create-btn/create-btn';
+
 Page({
 
   /**
@@ -40,6 +42,8 @@ Page({
    */
   onLoad: function (options) {
     this.requestData();
+
+    new CreateBtn(this, '/pages/mom/post-add/post-add', '/res/img/mother-circle/mother-circle-create-post-icon.png');
 
     //注册通知
     Event.on('refreshAttentionList', this.requestCircleAttention, this)

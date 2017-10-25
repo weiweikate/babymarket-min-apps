@@ -1,7 +1,7 @@
 <import src='/components/cell/cell-avatar/cell-avatar.wxml' />
 
 <template name="cell-post">
-  <view class="cell-post" catchtap="onItemClickListener" data-id="{{Id}}">
+  <view class="{{position>0?'cell-post top':'cell-post'}}" catchtap="onItemClickListener" data-id="{{Id}}" data-position="{{position}}">
     <!--头像／姓名／年龄/回复数量  -->
     <template is="cell-avatar" data="{{headImgUrl,name,age,isReply,replyNum}}" />
     <view class="title">{{title}}</view>

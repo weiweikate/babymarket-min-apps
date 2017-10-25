@@ -26,7 +26,7 @@
 
   <!--列表-->
   <view class="view-other" wx:if="{{postOtherArray.length>0}}">
-    <template is="cell-post" data="{{...item,hasBottom:false}}" wx:for="{{postOtherArray}}" wx:key="unique" />
+    <template is="cell-post" data="{{...item,position:index,hasBottom:false}}" wx:for="{{postOtherArray}}" wx:key="unique" />
   </view>
 
 </view>

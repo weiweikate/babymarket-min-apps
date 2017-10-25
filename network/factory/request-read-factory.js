@@ -1320,6 +1320,31 @@ export default class RequestReadFactory {
       return req;
     }
 
+    // 我的收藏
+    static myCollectListRead() {
+      let operation = Operation.sharedInstance().postCollectReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Collect_MemberId": global.Storage.memberId(),
+        "Order": "${CreateTime} DESC"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '我的收藏';
+      req.items = ["Id", "SourceId", "SourceType", "Img_Member_Article_SendId", "Title_Article", "Article_Abstract", "CreateTime", "SendNickName", "Commemt_Number", "ImgId", "BabyAge"];
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        this.parseMomPostData(responseData);
+        responseData.forEach((item, index) => {
+          item.Id = item.SourceId;
+          item.isReply = true;
+          item.replyNum = item.Commemt_Number;
+        });
+      }
+      return req;
+    }
+
     // 宝妈圈-查询帖子是否被我收藏
     static isPostCollectRead(postId) {
       let operation = Operation.sharedInstance().postCollectReadOperation;
@@ -1345,7 +1370,6 @@ export default class RequestReadFactory {
           req.responseObject.isCollect = false;
           req.responseObject.collectId = '';
         }
-        console.log(req.responseObject)
       }
       return req;
     }

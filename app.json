@@ -89,7 +89,9 @@
     "pages/order/order-list/order-list",
     "pages/order/order-detail/order-detail",
     "pages/code-success/code-success",
-    "pages/integral-success/integral-success"
+    "pages/integral-success/integral-success",
+    "pages/message/message",
+    "pages/mom/post-add/post-add"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,6 @@
+<template name="cell-message">
+  <view class="{{position>0?'cell-message top':'cell-message'}}" catchtap="onItemClickListener" data-id="{{Id}}" data-position="{{position}}">
+    <text class="message-title">{{title}}</text>
+    <text class="message-value OverFlowTwoLine">{{content}}</text>
+  </view>
+</template>

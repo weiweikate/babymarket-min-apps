@@ -149,7 +149,7 @@ Page({
    */
   onCollectClickListener: function () {
     wx.navigateTo({
-      url: '/pages/my/my-fav/my-fav'
+      url: '/pages/message/message'
     })
   },
 

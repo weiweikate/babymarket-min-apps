@@ -5,7 +5,10 @@
   display: flex;
   flex-direction: column;
   padding: 22rpx;
-  border-bottom: 15rpx solid #f3f4f5;
+}
+
+.cell-post.top {
+  border-top: 15rpx solid #f3f4f5;
 }
 
 .title {

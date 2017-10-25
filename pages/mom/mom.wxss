@@ -1,26 +1,17 @@
-/* mom.wxss */
+@import '/components/create-btn/create-btn.wxss';
 @import '/components/tab-layout/tab-layout.wxss';
 @import '/components/empty-view/empty-view.wxss';
 @import '/pages/mom/cell-post/cell-post.wxss';
 @import '/pages/mom/cell-circle/cell-circle.wxss';
 @import '/pages/eat/search-cell/search-cell.wxss';
 
-.root-view {
+.view-root {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.create-post-image {
-  z-index: 20;
-  position: fixed;
-  width: 128rpx;
-  height: 128rpx;
-  left: 591rpx;
-  top: 920rpx;
-}
-
-.top {
+.view-top {
   position: fixed;
   top: 0;
   z-index: 20;

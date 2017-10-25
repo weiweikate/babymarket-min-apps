@@ -1,13 +1,12 @@
-<!--mom.wxml-->
+<import src='/components/create-btn/create-btn.wxml' />
 <import src='/components/tab-layout/tab-layout.wxml' />
 <import src='/components/empty-view/empty-view.wxml' />
 <import src='/pages/mom/cell-post/cell-post.wxml' />
 <import src='/pages/mom/cell-circle/cell-circle.wxml' />
 <import src='/pages/eat/search-cell/search-cell.wxml' />
 
-<view class="root-view">
-  <image src="/res/img/mother-circle/mother-circle-create-post-icon.png" class="create-post-image" catchtap="createPostTap"></image>
-  <view class="top">
+<view class="view-root">
+  <view class="view-top">
     <template is="tab-layout" data="{{items:oneSortData,currentTab}}" />
   </view>
   <view class="swiper-view">
@@ -19,7 +18,7 @@
             <view wx:if="{{currentTab==0}}" class="hot">
               <view wx:if="{{hotPostList.length>0}}">
                 <block wx:for="{{hotPostList}}" wx:key="unique">
-                  <template is="cell-post" data="{{...item,hasBottom:true}}" />
+                  <template is="cell-post" data="{{...item,position:index,hasBottom:true}}" />
                 </block>
               </view>
               <view wx:else class="no-data">
@@ -31,7 +30,7 @@
             <view wx:if="{{currentTab==1}}" class="hot">
               <view wx:if="{{allPostList.length>0}}">
                 <block wx:for="{{allPostList}}" wx:key="unique">
-                  <template is="cell-post" data="{{...item,hasBottom:true}}" />
+                  <template is="cell-post" data="{{...item,position:index,hasBottom:true}}" />
                 </block>
               </view>
               <view wx:else class="no-data">
@@ -53,7 +52,7 @@
               </view>
               <view wx:if="{{searchPostList.length>0}}">
                 <block wx:for="{{searchPostList}}" wx:key="unique">
-                  <template is="cell-post" data="{{...item,hasBottom:true}}" />
+                  <template is="cell-post" data="{{...item,position:index,hasBottom:true}}" />
                 </block>
               </view>
               <view wx:else class="search">
@@ -71,3 +70,5 @@
     </swiper>
   </view>
 </view>
+
+<template is="create-btn" data="{{navigateUrl:navigateUrl,icon:icon}}" />

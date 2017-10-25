@@ -4,7 +4,7 @@
 <view class="view-root">
   <view wx:if="{{postArray.length>0}}">
     <block wx:for="{{postArray}}" wx:key="unique">
-      <template is="cell-post" data="{{...item}}" />
+      <template is="cell-post" data="{{...item,position:index}}" />
     </block>
   </view>
   <view wx:else class="no-data">
