@@ -87,7 +87,9 @@
     "pages/find/raise/raise",
     "pages/find/raise/raise-detail/raise-detail",
     "pages/order/order-list/order-list",
-    "pages/order/order-detail/order-detail"
+    "pages/order/order-detail/order-detail",
+    "pages/code-success/code-success",
+    "pages/integral-success/integral-success"
   ],
   "window": {
     "backgroundTextStyle": "light",

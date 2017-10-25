@@ -29,6 +29,17 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //新增积分
+    static addIntegral(requestData) {
+      let operation = Operation.sharedInstance().integralAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'JFJL', requestData, operation, null);
+      req.baseUrl = Network.sharedInstance().writeErpURL;
+      req.name = '新增积分';
+      return req;
+    }
+
     //新增购物车
     static addCart(requestData) {
       let operation = Operation.sharedInstance().cartAddOperation;

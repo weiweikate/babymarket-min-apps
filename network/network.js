@@ -18,12 +18,20 @@ export default class Network {
 
         //域名
         this.domain = 'http://mobile.topmom.com.cn/';
+        //域名Erp
+        this.domainErp = 'http://erp.takecare.com.cn/';
 
         //读取
         this.readURL = this.domain + 'Libra.Web.AppSync.AppSyncBatchReadData2.aspx';
 
+        //读取Erp
+        this.readErpURL = this.domainErp + 'Libra.Web.AppSync.AppSyncBatchReadData2.aspx';
+
         //写入
         this.writeURL = this.domain + 'Libra.Web.Api.ApiBatchWrite.aspx';
+
+        //写入Erp
+        this.writeErpURL = this.domainErp + 'Libra.Web.Api.ApiBatchWrite.aspx';
 
         //登录
         this.loginURL = this.domain + 'Libra.Web.Authentication.GetSession.aspx';

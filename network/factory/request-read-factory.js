@@ -5,6 +5,7 @@ import RequestRead from '../base-requests/request-read'
 import Operation from '../operation'
 import RequestLogin from '../requests/request-login'
 import RequestDeliveryInfoRead from '../requests/request-delivery-info-read'
+import Network from '../network'
 
 //读取请求具体封装
 export default class RequestReadFactory {
@@ -119,6 +120,52 @@ export default class RequestReadFactory {
         return req;
     }
 
+    //积分详情查询
+    static integralDetailRead(id,time) {
+      let operation = Operation.sharedInstance().integralReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": id,
+        "CXSJ": time,
+        "Appendixes": {
+          "+SP": [
+            "SPMC",
+            "TPId"
+          ],
+          "+YH": [
+            "KYJF"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.baseUrl = Network.sharedInstance().readErpURL;
+      req.name = '积分详情查询';
+      req.items = ['Id', 'Reason', 'SFJHCG', 'SPId', 'YHId', 'BCJF'];
+      req.appendixesKeyMap = { 'SP': 'SPId', 'JFHY': 'YHId' };//可以多个
+      req.preprocessCallback = (req, firstData) => {
+        if (global.Tool.isValid(firstData)) {
+          if (firstData.SFJHCG == 'True'){
+            req.result = true;
+          }else{
+            req.result = false;
+            req.reason = firstData.Reason;
+          }
+        }else{
+          req.result = false;
+        }
+      }
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'SP') {
+          //给data添加新属性
+          item.productName = appendixe.SPMC;
+        } else if (key === 'JFHY'){
+          item.usedIntegral = appendixe.KYJF;//可用积分
+        }
+      };
+      return req;
+    }
+
     //登录用户信息查询
     static memberInfoRead() {
         let operation = Operation.sharedInstance().memberInfoReadOperation;
@@ -128,10 +175,12 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '登录用户信息查询';
-        req.preprocessCallback = (req,data) => {
-            if (global.Tool.isValid(data)) {
-                global.Storage.setCurrentMember(data);
-            }
+        req.preprocessCallback = (req,firstData) => {
+          if (global.Tool.isValid(firstData)) {
+            firstData.headImageUrl = global.Tool.imageURLForId(firstData.ImgId);
+            firstData.BabyBirthday = firstData.BabyBirthday.substring(0, 10);
+            global.Storage.setCurrentMember(firstData);
+          }
         }
         return req;
     }

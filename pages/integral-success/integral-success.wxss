@@ -1,0 +1,72 @@
+page {
+  background-color: white;
+}
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  border-top: 1rpx solid #f3f4f5;
+  padding: 50rpx 20rpx;
+}
+
+.product-name {
+  font-size: 30rpx;
+  color: #090909;
+}
+
+.view-integral {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.integral-title {
+  font-size: 26rpx;
+  color: #494848;
+}
+
+.integral-value {
+  font-size: 28rpx;
+  color: #f55;
+}
+
+.tips-title {
+  font-size: 28rpx;
+  color: #494848;
+  margin-top: 50rpx;
+  margin-bottom: 30rpx;
+}
+
+.tips-value {
+  font-size: 22rpx;
+  color: #acadaa;
+  margin-top: 15rpx;
+}
+
+.view-btn {
+  display: flex;
+  align-items: center;
+  margin-top: 100rpx;
+}
+
+.btn-goon {
+  color: white;
+  background-color: #f55;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  padding: 20rpx 30rpx;
+  width: 50%;
+  text-align: center;
+  margin-right: 10rpx;
+}
+
+.btn-close {
+  color: white;
+  background-color: #f55;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  padding: 20rpx 30rpx;
+  width: 50%;
+  text-align: center;
+  margin-left: 10rpx;
+}

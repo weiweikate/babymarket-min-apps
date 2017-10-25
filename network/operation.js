@@ -192,6 +192,11 @@ export default class Operation {
         this.informationCompleteReadOperation = '';
         this.informationCompleteWriteOperation = '';
 
+        //积分-新增
+        this.integralAddOperation = '1e2c21c5-ace8-46ec-8983-9fdd0185c222';
+        //积分-查询
+        this.integralReadOperation = 'ef074842-4310-4789-81af-a2d500e7ce95';
+
         __instance(this);
     }
 

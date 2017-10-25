@@ -1,37 +1,37 @@
 <import src='/components/cell/cell-menu/cell-menu.wxml' />
 
 <!--个人资料：头像／昵称／宝宝年龄、所属门店／-->
-<view class="top-view">
-    <view class="top-view-flex">
-        <image src="/res/img/my/my-message-icon.png" class="message-image" mode="aspectFit" catchtap="messageTap"></image>
 
-        <view class="profile-view">
-            <image src="{{avatarUrl}}" class="avatar-image" catchtap="editProfileTap"></image>
-            <text class="nickname-text">{{nickName}}</text>
-            <text class="store-name">{{sign}}</text>
-        </view>
+<view class='view-root'>
+  <view class='view-btn'>
+    <image src="/res/img/my/my-message-icon.png" class="btn-message" mode="aspectFit" catchtap="onMessageClickListener" />
+    <text class='btn-empty'></text>
+    <image src="/res/img/my/my-code-icon.png" class="btn-code" mode="aspectFit" catchtap="onCodeClickListener" />
+    <image src="/res/img/my/my-setting-icon.png" class="btn-setting" mode="aspectFit" catchtap="onSettingClickListener" />
+  </view>
 
-        <image src="/res/img/my/my-setting-icon.png" class="setting-image" mode="aspectFit" catchtap="settingTap"></image>
+  <view class='view-info'>
+    <image src="{{memberInfo.headImageUrl.length>0?memberInfo.headImageUrl:'/res/img/common/common-avatar-default-icon.png'}}" class="info-avatar" catchtap="onEditClickListener" mode="aspectFill" />
+    <text class="info-nickname">{{memberInfo.NickName}}</text>
+    <text class="info-birthday">宝宝生日{{memberInfo.BabyBirthday}}</text>
+  </view>
+
+  <view class='view-count'>
+    <view class='count-root'>
+      <text class='count-title'>积分</text>
+      <text class="count-value">{{memberInfo.Point}}</text>
     </view>
-</view>
-
-<view class="points-coins-fav-view">
-    <view class="cell">
-        <label>积分</label>
-        <label class="points">{{points}}</label>
+    <text class="sepline" />
+    <view class='count-root' catchtap="onCoinClickListener">
+      <text class='count-title'>金币</text>
+      <text class="count-value">{{memberInfo.Coin}}</text>
     </view>
-
-    <view class="sepline"></view>
-
-    <view class="cell" catchtap="coinsTap">
-        <label>金币</label>
-        <label class="coins">{{coins}}</label>
+    <text class="sepline" />
+    <view class='count-root' catchtap="onCollectClickListener">
+      <text class='count-title'>收藏</text>
+      <text class="count-value">{{memberInfo.CollectNumber}}</text>
     </view>
-    <view class="sepline"></view>
-    <view class="cell" catchtap="favTap">
-        <label>收藏</label>
-        <label class="coins">{{fav}}</label>
-    </view>
+  </view>
 </view>
 
 <view class='view-menu'>

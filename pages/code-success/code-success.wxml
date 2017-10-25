@@ -1,0 +1,12 @@
+<view class='view-root'>
+  <text class='code-fourteen'>积分前14位：{{fourteenCode}}</text>
+  <text class='tips'>(刮开最下一行涂层，输入最后4位)</text>
+  <form bindsubmit="onSubmitAction">
+    <!--4位数字-->
+    <input class="cell-input" name="fourCode" placeholder="请输入4位数字" placeholder-style="color:#ffabab" type="number" />
+    <!--手机号码-->
+    <input class="cell-input" name="mobile" placeholder="请输入手机号码，很重要" placeholder-style="color:#ffabab" type="number" />
+    <!--底部按钮保存-->
+    <button class="view-submit" form-type="submit">提交</button>
+  </form>
+</view>

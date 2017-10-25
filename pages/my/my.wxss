@@ -1,103 +1,98 @@
 @import '/components/cell/cell-menu/cell-menu.wxss';
 
-.top-view{
-    width: 100%;
-    height: 290rpx;
-    background: white;
-    border: 2rpx solid #eeeeee;
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
 }
 
-.top-view-flex{
-    width: 100%;
-    height: 350rpx;
-    /*background: mistyrose;*/
-    display: flex;
+.view-btn {
+  display: flex;
+  background-color: white;
 }
 
-.message-image{
-    width: 31rpx;
-    height: 31rpx;
-    padding: 20rpx 20rpx;
-    margin-left: 10rpx;
+.view-btn .btn-message {
+  width: 38rpx;
+  height: 38rpx;
+  padding: 20rpx;
+  flex: none;
 }
 
-.setting-image{
-    width: 31rpx;
-    height: 31rpx;
-    margin-right: 10rpx;
-    padding: 20rpx 20rpx;
+.view-btn .btn-empty {
+  flex-grow: 1;
 }
 
-/*个人资料*/
-.profile-view{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    /*background: #715329;*/
-    height: 350rpx;
-    width: 590rpx;
+.view-btn .btn-code {
+  width: 48rpx;
+  height: 48rpx;
+  padding: 15rpx;
+  flex: none;
 }
 
-/*头像*/
-.avatar-image{
-    width: 118rpx;
-    height: 118rpx;
-    border: 2rpx solid white;
-    border-radius: 59rpx;
-    margin-top: 40rpx;
-    background: white;
-    align-self: center;
+.view-btn .btn-setting {
+  width: 36rpx;
+  height: 36rpx;
+  padding: 20rpx;
+  flex: none;
 }
 
-/*昵称*/
-.nickname-text{
-    font-size: 38rpx;
-    color: #090909;
-    margin-top: 14rpx;
+.view-info {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40rpx;
 }
 
-/*所属门店*/
-.store-name{
-    font-size: 20rpx;
-    color: #acadaa;
-    margin-top: 18rpx;
+.view-info .info-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
 }
 
-.points-coins-fav-view{
-    height: 80rpx;
-    width: 100%;
-    background: white;
-    display: flex;
-    margin-bottom: 20rpx;
+.view-info .info-nickname {
+  font-size: 30rpx;
+  color: #090909;
+  margin-top: 10rpx;
 }
 
-.points-coins-fav-view .cell{
-    width: 250rpx;
-    line-height: 80rpx;
-    text-align: center;
-    font-size: 24rpx;
-    color: #494848;
+.view-info .info-birthday {
+  font-size: 24rpx;
+  color: #acadaa;
+  margin-top: 10rpx;
 }
 
-.points-view{
-    display: flex;
+.view-count {
+  display: flex;
+  background-color: white;
+  margin-top: 2rpx;
 }
 
-.points{
-    color: #090909;
-    margin-left: 10rpx;
+.view-count .count-root {
+  display: flex;
+  flex-grow: 1;
+  padding: 20rpx;
+  justify-content: center;
 }
 
-.coins{
-    color: #ff5555;
-    margin-left: 10rpx;
+.count-root .count-title {
+  font-size: 24rpx;
+  color: #494848;
 }
 
-.points-coins-fav-view .sepline{
-    width: 2rpx;
-    height: 40rpx;
-    margin-top: 20rpx;
-    background: #eeeeee;
+.count-root .count-value {
+  font-size: 24rpx;
+  color: #f55;
+  margin-left: 8rpx;
+}
+
+.sepline {
+  width: 2rpx;
+  height: 40rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  background: #eee;
 }
 
 .view-menu {
