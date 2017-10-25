@@ -1,0 +1,36 @@
+<!--raise-confirm-order.wxml-->
+<import src='/pages/my/cell/address-cell.wxml' />
+<import src='/components/textfield-alert/textfield-alert.wxml' />
+
+<view class="raise-confirm-order-view">
+    <!--地址-->
+    <view class="address-view">
+        <template is="address-cell" data="{{...addressInfo}}"></template>
+        <image src="/res/img/common/common-arrow-black-right.png" style="width:17rpx;height:30rpx"></image>
+    </view>
+
+    <view class="settle-product-info">
+        <image src="{{product.imageUrl}}" class="product-img"></image>
+        <view class="right-view">
+            <view class="name OverFlowTwoLine">{{product.Name}}</view>
+            <view class="join-count-period">
+            <view class="join-class-view">参与次数
+                <view class="join-count">{{count}}</view>
+            </view>
+                <view class="period">第{{product.Periods_Number}}期</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="bottom-view">
+        <view class="buy-button" catchtap="submitTap">立即下单</view>
+        <view>积分</view>
+        <view class="pay-points">{{count*product.Price}}</view>
+        <view>实付：</view>
+    </view>
+</view>
+
+<!--密码输入框-->
+<view hidden="{{pwTextFieldHidden}}">
+    <template is="textfield-alert"></template>
+</view>

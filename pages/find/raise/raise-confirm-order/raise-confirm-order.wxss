@@ -1,0 +1,88 @@
+/* raise-confirm-order.wxss */
+@import '/pages/my/cell/address-cell.wxss';
+@import '/components/textfield-alert/textfield-alert.wxss';
+
+.address-view{
+    display: flex;
+    align-items: center;
+    padding-right: 22rpx;
+    width: 728rpx;
+    background: white;
+}
+
+.settle-product-info{
+    height: 280rpx;
+    width: 706rpx;
+    margin-top: 20rpx;
+    display: flex;
+    padding: 22rpx;
+    background: white;
+}
+
+.settle-product-info .product-img{
+    width: 220rpx;
+    height: 220rpx;
+    flex-shrink: 0;
+}
+
+.settle-product-info .right-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10rpx 20rpx 80rpx 20rpx;
+    width: 100%;
+}
+
+.settle-product-info .right-view .name{
+    font-size: 34rpx;
+    color: #090909;
+}
+
+.right-view .join-count-period{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 32rpx;
+    color: #acadaa;
+}
+
+.join-count-period .join-class-view{
+    display: flex;
+}
+
+.join-count-period .join-count{
+    color: #ff5555;
+}
+
+.join-count-period .period{
+    font-size: 28rpx;
+    color: #494848;
+}
+
+.raise-confirm-order-view .bottom-view{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 110rpx;
+    width: 100%;
+    border-top: 2rpx solid #acadaa;
+    font-size: 32rpx;
+    color: #494848;
+    position: fixed;
+    bottom: 0;
+}
+
+.raise-confirm-order-view .bottom-view .pay-points{
+    color: #ff5555;
+}
+
+.raise-confirm-order-view .bottom-view .buy-button{
+    background: #ff5555;
+    color: white;
+    font-size: 32rpx;
+    height: 100%;
+    line-height: 110rpx;
+    text-align: center;
+    width: 220rpx;
+    margin-left: 30rpx;
+}

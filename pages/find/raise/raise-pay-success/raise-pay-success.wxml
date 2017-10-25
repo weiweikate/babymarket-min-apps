@@ -1,0 +1,14 @@
+<!--raise-pay-success.wxml-->
+<view class="raise-pay-success">
+    <view class="title">
+        <image src="/res/img/find/raise/raise-pay-success-icon.png" class="icon"></image>
+        <view>订单提交成功，请耐心等待您的宝贝</view>
+    </view>
+    <view class="order-number">订单号：{{order.Order_Number}}</view>
+    <view class="order-points">支付金额：{{order.Price}}积分</view>
+
+    <view class="bottom-button">
+        <view class="button check-order" catchtap="checkOrderTap">查看订单</view>
+        <view class="button go"  catchtap="goTap">去逛逛</view>
+    </view>
+</view>
