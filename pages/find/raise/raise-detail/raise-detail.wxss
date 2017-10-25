@@ -1,25 +1,29 @@
 @import '/components/banner/banner.wxss';
 @import '/components/cell/cell-text-arrow/cell-text-arrow.wxss';
+@import '/components/adder-subtractor/adder-subtractor.wxss';
 
-.root-view {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+page{
     background: white;
 }
 
-.root-view .product-info {
+.raise-detail-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.raise-detail-view .product-info {
     margin-bottom: 160rpx;
 }
 
-.root-view .product-info .image {
+.raise-detail-view .product-info .image {
     width: 100%;
     height: 600rpx;
     flex: none;
     background-color: white;
 }
 
-.root-view .product-info .image.empty {
+.raise-detail-view .product-info .image.empty {
     background-color: #f3f3f4;
 }
 
@@ -102,12 +106,38 @@
     text-align: center;
     width: 100%;
     margin-top: 40rpx;
+    margin-bottom: 36rpx;
 }
 
+/*中奖信息*/
+.win-info-view{
+    font-size: 28rpx;
+    color: #494848;
+    padding: 40rpx 22rpx 38rpx 22rpx;
+    border-top: 2rpx solid #acadaa;
+}
+
+.win-info-view .win-item{
+    margin-top: 20rpx;
+    display: flex;
+}
+
+.win-info-view .name{
+    color: #090909;
+    margin-left: 10rpx;
+}
+
+/*图文详情、往期揭晓*/
 .product-info .table{
-    margin-top: 50rpx;
     border-top: 2rpx solid #acadaa;
     border-bottom: 20rpx solid #fff8f4;
+}
+
+/*用户参与记录*/
+.join-records-view{
+    font-size: 32rpx;
+    color: #494848;
+    padding: 30rpx 22rpx 20rpx 22rpx;
 }
 
 .buy-button {
@@ -127,4 +157,188 @@
 
 .buy-button.enabled {
     background: #f55;
+}
+
+/*立即参与页面*/
+.buy-view{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.buy-view .dismiss{
+    height: 500rpx;
+    opacity: 0.5;
+    background: gray;
+}
+
+.buy-view .buy-view-info{
+    height: 706rpx;
+    width: 100%;
+    background: white;
+    opacity: 1;
+}
+
+.buy-view-info .product-info{
+    height: 224rpx;
+    width: 706rpx;
+    padding: 54rpx 22rpx 54rpx 22rpx;
+    display: flex;
+    margin-bottom: 0rpx;
+}
+
+.buy-view-info .product-info .product-img{
+    flex-shrink: 0;
+}
+
+.buy-view-info .product-info .right-product-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10rpx 0rpx 10rpx 20rpx;
+    font-size: 32rpx;
+    color: #090909;
+    width: 100%;
+}
+
+.product-info .right-product-info .name-period-view{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80rpx;
+}
+
+.right-product-info .name-period-view .name{
+    width: 320rpx;
+    flex-shrink: 0;
+    font-size: 28rpx;
+}
+
+.right-product-info .name-period-view .period{
+    color: #494848;
+    font-size: 28rpx;
+}
+
+.right-product-info .points-adder-number{
+    display: flex;
+    justify-content: space-between;
+    height: 84rpx;
+}
+
+.points-adder-number .points-view{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #494848;
+}
+
+.points-view .remain-numbers{
+    color: #dbdbdb;
+}
+
+.points-view .need-points-view{
+    display: flex;
+}
+
+.points-view .need-points{
+    color: #ff5555;
+}
+
+.points-adder-number .adder-subtractor{
+    height: 84rpx;
+}
+
+.buy-view-info .join-number-view{
+    height: 120rpx;
+    width: 706rpx;
+    padding: 22rpx 22rpx 0rpx 22rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.join-number-view .number-item{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+    border: 2rpx solid #dbdbdb;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #acadaa;
+}
+
+.number-item.select{
+    background: #ff5555;
+    color: white;
+    border: 2rpx solid #ff5555;
+}
+
+.buy-view-info .bottom-view{
+    height: 110rpx;
+    width: 100%;
+    line-height: 110rpx;
+    bottom: 0rpx;
+    position: absolute;
+    display: flex;
+    border-top: 2rpx solid #dbdbdb;
+    font-size: 30rpx;
+    color: #494848;
+}
+
+.buy-view-info .bottom-view .total{
+    margin-left: 22rpx;
+}
+
+.buy-view-info .bottom-view .total-points{
+    color: #ff5555;
+}
+
+.buy-view-info .bottom-view .remain-points{
+    color: #dbdbdb;
+}
+
+.buy-view-info .bottom-view .join-button{
+    color: white;
+    font-size: 32rpx;
+    line-height: 110rpx;
+    width: 268rpx;
+    height: 110rpx;
+    text-align: center;
+    background: #ff5555;
+    flex-shrink: 0;
+    right: 0rpx;
+    position: absolute;
+}
+
+/*raise-join-cell*/
+.raise-join-cell{
+    padding: 20rpx 22rpx 40rpx 22rpx;
+    height: 75rpx;
+    border-bottom: 2rpx solid #eeeeee;
+}
+
+.raise-join-cell .name-number-view{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name-number-view .name{
+    font-size: 30rpx;
+    color: #090909;
+}
+
+.name-number-view .number{
+    font-size: 28rpx;
+    color: #acadaa;
+}
+
+.raise-join-cell .time{
+    margin-top: 20rpx;
+    font-size: 26rpx;
+    color: #acadaa;
 }

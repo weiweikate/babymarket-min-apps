@@ -531,6 +531,25 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //新增众筹订单
+    static addRaiseOrder(buyCount, raiseId, receiptAddressID, orderId, payPassword) {
+        let operation = Operation.sharedInstance().raiseOrderAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "MemberId": global.Storage.memberId(),
+            "Crowd_FundingId": raiseId,
+            "Buy_Count": buyCount,
+            "ReceiptAddressId": receiptAddressID,
+            "Id": orderId,
+            "WritePayPassword": payPassword
+        }
+
+        let req = new RequestWrite(status, 'Crowd_Order', params, null);
+        req.name = '新增众筹订单';
+        return req;
+    }
+
     //新增黄金便征集令报告
     static addLevyReport(requestData, temporaryIdArray) {
       let operation = Operation.sharedInstance().levyReportAddOperation;

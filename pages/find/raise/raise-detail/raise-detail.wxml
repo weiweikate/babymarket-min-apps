@@ -1,7 +1,8 @@
 <import src='/components/banner/banner.wxml' />
 <import src='/components/cell/cell-text-arrow/cell-text-arrow.wxml' />
+<import src='/components/adder-subtractor/adder-subtractor.wxml'/>
 
-<view class="root-view">
+<view class="raise-detail-view">
 
     <view class="product-info">
 
@@ -15,7 +16,7 @@
                 <view class="now-price">总需人数：
                     <view class="now-price-points">{{product.Need_Count}}</view>人次
                 </view>
-                <view class="period">第2期</view>
+                <view class="period">第{{product.Periods_Number}}期</view>
             </view>
 
             <view class="remain-num-view">
@@ -29,18 +30,90 @@
         <!--参与状态-->
         <view class="join-status-view">{{joinStatus}}</view>
 
+        <!--中奖信息-->
+        <view class="win-info-view" wx:if="{{product.Remain_Need_Count == '0' && product.Is_End == 'True'}}">
+            <view class="win-item">幸运用户:
+                <view class="name">{{winInfo.NickName}}</view>
+            </view>
+            <view class="win-item">幸运号码:
+                <view class="name">{{winInfo.Win_Number}}</view>
+            </view>
+            <view class="win-item">参与人次:
+                <view class="name">{{winInfo.Buy_Count}}</view>
+            </view>
+            <view class="win-item">参与时间:
+                <view class="name">{{winInfo.CreateTime}}</view>
+            </view>
+        </view>
+
         <!--图文详情、往期揭晓-->
         <view class="table">
             <block wx:for="{{tableList}}" wx:key="unique">
                 <template is="cell-text-arrow" data="{{item}}"></template>
             </block>
         </view>
+
+        <!--用户参与记录-->
+        <view wx:if="{{buyCount != 0}}">
+            <view class="join-records-view">用户参与记录>本期于{{product.DateTime_Start}}开始</view>
+            <block wx:for="{{joinRecords}}" wx:key="unique">
+                <template is="raise-join-cell" data="{{...item}}"></template>
+            </block>
+        </view>
     </view>
 
     <!--底部bar-->
-    <view wx:if="{{product.isStart}}" class="buy-button enabled" 
+    <view wx:if="{{product.isStart && product.Join_Proportion != '1'}}" class="buy-button enabled" 
     catchtap="onApplyClickListener" data-index="{{index}}" data-type="{{product.buyStatus}}">立即参与</view>
 
-    <view wx:else class="buy-button" 
-    catchtap="onApplyClickListener" data-index="{{index}}" data-type="{{product.buyStatus}}">即将开始</view>
+    <view wx:else class="buy-button">即将开始</view>
+
+    <!--立即参与页面-->
+    <view class="buy-view" hidden="{{!buyViewShow}}">
+        <view class="dismiss" catchtap="dismissTap"></view>
+        <view class="buy-view-info">
+            <view class="product-info">
+                <image src="{{product.imageUrl}}" style="width:220rpx;height:220rpx" class="product-img"></image>
+                <view class="right-product-info">
+                    <view class="name-period-view">
+                        <view class="name OverFlowTwoLine">{{product.Name}}</view>
+                        <view class="period">第{{product.Periods_Number}}期</view>
+                    </view>
+                    <view class="points-adder-number">
+                        <view class="points-view">
+                            <view class="need-points-view">积分：
+                                <view class="need-points">{{product.Price}}</view>
+                            </view>
+                            <view class="remain-numbers">(剩余{{product.Remain_Need_Count}}次)</view>
+                        </view>
+                        <template is="adder-subtractor" data="{{count, disable:true}}"></template>
+                    </view>
+                </view>
+            </view>
+
+            <view class="join-number-view">
+                <block wx:for="{{buyNumbers}}" wx:key="unique">
+                    <view class="{{buyNumberSelectIndex==index?'number-item select':'number-item'}}" 
+                    catchtap="buyNumbersTap" data-index="{{index}}">{{item}}次</view>
+                </block>
+            </view>
+
+            <view class="bottom-view">
+                <view class="total">合计:</view>
+                <view class="total-points">{{count*product.Price}}积分</view>
+                <view class="remain-points">(可用{{remainPoins}}积分)</view>
+                <view class="join-button" catchtap="joinTap">立即参与</view>
+            </view>
+        </view>
+    </view>
 </view>
+
+<template name="raise-join-cell">
+    <view class="raise-join-cell">
+         <view class="name-number-view">
+            <view class="name">{{NickName}}</view>
+            <view class="number">参与{{Buy_Count}}人次</view>
+         </view>
+         <view class="time">{{CreateTime}}</view>
+    </view>
+</template>

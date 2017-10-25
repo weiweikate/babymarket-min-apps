@@ -140,6 +140,8 @@ export default class Operation {
         // 众筹列表 查询
         this.raiseReadOperation = 'a53f2219-f5a3-4909-9e5f-a6430121b0f1'
         this.raiseOrderReadOperation = '9f761fbb-3d3e-4cf7-9957-a643012349ed'
+        this.raiseOrderAddOperation = '1d611dc7-eac4-4b83-b0f5-a64301237549'
+        this.raiseOrderDetailReadOperation = '4ea512a7-6aab-4d18-8f77-a64301245775'
 
         //首页-广告位
         this.homeAdReadOperation = 'f7caf922-5a10-4d98-bdc8-a65800b955b5';

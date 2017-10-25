@@ -1,0 +1,54 @@
+/* raise-pay-success.wxss */
+
+page{
+    background: white;
+}
+
+.raise-pay-success .title{
+    font-size: 30rpx;
+    color: #090909;
+    margin-top: 54rpx;
+    margin-left: 22rpx;
+    display: flex;
+}
+
+.raise-pay-success .title .icon{
+    width: 24rpx;
+    height: 19rpx;
+    margin-right: 10rpx;
+}
+
+.raise-pay-success .order-number{
+    margin-top: 60rpx;
+    margin-left: 22rpx;
+    font-size: 28rpx;
+    color: #494848;
+}
+
+.raise-pay-success .order-points{
+    margin-top: 25rpx;
+    margin-left: 22rpx;
+    font-size: 28rpx;
+    color: #494848;
+}
+
+.raise-pay-success .bottom-button{
+    position: fixed;
+    bottom: 0;
+    width: 700rpx;
+    height: 80rpx;
+    padding: 40rpx 25rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.raise-pay-success .bottom-button .button{
+    height: 80rpx;
+    width: 325rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: white;
+    background: #ff5555;
+    border-radius: 10rpx;
+}

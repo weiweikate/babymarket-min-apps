@@ -87,7 +87,10 @@
         "pages/find/second-kill/second-kill",
         "pages/find/second-kill/second-kill-detail/second-kill-detail",
         "pages/find/raise/raise",
-        "pages/find/raise/raise-detail/raise-detail"
+        "pages/find/raise/raise-detail/raise-detail",
+        "pages/find/raise/raise-product-detail/raise-product-detail",
+        "pages/find/raise/raise-confirm-order/raise-confirm-order",
+        "pages/find/raise/raise-pay-success/raise-pay-success"
     ],
     "window": {
         "backgroundTextStyle": "light",

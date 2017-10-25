@@ -9,6 +9,7 @@
 
 .raise-cell .name{
     margin-top: 15rpx;
+    height: 35rpx;
     font-size: 32rpx;
     color: #494848;
 }

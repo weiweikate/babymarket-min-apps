@@ -1,8 +1,9 @@
 /*地址*/
 .address-view {
   background-color: white;
-  height: 142rpx;
+  height: 195rpx;
   display: flex;
+  align-items: center;
   width: 100%;
 }
 
@@ -10,16 +11,16 @@
     width: 50rpx;
     height: 50rpx;
     margin-left: 20rpx;
-    margin-top: 30rpx;
     flex-shrink: 0;
 }
 
-.right-view{
+.address-view .right-view{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    margin: 30rpx 30rpx 30rpx 10rpx;
+    height: 95rpx;
+    margin: 50rpx 30rpx 50rpx 10rpx;
 }
 
 .address-row{

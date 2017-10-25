@@ -3,10 +3,10 @@
     <image class="left-icon" src="/res/img/address/address-location.png" mode="aspectFit"></image>
     <view class="right-view">
       <view class="address-row">
-        <view class="address-name">{{name}}</view>
-        <view class="address-mobile">{{mobile}}</view>
+        <view class="address-name">{{Consignee}}</view>
+        <view class="address-mobile">{{Mobile}}</view>
       </view>
-      <view class="address-detail">{{detail}}</view>
+      <view class="address-detail">{{ReciptAddress}}</view>
     </view>
   </view>
 </template>

@@ -2121,7 +2121,7 @@ export default class RequestReadFactory {
     }
 
     //众筹商品详情 查询
-    static requestRaiseProducts(raiseId) {
+    static requestRaiseProductDetail(raiseId) {
         let operation = Operation.sharedInstance().raiseReadOperation;
         let condition = "${Id} == '" + raiseId + "'";
         let bodyParameters = {
@@ -2138,7 +2138,8 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '众筹商品详情 查询';
-        req.items = ["Id", "Product_ImgId", "Name", "Remain_Need_Count", "Need_Count", "DateTime_Start", "ProductId", "Join_Proportion"];
+        req.items = ["Id", "Product_ImgId", "Name", "Remain_Need_Count", 
+            "Need_Count", "DateTime_Start", "ProductId", "Join_Proportion", "Periods_Number", "Price", "Is_End"];
         req.appendixesKeyMap = { 'Product': 'ProductId' };
 
         req.preprocessCallback = (req) => {
@@ -2229,6 +2230,7 @@ export default class RequestReadFactory {
             "Condition": condition,
             "MaxCount": count,
             "StartIndex": index,
+            "IsReturnTotal": true,
             "Appendixes": {
                 "+Member": [
                     "NickName"
@@ -2238,7 +2240,7 @@ export default class RequestReadFactory {
         let req = new RequestRead(bodyParameters);
         req.appendixesKeyMap = { 'Member': 'MemberId' };
         req.name = '众筹中奖列表 查询';
-        req.items = ["Id", "Product_Name"];
+        req.items = ["Id", "Product_Name", "Buy_Count", "CreateTime", "MemberId", "Is_Win", "Win_Number"];
         //匹配成功函数
         req.appendixesBlock = (data, appendixe, key, id) => {
             let { Tool } = global;
@@ -2251,5 +2253,34 @@ export default class RequestReadFactory {
         return req;
     }
 
+    //众筹订单详情 查询
+    static requestRaiseOrderDetail(orderId) {
+        let operation = Operation.sharedInstance().raiseOrderReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Id": orderId,
+            "MaxCount": 1,
+            "StartIndex": 0,
+            "IsReturnTotal": true,
+            "Appendixes": {
+                "+Member": [
+                    "NickName"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.appendixesKeyMap = { 'Member': 'MemberId' };
+        req.name = '众筹中奖列表 查询';
+        req.items = ["Id", "Product_Name", "Buy_Count", "CreateTime", "MemberId", "Is_Win", "Win_Number", "Order_Number","Price"];
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
 
+            if (key === 'Member') {
+                //给data添加新属性
+                data.NickName = appendixe.NickName;
+            }
+        };
+        return req;
+    }
 }
