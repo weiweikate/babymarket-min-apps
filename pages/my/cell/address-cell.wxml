@@ -1,0 +1,12 @@
+<template name="address-cell">
+  <view class="address-view" bindtap="addressViewTap">
+    <image class="left-icon" src="/res/img/address/address-location.png" mode="aspectFit"></image>
+    <view class="right-view">
+      <view class="address-row">
+        <view class="address-name">{{Consignee}}</view>
+        <view class="address-mobile">{{Mobile}}</view>
+      </view>
+      <view class="address-detail">{{ReciptAddress}}</view>
+    </view>
+  </view>
+</template>

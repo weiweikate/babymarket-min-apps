@@ -3,7 +3,7 @@
 <template name="adder-subtractor">
     <view class="adder-subtractor">
         <image class="subtractor" mode="aspectFit" src="/res/img/product-specification/adder-subtractor-sub.png" catchtap="counterSubClicked"/>
-        <input value="{{count}}" catchinput="counterInputOnChange" type="number"/>
+        <input value="{{count}}" catchinput="counterInputOnChange" type="number" disable="{{disable}}" />
         <image class="adder" mode="aspectFit" src="/res/img/product-specification/adder-subtractor-adder.png" catchtap="counterAddClicked"/>
     </view>
 </template>
