@@ -11,7 +11,7 @@
 }
 
 .view-item.line {
-  border-top: 0.5rpx solid #f3f4f5;
+  border-top: 0.5rpx solid #fff8f4;
 }
 
 .item-icon {
@@ -35,5 +35,5 @@
 
 .view-divide {
   height: 20rpx;
-  background: #f3f4f5;
+  background: #fff8f4;
 }

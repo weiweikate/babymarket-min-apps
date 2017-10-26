@@ -7,7 +7,7 @@
 .address-btn {
   display: flex;
   align-items: center;
-  border-bottom: 1rpx solid #f3f4f5;
+  border-bottom: 1rpx solid #fff8f4;
   padding: 20rpx;
 }
 
@@ -33,7 +33,7 @@
 .address-info {
   display: flex;
   align-items: center;
-  border-bottom: 15rpx solid #f3f4f5;
+  border-bottom: 15rpx solid #fff8f4;
   padding: 20rpx;
 }
 

@@ -113,7 +113,9 @@ Page({
         Tool.showAlert("评论必须在10个字以上");
       }
     } else {
-      Tool.showAlert("请先登录");
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
     }
   }
 })

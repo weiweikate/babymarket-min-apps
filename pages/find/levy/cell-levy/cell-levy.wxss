@@ -1,7 +1,7 @@
 .cell-levy {
   display: flex;
   background: white;
-  border-bottom: 15rpx solid #f3f4f5;
+  border-bottom: 15rpx solid #fff8f4;
   padding: 20rpx;
 }
 

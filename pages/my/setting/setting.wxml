@@ -1,13 +1,6 @@
-<!--setting.wxml-->
-<import src='/pages/my/setting/setting-cell/setting-cell.wxml' />
-<import src='/pages/login/login.wxml' /> 
+<import src='/components/cell/cell-menu/cell-menu.wxml' />
 
-<!-- wx:key="unique"可以告诉编译器，重用(reuse) item 提高性能-->
-<block wx:for="{{listDatas}}" wx:key="unique">
-    <template is="setting-cell" data="{{...item,index:index}}"></template>
-</block>
-
-<view class="login-view" catchtap="loginTap" wx:if="{{isLogin}}">退出当前账号</view>
-<view class="login-view" catchtap="loginTap" wx:elif="{{!isLogin}}">登录／注册</view>
-
- <template is="login" data="{{visiable:visiable}}"/> 
+<view class='view-root'>
+  <template is="cell-menu" data="{{...item,index}}" wx:for="{{menuArray}}" wx:key="unique" />
+  <view class="view-logout" catchtap="onLogoutClickListener" wx:if="{{isLogin}}">退出当前账号</view>
+</view>

@@ -94,8 +94,9 @@ Page({
             url: '/pages/find/levy/levy-apply/levy-apply',
           })
         } else {
-          //请先登录
-          Tool.showAlert("请先登录");
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
         }
         break;
       case 1:

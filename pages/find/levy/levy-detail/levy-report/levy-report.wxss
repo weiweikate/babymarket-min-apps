@@ -10,7 +10,7 @@
 .view-list {
   display: flex;
   flex-direction: column;
-  border-bottom: 15rpx solid #f3f4f5;
+  border-bottom: 15rpx solid #fff8f4;
   background-color: white;
   padding: 20rpx;
 }

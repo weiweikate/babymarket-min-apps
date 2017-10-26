@@ -339,7 +339,9 @@ Page({
                 });
             }
         } else {
-            Tool.showAlert("请先登录");
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
         }
     },
     /**
@@ -355,7 +357,9 @@ Page({
 
                 this.requestAddPostPraise(articalId);
             } else {
-                Tool.showAlert("请先登录");
+              wx.navigateTo({
+                url: '/pages/login/login'
+              })
             }
         }
     },
@@ -379,7 +383,9 @@ Page({
                 };
                 task.addToQueue();
             } else {
-                Tool.showAlert("请先登录");
+              wx.navigateTo({
+                url: '/pages/login/login'
+              })
             }
         }
     }

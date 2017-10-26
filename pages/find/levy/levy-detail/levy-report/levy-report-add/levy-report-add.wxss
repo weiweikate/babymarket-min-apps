@@ -9,7 +9,7 @@ page {
   display: flex;
   flex-direction: column;
   padding: 30rpx;
-  border-top: 1rpx solid #f3f4f5;
+  border-top: 1rpx solid #fff8f4;
 }
 
 .input-value {

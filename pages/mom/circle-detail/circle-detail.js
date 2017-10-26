@@ -212,8 +212,9 @@ Page({
         });
       }
     } else {
-      //请先登录
-      Tool.showAlert("请先登录");
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
     }
   },
   /**

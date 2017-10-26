@@ -13,7 +13,7 @@
 }
 
 .view-list.divider{
-  border-top: 15rpx solid #f3f4f5;
+  border-top: 15rpx solid #fff8f4;
 }
 
 .banner {

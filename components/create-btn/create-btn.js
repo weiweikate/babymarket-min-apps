@@ -17,6 +17,12 @@ export default class CreateBtn {
    * 创建按钮点击事件
    */
   onCreateClickListener(e) {
+    if (!Storage.didLogin()) {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return;
+    }
     wx.navigateTo({
       url: this.page.data.navigateUrl
     })

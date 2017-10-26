@@ -76,7 +76,7 @@
   flex-direction: row;
   flex: none;
   white-space: nowrap;
-  border-bottom: 2rpx solid #eeeeee;
+  border-bottom: 1rpx solid #fff8f4;
 }
 
 .tab-layout .tab {

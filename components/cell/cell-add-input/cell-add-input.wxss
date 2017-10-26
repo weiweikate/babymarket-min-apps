@@ -1,7 +1,7 @@
 .cell-add-input {
   display: flex;
   flex-direction: column;
-  border-bottom: 1rpx solid #f3f4f5;
+  border-bottom: 1rpx solid #fff8f4;
   margin-top: 30rpx;
 }
 

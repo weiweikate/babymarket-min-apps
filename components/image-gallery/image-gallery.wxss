@@ -6,7 +6,7 @@
 .image-gallery .gallery-image {
   width: 210rpx;
   height: 210rpx;
-  background: #f3f4f5;
+  background: #fff8f4;
   flex: none;
   margin: 10rpx;
 }

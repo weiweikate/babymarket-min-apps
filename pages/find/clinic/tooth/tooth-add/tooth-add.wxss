@@ -10,7 +10,7 @@ page {
   display: flex;
   flex-direction: column;
   padding: 30rpx 60rpx 30rpx 60rpx;
-  border-top: 1rpx solid #f3f4f5;
+  border-top: 1rpx solid #fff8f4;
 }
 
 .view-submit {

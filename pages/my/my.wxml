@@ -11,25 +11,25 @@
   </view>
 
   <view class='view-info'>
-    <image src="{{memberInfo.headImageUrl.length>0?memberInfo.headImageUrl:'/res/img/common/common-avatar-default-icon.png'}}" class="info-avatar" catchtap="onEditClickListener" mode="aspectFill" />
-    <text class="info-nickname">{{memberInfo==undefined?'未登录':memberInfo.NickName}}</text>
-    <text class="info-birthday" wx:if="{{memberInfo!=undefined}}">宝宝生日{{memberInfo.BabyBirthday}}</text>
+    <image src="{{memberInfo.headImageUrl.length>0&&isLogin?memberInfo.headImageUrl:'/res/img/common/common-avatar-default-icon.png'}}" class="info-avatar" catchtap="onEditClickListener" mode="aspectFill" />
+    <text class="info-nickname">{{isLogin?memberInfo.NickName:'未登录'}}</text>
+    <text class="info-birthday" wx:if="{{isLogin}}">宝宝生日{{memberInfo.BabyBirthday}}</text>
   </view>
 
   <view class='view-count'>
     <view class='count-root'>
       <text class='count-title'>积分</text>
-      <text class="count-value">{{memberInfo.Point}}</text>
+      <text class="count-value">{{isLogin?memberInfo.Point:''}}</text>
     </view>
     <text class="sepline" />
     <view class='count-root' catchtap="onCoinClickListener">
       <text class='count-title'>金币</text>
-      <text class="count-value">{{memberInfo.Coin}}</text>
+      <text class="count-value">{{isLogin?memberInfo.Coin:''}}</text>
     </view>
     <text class="sepline" />
     <view class='count-root' catchtap="onCollectClickListener">
       <text class='count-title'>收藏</text>
-      <text class="count-value">{{memberInfo.CollectNumber}}</text>
+      <text class="count-value">{{isLogin?memberInfo.CollectNumber:''}}</text>
     </view>
   </view>
 </view>

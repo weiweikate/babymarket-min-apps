@@ -67,8 +67,9 @@ Page({
             url: '/pages/find/clinic/tooth/tooth-add/tooth-add',
           })
         } else {
-          //请先登录
-          Tool.showAlert("请先登录");
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
         }
         break;
       case "1":
@@ -78,8 +79,9 @@ Page({
             url: '/pages/find/clinic/tooth/tooth-list/tooth-list',
           })
         } else {
-          //请先登录
-          Tool.showAlert("请先登录");
+          wx.navigateTo({
+            url: '/pages/login/login'
+          })
         }
         break;
       case "2":

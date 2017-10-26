@@ -6,14 +6,14 @@
 }
 
 .cell-item.top {
-  border-top: 15rpx solid #f3f4f5;
+  border-top: 15rpx solid #fff8f4;
 }
 
 .cell-item .item-img {
   flex: none;
   width: 140rpx;
   height: 140rpx;
-  background-color: #f3f4f5;
+  background-color: #fff8f4;
 }
 
 .cell-item .item-title {

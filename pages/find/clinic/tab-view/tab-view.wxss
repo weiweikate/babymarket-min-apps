@@ -19,5 +19,5 @@
 }
 
 .tab-item.border {
-  border-right: 0.5rpx solid #f3f4f5;
+  border-right: 0.5rpx solid #fff8f4;
 }
