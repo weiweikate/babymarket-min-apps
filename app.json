@@ -94,7 +94,10 @@
         "pages/order/order-list/order-list",
         "pages/order/order-detail/order-detail",
         "pages/code-success/code-success",
-        "pages/integral-success/integral-success"
+        "pages/integral-success/integral-success",
+        "pages/my/my-raise/my-raise",
+        "pages/find/raise/raise-previous/raise-previous",
+        "pages/find/raise/raise-order-detail/raise-order-detail"
     ],
     "window": {
         "backgroundTextStyle": "light",

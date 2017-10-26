@@ -1,0 +1,6 @@
+/* my-raise.wxss */
+@import '/pages/my/my-raise/my-raise-cell/my-raise-cell.wxss';
+
+page{
+    background: white;
+}

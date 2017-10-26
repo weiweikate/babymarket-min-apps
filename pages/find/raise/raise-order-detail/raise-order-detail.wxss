@@ -1,0 +1,120 @@
+/* raise-order-detail.wxss */
+@import '/pages/my/cell/address-cell.wxss';
+
+page{
+    background: white;
+}
+
+.raise-order-detail{
+    margin-bottom: 200rpx;
+}
+
+/*商品信息*/
+.product-info{
+    display: flex;
+    align-items: center;
+    width: 706rpx;
+    height: 327rpx;
+    padding: 0rpx 22rpx;
+    border-bottom: 20rpx solid #fff8f4;
+}
+
+.product-info .product-image{
+    width: 220rpx;
+    height: 220rpx;
+    flex-shrink: 0;
+}
+
+.product-info .right-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 174rpx;
+    width: 470rpx;
+    margin: 20rpx 0rpx;
+}
+
+.right-view .title{
+    font-size: 32rpx;
+    color: #090909;
+}
+
+.right-view .status-period{
+    display: flex;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #494848;
+}
+
+.status-period .status{
+    font-size: 32rpx;
+    color: #ff5555;
+}
+
+.join-view{
+    padding: 40rpx 22rpx;
+    border-top: 20rpx solid #fff8f4;
+}
+
+.join-view .title{
+    font-size: 32rpx;
+    color: #090909;
+    margin-bottom: 50rpx;
+}
+
+.join-view .item{
+    margin-top: 20rpx;
+    display: flex;
+    color: #090909;
+    font-size: 28rpx;
+}
+
+.item .name{
+    color: #494848;
+    flex-shrink: 0;
+    margin-right: 10rpx;
+}
+
+.bottom-view{
+    display: flex;
+    border-top: 2rpx solid #acadaa;
+    height: 70rpx;
+    padding: 30rpx 22rpx 20rpx 22rpx;
+    position: fixed;
+    bottom: 0;
+    width: 706rpx;
+    background: white;
+}
+
+.bottom-view .left-view{
+    display: flex;
+    height: 70rpx;
+    width: 500rpx;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bottom-view .contact-button{
+    border: 2rpx solid #dbdbdb;
+    width: 172rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    font-size: 30rpx;
+    color: #494848;
+}
+
+.left-view .price-view{
+    display: flex;
+    font-size: 30rpx;
+    color: #494848;
+}
+
+.price-view .points{
+    color: #ff5555;
+}
+
+.left-view .pay-time{
+    font-size: 26rpx;
+    color: #494848;
+}

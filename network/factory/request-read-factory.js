@@ -475,6 +475,20 @@ export default class RequestReadFactory {
         return req;
     }
 
+    //收货地址查询
+    static addressInfoRead(addressId) {
+        let operation = Operation.sharedInstance().addressReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": "${Id} == '" + addressId + "'",
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '收货地址查询';
+        req.items = ['Id', 'Consignee', 'Mobile', 'ReciptAddress', 'Street', 'Name', 'AreaId', 'Default'];
+
+        return req;
+    }
+
     //区域查询
     static areaRead(condition) {
         let operation = Operation.sharedInstance().areaReadOperation;
@@ -2127,58 +2141,7 @@ export default class RequestReadFactory {
         let req = new RequestRead(bodyParameters);
         req.name = '众筹商品详情 查询';
         req.items = ["Id", "Product_ImgId", "Name", "Remain_Need_Count", 
-            "Need_Count", "DateTime_Start", "ProductId", "Join_Proportion", "Periods_Number", "Price", "Is_End"];
-        req.appendixesKeyMap = { 'Product': 'ProductId' };
-
-        req.preprocessCallback = (req) => {
-            let { Tool } = global;
-
-            let datas = req.responseObject.Datas;
-            datas.forEach((item, index) => {
-                item.imageUrl = Tool.imageURLForId(item.Product_ImgId, '/res/img/common/common-avatar-default-icon.png');
-
-                if (Tool.timeIntervalFromString(item.DateTime_Start) 
-                    >= Tool.timeIntervalFromDate(new Date(), 0)){//即将开始
-                    item.isStart = false;   
-                }else{
-                    item.isStart = true; 
-                }
-            });
-        }
-
-        //匹配成功函数
-        req.appendixesBlock = (data, appendixe, key, id) => {
-            let { Tool } = global;
-
-            if (key === 'Product') {
-                //给data添加新属性
-                data.Attachments2 = appendixe.Attachments2;
-            }
-        };
-
-        return req;
-    }
-
-    //众筹商品列表 查询
-    static requestRaiseProducts(count, index, order) {
-        let operation = Operation.sharedInstance().raiseReadOperation;
-        let condition = "${Is_End} == 'False' && ${Remain_Need_Count} > '0'";
-        let bodyParameters = {
-            "Operation": operation,
-            "Condition": condition,
-            "Order": order,
-            "MaxCount": count,
-            "StartIndex": index,
-            "IsReturnTotal": true,
-            "Appendixes": {
-                "+Product": [
-                    "Attachments2"
-                ]
-            },
-        };
-        let req = new RequestRead(bodyParameters);
-        req.name = '众筹商品列表 查询';
-        req.items = ["Id", "Product_ImgId", "Name", "Remain_Need_Count", "Need_Count", "DateTime_Start", "ProductId", "Join_Proportion"];
+            "Need_Count", "DateTime_Start", "ProductId", "Join_Proportion", "Periods_Number", "Price", "Is_End","Win_Number"];
         req.appendixesKeyMap = { 'Product': 'ProductId' };
 
         req.preprocessCallback = (req) => {
@@ -2190,8 +2153,13 @@ export default class RequestReadFactory {
 
                 if (Tool.timeIntervalFromString(item.DateTime_Start)
                     >= Tool.timeIntervalFromDate(new Date(), 0)) {//即将开始
+                    item.title = "即将开始";
                     item.isStart = false;
+                } else if (item.Join_Proportion != '1' || item.Is_End.toLocaleLowerCase() == 'false') {
+                    item.title = "立即参与";
+                    item.isStart = true;
                 } else {
+                    item.title = "前往最新期";
                     item.isStart = true;
                 }
             });
@@ -2210,6 +2178,69 @@ export default class RequestReadFactory {
         return req;
     }
 
+    //众筹商品列表 查询
+    static requestRaiseProducts(count, index, order, condition) {
+        let operation = Operation.sharedInstance().raiseReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "Order": order,
+            "MaxCount": count,
+            "StartIndex": index,
+            "IsReturnTotal": true,
+            "Appendixes": {
+                "+Product": [
+                    "Attachments2"
+                ],
+                "+Win_Member": [
+                    "NickName"
+                ],
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '众筹商品列表 查询';
+        req.items = ["Id", "Product_ImgId", "Name", "Remain_Need_Count", "Need_Count", 
+            "DateTime_Start", "ProductId", "Join_Proportion", "Win_Number", 
+            "Is_End", "Periods_Number", "Succeed_Time", "Join_Count","Win_MemberId"];
+        req.appendixesKeyMap = { 'Product': 'ProductId', 'Member': 'Win_MemberId'};
+
+        req.preprocessCallback = (req) => {
+            let { Tool } = global;
+
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                item.imageUrl = Tool.imageURLForId(item.Product_ImgId, '/res/img/common/common-avatar-default-icon.png');
+
+                if (Tool.timeIntervalFromString(item.DateTime_Start)
+                    >= Tool.timeIntervalFromDate(new Date(), 0)) {//即将开始
+                    item.title = "即将开始";
+                    item.isStart = false;
+                } else if (item.Join_Proportion != '1' || item.Is_End.toLocaleLowerCase() == 'false') {
+                    item.title = "立即参与";
+                    item.isStart = true;
+                } else {
+                    item.title = "前往最新期";
+                    item.isStart = true;
+                }
+            });
+        }
+
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
+
+            if (key === 'Product') {
+                //给data添加新属性
+                data.Attachments2 = appendixe.Attachments2;
+            } else if (key === 'Member') {
+                //给data添加新属性
+                data.NickName = appendixe.NickName;
+            }
+        };
+
+        return req;
+    }
+
     //众筹订单列表 查询
     static requestRaiseOrderList(condition, count, index) {
         let operation = Operation.sharedInstance().raiseOrderReadOperation;
@@ -2219,6 +2250,7 @@ export default class RequestReadFactory {
             "MaxCount": count,
             "StartIndex": index,
             "IsReturnTotal": true,
+            "Order":"${CreateTime} DESC",
             "Appendixes": {
                 "+Member": [
                     "NickName"
@@ -2227,8 +2259,10 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.appendixesKeyMap = { 'Member': 'MemberId' };
-        req.name = '众筹中奖列表 查询';
-        req.items = ["Id", "Product_Name", "Buy_Count", "CreateTime", "MemberId", "Is_Win", "Win_Number"];
+        req.name = '众筹订单列表 查询';
+        req.items = ["Id", "Product_Name", "Buy_Count", 
+        "CreateTime", "MemberId", "Is_Win", "Win_Number",
+            "Price", "Product_ImgId", "Periods_Number", "Crowd_FundingId", "ReceiptAddressId"];
         //匹配成功函数
         req.appendixesBlock = (data, appendixe, key, id) => {
             let { Tool } = global;
@@ -2238,8 +2272,18 @@ export default class RequestReadFactory {
                 data.NickName = appendixe.NickName;
             }
         };
+
+        req.preprocessCallback = (req) => {
+            let { Tool } = global;
+
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                item.imageUrl = Tool.imageURLForId(item.Product_ImgId, '/res/img/common/common-avatar-default-icon.png');
+                item.status = item.Is_Win.toLocaleLowerCase()=='true'?'中奖':'未抽中';
+            });
+        }
         return req;
-    }
+    } 
 
     //众筹订单详情 查询
     static requestRaiseOrderDetail(orderId) {
@@ -2258,8 +2302,10 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.appendixesKeyMap = { 'Member': 'MemberId' };
-        req.name = '众筹中奖列表 查询';
-        req.items = ["Id", "Product_Name", "Buy_Count", "CreateTime", "MemberId", "Is_Win", "Win_Number", "Order_Number","Price"];
+        req.name = '众筹订单详情 查询';
+        req.items = ["Id", "Product_Name", "Buy_Count", "CreateTime", "MemberId", 
+            "Is_Win", "Win_Number", "Order_Number", "Price", "Product_ImgId",
+            "Periods_Number", "ReceiptAddressId","Crowd_FundingId"];
         //匹配成功函数
         req.appendixesBlock = (data, appendixe, key, id) => {
             let { Tool } = global;
@@ -2269,6 +2315,28 @@ export default class RequestReadFactory {
                 data.NickName = appendixe.NickName;
             }
         };
+
+        req.preprocessCallback = (req) => {
+            let { Tool } = global;
+
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                item.imageUrl = Tool.imageURLForId(item.Product_ImgId, '/res/img/common/common-avatar-default-icon.png');
+                item.status = item.Is_Win.toLocaleLowerCase() == 'true' ? '中奖' : '未抽中';
+            });
+        }
+        return req;
+    }
+
+    //众筹订单明细 查询
+    static requestRaiseOrderLines(orderId) {
+        let operation = Operation.sharedInstance().raiseOrderDetailReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Crowd_OrderId": orderId,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '众筹订单明细 查询';
         return req;
     }
 }

@@ -1,0 +1,8 @@
+<!--my-raise.wxml-->
+<import src='/pages/my/my-raise/my-raise-cell/my-raise-cell.wxml' />
+
+<view class="my-raise">
+    <block wx:for="{{listDatas}}" wx:key="unique">
+        <template is="my-raise-cell" data="{{...item, index:index}}"></template>
+    </block>
+</view>

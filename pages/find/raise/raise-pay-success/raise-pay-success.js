@@ -73,14 +73,18 @@ Page({
      * 查看订单
      */
     checkOrderTap: function () {
-
+        wx.navigateTo({
+            url: '/pages/find/raise/raise-order-detail/raise-order-detail?mainId=' + this.mainId,
+        })
     },
     
     /**
      * 去逛逛
      */
     goTap: function () {
-
+        wx.redirectTo({
+            url: '/pages/find/raise/raise',
+        })
     },
 
     /**
