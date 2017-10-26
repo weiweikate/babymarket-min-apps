@@ -97,7 +97,9 @@ Page({
      * 规则
      */
     ruleTap: function () {
-
+        wx.navigateTo({
+            url: '/pages/find/group-buy/group-buy-rule/group-buy-rule?type=2',
+        })
     },
 
     /**
@@ -120,7 +122,8 @@ Page({
             order = "${Need_Count} DESC";
         }
 
-        let task = RequestReadFactory.requestRaiseProducts(20, index, order);
+        let condition = "${Is_End} == 'False' && ${Remain_Need_Count} > '0'";
+        let task = RequestReadFactory.requestRaiseProducts(20, index, order, condition);
         let self = this;
         task.finishBlock = (req) => {
             let datas = req.responseObject.Datas;

@@ -1,0 +1,75 @@
+<!--raise-order-detail.wxml-->
+<import src='/pages/my/cell/address-cell.wxml' />
+
+<view class="raise-order-detail">
+
+    <!--商品信息-->
+    <view class="product-info" catchtap="productTap">
+        <image src="{{order.imageUrl}}" class="product-image"></image>
+        <view class="right-view">
+            <view class="title OverFlowTwoLine">{{order.Product_Name}}</view>
+            <view class="status-period">
+                <view class="status">{{order.status}}</view>
+                <view class="period">第{{order.Periods_Number}}期</view>
+            </view>
+        </view>
+    </view>
+
+    <!--地址-->
+    <view class="address-view">
+        <template is="address-cell" data="{{...addressInfo}}"></template>
+    </view>
+
+    <!--参与信息-->
+    <view class="join-view">
+        <view class="title">参与信息</view>
+        <view class="item">
+            <view class="name">手机号码:</view>
+            <view class="content">{{mobile}}</view>
+        </view>
+        <view class="item">
+            <view class="name">参与次数:</view>
+            <view class="content">{{order.Buy_Count}}次</view>
+        </view>
+        <view class="item">
+            <view class="name">参与时间:</view>
+            <view class="content">{{order.CreateTime}}</view>
+        </view>
+        <view class="item">
+            <view class="name">参与号码:</view>
+            <view class="content">{{joinNum}}</view>
+        </view>
+    </view>
+
+    <!--揭晓信息-->
+    <view class="join-view" wx:if="{{order.Win_Number != '0'}}">
+        <view class="title">揭晓信息</view>
+        <view class="item">
+            <view class="name">揭晓号码:</view>
+            <view class="content">{{order.Win_Number}}</view>
+        </view>
+        <view class="item">
+            <view class="name">参与次数:</view>
+            <view class="content">{{winOrder.Buy_Count}}次</view>
+        </view>
+        <view class="item">
+            <view class="name">参与时间:</view>
+            <view class="content">{{winOrder.CreateTime}}</view>
+        </view>
+        <view class="item">
+            <view class="name">抽中用户:</view>
+            <view class="content">{{winOrder.NickName}}</view>
+        </view>
+    </view>
+
+    <view class="bottom-view">
+        <view class="left-view">
+            <view class="price-view">实付款：
+                <view class="points">{{order.Price}}积分</view>
+            </view>
+            <view class="pay-time">下单时间：{{order.CreateTime}}</view>
+        </view>
+        <view class="contact-button" catchtap="contactTap">联系客服</view>
+    </view>
+
+</view>

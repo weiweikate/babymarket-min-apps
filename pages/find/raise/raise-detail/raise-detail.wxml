@@ -63,10 +63,8 @@
     </view>
 
     <!--底部bar-->
-    <view wx:if="{{product.isStart && product.Join_Proportion != '1'}}" class="buy-button enabled" 
-    catchtap="onApplyClickListener" data-index="{{index}}" data-type="{{product.buyStatus}}">立即参与</view>
-
-    <view wx:else class="buy-button">即将开始</view>
+    <view class="{{product.title == '即将开始'?'buy-button':'buy-button enabled'}}" 
+    catchtap="onApplyClickListener" data-title="{{product.title}}">{{product.title}}</view>
 
     <!--立即参与页面-->
     <view class="buy-view" hidden="{{!buyViewShow}}">

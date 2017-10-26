@@ -103,16 +103,27 @@ Page({
                 url: '/pages/find/raise/raise-product-detail/raise-product-detail?mainId=' + Id,
             })
         }
+
+        else if (title === '往期揭晓') {
+            wx.navigateTo({
+                url: '/pages/find/raise/raise-previous/raise-previous?mainId=' + this.data.product.ProductId,
+            })
+        }
     },
 
     /**
      * 立即参与
      */
-    onApplyClickListener:function(){
-        let hidden = this.data.buyViewShow;
-        this.setData({
-            buyViewShow: !hidden
-        });
+    onApplyClickListener:function(e){
+        let title = e.currentTarget.dataset.title;
+        if(title == "立即参与"){
+            let hidden = this.data.buyViewShow;
+            this.setData({
+                buyViewShow: !hidden
+            });
+        } else if (title == "前往最新期"){
+            this.goToLatestPeriod();
+        }
     },
 
     /**
@@ -289,4 +300,26 @@ Page({
         };
         task.addToQueue();
     },
+
+    /**
+     * 前往最新期
+     */
+    goToLatestPeriod:function(){
+        let condition = "${ProductId} == '" + this.data.product.ProductId + "'";
+        let task = RequestReadFactory.requestRaiseProducts(1, 0, '${Periods_Number} DESC', condition);
+        let self = this;
+        task.finishBlock = (req) => {
+            let datas = req.responseObject.Datas;
+            let item = datas[0];
+
+            if(item.Id == this.data.product.Id){
+                Tool.showSuccessToast('当前已是最新期')
+            }else{
+                wx.redirectTo({
+                    url: '/pages/find/raise/raise-detail/raise-detail?mainId=' + item.Id,
+                })
+            }
+        };
+        task.addToQueue();
+    }
 })

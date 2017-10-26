@@ -1,0 +1,18 @@
+<template name="my-raise-cell">
+    <view class="my-raise-cell" catchtap="myRaiseCellTap" data-id="{{Crowd_FundingId}}" data-index="{{index}}">
+        <view class="win">{{status}}</view>
+        <view class="product-info">
+            <image src="{{imageUrl}}" class="product-image"></image>
+            <view class="right-view">
+                <view class="title OverFlowTwoLine">{{Product_Name}}</view>
+                <view class="points-period">
+                    <view class="points-view">
+                        <view>支付积分：</view>
+                        <view class="points">{{Price}}</view>
+                    </view>
+                    <view class="period">第{{Periods_Number}}期</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,54 @@
+/* raise-previous.wxss */
+
+page{
+    background: white;
+}
+
+.raise-previous .header-view{
+    display: flex;
+    height: 114rpx;
+    align-items: center;
+    font-size: 30rpx;
+    color: #090909;
+}
+
+.header-view .period{
+    font-size: 28rpx;
+    color: #ff5555;
+    margin-left: 22rpx;
+    margin-right: 16rpx;
+}
+
+.raise-previous-cell{
+    border-top: 20rpx solid #fff8f4;
+    padding: 40rpx 22rpx;
+    width: 706rpx;
+    height: 204rpx;
+}
+
+.raise-previous-cell .period-time{
+    display: flex;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #090909;
+    margin-bottom: 52rpx;
+}
+
+.period-time .time-view{
+    display: flex;
+}
+
+.time-view .time{
+    color: #494848;
+}
+
+.raise-previous-cell .detail{
+    display: flex;
+    font-size: 30rpx;
+    color: #494848;
+    margin-bottom: 18rpx;
+}
+
+.detail .content{
+    color: #090909;
+}

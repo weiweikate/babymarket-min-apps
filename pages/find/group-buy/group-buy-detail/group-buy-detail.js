@@ -132,7 +132,7 @@ Page({
     ruleTap:function(){
 
         wx.navigateTo({
-            url: '/pages/find/group-buy/group-buy-rule/group-buy-rule',
+            url: '/pages/find/group-buy/group-buy-rule/group-buy-rule?type=1',
         })
     }
 })
