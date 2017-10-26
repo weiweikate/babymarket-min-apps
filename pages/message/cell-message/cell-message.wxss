@@ -1,7 +1,7 @@
 .cell-message {
   background-color: white;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   padding: 22rpx;
 }
 
@@ -9,14 +9,30 @@
   border-top: 15rpx solid #f3f4f5;
 }
 
+.view-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .message-title {
   font-size: 28rpx;
-  color: #090909;
-  background-color: white;
+  color: #acadaa;
 }
 
 .message-value {
-  font-size: 26rpx;
-  color: #7d7d7f;
-  margin-top: 15rpx;
+  font-size: 24rpx;
+  color: #494848;
+  margin-top: 5rpx;
+}
+
+.message-value.read {
+  color: #acadaa;
+}
+
+.img-arrow {
+  width: 30rpx;
+  height: 30rpx;
+  flex: none;
+  margin-left: 10rpx;
 }

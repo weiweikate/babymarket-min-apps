@@ -18,6 +18,9 @@ export default class Operation {
 
         //附件
         this.attachmentsReadOperation = '3a3bf362-b406-47a4-a6d2-a642010374b5';
+        
+        //验证码-新增
+        this.verifyCodeAddOperation = '593350ec-de1d-0d15-1242-3f25019f99be';
 
         // 便便诊所，咨询类型
         this.advisoryTypeReadOperation = '8445b839-c622-40cb-8dbc-a63d0115a365';
@@ -166,6 +169,7 @@ export default class Operation {
 
         //用户信息
         this.memberInfoReadOperation = 'cf71ab3d-ed28-4541-819b-a62c00f4ed2d';
+        this.memberAddOperation = '562fc66f-b28c-0aaf-18a4-3f2501975efa';
 
         //购物车
         this.cartReadOperation = 'd85baa92-d73c-42de-a91c-a62c0115803d';
@@ -198,6 +202,10 @@ export default class Operation {
         this.integralAddOperation = '1e2c21c5-ace8-46ec-8983-9fdd0185c222';
         //积分-查询
         this.integralReadOperation = 'ef074842-4310-4789-81af-a2d500e7ce95';
+        //消息-查询
+        this.messageReadOperation = '6a12daff-8501-4bd8-8f76-a74600b91541';
+        //消息阅读-新增
+        this.messageBatchReadOperation = '6da28b2c-f608-0b7c-387f-3e4b01c2d27e';
 
         __instance(this);
     }

@@ -1,48 +1,120 @@
-.container {
-  padding: 0;
+@import '/components/cell/cell-add-input/cell-add-input.wxss';
+
+page {
+  background-color: white;
 }
 
-.image_bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
+.view-root {
+  display: flex;
+  flex-direction: column;
+}
+
+.view-top {
+  display: flex;
+  flex-direction: column;
+  background-color: #f55;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-icon {
+  width: 200rpx;
+  height: 200rpx;
+  flex: none;
+  padding: 80rpx;
+}
+
+.view-tab {
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: 100%;
 }
 
-.view_top {
-  padding: 50px;
-  position: relative;
-  z-index: 2;
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
 }
 
-.view_bottom {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px 12px 30px 12px;
-  position: fixed;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.6);
-  z-index: 2;
+.tab-title {
+  color: #acadaa;
+  font-size: 32rpx;
 }
 
-text {
-  color: #715329;
-  font-size: 12px;
-}
-
-input {
-  color: #715329;
-  margin-top: 8px;
-  font-size: 14px;
-}
-
-.bt_login {
-  background-color: #715329;
+.tab-title.current {
   color: white;
-  margin-top: 15px;
-  font-size: 17px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+}
+
+.tab-line {
+  width: 30rpx;
+  height: 1rpx;
+  background-color: transparent;
+  margin-top: 8rpx;
+}
+
+.tab-line.current {
+  background-color: white;
+}
+
+.view-login {
+  display: flex;
+  flex-direction: column;
+  padding: 60rpx;
+}
+
+.view-find-password {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.find-password {
+  color: #acadaa;
+  font-size: 24rpx;
+  padding: 20rpx 0rpx;
+}
+
+.btn-submit {
+  color: #f55;
+  border: 1rpx solid #f55;
+  background: white;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  margin-top: 60rpx;
+  padding: 8rpx 0rpx;
+}
+
+.cell-add-input .input-title {
+  color: #acadaa;
+}
+
+.view-register {
+  display: flex;
+  flex-direction: column;
+  padding: 60rpx;
+}
+
+.view-code {
+  position: relative;
+}
+
+.btn-code {
+  width: 170rpx;
+  position: absolute;
+  right: 0rpx;
+  bottom: 17rpx;
+  color: #dbdbdb;
+  font-size: 24rpx;
+  border: 1rpx solid #dbdbdb;
+  padding: 6rpx 0rpx;
+  border-radius: 6rpx;
+  text-align: center;
+  z-index: 1000;
+}
+
+.btn-code.enable {
+  color: #f55;
+  border: 1rpx solid #f55;
 }

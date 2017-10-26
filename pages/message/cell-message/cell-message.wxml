@@ -1,6 +1,9 @@
 <template name="cell-message">
   <view class="{{position>0?'cell-message top':'cell-message'}}" catchtap="onItemClickListener" data-id="{{Id}}" data-position="{{position}}">
-    <text class="message-title">{{title}}</text>
-    <text class="message-value OverFlowTwoLine">{{content}}</text>
+    <view class='view-content'>
+      <text class="message-title">{{Content}}</text>
+      <text class="{{IsReaded=='True'?'message-value read':'message-value'}}">{{SendAt}}</text>
+    </view>
+    <image src='/res/img/common/comm-arrow-gray-right.png' mode='aspectFit' wx:if="{{RelevancyId!='00000000-0000-0000-0000-000000000000'}}" class='img-arrow' />
   </view>
 </template>

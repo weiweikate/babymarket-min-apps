@@ -1,66 +1,96 @@
-// pages/mom/post-add/post-add.js
+let { Tool, Event, Storage, RequestReadFactory, RequestWriteFactory } = global;
+import ImagePicker from '../../../components/image-picker/image-picker';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    circleArray: [],
+    selectCircle: undefined
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.imagePicker = new ImagePicker(this);
+
+    //请求圈子数据
+    this.requestAllCircle();
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 查询所有圈子
    */
-  onReady: function () {
-  
+  requestAllCircle: function () {
+    let task = RequestReadFactory.allCircleRead();
+    task.finishBlock = (req) => {
+      let responseData = req.responseObject.Datas;
+      this.setData({
+        circleArray: responseData
+      });
+    };
+    task.addToQueue();
   },
 
   /**
-   * 生命周期函数--监听页面显示
+   * 新增帖子
    */
-  onShow: function () {
-  
+  requestAddPost: function (requestData, temporaryIdArray) {
+    let task = RequestWriteFactory.addPost(requestData, temporaryIdArray);
+    task.finishBlock = (req) => {
+      Tool.showSuccessToast("发布成功！");
+      Tool.navigationPop();
+
+      Event.emit('refreshPostList');//发出通知
+    };
+    task.addToQueue();
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
+   * 添加圈子
    */
-  onHide: function () {
-  
+  onSelectChangeListener: function (e) {
+    let circleArray = this.data.circleArray;
+    let selectCircle = circleArray[e.detail.value];
+    this.setData({
+      selectCircle: selectCircle
+    });
   },
 
   /**
-   * 生命周期函数--监听页面卸载
+   * 提交
    */
-  onUnload: function () {
-  
-  },
+  onSubmitAction: function (e) {
+    let self = this;
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
+    let info = e.detail.value;
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
+    let selectCircle = this.data.selectCircle;
+    if (selectCircle == undefined) {
+      Tool.showAlert("请选择发帖的模块");
+      return false;
+    };
+    if (Tool.isEmptyStr(info.title)) {
+      Tool.showAlert("请输入文章标题");
+      return false;
+    };
+    if (info.content.length < 10) {
+      Tool.showAlert("发帖文字必须10字以上");
+      return false;
+    };
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    Tool.showLoading();
+    self.imagePicker.onUploadAction((temporaryIdArray) => {
+      let requestData = new Object();
+      requestData.Id = Tool.guid();
+      requestData.ModuleappId = selectCircle.Id;
+      requestData.Member_Article_SendId = Storage.memberId();
+      requestData.Title_Article = info.title;
+      requestData.Article_Content = info.content;
+      self.requestAddPost(requestData, temporaryIdArray);
+    });
   }
 })

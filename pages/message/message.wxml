@@ -1,15 +1,11 @@
 <import src='/components/empty-view/empty-view.wxml' />
-<import src='/pages/mom/cell-post/cell-post.wxml' />
 <import src='/pages/message/cell-message/cell-message.wxml' />
 
 <view class="view-root">
   <view wx:if="{{messageArray.length>0}}">
-    <block wx:for="{{messageArray}}" wx:key="unique">
-      <template is="cell-post" data="{{...item,position:index}}" wx:if="{{item.SourceType=='Article'}}" />
-      <template is="cell-message" data="{{...item,position:index}}" wx:else />
-    </block>
+    <template is="cell-message" data="{{...item,position:index}}" wx:for="{{messageArray}}" wx:key="unique" />
   </view>
   <view wx:else class="no-data">
-    <template is="empty-view" data="{{title:'这里还什么都没有哦～'}}" />
+    <template is="empty-view" data="{{title:'没有消息...'}}" />
   </view>
 </view>

@@ -1,6 +1,4 @@
-// my.js
-
-let { Tool, Storage, RequestReadFactory } = global;
+let { Tool, Event, Storage, RequestReadFactory } = global;
 Page({
 
   /**
@@ -15,21 +13,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.initMenuArray();
+    this.requestData();
+    //注册通知
+    Event.on('loginSuccessEvent', this.requestData, this)
   },
 
   /**
-   * 生命周期函数--监听页面显示
+   * 生命周期函数--监听页面卸载
    */
-  onShow: function () {
-    this.initMenuArray();
-    this.requestData();
+  onUnload: function () {
+    Event.off('loginSuccessEvent', this.requestData)
   },
 
   /**
    * 菜单点击
    */
   onMenuItemListener: function (e) {
+    if (!Storage.didLogin()) {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return;
+    }
     let title = e.currentTarget.dataset.title;
     console.log('--------' + title);
     if (title == '我的奖励') {
@@ -134,32 +140,56 @@ Page({
    * 编辑资料
    */
   onEditClickListener: function () {
-    wx.navigateTo({
-      url: '/pages/my/edit-profile/edit-profile'
-    })
+    if (Storage.didLogin()) {
+      wx.navigateTo({
+        url: '/pages/my/edit-profile/edit-profile'
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }
   },
   /**
    * 金币
    */
   onCoinClickListener: function () {
-    wx.navigateTo({
-      url: '/pages/my/coins/coins'
-    })
+    if (Storage.didLogin()) {
+      wx.navigateTo({
+        url: '/pages/my/coins/coins'
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }
   },
   /**
    * 收藏
    */
   onCollectClickListener: function () {
-    wx.navigateTo({
-      url: '/pages/my/collect/collect'
-    })
+    if (Storage.didLogin()) {
+      wx.navigateTo({
+        url: '/pages/my/collect/collect'
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }
   },
 
   /**
    * 请求统一入口
    */
   requestData: function () {
-    this.requestMemberInfo();
+    if (Storage.didLogin()) {
+      this.requestMemberInfo();
+    } else {
+      this.setData({
+        memberInfo: undefined
+      });
+    }
   },
 
   /**

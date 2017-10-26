@@ -12,7 +12,6 @@
 .collect-title {
   font-size: 28rpx;
   color: #090909;
-  background-color: white;
 }
 
 .collect-value {

@@ -1,7 +1,7 @@
 .cell-add-select {
   display: flex;
   flex-direction: column;
-  border-bottom: 1rpx solid gainsboro;
+  border-bottom: 1rpx solid #f3f4f5;
   margin-top: 30rpx;
 }
 

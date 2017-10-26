@@ -1,5 +1,4 @@
 @import '/components/empty-view/empty-view.wxss';
-@import '/pages/mom/cell-post/cell-post.wxss';
 @import '/pages/message/cell-message/cell-message.wxss';
 
 .view-root {
@@ -11,10 +10,4 @@
 
 .no-data {
   height: 100%;
-}
-
-.content {
-  font-size: 26rpx;
-  color: #7d7d7f;
-  margin-top: 15rpx;
 }

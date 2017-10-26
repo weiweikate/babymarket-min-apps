@@ -1,21 +1,38 @@
+<import src='/components/cell/cell-add-input/cell-add-input.wxml' />
 
-
-
-
-<view class="container">
-  <image class="image_bg" src="/res/img/login/login-bg.jpg"></image>
-  <view class="view_top">
-    <image style="width: 180px; height: 180px;" src="/res/img/login/login-icon.png"></image>
-  </view>
-  <form class="view_bottom" bindsubmit="loginAction">
-    <view>
-      <text>登录名</text>
-      <input name="username" placeholder="请输入登录名" placeholder-style="color:#715329" />
-      <view style="height:1px; background-color: #715329; margin-bottom:10px;"></view>
-      <text>密码</text>
-      <input name="password" placeholder="请输入密码" password="true" placeholder-style="color:#715329" />
-      <view style="height:1px; background-color: #715329;"></view>
-      <button formType="submit" class="bt_login">登录</button>
+<view class='view-root'>
+  <view class="view-top">
+    <image class='login-icon' src="/res/img/login/login-icon.png" mode='aspectFit' />
+    <view class='view-tab'>
+      <view class='tab-item' catchtap='onTabChangeListener' data-position='0'>
+        <text class="{{currentTab==0?'tab-title current':'tab-title'}}">登录</text>
+        <view class="{{currentTab==0?'tab-line current':'tab-line'}}" />
+      </view>
+      <view class='tab-item' catchtap='onTabChangeListener' data-position='1'>
+        <text class="{{currentTab==1?'tab-title current':'tab-title'}}">注册</text>
+        <view class="{{currentTab==1?'tab-line current':'tab-line'}}" />
+      </view>
     </view>
-  </form>
+  </view>
+  <view class='view-login' wx:if="{{currentTab==0}}">
+    <form catchsubmit="onLoginClickListener">
+      <template is="cell-add-input" data="{{title:'登录名',hint:'请输入您的登录账号',key:'username',type:'number',maxlength:'11'}}" />
+      <template is="cell-add-input" data="{{title:'密码',hint:'请输入您的密码',key:'password'}}" />
+      <view class='view-find-password'>
+        <text class='find-password' catchtap='onFindPasswordListener'>忘记密码？</text>
+      </view>
+      <button class="btn-submit" form-type="submit">登录</button>
+    </form>
+  </view>
+  <view class='view-register' wx:else>
+    <form catchsubmit="onRegisterClickListener">
+      <template is="cell-add-input" data="{{title:'手机号',hint:'请输入您的手机号',key:'mobile',type:'number',maxlength:'11'}}" />
+      <view class='view-code'>
+        <template is="cell-add-input" data="{{title:'验证码',hint:'请输入验证码',key:'code',type:'number',maxlength:'6'}}" />
+        <text class="{{isTiming?'btn-code':'btn-code enable'}}" catchtap='onCodeClickListener' form-type="submit">{{isTiming?time+'秒后重发':'获取验证码'}}</text>
+      </view>
+      <template is="cell-add-input" data="{{title:'密码',hint:'请输入您的密码',key:'password'}}" />
+      <button class="btn-submit" form-type="submit">注册</button>
+    </form>
+  </view>
 </view>

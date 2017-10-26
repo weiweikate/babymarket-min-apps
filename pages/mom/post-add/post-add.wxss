@@ -1,1 +1,73 @@
-/* pages/mom/post-add/post-add.wxss */
+@import '/components/cell/cell-add-input/cell-add-input.wxss';
+@import '/components/image-picker/image-picker.wxss';
+
+page {
+  background-color: white;
+}
+
+.view-root {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-top: 1rpx solid #f3f4f5;
+}
+
+.view-circle {
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #f3f4f5;
+  padding: 20rpx;
+}
+
+.select-circle {
+  color: #090909;
+  font-size: 28rpx;
+  flex-grow: 1;
+}
+
+.select-arrow {
+  width: 17rpx;
+  height: 30rpx;
+  flex: none;
+}
+
+.view-form {
+  padding: 0rpx 20rpx;
+}
+
+.input-title {
+  color: #090909;
+  font-size: 28rpx;
+  padding: 20rpx 0rpx;
+}
+
+.input-content {
+  color: #090909;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  width: 100%;
+}
+
+.view-submit {
+  color: #f55;
+  border: 1rpx solid #f55;
+  background: white;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  margin: 60rpx 0rpx 30rpx 0rpx;
+  padding: 8rpx 0rpx 8rpx 0rpx;
+}
+
+.view-image {
+  margin-top: 30rpx;
+}
+
+.view-image .image-title {
+  color: #494848;
+  font-size: 24rpx;
+}
+
+.view-image .image-picker {
+  margin-top: 10rpx;
+  padding-left: 10rpx;
+}

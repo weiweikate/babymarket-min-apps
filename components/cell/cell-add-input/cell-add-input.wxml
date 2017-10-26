@@ -1,6 +1,6 @@
 <template name="cell-add-input">
   <view class="cell-add-input">
     <text class="input-title">{{title}}</text>
-    <input class="input-value" name="{{key}}" value="{{value}}" placeholder="{{hint}}" placeholder-style="color:#dbdbdb" type="{{type}}" />
+    <input class="input-value" name="{{key}}" value="{{value}}" placeholder="{{hint}}" placeholder-style="color:#dbdbdb" type="{{type}}" maxlength="{{maxlength==undefined?'-1':maxlength}}" bindinput="onTextChangeListener" data-name="{{key}}" />
   </view>
 </template>

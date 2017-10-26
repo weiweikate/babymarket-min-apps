@@ -1,2 +1,24 @@
-<!--pages/mom/post-add/post-add.wxml-->
-<text>pages/mom/post-add/post-add.wxml</text>
+<import src='/components/cell/cell-add-input/cell-add-input.wxml' />
+<import src='/components/image-picker/image-picker.wxml' />
+
+<view class="view-root">
+  <picker catchchange="onSelectChangeListener" range="{{circleArray}}" range-key="Name">
+    <view class="view-circle">
+      <input class="select-circle" value="{{selectCircle.Name}}" placeholder="请选择圈子" disabled="true" placeholder-style="color:#acadaa" />
+      <image class="select-arrow" src="/res/img/common/comm-arrow-gray-right.png" mode="aspectFit" />
+    </view>
+  </picker>
+  <form catchsubmit="onSubmitAction" class='view-form'>
+    <!--标题-->
+    <input class="input-title" name="title" placeholder="我只是个标题(必填)" placeholder-style="color:#acadaa" />
+    <!--内容-->
+    <textarea class="input-content" name="content" maxlength='-1' placeholder="我就是正文(不少于10个字)" placeholder-style="color:#acadaa" />
+    <!--上传照片（最多9张）-->
+    <view class='view-image'>
+      <text class="image-title">上传照片（最多9张）</text>
+      <template is="image-picker" data="{{maxCount:maxCount,imageArray:imageArray}}" />
+    </view>
+    <!--底部按钮保存-->
+    <button class="view-submit" form-type="submit">发布</button>
+  </form>
+</view>

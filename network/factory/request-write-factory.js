@@ -29,6 +29,26 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //新增会员
+    static addMember(requestData) {
+      let operation = Operation.sharedInstance().memberAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'Member', requestData, operation, null);
+      req.name = '新增会员';
+      return req;
+    }
+
+    //新增消息阅读
+    static addMessageBatch(requestData) {
+      let operation = Operation.sharedInstance().messageBatchReadOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'MessageBatchRead', requestData, operation, null);
+      req.name = '新增消息阅读';
+      return req;
+    }
+
     //新增积分
     static addIntegral(requestData) {
       let operation = Operation.sharedInstance().integralAddOperation;
@@ -235,10 +255,10 @@ export default class RequestWriteFactory {
         let params = {
             "Operation": operation,
             "Mobile": mobile,
-            "TypeKey": typeKey,// 1 为找回密码 0 为新用户注册 2 设置支付密码
+            "TypeKey": typeKey+''// 1注册,2找回密码
         };
 
-        let req = new RequestWrite(status, 'Check_Code', params, null);
+        let req = new RequestWrite(status, 'CheckCode', params, null);
         req.name = '获取验证码';
         return req;
     }
@@ -259,6 +279,41 @@ export default class RequestWriteFactory {
         let req = new RequestWrite(status, 'PayCode', params, null);
         req.name = '设置支付密码';
         return req;
+    }
+
+    //新增帖子
+    static addPost(requestData, temporaryIdArray) {
+      let operation = Operation.sharedInstance().postAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let relevancies = null;
+
+      if (temporaryIdArray != undefined) {
+        let requestId = requestData.Id;
+        relevancies = new Array();
+        temporaryIdArray.forEach((item) => {
+          let relevancy = new Object();
+          relevancy.EntityName = "Attachment";
+          relevancy.Status = Network.sharedInstance().statusNew;
+
+          let itemId = Tool.guid();
+
+          let items = new Object();
+          items.FileName = itemId + ".png";
+          items.RelevancyId = requestId;
+          items.RelevancyType = 'Article';
+          items.RelevancyBizElement = 'Attachments';
+          items.$FILE_BYTES = item;
+          items.Id = itemId;
+          relevancy.Items = items;
+
+          relevancies.push(relevancy);
+        });
+      }
+
+      let req = new RequestWrite(status, 'Article', requestData, operation, relevancies);
+      req.name = '新增帖子';
+      return req;
     }
 
     //新增帖子评论

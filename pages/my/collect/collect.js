@@ -45,7 +45,7 @@ Page({
         break;
       case 'IndexArticle':
         //进入首页文章详情
-        url = '/pages/mom/post-detail/post-detail?id=' + id
+        url = '/pages/index/index-artical/index-artical?Id=' + id + "&title=文章详情";
         break;
       case 'Article':
         //进入帖子详情

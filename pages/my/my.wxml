@@ -12,8 +12,8 @@
 
   <view class='view-info'>
     <image src="{{memberInfo.headImageUrl.length>0?memberInfo.headImageUrl:'/res/img/common/common-avatar-default-icon.png'}}" class="info-avatar" catchtap="onEditClickListener" mode="aspectFill" />
-    <text class="info-nickname">{{memberInfo.NickName}}</text>
-    <text class="info-birthday">宝宝生日{{memberInfo.BabyBirthday}}</text>
+    <text class="info-nickname">{{memberInfo==undefined?'未登录':memberInfo.NickName}}</text>
+    <text class="info-birthday" wx:if="{{memberInfo!=undefined}}">宝宝生日{{memberInfo.BabyBirthday}}</text>
   </view>
 
   <view class='view-count'>

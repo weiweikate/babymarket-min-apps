@@ -1,5 +1,5 @@
 //宝妈圈
-let { Tool, Event,Storage, RequestReadFactory, RequestWriteFactory } = global;
+let { Tool, Event, Storage, RequestReadFactory, RequestWriteFactory } = global;
 import CreateBtn from '../../components/create-btn/create-btn';
 
 Page({
@@ -47,6 +47,7 @@ Page({
 
     //注册通知
     Event.on('refreshAttentionList', this.requestCircleAttention, this)
+    Event.on('refreshPostList', this.requestAllPostData, this)
   },
 
   /**
@@ -54,20 +55,7 @@ Page({
    */
   onUnload: function () {
     Event.off('refreshAttentionList', this.requestCircleAttention)
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+    Event.off('refreshPostList', this.requestAllPostData)
   },
 
   /**
@@ -95,6 +83,16 @@ Page({
    */
   requestData: function () {
     this.requestHotPost(0);
+  },
+
+  /**
+   * 数据请求
+   */
+  requestAllPostData: function () {
+    this.setData({
+      allPostIndex: 0
+    });
+    this.requestAllPost(0);
   },
 
   /**
@@ -146,7 +144,10 @@ Page({
     let task = RequestReadFactory.allPostRead(index);
     task.finishBlock = (req) => {
       let responseData = req.responseObject.Datas;
-      let tempArray = this.data.allPostList;
+      let tempArray = [];
+      if (index != 0) {
+        tempArray = this.data.allPostList;
+      }
       responseData.forEach((item, index) => {
         tempArray.push(item);
       });

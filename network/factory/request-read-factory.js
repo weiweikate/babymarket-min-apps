@@ -23,7 +23,7 @@ export default class RequestReadFactory {
      * @returns {RequestRead}
      */
     static checkMemberByPhone(phone){
-        let operation = Operation.sharedInstance().memberInfoReadOperation;
+      let operation = Operation.sharedInstance().memberInfoReadOperation;
         let bodyParameters = {
             "Operation": operation,
             "Mobile": phone,
@@ -86,6 +86,20 @@ export default class RequestReadFactory {
         }
         req.responseObject.imageUrls = imageUrls;
       }
+      return req;
+    }
+
+    //消息查询
+    static messageRead() {
+      let operation = Operation.sharedInstance().messageReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "ReceiverId": global.Storage.memberId(),
+        "Order": '${SendAt} DESC'
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '消息查询';//用于日志输出
+      req.items = ['Id', 'RelevancyId', 'RelevancyName', 'RelevancyType', 'Content', 'SendAt','IsReaded'];
       return req;
     }
 
