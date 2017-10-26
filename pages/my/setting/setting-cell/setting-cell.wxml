@@ -1,6 +1,0 @@
-<template name="setting-cell">
-<view class="setting-cell-view" catchtap="cellTap" data-index="{{index}}">
-    <text class="title">{{title}}</text>
-    <image class="arrow" src="/res/img/common/comm-arrow-gray-right.png" style="width:15rpx;height:26rpx" mode="aspectFit"></image> 
-</view>    
-</template>
