@@ -16,8 +16,21 @@ Page({
    */
   onLoad: function (options) {
       let self = this;
+      let pageType = options.type;
+      let url = '';
+      if(pageType == 1){//团购规则
+          url = Network.sharedInstance().activityRuleURL;
+          wx.setNavigationBarTitle({
+              title: '团购规则',
+          })
+      } else if (pageType == 2){//众筹规则
+          url = Network.sharedInstance().raiseRuleURL;
+          wx.setNavigationBarTitle({
+              title: '众筹规则',
+          })
+      }
     wx.request({
-        url: Network.sharedInstance().activityRuleURL,
+        url: url,
         success: function (res) {
             console.log(res.data)
             let data0 = res.data;

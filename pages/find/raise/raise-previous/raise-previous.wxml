@@ -1,0 +1,39 @@
+<!--raise-previous.wxml-->
+<view class="raise-previous">
+    <!--揭晓中-->
+    <view class="header-view">
+        <view class="period">第{{unWinPeriod}}期</view>
+        <view>揭晓中，请耐心等待...</view>
+    </view>
+
+    <block wx:for="{{listDatas}}" wx:key="unique">
+        <template is="raise-previous-cell" data="{{...item}}"></template>
+    </block>
+</view>
+
+<template name="raise-previous-cell">
+    <view class="raise-previous-cell">
+        <view class="period-time">
+            <view>第{{Periods_Number}}期</view>
+            <view class="time-view">
+                <view class="time">揭晓时间：</view>
+                <view>{{Succeed_Time}}</view>
+            </view>
+        </view>
+
+        <view class="detail">
+            <view>幸运用户：</view>
+            <view class="content">{{NickName}}</view>
+        </view>
+
+        <view class="detail">
+            <view>幸运号码：</view>
+            <view class="content">{{Win_Number}}</view>
+        </view>
+
+        <view class="detail">
+            <view>参与人次：</view>
+            <view class="content">{{Join_Count}}次</view>
+        </view>
+    </view>
+</template>

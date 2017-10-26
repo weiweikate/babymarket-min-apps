@@ -38,54 +38,44 @@ Page({
     }
     let title = e.currentTarget.dataset.title;
     console.log('--------' + title);
+    let url = '';
     if (title == '我的奖励') {
-      wx.navigateTo({
-        url: '../my/my-award/my-award',
-      })
+        url = '/pages/my/my-award/my-award'
 
     } else if (title == '赚金币') {
-      wx.navigateTo({
-        url: '../my/sign/sign',
-      })
+      url = '/pages/my/sign/sign'
 
     } else if (title == '宝宝日记') {
-      wx.navigateTo({
-        url: '../my/baby-diary/baby-diary',
-      })
+      url = '/pages/my/baby-diary/baby-diary'
 
     } else if (title == '我的秒杀') {
 
     } else if (title == '我的众筹') {
+        url = '/pages/my/my-raise/my-raise'
 
     } else if (title == '我的团购') {
 
     } else if (title == '我的试用') {
 
     } else if (title == '我的积分订单') {
-      wx.navigateTo({
-        url: '/pages/order/order-list/order-list'
-      })
+      url = '/pages/order/order-list/order-list'
 
     } else if (title == '我的问答') {
-      wx.navigateTo({
-        url: '../my/my-question/my-question',
-      })
+      url = '/pages/my/my-question/my-question'
 
     } else if (title == '发表的帖子') {
-      wx.navigateTo({
-        url: '/pages/my/my-create-post/my-create-post',
-      })
+      url = '/pages/my/my-create-post/my-create-post'
 
     } else if (title == '回复的帖子') {
-      wx.navigateTo({
-        url: '../my/my-reply-post/my-reply-post',
-      })
+      url = '/pages/my-reply-post/my-reply-post'
 
     } else if (title == '收货地址管理') {
-      wx.navigateTo({
-        url: '../address/address',
-      })
+      url = '/pages/address/address'
     }
+
+    wx.navigateTo({
+        url: url,
+    })
   },
 
   /**
