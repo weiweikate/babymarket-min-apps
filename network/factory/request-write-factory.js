@@ -617,6 +617,28 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //新增团购订单
+    static addGroupBuyOrder(activityId, addressDatas, orderId) {
+        let operation = Operation.sharedInstance().activityOrderAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "MemberId": global.Storage.memberId(),
+            "CreatorId": global.Storage.memberId(),
+            "Id":orderId,
+            "ActivityId": activityId,
+            "Consignee": addressDatas.Consignee,
+            "ConsigneeMobile": addressDatas.Mobile,
+            "CityId": addressDatas.AreaId,
+            "Street": addressDatas.Street,
+            "Address": addressDatas.ReciptAddress,
+        }
+
+        let req = new RequestWrite(status, 'ActivityOrder', params, null);
+        req.name = '新增团购订单';
+        return req;
+    }
+
     //新增黄金便征集令报告
     static addLevyReport(requestData, temporaryIdArray) {
       let operation = Operation.sharedInstance().levyReportAddOperation;

@@ -6,7 +6,7 @@
     <view class='view-product'>
       <text class='product-name'>{{ProductName}}</text>
       <view class='price-count'>
-        <text class='price-title'>积分：</text>
+        <text class='price-title' wx:if="{{door=='1'}}">积分：</text>
         <text class='price-value'>{{Price}}</text>
         <template is="cell-quantity" data="{{quantity:Qnty,position:position}}" wx:if="{{isEdit}}" />
         <text class='quantity-value' wx:else>x{{Qnty}}</text>

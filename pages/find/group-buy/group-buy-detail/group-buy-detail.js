@@ -130,9 +130,17 @@ Page({
      * 团购规则
      */
     ruleTap:function(){
-
         wx.navigateTo({
             url: '/pages/find/group-buy/group-buy-rule/group-buy-rule?type=1',
+        })
+    },
+
+    /**
+     * 立即下单
+     */
+    buyButtonTap:function(){
+        wx.navigateTo({
+            url: '/pages/find/group-buy/group-buy-confirm-order/group-buy-confirm-order?mainId=' + this.mainId,
         })
     }
 })

@@ -2,7 +2,7 @@
 <import src='/pages/order/cell-order/cell-order.wxml' />
 
 <view wx:if="{{orderArray.length>0}}" class="view-root">
-  <template is="cell-order" data="{{...item,position:index}}" wx:for="{{orderArray}}" wx:key="unique" />
+  <template is="cell-order" data="{{...item,position:index, door:door}}" wx:for="{{orderArray}}" wx:key="unique" />
 </view>
 
 <view wx:if="{{orderArray.length==0}}" class="no-data">

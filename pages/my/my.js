@@ -73,11 +73,11 @@ Page({
     } else if (title == '我的众筹') {
       url = '/pages/my/my-raise/my-raise';
     } else if (title == '我的团购') {
-
+        url = '/pages/order/order-list/order-list?type=2'
     } else if (title == '我的试用') {
 
     } else if (title == '我的积分订单') {
-      url = '/pages/order/order-list/order-list';
+      url = '/pages/order/order-list/order-list?type=1'
     } else if (title == '我的问答') {
       url = '/pages/my/my-question/my-question';
     } else if (title == '发表的帖子') {
