@@ -7,9 +7,7 @@
         "pages/my/my",
         "pages/shopping-cart/shopping-cart",
         "pages/login/login",
-        "pages/my/myOrder/myOrder",
-        "pages/order-confirm/order-confirm",
-        "pages/my/orderDetail/orderDetail",
+        "pages/order/order-confirm/order-confirm",
         "pages/my/delivery-info/delivery-info",
         "pages/pay-method/pay-method",
         "pages/my/about-me/about-me",
@@ -101,7 +99,8 @@
         "pages/message/message",
         "pages/mom/post-add/post-add",
         "pages/my/collect/collect",
-        "pages/find/group-buy/group-buy-confirm-order/group-buy-confirm-order"
+        "pages/find/group-buy/group-buy-confirm-order/group-buy-confirm-order",
+        "pages/my/my-seckill/my-seckill"
     ],
     "window": {
         "backgroundTextStyle": "light",

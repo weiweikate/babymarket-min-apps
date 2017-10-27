@@ -58,6 +58,25 @@ Page({
             });
         };
         task.addToQueue();
+    } else if (this.data.door == '3') {//秒杀订单
+        let condition = "${Id} == '" + orderId + "'"
+        let task = RequestReadFactory.requestSecKillOrderDetail(1,0,condition);
+        task.finishBlock = (req) => {
+            let responseData = req.responseObject.Datas;
+            let item = responseData[0];
+
+            item.Detail = [{
+                "ProductName": item.Name,
+                "ProductImgUrl": item.imgUrl,
+                "Price": item.Need_Points + '积分',
+                "Qnty": '1'
+            }]
+
+            this.setData({
+                orderInfo: item
+            });
+        };
+        task.addToQueue();
     }
   },
 
@@ -66,9 +85,17 @@ Page({
    */
   onChildClickLitener: function (e) {
     let productId = e.currentTarget.dataset.productId;
-    wx.navigateTo({
-      url: '/pages/product-detail/product-detail?id=' + productId
-    })
+    if(this.data.door == '3'){//秒杀
+
+        wx.navigateTo({
+            url: '/pages/find/second-kill/second-kill-detail/second-kill-detail?mainId=' + this.data.orderInfo.Seckill_ProductId
+        })
+    }else{
+        let productId = e.currentTarget.dataset.productId;
+        wx.navigateTo({
+            url: '/pages/product-detail/product-detail?id=' + productId
+        })
+    }
   },
 
   /**

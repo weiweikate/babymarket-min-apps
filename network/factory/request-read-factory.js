@@ -2118,10 +2118,10 @@ export default class RequestReadFactory {
         req.name = '秒杀时间段 查询';
         //req.items = ["Id", "CreatorId", "SignDays", "Days", "Coin", "Date"];
         return req;
-    }
+    } 
 
     //秒杀商品列表 查询
-    static requestSecKillProducts(count, index, timeId) {
+    static requestSecKillProductsList(count, index, timeId) {
         let operation = Operation.sharedInstance().secKillProductsReadOperation;
         let bodyParameters = {
             "Operation": operation,
@@ -2157,6 +2157,106 @@ export default class RequestReadFactory {
             }
         };
 
+        return req;
+    }
+
+    //秒杀商品详情 查询
+    static requestSecKillProducts(secondKillProductId) {
+        let operation = Operation.sharedInstance().secKillProductsReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Id": secondKillProductId,
+            "MaxCount": 1,
+            "StartIndex": 0,
+            "IsReturnTotal": true,
+            "Appendixes": {
+                "+Product": [
+                    "Name",
+                    "ImgId",
+                    "Price",
+                    "Description",
+                    "Attachments",
+                    "Summary"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '秒杀商品详情 查询';
+        req.appendixesKeyMap = { 'Product': 'ProductId' };
+        //req.items = ["Id", "CreatorId", "SignDays", "Days", "Coin", "Date"];
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
+
+            if (key === 'Product') {
+                //给data添加新属性
+                data.Name = appendixe.Name;
+                data.orignalPrice = appendixe.Price;
+                data.Summary = appendixe.Summary;
+                data.Description = appendixe.Description;
+                data.imgUrl = Tool.imageURLForId(appendixe.ImgId, '/res/img/common/comm-defualt_loading_square_icon.png');
+            }
+        };
+
+        return req;
+    }
+
+    //秒杀订单详情 查询
+    static requestSecKillOrderDetail(count, index, condition) {
+        let operation = Operation.sharedInstance().secKillOrderReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "MaxCount": count,
+            "StartIndex": index,
+            "Condition":condition,
+            "IsReturnTotal": true,
+            "Order": "${CreateTime} DESC",
+            "Appendixes": {
+                "+Product": [
+                    "Name",
+                    "ImgId",
+                    "Price",
+                    "Description",
+                    "Attachments",
+                    "Summary"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '秒杀订单详情 查询';
+        req.appendixesKeyMap = { 'Product': 'ProductId' };
+        //req.items = ["Id", "CreatorId", "SignDays", "Days", "Coin", "Date"];
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
+
+            if (key === 'Product') {
+                //给data添加新属性
+                data.orignalPrice = appendixe.Price;
+                data.Name = appendixe.Name;
+                data.Summary = appendixe.Summary;
+                data.Description = appendixe.Description;
+                data.imgUrl = Tool.imageURLForId(appendixe.ImgId, '/res/img/common/comm-defualt_loading_square_icon.png');
+            }
+        };
+
+        req.preprocessCallback = (req) =>{
+            let datas = req.responseObject.Datas;
+            datas.forEach((item, index) => {
+                if (item.DeliveryStatusKey == '0') {
+                    item.StatusName = '未支付';
+                } else if (item.DeliveryStatusKey == '1') {
+                    item.StatusName = '待发货';
+                } else if (item.DeliveryStatusKey == '2') {
+                    item.StatusName = '已发货';
+                } else if (item.DeliveryStatusKey == '3') {
+                    item.StatusName = '已领取';
+                } else if (item.DeliveryStatusKey == '4') {
+                    item.StatusName = '已确认';
+                }
+                item.Number = item.Order_Number;
+            });
+        };
         return req;
     }
 

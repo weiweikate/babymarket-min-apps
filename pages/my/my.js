@@ -69,7 +69,7 @@ Page({
     } else if (title == '宝宝日记') {
       url = '/pages/my/baby-diary/baby-diary';
     } else if (title == '我的秒杀') {
-
+        url = '/pages/my/my-seckill/my-seckill'
     } else if (title == '我的众筹') {
       url = '/pages/my/my-raise/my-raise';
     } else if (title == '我的团购') {

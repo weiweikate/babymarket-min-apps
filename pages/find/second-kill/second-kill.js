@@ -117,7 +117,7 @@ Page({
         }
         let item = timeList[currentIndex];
 
-        let task = RequestReadFactory.requestSecKillProducts(20, index, item.Id);
+        let task = RequestReadFactory.requestSecKillProductsList(20, index, item.Id);
         let self = this;
         task.finishBlock = (req) => {
             let datas = req.responseObject.Datas;
@@ -151,8 +151,8 @@ Page({
                 let startInterval = Tool.timeIntervalFromString(item.Seckill_Datetime_Start);
                 let endInterval = Tool.timeIntervalFromString(item.Seckill_Datetime_End);
                 if (timesInterval >= startInterval
-                    && timesInterval >= endInterval){
-                    if (item.SurplusNumber >0){
+                    && timesInterval <= endInterval){
+                    if (parseInt(item.Surplus_Number) > 0){
                         item.buyStatus = 0;//马上抢
                     }else{
                         item.buyStatus = 1;//已结束
@@ -172,12 +172,10 @@ Page({
 
     onItemClickListener:function(e){
         let index = e.currentTarget.dataset.index;
-        let id = e.currentTarget.dataset.id;
 
         let datas = this.data.listDatas[index];
-        wx.setStorageSync("secondKillDatas", datas);
         wx.navigateTo({
-            url: '/pages/find/second-kill/second-kill-detail/second-kill-detail',
+            url: '/pages/find/second-kill/second-kill-detail/second-kill-detail?mainId=' + datas.Id,
         })
     },
 
@@ -186,15 +184,32 @@ Page({
      */
     onApplyClickListener:function(e){
         let status = e.currentTarget.dataset.type;
+        let index = e.currentTarget.dataset.index;
+
+        let datas = this.data.listDatas[index];
         if(status == 0){
             console.log("马上抢");
 
-        }else{
-            let index = e.currentTarget.dataset.index;
-            let datas = this.data.listDatas[index];
-            wx.setStorageSync("secondKillDatas", datas);
+            let requestData = [{
+                'MemberId': Storage.memberId(),
+                'ProductId': datas.ProductId,
+                'ProductImgUrl': datas.imgUrl,
+                'ProductName': datas.Name,
+                'Price': datas.Need_Points,
+                'Points': datas.Need_Points,
+                'Qnty': '1',
+                'secondKillId': datas.Id
+            }];
+
+            Storage.setterFor("orderLine", requestData);
+
             wx.navigateTo({
-                url: '/pages/find/second-kill/second-kill-detail/second-kill-detail',
+                url: '/pages/order/order-confirm/order-confirm?door=3',//3:秒杀
+            })
+
+        }else{
+            wx.navigateTo({
+                url: '/pages/find/second-kill/second-kill-detail/second-kill-detail?mainId=' + datas.Id,
             })
         }
     }

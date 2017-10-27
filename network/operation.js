@@ -139,6 +139,11 @@ export default class Operation {
         this.secKillTimeReadOperation = '94b1a9c8-c840-4f16-8b4d-a64e01109a55'
         // 秒杀商品列表 查询
         this.secKillProductsReadOperation = 'a5db1a6b-3345-4f87-b61a-a64e010f1fd1'
+        // 秒杀商品订单 新增
+        this.secKillOrderAddOperation = '46e10306-2bcb-4de4-b459-a64e010fac71'
+        // 秒杀商品订单 查询
+        this.secKillOrderReadOperation = 'adf70991-b020-4e94-94d0-a64e010f9c09'
+
 
         // 众筹列表 查询
         this.raiseReadOperation = 'a53f2219-f5a3-4909-9e5f-a6430121b0f1'

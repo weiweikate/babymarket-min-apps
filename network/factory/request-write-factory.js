@@ -173,6 +173,16 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //秒杀订单新增
+    static secondKillOrderAdd(requestData) {
+        let operation = Operation.sharedInstance().secKillOrderAddOperation;
+        let status = Network.sharedInstance().statusNew;
+
+        let req = new RequestWrite(status, 'Seckill_Order', requestData, operation, null);
+        req.name = '秒杀订单新增';
+        return req;
+    }
+
     //删除订单
     static deleteOrder(id) {
         let operation = Operation.sharedInstance().orderModifyOperation;
