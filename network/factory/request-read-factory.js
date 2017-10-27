@@ -1138,6 +1138,38 @@ export default class RequestReadFactory {
       return req;
     }
 
+    // 我的试用查询
+    static requestLevyOrderDetail(count,index,condition) {
+        let operation = Operation.sharedInstance().levyApplyReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "Appendixes": {
+                "+Wind_Alarm": [
+                    "Name",
+                    "Normal_Price",
+                    "Product_ImgId",
+                    "Max_Number"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '我的试用查询';
+        req.items = ["Id", "CreateTime","Wind_AlarmId"];
+        req.appendixesKeyMap = { 'Wind_Alarm': 'Wind_AlarmId' };//可以多个
+        //匹配成功函数
+        req.appendixesBlock = (item, appendixe, key, id) => {
+            if (key === 'Wind_Alarm') {
+                //给data添加新属性
+                item.imgUrl = global.Tool.imageURLForId(appendixe.Product_ImgId);
+                item.Name = appendixe.Name;
+                item.Normal_Price = appendixe.Normal_Price;
+                item.Max_Number = appendixe.Max_Number
+            }
+        };
+        return req;
+    }
+
     // 黄金便征集令报告查询
     static levyReportRead(id) {
       let operation = Operation.sharedInstance().levyReportReadOperation;

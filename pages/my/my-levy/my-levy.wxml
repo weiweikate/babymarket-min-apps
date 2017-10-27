@@ -1,0 +1,40 @@
+<!--my-levy.wxml-->
+<import src='/components/empty-view/empty-view.wxml' />
+
+<view class="my-levy" wx:if="{{listDatas.length != 0}}">
+    <block wx:for="{{listDatas}}" wx:key="unique">
+        <template is="my-levy-cell" data="{{...item, index:index}}"></template>
+    </block>
+</view>
+
+<view wx:else class="view-empty">
+    <template is="empty-view" data="{{title:'暂无数据！'}}" />
+</view>
+
+<template name="my-levy-cell">
+    <view class="my-levy-cell" catchtap="myLevyCellTap" data-index="{{index}}">
+        <view class="time">申请时间：{{CreateTime}}</view>
+        <view class="product-info">
+            <image src="{{imgUrl}}" class="product-image"></image>
+
+            <view class="right-view">
+                <view class="title OverFlowTwoLine">{{Name}}</view>
+
+                <view class="points-view">
+                    <view>现积分：</view>
+                    <view class="points-now">0</view>
+                    <view class="points-orignal">原积分：{{Normal_Price}}</view>
+                </view>
+
+                <view class="qty-status">
+                    <view class="qty-view">
+                        <view style="width:180rpx;">总共（份）：</view>
+                        <view class="qty">{{Max_Number}}</view>
+                    </view>
+                    <view class="status">已申请</view>
+                </view>
+                
+            </view>
+        </view>
+    </view>
+</template>

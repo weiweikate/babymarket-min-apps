@@ -100,7 +100,8 @@
         "pages/mom/post-add/post-add",
         "pages/my/collect/collect",
         "pages/find/group-buy/group-buy-confirm-order/group-buy-confirm-order",
-        "pages/my/my-seckill/my-seckill"
+        "pages/my/my-seckill/my-seckill",
+        "pages/my/my-levy/my-levy"
     ],
     "window": {
         "backgroundTextStyle": "light",

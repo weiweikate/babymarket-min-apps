@@ -1,0 +1,94 @@
+/* my-levy.wxss */
+@import '/components/empty-view/empty-view.wxss';
+
+page{
+    background: white;
+}
+
+.view-empty{
+    height: 100%;
+}
+
+.my-levy-cell{
+    width: 706rpx;
+    height: 400rpx;
+    border-bottom: 20rpx solid #fff8f4;
+    padding: 0rpx 22rpx;
+}
+
+.my-levy-cell .time{
+    border-bottom: 2rpx solid #eeeeee;
+    height: 70rpx;
+    line-height: 70rpx;
+    width: 100%;
+    text-align: right;
+    font-size: 30rpx;
+    color: #090909;
+}
+
+.my-levy-cell .product-info{
+    display: flex;
+    align-items: center;
+    padding-top: 40rpx;
+    width: 100%;
+}
+
+.my-levy-cell .product-info .product-image{
+    width: 214rpx;
+    height: 214rpx;
+    flex-shrink: 0;
+}
+
+.product-info .right-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 210rpx;
+    width: 470rpx;
+    margin-left: 20rpx;
+    margin-top: 10rpx;
+}
+
+.right-view .title{
+    font-size: 32rpx;
+    color: #494848;
+}
+
+.right-view .points-view{
+    display: flex;
+    margin-top: 40rpx;
+    font-size: 28rpx;
+    color: #090909;
+}
+
+.points-view .points-now{
+    color: #ff5555;
+}
+
+.points-view .points-orignal{
+    color: #acadaa;
+    margin-left: 30rpx;
+}
+
+.right-view .qty-status{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.qty-status .qty-view{
+    display: flex;
+    font-size: 30rpx;
+    color: #090909;
+}
+
+.qty-view .qty{
+    color: #ff5555;
+}
+
+.qty-status .status{
+    font-size: 32rpx;
+    color: #ff5555;
+    border: 0;
+}
