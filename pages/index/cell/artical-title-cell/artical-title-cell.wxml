@@ -1,7 +1,7 @@
 <!--顶部横向滚动的tab-->
 <template name="artical-title-cell">
   <scroll-view class="tab-layout" scroll-x>
-    <view style="width:{{750/items.length<180?180:750/items.length}}rpx" class="{{index==currentTab?'tab select':'tab'}}" catchtap="onTabChangeListener" 
+    <view style="width:{{750/items.length<tabMinWidth?tabMinWidth:750/items.length}}rpx" class="{{index==currentTab?'tab select':'tab'}}" catchtap="onTabChangeListener" 
     wx:for="{{items}}" data-current="{{index}}" wx:key="unique">
     
         <view class="{{item.isToday&&index!=currentTab?'line-one today':'line-one'}}">{{item.MonthDay}}</view>

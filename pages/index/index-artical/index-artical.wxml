@@ -4,7 +4,7 @@
 
 <view class="root-view">
     <view class="title-view">
-        <template is="artical-title-cell" data="{{items:titleList,currentTab}}" />
+        <template is="artical-title-cell" data="{{items:titleList,currentTab,tabMinWidth:tabMinWidth}}" />
     </view>
 
     <view class="artical">

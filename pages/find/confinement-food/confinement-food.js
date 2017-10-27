@@ -112,6 +112,17 @@ Page({
                 arry.push(item);
             });
 
+            if (parseInt(babyBirthDays) > datas.length){
+                defaultIndex = datas.length - 1;
+
+                let tmpItem = datas[defaultIndex];
+                WxParse.wxParse('article', 'html', tmpItem.Content, self, 5);
+
+                this.setData({
+                    datas: tmpItem,
+                });
+            }
+
             this.setData({
                 titleList: arry,
                 currentTab: defaultIndex

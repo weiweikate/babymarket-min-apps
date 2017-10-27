@@ -1,6 +1,12 @@
 /* my-seckill.wxss */
+@import '/components/empty-view/empty-view.wxss';
+
 page{
     background: white;
+}
+
+.view-empty{
+    height: 100%;
 }
 
 .my-seckill-cell{
