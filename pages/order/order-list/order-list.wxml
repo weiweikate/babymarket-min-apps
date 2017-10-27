@@ -6,5 +6,5 @@
 </view>
 
 <view wx:if="{{orderArray.length==0}}" class="no-data">
-  <template is="empty-view" data="{{title:'您还没有积分兑换的商品'}}" />
+  <template is="empty-view" data="{{title:'暂无数据!'}}" />
 </view>

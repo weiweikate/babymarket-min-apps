@@ -1,4 +1,4 @@
-/* my-seckill.wxss */
+/* my-levy.wxss */
 @import '/components/empty-view/empty-view.wxss';
 
 page{
@@ -9,31 +9,31 @@ page{
     height: 100%;
 }
 
-.my-seckill-cell{
+.my-levy-cell{
     width: 706rpx;
-    height: 370rpx;
+    height: 400rpx;
     border-bottom: 20rpx solid #fff8f4;
     padding: 0rpx 22rpx;
 }
 
-.my-seckill-cell .status{
+.my-levy-cell .time{
     border-bottom: 2rpx solid #eeeeee;
     height: 70rpx;
     line-height: 70rpx;
     width: 100%;
     text-align: right;
-    font-size: 32rpx;
-    color: #acadaa;
+    font-size: 30rpx;
+    color: #090909;
 }
 
-.my-seckill-cell .product-info{
+.my-levy-cell .product-info{
     display: flex;
     align-items: center;
     padding-top: 40rpx;
     width: 100%;
 }
 
-.my-seckill-cell .product-info .product-image{
+.my-levy-cell .product-info .product-image{
     width: 214rpx;
     height: 214rpx;
     flex-shrink: 0;
@@ -43,9 +43,10 @@ page{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 174rpx;
+    height: 210rpx;
     width: 470rpx;
-    margin: 20rpx 0rpx 20rpx 20rpx;
+    margin-left: 20rpx;
+    margin-top: 10rpx;
 }
 
 .right-view .title{
@@ -53,21 +54,41 @@ page{
     color: #494848;
 }
 
-.right-view .points-period{
+.right-view .points-view{
     display: flex;
-    justify-content: space-between;
+    margin-top: 40rpx;
     font-size: 28rpx;
-    color: #acadaa;
+    color: #090909;
 }
 
-.points-period .points-view{
-    display: flex;
-}
-
-.points-view .points{
+.points-view .points-now{
     color: #ff5555;
 }
 
-.points-view .qty{
-    margin-left: 20rpx;
+.points-view .points-orignal{
+    color: #acadaa;
+    margin-left: 30rpx;
+}
+
+.right-view .qty-status{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.qty-status .qty-view{
+    display: flex;
+    font-size: 30rpx;
+    color: #090909;
+}
+
+.qty-view .qty{
+    color: #ff5555;
+}
+
+.qty-status .status{
+    font-size: 32rpx;
+    color: #ff5555;
+    border: 0;
 }

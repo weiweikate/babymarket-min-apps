@@ -75,7 +75,7 @@ Page({
     } else if (title == '我的团购') {
         url = '/pages/order/order-list/order-list?type=2'
     } else if (title == '我的试用') {
-
+        url = '/pages/my/my-levy/my-levy';
     } else if (title == '我的积分订单') {
       url = '/pages/order/order-list/order-list?type=1'
     } else if (title == '我的问答') {

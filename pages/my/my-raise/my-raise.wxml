@@ -1,8 +1,13 @@
 <!--my-raise.wxml-->
 <import src='/pages/my/my-raise/my-raise-cell/my-raise-cell.wxml' />
+<import src='/components/empty-view/empty-view.wxml' />
 
-<view class="my-raise">
+<view class="my-raise" wx:if="{{listDatas.length != 0}}">
     <block wx:for="{{listDatas}}" wx:key="unique">
         <template is="my-raise-cell" data="{{...item, index:index}}"></template>
     </block>
+</view>
+
+<view wx:else class="view-empty">
+    <template is="empty-view" data="{{title:'暂无数据！'}}" />
 </view>

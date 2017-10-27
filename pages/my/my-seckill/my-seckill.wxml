@@ -1,8 +1,14 @@
 <!--my-seckill.wxml-->
-<view class="my-seckill">
+<import src='/components/empty-view/empty-view.wxml' />
+
+<view class="my-seckill" wx:if="{{listDatas.length != 0}}">
     <block wx:for="{{listDatas}}" wx:key="unique">
         <template is="my-seckill-cell" data="{{...item, index:index}}"></template>
     </block>
+</view>
+
+<view wx:else class="view-empty">
+    <template is="empty-view" data="{{title:'暂无数据！'}}" />
 </view>
 
 <template name="my-seckill-cell">

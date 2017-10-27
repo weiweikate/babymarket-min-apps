@@ -18,7 +18,8 @@ Page({
         currentTab:0,
         isPraise: false,//点赞
         isComplain: false,//吐槽
-        isCollect: false//收藏
+        isCollect: false,//收藏
+        tabMinWidth:240
     },
     mainId:'',
     currentDay:0,
