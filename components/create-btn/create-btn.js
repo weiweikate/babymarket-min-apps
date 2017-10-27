@@ -1,3 +1,4 @@
+let { Tool, Storage } = global;
 /**
  * 悬浮创建按钮
  */
