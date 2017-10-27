@@ -3,7 +3,7 @@
 
 <view class="view-root">
   <template is="cell-address" data="{{Id:addressInfo.Id,Consignee:addressInfo.Consignee,Mobile:addressInfo.Mobile,ReciptAddress:addressInfo.ReciptAddress,hasArrow:true,isSelectMode:true,hasLocation:true}}" />
-  <template is="cell-order-line" data="{{...item,position:index,isEdit:true}}" wx:for="{{orderLineArray}}" wx:key="unique" />
+  <template is="cell-order-line" data="{{...item,position:index,isEdit:isEdit}}" wx:for="{{orderLineArray}}" wx:key="unique" />
 </view>
 
 <view class='view-btn'>

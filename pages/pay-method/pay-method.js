@@ -1,5 +1,5 @@
 // 支付方式
-let {Event,RequestWriteFactory} = global;
+let { Event, RequestWriteFactory, RequestReadFactory} = global;
 Page({
 
     /**
@@ -7,27 +7,17 @@ Page({
      */
     data: {
         order: {},
-        infos: [],
-        door: 0, // 0为确认订单进入，1为我的订单列表或订单详情进入
     },
+    mainId:'',
 
     /**
       * 生命周期函数--监听页面加载
       */
     onLoad: function (options) {
-        let self = this;
-        wx.getStorage({
-            key: 'order',
-            success: function (res) {
-                let order = res.data;
-                let infos = self.setInfoData(order);
-                self.setData({
-                    order: order,
-                    infos: infos,
-                    door: options.door,
-                })
-            },
-        })
+        this.mainId = options.mainId;
+
+        //获取团购详情
+        this.requestActivityDetail();
     },
 
     /**
@@ -140,5 +130,25 @@ Page({
         var signB = signA + "&key=" + app.key;
         sign = MD5Util.MD5(signB).toUpperCase();
         return sign;
-    }
+    },
+
+    /**
+     * 查询商品详情
+    */
+    requestActivityDetail: function () {
+        let task = RequestReadFactory.requestActivityDetail(this.mainId);
+        task.finishBlock = (req) => {
+            let datas = req.responseObject.Datas;
+
+            datas.forEach((item, index) => {
+                let imageUrl = Tool.imageURLForId(item.ImgId, '/res/img/common/common-avatar-default-icon.png');
+                item.imageUrl = imageUrl;
+            });
+
+            this.setData({
+                order: datas[0]
+            });
+        }
+        task.addToQueue();
+    },
 })

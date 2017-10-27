@@ -1,0 +1,28 @@
+<!--my-seckill.wxml-->
+<view class="my-seckill">
+    <block wx:for="{{listDatas}}" wx:key="unique">
+        <template is="my-seckill-cell" data="{{...item, index:index}}"></template>
+    </block>
+</view>
+
+<template name="my-seckill-cell">
+    <view class="my-seckill-cell" catchtap="mySeckillCellTap" data-index="{{index}}">
+        <view class="status">{{StatusName}}</view>
+        <view class="product-info">
+            <image src="{{imgUrl}}" class="product-image"></image>
+            <view class="right-view">
+                <view class="title OverFlowTwoLine">{{Name}}</view>
+                <view class="points-period">
+                    <view class="points-view">
+                        <view class="points">￥{{orignalPrice}}</view>
+                        <view class="qty">x1</view>
+                    </view>
+                    <view class="points-view">
+                        <view>支付积分：</view>
+                        <view class="points">{{Need_Points_All}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

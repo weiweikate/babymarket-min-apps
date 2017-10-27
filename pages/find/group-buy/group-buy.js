@@ -184,7 +184,7 @@ Page({
         if (Tool.isFalse(datas.Ended)){
             wx.setStorageSync("groupBuyDatas", datas)
             wx.navigateTo({
-                url: '/pages/find/group-buy/group-buy-detail/group-buy-detail',
+                url: '/pages/find/group-buy/group-buy-detail/group-buy-detail?mainId=' + datas.Id,
             })
         }
     },
@@ -199,7 +199,7 @@ Page({
         let datas = this.data.listDatas[index];
         wx.setStorageSync("groupBuyDatas", datas)
         wx.navigateTo({
-            url: '/pages/find/group-buy/group-buy-detail/group-buy-detail',
+            url: '/pages/find/group-buy/group-buy-detail/group-buy-detail?mainId=' + datas.Id,
         })
     },
 })
