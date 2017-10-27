@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderInfo: undefined
+    orderInfo: undefined,
+    door:''
   },
 
   /**
@@ -14,6 +15,9 @@ Page({
     */
   onLoad: function (options) {
     let orderId = options.id;
+    this.setData({
+        door: options.door
+    })
 
     Tool.showLoading();
     this.requestOrderInfo(orderId);
@@ -24,16 +28,37 @@ Page({
    */
   requestOrderInfo: function (orderId) {
     let self = this;
-    let r = RequestReadFactory.orderDetailRead(orderId);
-    r.finishBlock = (req) => {
-      if (req.responseObject.Count > 0) {
-        let responseData = req.responseObject.Datas;
-        this.setData({
-          orderInfo: responseData[0]
-        });
-      }
+
+    if(this.data.door == '1'){//积分订单
+        let r = RequestReadFactory.orderDetailRead(orderId);
+        r.finishBlock = (req) => {
+            if (req.responseObject.Count > 0) {
+                let responseData = req.responseObject.Datas;
+                this.setData({
+                    orderInfo: responseData[0]
+                });
+            }
+        }
+        r.addToQueue();
+    } else if (this.data.door == '2'){//团购订单
+        let task = RequestReadFactory.requestGroupBuyOrderDetail(orderId);
+        task.finishBlock = (req) => {
+            let responseData = req.responseObject.Datas;
+            let item = responseData[0];
+            
+            item.Detail = [{
+                "ProductName": item.ProductName,
+                "ProductImgUrl": item.ProductImgUrl,
+                "Price": '￥' + item.Price,
+                "Qnty": '1'
+            }]
+
+            this.setData({
+                orderInfo: item
+            });
+        };
+        task.addToQueue();
     }
-    r.addToQueue();
   },
 
   /**

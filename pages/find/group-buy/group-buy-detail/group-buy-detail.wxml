@@ -45,7 +45,7 @@
     </view>
 
     <!--底部bar-->
-    <view class="bottom-bar disable" catchtap="buyButtonTap" data-index="{{index}}" wx:if="{{product.Ended=='True'}}">已结束</view>
+    <view class="bottom-bar disable" data-index="{{index}}" wx:if="{{product.Ended=='True'}}">已结束</view>
     <view class="bottom-bar" catchtap="buyButtonTap" data-index="{{index}}" wx:else>立即参与</view>
 </view>
 

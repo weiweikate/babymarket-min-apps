@@ -1,0 +1,28 @@
+<!--group-buy-confirm-order.wxml-->
+<import src='/pages/my/cell/address-cell.wxml' />
+<import src='/components/textfield-alert/textfield-alert.wxml' />
+
+<view class="raise-confirm-order-view">
+    <!--地址-->
+    <view class="address-view">
+        <template is="address-cell" data="{{...addressInfo}}"></template>
+        <image src="/res/img/common/common-arrow-black-right.png" style="width:17rpx;height:30rpx"></image>
+    </view>
+
+    <view class="settle-product-info">
+        <image src="{{product.imageUrl}}" class="product-img"></image>
+        <view class="right-view">
+            <view class="name OverFlowTwoLine">{{product.Title}}</view>
+            <view class="join-class-view">
+                <view class="price">￥{{product.Price}}</view>
+                <view class="count">x1</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="bottom-view">
+        <view class="buy-button" catchtap="submitTap">提交订单</view>
+        <view class="pay-points">￥{{product.Price}}</view>
+        <view>实付：</view>
+    </view>
+</view>

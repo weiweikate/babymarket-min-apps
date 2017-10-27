@@ -100,7 +100,8 @@
         "pages/find/raise/raise-order-detail/raise-order-detail",
         "pages/message/message",
         "pages/mom/post-add/post-add",
-        "pages/my/collect/collect"
+        "pages/my/collect/collect",
+        "pages/find/group-buy/group-buy-confirm-order/group-buy-confirm-order"
     ],
     "window": {
         "backgroundTextStyle": "light",

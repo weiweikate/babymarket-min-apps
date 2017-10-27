@@ -20,12 +20,16 @@
     </view>
   </view>
 
-  <template is="cell-address" data="{{isSelectMode:true,hasLocation:true,Consignee:orderInfo.AddressConsignee,Mobile:orderInfo.AddressMobile,ReciptAddress:orderInfo.AddressDetail}}" />
+  <template is="cell-address" wx:if="{{door=='1'}}" 
+  data="{{isSelectMode:true,hasLocation:true,Consignee:orderInfo.AddressConsignee,Mobile:orderInfo.AddressMobile,ReciptAddress:orderInfo.AddressDetail}}" />
+  <template is="cell-address" wx:if="{{door=='2'}}"
+  data="{{isSelectMode:true,hasLocation:true,Consignee:orderInfo.Consignee,Mobile:orderInfo.ConsigneeMobile,ReciptAddress:orderInfo.Address}}" />
+  
   <template is="cell-order-line" data="{{...item,position:index}}" wx:for="{{orderInfo.Detail}}" wx:key="unique" />
 
   <view class='view-fee'>
-    <text class="fee-title">运费：包邮</text>
-    <text class="fee-title">合计：{{orderInfo.Points}}积分</text>
+    <text class="fee-title" wx:if="{{door=='1'}}">运费：包邮</text>
+    <text class="fee-title" wx:if="{{door=='1'}}">合计：{{orderInfo.Points}}积分</text>
   </view>
 
   <view class='view-btn'>
