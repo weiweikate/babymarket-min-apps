@@ -27,7 +27,7 @@
  align-items: center;
  height: 99rpx;
  flex-grow: 1;
- border-top: 1rpx solid #f3f3f4;
+ border-top: 1rpx solid #fff8f4;
 }
 
 .view-btn .all-select {

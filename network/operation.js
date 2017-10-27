@@ -207,6 +207,15 @@ export default class Operation {
         //消息阅读-新增
         this.messageBatchReadOperation = '6da28b2c-f608-0b7c-387f-3e4b01c2d27e';
 
+        //奖品-查询
+        this.lotteryReadOperation = '2fe352cd-2adb-45e0-968f-a65900bd2ce9';
+        //转盘每次消耗的金币-查询
+        this.lotteryRuleReadOperation = '6c9da16a-6669-4a33-9a6f-a6f100afc47d';
+        //中奖记录-新增
+        this.lotteryExtractAddOperation = 'baec8091-49c7-4a0d-9b81-a65900be9705';
+        //中奖记录-查询
+        this.lotteryExtractReadOperation = 'dc844348-0028-4eeb-848a-a65900bde035';
+
         __instance(this);
     }
 

@@ -83,7 +83,7 @@ Page({
     } else if (title == '发表的帖子') {
       url = '/pages/my/my-create-post/my-create-post';
     } else if (title == '回复的帖子') {
-      url = '/pages/my-reply-post/my-reply-post';
+      url = '/pages/my/my-reply-post/my-reply-post';
     } else if (title == '收货地址管理') {
       url = '/pages/address/address';
     }

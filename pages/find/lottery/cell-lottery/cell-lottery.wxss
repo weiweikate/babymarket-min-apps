@@ -1,0 +1,30 @@
+.cell-lottery {
+  margin: 5rpx;
+  width: 150rpx;
+  height: 110rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fcc25d;
+  border-radius: 10rpx;
+}
+
+.cell-lottery.select {
+  background-color: #ff7d6b;
+}
+
+.lottery-img {
+  width: 60rpx;
+  height: 60rpx;
+  flex: none;
+}
+
+.lottery-name {
+  font-size: 26rpx;
+  color: #494848;
+}
+
+.lottery-name.select {
+  color: white;
+}

@@ -1,0 +1,6 @@
+<template name="cell-lottery">
+  <view class="{{selectPosition==lotteryInfo.position?'cell-lottery select':'cell-lottery'}}">
+    <image class='lottery-img' src='{{lotteryInfo.imageUrl}}' mode='aspectFit' wx:if="{{lotteryInfo.imageUrl.length>0}}" />
+    <text class="{{selectPosition==lotteryInfo.position?'lottery-name select':'lottery-name'}}">{{lotteryInfo.Name}}</text>
+  </view>
+</template>

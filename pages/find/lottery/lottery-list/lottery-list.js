@@ -1,4 +1,4 @@
-// pages/product-lib/search/search.js
+// pages/find/lottery/lottery-list/lottery-list.js
 Page({
 
   /**

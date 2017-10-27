@@ -29,6 +29,16 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //新增中奖记录
+    static addLotteryExtract(requestData) {
+      let operation = Operation.sharedInstance().lotteryExtractAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'Extract_Prize', requestData, operation, null);
+      req.name = '新增中奖记录';
+      return req;
+    }
+
     //新增会员
     static addMember(requestData) {
       let operation = Operation.sharedInstance().memberAddOperation;

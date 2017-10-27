@@ -8,7 +8,7 @@
 }
 
 .cell-cart.top{
-  border-top: 15rpx solid #f3f3f4;
+  border-top: 15rpx solid #fff8f4;
 }
 
 .cart-select {
@@ -23,7 +23,7 @@
   background: white;
   width: 160rpx;
   height: 160rpx;
-  border: 1rpx solid #f3f3f4;
+  border: 1rpx solid #fff8f4;
   border-radius: 8rpx;
 }
 

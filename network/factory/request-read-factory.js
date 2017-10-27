@@ -18,6 +18,45 @@ export default class RequestReadFactory {
     }
 
     /**
+     * 查询奖品
+     */
+    static lotteryRead() {
+      let operation = Operation.sharedInstance().lotteryReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Order": '${Site_Number} ASC'
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询奖品';//用于日志输出
+      req.items = ['Id', 'ImgId', 'Name', 'Win_Probability', 'Site_Number', 'Win_Points'];
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item,index) => {
+          item.imageUrl = global.Tool.imageURLForId(item.ImgId);
+          item.position = index;
+          item.Win_Probability = item.Win_Probability * 100;
+        });
+      }
+      return req;
+    }
+
+    /**
+     * 查询转盘每次消耗的金币
+     */
+    static lotteryRuleRead() {
+      let operation = Operation.sharedInstance().lotteryRuleReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "RuleClassifyKey":'2',
+        "MaxCount": '1'
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询转盘每次消耗的金币';//用于日志输出
+      req.items = ['Id', 'DialEveryScore'];
+      return req;
+    }
+
+    /**
      * 查询手机号是否被注册
      * @param phone
      * @returns {RequestRead}
@@ -197,6 +236,19 @@ export default class RequestReadFactory {
           }
         }
         return req;
+    }
+
+    //用户金币查询
+    static memberCoinRead() {
+      let operation = Operation.sharedInstance().memberInfoReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": global.Storage.memberId(),
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '用户积分和金币查询';
+      req.items = ['Coin'];
+      return req;
     }
 
     //积分商城-海报查询
@@ -462,6 +514,20 @@ export default class RequestReadFactory {
           });
         }
         return req;
+    }
+
+    //默认收货地址查询
+    static addressDefaultRead() {
+      let operation = Operation.sharedInstance().addressReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MemberId": global.Storage.memberId(),
+        "Default":"True"
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '默认收货地址查询';
+      req.items = ['Id'];
+      return req;
     }
 
     //收货地址查询

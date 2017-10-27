@@ -1,15 +1,36 @@
-<!--lottery.wxml-->
-<import src='/pages/find/lottery/lottery-cell/lottery-cell.wxml' />
+<import src='/pages/find/lottery/cell-lottery/cell-lottery.wxml' />
 
-<view class="lottery-view">
-    <image src="/res/img/find/find-lottery-bg-view-icon.png" class="bg-view"></image>
-    <view class="my-coins">我的金币：1000</view>
-    <view class="tips">每次抽奖将消耗10金币</view>
+<view class="view-root">
+  <image class="view-bg" src="/res/img/find/find-lottery-bg-view-icon.png" />
+  <text class="my-coins">我的金币：{{myCoin}}</text>
+  <text class="tips">每次抽奖将消耗{{usedCoin}}金币</text>
 
-    <view class="circle-view">
-        <block wx:for="{{lotteryDatas}}" wx:key='unique'>
-            <template is="lottery-cell" data="{{index:index}}"></template>
-        </block>
+  <!-- 奖池 -->
+  <view class="view-lottery-pool">
+    <view class="lottery-pool-row">
+      <template is="cell-lottery" data="{{selectPosition:selectPosition,lotteryInfo:lotteryArray[0]}}" />
+      <template is="cell-lottery" data="{{selectPosition:selectPosition,lotteryInfo:lotteryArray[1]}}" />
+      <template is="cell-lottery" data="{{selectPosition:selectPosition,lotteryInfo:lotteryArray[2]}}" />
+      <template is="cell-lottery" data="{{selectPosition:selectPosition,lotteryInfo:lotteryArray[3]}}" />
     </view>
+    <view class="lottery-pool-row">
+      <template is="cell-lottery" data="{{selectPosition:selectPosition,lotteryInfo:lotteryArray[9]}}" />
+      <view class="view-center" catchtap='onLotteryClickListener'>
+        <text class='center-title'>{{isLotterying?'等待开奖':'我要抽'}}</text>
+        <image class='center-img' src='/res/img/find/lottery-cell-center-arrow.png' mode='aspectFit' wx:if="{{!isLotterying}}" />
+      </view>
+      <template is="cell-lottery" data="{{selectPosition:selectPosition,lotteryInfo:lotteryArray[4]}}" />
+    </view>
+    <view class="lottery-pool-row">
+      <template is="cell-lottery" data="{{selectPosition:selectPosition,lotteryInfo:lotteryArray[8]}}" />
+      <template is="cell-lottery" data="{{selectPosition:selectPosition,lotteryInfo:lotteryArray[7]}}" />
+      <template is="cell-lottery" data="{{selectPosition:selectPosition,lotteryInfo:lotteryArray[6]}}" />
+      <template is="cell-lottery" data="{{selectPosition:selectPosition,lotteryInfo:lotteryArray[5]}}" />
+    </view>
+  </view>
 
+  <view class='view-btn'>
+    <text class='btn-list' catchtap='onRecordClickListener'>查看我的中奖纪录</text>
+    <text class='btn-rule' catchtap='onRuleClickListener'>抽奖规则</text>
+  </view>
 </view>
