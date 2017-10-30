@@ -1,5 +1,4 @@
 {
-
     "pages": [
         "pages/index/index",
         "pages/home/home",
@@ -104,7 +103,8 @@
         "pages/my/my-seckill/my-seckill",
         "pages/find/lottery/lottery-list/lottery-list",
         "pages/find/lottery/lottery-rule/lottery-rule",
-        "pages/my/my-levy/my-levy"
+        "pages/my/my-levy/my-levy",
+        "pages/index/index-search/index-search"
     ],
     "window": {
         "backgroundTextStyle": "light",

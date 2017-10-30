@@ -201,7 +201,9 @@ Page({
     },
 
     searchTap: function () {
-        console.log('搜索');
+        wx.navigateTo({
+            url: '/pages/index/index-search/index-search',
+        })
     },
 
     /**

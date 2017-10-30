@@ -1,0 +1,28 @@
+/* index-search.wxss */
+@import '/components/segment-view/segment-view.wxss';
+@import "/components/search-field/search-field.wxss";
+@import '/components/empty-view/empty-view.wxss';
+@import '/pages/mom/cell-post/cell-post.wxss';
+@import '/pages/find/knowledge/cell-item/cell-item.wxss';
+@import '/pages/my/my-question/my-question-cell/my-question-cell.wxss';
+
+.index-search{
+    position: fixed;
+    top: 0;
+    background: #fff8f4;
+}
+
+.search-bar {
+    margin: 10rpx 22rpx;
+}
+
+.view-root {
+    display: flex;
+    flex-direction: column;
+    padding-top: 175rpx;
+    height: 100%;
+}
+
+.no-data {
+    height: 100%;
+}

@@ -1,0 +1,9 @@
+
+<template name="segment-view">
+    <view class="segment-view">
+        <block wx:for="{{titleArry}}" wx:key="unique">
+            <view class="{{currentIndex == index ?'top-button active':'top-button'}}" 
+            catchtap="segmentItemTap" data-index="{{index}}">{{item}}</view>
+        </block>
+    </view>
+</template>
