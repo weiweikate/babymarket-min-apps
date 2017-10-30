@@ -56,6 +56,39 @@ export default class RequestReadFactory {
       return req;
     }
 
+    //我的中奖纪录查询
+    static myLotteryExtractRead() {
+      let operation = Operation.sharedInstance().lotteryExtractReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MemberId": global.Storage.memberId(),
+        "Order": '${CreateTime} DESC',
+        "Appendixes": {
+          "+Win_Gift": [
+            "Name"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '我的中奖纪录查询';
+      req.items = ['Id', 'CreateTime', 'Win_GiftId', 'Win_Points'];
+      req.appendixesKeyMap = { 'Prize': 'Win_GiftId'};//可以多个
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'Prize') {
+          //给data添加新属性
+          item.GiftName = appendixe.Name;
+          console.log(item.Win_Points);
+          if (item.Win_Points > 0) {
+            item.title = "恭喜您获得" + item.GiftName;
+          }else{
+            item.title = "恭喜您抽到" + item.GiftName;
+          }
+        }
+      };
+      return req;
+    }
+
     /**
      * 查询手机号是否被注册
      * @param phone

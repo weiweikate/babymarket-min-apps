@@ -1,1 +1,11 @@
-/* pages/find/lottery/lottery-rule/lottery-rule.wxss */
+@import '/libs/wxParse/wxParse.wxss';
+
+page {
+  background-color: white;
+}
+
+.view-root {
+  display: flex;
+  flex-direction: column;
+  border-top: 1rpx solid #fff8f4;
+}

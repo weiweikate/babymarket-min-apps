@@ -1,2 +1,5 @@
-<!--pages/find/lottery/lottery-rule/lottery-rule.wxml-->
-<text>pages/find/lottery/lottery-rule/lottery-rule.wxml</text>
+<import src="/libs/wxParse/wxParse.wxml" />
+
+<view class="view-root">
+  <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+</view>
