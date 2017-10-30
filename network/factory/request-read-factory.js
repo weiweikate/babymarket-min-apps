@@ -144,7 +144,7 @@ export default class RequestReadFactory {
       };
       let req = new RequestRead(bodyParameters);
       req.name = '附件';
-      req.items = ['Id'];
+      req.items = ['Id','RelevancyId'];
 
       //修改返回结果，为返回结果添加imageUrls字段
       req.preprocessCallback = (req) => {
@@ -1017,6 +1017,30 @@ export default class RequestReadFactory {
     }
 
     /**
+     * 关键词搜索知识列表
+     */
+    static searchKnowledgeListRead(keyword,index=0) {
+        let operation = Operation.sharedInstance().knowledgeReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "MaxCount": '20',
+            "StartIndex": index * 20 + '',
+            "Condition": "StringIndexOf(${Title},'" + keyword + "') > 0 || StringIndexOf(${ContentDigest},'" + keyword + "') > 0",
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '知识列表';
+        req.items = ["Id", "Title", "ImgId", "Content"];
+        //修改返回结果
+        req.preprocessCallback = (req) => {
+            let responseData = req.responseObject.Datas;
+            responseData.forEach((item, index) => {
+                item.headImgUrl = global.Tool.imageURLForId(item.ImgId);
+            });
+        }
+        return req;
+    }
+
+    /**
      * 知识列表
      */
     static knowledgeListRead(specialId) {
@@ -1713,7 +1737,7 @@ export default class RequestReadFactory {
         "Operation": operation,
         "MaxCount": '20',
         "StartIndex": index * 20 + '',
-        "Condition": "${Title_Article} like %" + keyword + "% && ${Article_Abstract} like %" + keyword+"% && ${Belong_ArticleId} =='00000000-0000-0000-0000-000000000000'",
+        "Condition": "(${Title_Article} like %" + keyword + "% || ${Article_Abstract} like %" + keyword+"%) && ${Belong_ArticleId} =='00000000-0000-0000-0000-000000000000'",
         "Order": "${CreateTime} DESC"
       };
 
@@ -1842,7 +1866,7 @@ export default class RequestReadFactory {
     }
 
     //孕育问答 查询
-    static requestQAWithCondition(condition, index, count, isAnswer=false) {
+    static requestQAWithCondition(condition, index, count=20, isAnswer=false) {
         let operation = Operation.sharedInstance().questionReadOperation;
         let bodyParameters = {
             "Operation": operation,

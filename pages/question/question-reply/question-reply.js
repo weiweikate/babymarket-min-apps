@@ -1,6 +1,7 @@
 
 // question-reply.js
 let { Tool, Storage, RequestWriteFactory, RequestReadFactory, Event } = global
+import ImagePicker from '../../../components/image-picker/image-picker';
 
 Page({
 
@@ -17,6 +18,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.imagePicker = new ImagePicker(this, 1);
+
         let datas = wx.getStorageSync('questionDatas');
 
         if (Tool.isEmpty(datas)){
@@ -117,14 +120,15 @@ Page({
         if (Storage.didLogin()) {
             let belongAnswerId = '';
             let belongQueAnswerId = '';
-            if (this.isReplyComment){
+            if (this.isReplyComment) {
                 belongAnswerId = this.data.datas.Id;
                 belongQueAnswerId = this.data.datas.BreedQueAnsId;
-            }else{
+            } else {
                 belongQueAnswerId = this.data.datas.Id;
             }
 
-            let rq = RequestWriteFactory.addQuestionReply(this.content, belongQueAnswerId, belongAnswerId);
+            let rq = RequestWriteFactory.addQuestionReply(
+                this.content, belongQueAnswerId, belongAnswerId);
             rq.finishBlock = (req) => {
                 wx.navigateBack({
                     delta: 1,

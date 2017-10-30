@@ -493,11 +493,10 @@ export default class RequestWriteFactory {
     }
 
     //新增孕育问答
-    static addQuestion(content, isExpertAns, isAnonymity, queId) {
+    static addQuestion(content, isExpertAns, isAnonymity, queId, temporaryIdArray) {
         let operation = Operation.sharedInstance().questionAddOperation;
         let status = Network.sharedInstance().statusNew;
         let params = {
-            "Operation": operation,
             "Id": queId,
             "AskMemberId": global.Storage.memberId(),
             "Que": content,
@@ -505,7 +504,32 @@ export default class RequestWriteFactory {
             "IsAnonymity": isAnonymity
         }
 
-        let req = new RequestWrite(status, 'BreedQueAns', params, null);
+        let relevancies = null;
+
+        if (temporaryIdArray != undefined) {
+            relevancies = new Array();
+            
+            temporaryIdArray.forEach((item) => {
+                let relevancy = new Object();
+                relevancy.EntityName = "Attachment";
+                relevancy.Status = Network.sharedInstance().statusNew;
+
+                let itemId = Tool.guid();
+
+                let items = new Object();
+                items.FileName = itemId + ".png";
+                items.RelevancyId = queId;
+                items.RelevancyType = 'BreedQueAns';
+                items.RelevancyBizElement = 'Attachments';
+                items.$FILE_BYTES = item;
+                items.Id = itemId;
+                relevancy.Items = items;
+
+                relevancies.push(relevancy);
+            });
+        }
+
+        let req = new RequestWrite(status, 'BreedQueAns', params, operation, relevancies);
         req.name = '新增孕育问答';
         return req;
     }
@@ -515,14 +539,13 @@ export default class RequestWriteFactory {
         let operation = Operation.sharedInstance().questionAddOperation;
         let status = Network.sharedInstance().statusNew;
         let params = {
-            "Operation": operation,
             "ReplierMemberId": global.Storage.memberId(),
             "BreedQueAnsId": breedQueAnsId,
             "Ans": content,
             "BelongAnswerId": BelongAnswerId
         }
 
-        let req = new RequestWrite(status, 'BreedQueAns', params, null);
+        let req = new RequestWrite(status, 'BreedQueAns', params, operation, null);
         req.name = '新增孕育问答回复';
         return req;
     }

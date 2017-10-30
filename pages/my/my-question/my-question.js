@@ -10,6 +10,7 @@ Page({
         questionListDatas: [],
         replyListDatas: [],
         currentIndex: 0,//0:我的提问 1:我的回答
+        titleArry: ['我的提问','我的回答']
     },
 
     /**
@@ -78,13 +79,15 @@ Page({
         }
     },
 
-    replyButtonTap: function () {
+    replyButtonTap: function (e) {
+        let index = e.currentTarget.dataset.index;
+        
         this.setData({
-            currentIndex: 1
+            currentIndex: index
         })
 
         if (this.data.replyListDatas.length == 0){
-            this.requestData(1);
+            this.requestData(index);
         }
     },
 

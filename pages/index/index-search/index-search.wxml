@@ -1,0 +1,28 @@
+<!--index-search.wxml-->
+<import src='/components/segment-view/segment-view.wxml' />
+<import src='/components/search-field/search-field.wxml' />
+<import src='/components/empty-view/empty-view.wxml' />
+<import src='/pages/mom/cell-post/cell-post.wxml' />
+<import src='/pages/find/knowledge/cell-item/cell-item.wxml' />
+<import src='/pages/my/my-question/my-question-cell/my-question-cell.wxml' />
+
+<view class="index-search">
+    <view class="search-bar">
+        <template is="search-field" data="{{isDisabled:false,defaultValue:searchPlaceholder}}" />
+    </view>
+
+    <template is="segment-view" data="{{titleArry:titleArry, currentIndex:currentIndex}}"></template>
+</view>
+
+<view class="view-root">
+    <view wx:if="{{listdatas.length>0}}">
+        <block wx:for="{{listdatas}}" wx:key="unique">
+            <!--帖子-->
+            <template is="cell-post" data="{{...item,position:index}}" wx:if="{{currentIndex == 0}}" />
+            <!--知识-->
+            <template is="cell-item" data="{{item:item}}" wx:if="{{currentIndex == 1}}" />
+            <!--问答-->
+            <template is="my-question-cell" data="{{item:item, index:index}}" wx:if="{{currentIndex == 2}}"/>
+        </block>
+    </view>
+</view>
