@@ -11,7 +11,8 @@
   </view>
 
   <view class='view-info'>
-    <image src="{{memberInfo.headImageUrl.length>0&&isLogin?memberInfo.headImageUrl:'/res/img/common/common-avatar-default-icon.png'}}" class="info-avatar" catchtap="onEditClickListener" mode="aspectFill" />
+    <image src="{{memberInfo.headImageUrl.length>0&&isLogin?memberInfo.headImageUrl:'/res/img/common/common-avatar-default-icon.png'}}" 
+    class="info-avatar" catchtap="onEditClickListener" mode="aspectFill" />
     <text class="info-nickname">{{isLogin?memberInfo.NickName:'未登录'}}</text>
     <text class="info-birthday" wx:if="{{isLogin}}">宝宝生日{{memberInfo.BabyBirthday}}</text>
   </view>

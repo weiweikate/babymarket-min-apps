@@ -1,6 +1,6 @@
 <!--raise-confirm-order.wxml-->
 <import src='/pages/my/cell/address-cell.wxml' />
-<import src='/components/textfield-alert/textfield-alert.wxml' />
+<import src='/components/alerts/input-alert/input-alert.wxml' />
 
 <view class="raise-confirm-order-view">
     <!--地址-->
@@ -31,6 +31,4 @@
 </view>
 
 <!--密码输入框-->
-<view hidden="{{pwTextFieldHidden}}">
-    <template is="textfield-alert"></template>
-</view>
+<template is="input-alert" data="{{visiable:visiable, placeholder:placeholder}}"/>

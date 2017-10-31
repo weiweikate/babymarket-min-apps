@@ -7,7 +7,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        mobile: '',
         imageUrl:'',
         listDatas: [
             {
@@ -52,18 +51,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let self = this;
-        wx.getStorage({
-            key: 'currentMember',
-            success: function (res) {
-                self.setData({
-                    mobile: res.data.Mobile,
-                    imageUrl: Tool.imageURLForId(res.data.PictureId, '/res/img/common/common-avatar-default-icon.png'),
-                    // 'listDatas[0].desp': res.data.Nickname,
-                    // 'listDatas[1].desp': res.data.Sign,
-                })
-            },
-        })
+        this.updateInfo();
+    
         Event.on('refreshMemberInfoNotice', this.requestMemberInfo, this)
     },
 
@@ -122,19 +111,24 @@ Page({
         console.log('-----value:' + value);
         console.log('----title:' + title);
 
+        let params = {}
         if (title == '当前状态') { 
-            this.setData({
-                'listDatas[1].desp': this.data.statusArry[value]
-            });
+            let ParentingProcessKey = parseInt(value)+1
+            params = {
+                'ParentingProcessKey': ParentingProcessKey.toString()
+            };
+
         } else if (title == '宝宝出生日期') {
-            this.setData({
-                'listDatas[3].desp': value
-            });
+            params = {
+                'BabyBirthday': value
+            };
         } else if (title == '宝宝性别') {
-            this.setData({
-                'listDatas[4].desp': this.data.sexArry[value]
-            });
+            params = {
+                'GenderKey': value
+            };
         }
+
+        this.modifyInfo(params, title);
     },
 
     cellTap:function(e){
@@ -236,18 +230,47 @@ Page({
     requestMemberInfo: function () {
         let r = RequestReadFactory.memberInfoRead();
         r.finishBlock = (req) => {
-            let datas = req.responseObject.Datas;
-            datas.forEach((item, index) => {
-
-                this.setData({
-                    mobile: item.Mobile,
-                    imageUrl: Tool.imageURLForId(item.PictureId, '/res/img/common/common-avatar-default-icon.png'),
-                    'listDatas[0].desp': item.Nickname,
-                    'listDatas[1].desp': item.Sign,
-                })
-            })
+            this.updateInfo();
         };
 
         r.addToQueue();
     },
+
+    updateInfo:function(){
+        let self = this;
+        let memberInfo = Storage.currentMember()
+        self.setData({
+            imageUrl: Tool.imageURLForId(memberInfo.ImgId, '/res/img/common/common-avatar-default-icon.png'),
+            listDatas: [
+                {
+                    'title': '昵称',
+                    'desp': memberInfo.NickName
+                },
+                {
+                    'title': '当前状态',
+                    'desp': self.data.statusArry[parseInt(memberInfo.ParentingProcessKey) - 1]
+                },
+                {
+                    'title': '宝宝姓名',
+                    'desp': memberInfo.Name_baby
+                },
+                {
+                    'title': '宝宝出生日期',
+                    'desp': memberInfo.BabyBirthday
+                },
+                {
+                    'title': '宝宝性别',
+                    'desp': self.data.sexArry[parseInt(memberInfo.GenderKey)]
+                }
+            ],
+        })
+    },
+
+    modifyInfo: function (params, title){
+        let r = RequestWriteFactory.modifyMemberInfo(params);
+        r.finishBlock = (req) => {
+            this.requestMemberInfo();
+        };
+        r.addToQueue();
+    }
 })

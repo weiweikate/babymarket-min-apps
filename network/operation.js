@@ -189,6 +189,7 @@ export default class Operation {
 
         //用户信息
         this.memberInfoReadOperation = 'cf71ab3d-ed28-4541-819b-a62c00f4ed2d';
+        this.memberInfoModifyOperation = 'aa2afdb8-9982-4304-8a49-a63300cfd44d';
         this.memberAddOperation = '562fc66f-b28c-0aaf-18a4-3f2501975efa';
 
         //购物车
@@ -213,10 +214,6 @@ export default class Operation {
 
         //订单明细
         this.orderLineAddOperation = 'cc995cdf-115c-01b3-30cb-3f2500426b35';
-
-        //完善信息
-        this.informationCompleteReadOperation = '';
-        this.informationCompleteWriteOperation = '';
 
         //积分-新增
         this.integralAddOperation = '1e2c21c5-ace8-46ec-8983-9fdd0185c222';

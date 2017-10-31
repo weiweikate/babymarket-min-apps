@@ -268,6 +268,20 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //修改用户信息
+    static modifyMemberInfo(params) {
+        let operation = Operation.sharedInstance().memberInfoModifyOperation;
+        let status = Network.sharedInstance().statusExisted;
+
+        params.Operation = operation;
+        params.Id = global.Storage.memberId();
+
+        let req = new RequestWrite(status, 'Member', params, null);
+        req.name = '修改用户信息';
+
+        return req;
+    }
+
     //验证码
     static verifyCodeGet(mobile, typeKey) {
         let operation = Operation.sharedInstance().verifyCodeAddOperation;

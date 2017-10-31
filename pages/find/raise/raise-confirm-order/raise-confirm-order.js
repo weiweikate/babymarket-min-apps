@@ -10,7 +10,8 @@ Page({
         product:'',
         count: '', //购买次数
         addressInfo:'',
-        pwTextFieldHidden:true
+        visiable:false,
+        placeholder:'请输入密码'
     },
     mainId:'',
     password:'',
@@ -120,50 +121,49 @@ Page({
     },
 
     /**
-     * 隐藏输入框
-     */
-    dismissTap:function(){
-        this.setData({
-            pwTextFieldHidden: true
-        })
-    },
-
-    /**
-     * 确定
-     */
-    confirmTap:function(){
-        if (Tool.isEmptyStr(this.data.addressInfo)) {
-            Tool.showSuccessToast('请填写地址');
-            return;
-        }
-
-        let orderId = Tool.guid();
-        let task = RequestWriteFactory.addRaiseOrder(this.data.count, 
-            this.mainId, this.data.addressInfo.Id, orderId, this.password);
-
-        task.finishBlock = (req) => {
-
-            wx.redirectTo({
-                url: '/pages/find/raise/raise-pay-success/raise-pay-success?mainId=' + orderId,
-            })
-        };
-        task.addToQueue();
-    },
-
-    /**
      * 立即下单
      */
     submitTap:function(e){
-        let hidden = this.data.pwTextFieldHidden;
+        let hidden = this.data.visiable;
         this.setData({
-            pwTextFieldHidden: !hidden
+            visiable: !hidden
         })
     },
 
-    /**
-     * 监控密码输入
-     */
-    inputLinster:function(e){
+    dismissInputAlert: function () {
+        this.setData({
+            showInputAlert: false//隐藏
+        });
+    },
+
+    alertInputOnChange: function (e) {
         this.password = e.detail.value;
+
+    },
+
+    inputAlertBtnClicked: function (e) {
+        let index = e.currentTarget.dataset.index;
+        this.dismissInputAlert();
+
+        if (index == 1) {//确定
+
+            if (Tool.isEmptyStr(this.data.addressInfo)) {
+                Tool.showSuccessToast('请填写地址');
+                return;
+            }
+
+            let orderId = Tool.guid();
+            let task = RequestWriteFactory.addRaiseOrder(this.data.count,
+                this.mainId, this.data.addressInfo.Id, orderId, this.password);
+
+            task.finishBlock = (req) => {
+
+                wx.redirectTo({
+                    url: '/pages/find/raise/raise-pay-success/raise-pay-success?mainId=' + orderId,
+                })
+            };
+            task.addToQueue();
+        }
     }
+
 })

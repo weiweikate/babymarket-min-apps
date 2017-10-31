@@ -1,6 +1,6 @@
 /* raise-confirm-order.wxss */
 @import '/pages/my/cell/address-cell.wxss';
-@import '/components/textfield-alert/textfield-alert.wxss';
+@import '/components/alerts/input-alert/input-alert.wxss';
 
 .address-view{
     display: flex;
@@ -85,4 +85,16 @@
     text-align: center;
     width: 220rpx;
     margin-left: 30rpx;
+}
+
+.input-alert{
+    height: 150rpx;
+}
+
+.input-alert textarea{
+    height: 40rpx;
+    width: 530rpx;
+    background-color: #eeeeee;
+    margin-bottom: 24rpx;
+    padding: 10rpx;
 }

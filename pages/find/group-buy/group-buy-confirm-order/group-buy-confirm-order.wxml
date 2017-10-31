@@ -1,6 +1,5 @@
 <!--group-buy-confirm-order.wxml-->
 <import src='/pages/my/cell/address-cell.wxml' />
-<import src='/components/textfield-alert/textfield-alert.wxml' />
 
 <view class="raise-confirm-order-view">
     <!--地址-->
