@@ -2756,4 +2756,59 @@ export default class RequestReadFactory {
 
         return req;
     }
+
+    //金币规则 查询
+    static requestCoinsRule() {
+        let operation = Operation.sharedInstance().coinsRuleReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Order} ASC"
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '金币规则 查询';
+        req.items = ["Id", "Name", "MaxCount", "UnitCoin", "Order"];
+        return req;
+    }
+
+    //金币日志 查询
+    static requestCoinsLog() {
+        let operation = Operation.sharedInstance().coinsLogReadOperation;
+
+        let todayStr = global.Tool.timeStringForDate(new Date(), "YYYY-MM-DD").concat(" 00:00:00");
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'&& ${Date} == '" + todayStr + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Date} DESC",
+            "Condition": condition,
+            "View":{
+                "EntityName":"TodayCoinTime"
+            }
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '金币日志 查询';
+        return req;
+    }
+
+    //今日获得金币数量 查询
+    static requestTodayCoins() {
+        let operation = Operation.sharedInstance().coinsLogReadOperation;
+
+        let todayStr = global.Tool.timeStringForDate(new Date(), "YYYY-MM-DD").concat(" 00:00:00");
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'&& ${Date} == '" + todayStr + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Date} DESC",
+            "Condition": condition,
+            "MaxCount": 1,
+            "StartIndex": 0,
+            "View": {
+                "EntityName": "TodayCoin"
+            }
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '今日获得金币数量 查询';
+        return req;
+    }
 }

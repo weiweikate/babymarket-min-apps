@@ -641,6 +641,21 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //金币充值记录新增
+    static addExchangeRecord(points) {
+        let operation = Operation.sharedInstance().exchangeAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "Point": points,
+            "MemberId": global.Storage.memberId(),
+        }
+
+        let req = new RequestWrite(status, 'Exchange', params, null);
+        req.name = '金币充值记录新增';
+        return req;
+    }
+
     //新增众筹订单
     static addRaiseOrder(buyCount, raiseId, receiptAddressID, orderId, payPassword) {
         let operation = Operation.sharedInstance().raiseOrderAddOperation;

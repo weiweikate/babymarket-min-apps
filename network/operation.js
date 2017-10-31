@@ -135,6 +135,13 @@ export default class Operation {
         // 签到记录 新增
         this.signRecordAddOperation = '0e22c859-30ee-05f5-0031-3f550018150a'
 
+        // 金币规则 查询
+        this.coinsRuleReadOperation = 'f34215ea-db65-4ae4-a7e7-a65d00b67ccd'
+        // 金币日志 查询
+        this.coinsLogReadOperation = '0f0a3146-e9e6-4fd3-af1d-a65d00b949fd'
+        // 金币充值 新增
+        this.exchangeAddOperation = '18458212-4cd1-0919-3c71-3f550016ad62'
+
         // 秒杀时间段 查询
         this.secKillTimeReadOperation = '94b1a9c8-c840-4f16-8b4d-a64e01109a55'
         // 秒杀商品列表 查询
