@@ -1,24 +1,13 @@
 // award-detail.js
+let { Tool, RequestReadFactory } = global;
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        listDatas:[
-            {
-                'left':'品牌',
-                'right':'奖励金额'
-            },
-            {
-                'left': '培康米粉',
-                'right': '10'
-            },
-            {
-                'left': '辅食',
-                'right': '20'
-            }
-        ],
+        listDatas:[],
         startDate: '',
         endDate: '',
     },
@@ -91,5 +80,29 @@ Page({
                 endDate: date
             })
         }
+    },
+
+    /**
+     * 确定
+     */
+    submitTap:function(){
+        let condition = "${Date} >= '" + this.data.startDate + "' && ${Date} <= '" + this.data.endDate + "'";
+        let r = RequestReadFactory.requestAwardFilterList(condition);
+        r.finishBlock = (req) => {
+            let datas = req.responseObject.Datas;
+
+            let item = {
+                "Brand":"品牌",
+                "RewardMoney":"奖励"
+            }
+
+            datas.unshift(item);
+
+            this.setData({
+                listDatas: datas
+            });
+        };
+        r.addToQueue();
     }
+
 })

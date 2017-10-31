@@ -268,6 +268,20 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //修改用户信息
+    static modifyMemberInfo(params) {
+        let operation = Operation.sharedInstance().memberInfoModifyOperation;
+        let status = Network.sharedInstance().statusExisted;
+
+        params.Operation = operation;
+        params.Id = global.Storage.memberId();
+
+        let req = new RequestWrite(status, 'Member', params, null);
+        req.name = '修改用户信息';
+
+        return req;
+    }
+
     //验证码
     static verifyCodeGet(mobile, typeKey) {
         let operation = Operation.sharedInstance().verifyCodeAddOperation;
@@ -676,6 +690,39 @@ export default class RequestWriteFactory {
 
         let req = new RequestWrite(status, 'Sign', params, null);
         req.name = '签到记录新增';
+        return req;
+    }
+
+    //金币充值记录新增
+    static addExchangeRecord(points) {
+        let operation = Operation.sharedInstance().exchangeAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "Point": points,
+            "MemberId": global.Storage.memberId(),
+        }
+
+        let req = new RequestWrite(status, 'Exchange', params, null);
+        req.name = '金币充值记录新增';
+        return req;
+    }
+
+    //提现 记录新增
+    static addWithdrawRecord(money, writePayPassword, alipayAccount) {
+        let operation = Operation.sharedInstance().withdrawRecordAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "MemberId": global.Storage.memberId(),
+            "CreatorId": global.Storage.memberId(),
+            "Money": money,
+            "WritePayPassword": writePayPassword,
+            "AlipayAccount": alipayAccount
+        }
+
+        let req = new RequestWrite(status, 'Cash', params, null);
+        req.name = '提现 记录新增';
         return req;
     }
 

@@ -1,6 +1,6 @@
 <template name="award-detail-cell">
     <view class="award-detail-cell">
-        <view class="left">{{left}}</view>
-        <view class="right">{{right}}</view>
+        <view class="left">{{Brand}}</view>
+        <view class="right">{{RewardMoney}}</view>
     </view>
 </template>

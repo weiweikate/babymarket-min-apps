@@ -2802,4 +2802,122 @@ export default class RequestReadFactory {
 
         return req;
     }
+
+    //金币规则 查询
+    static requestCoinsRule() {
+        let operation = Operation.sharedInstance().coinsRuleReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Order} ASC"
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '金币规则 查询';
+        req.items = ["Id", "Name", "MaxCount", "UnitCoin", "Order"];
+        return req;
+    }
+
+    //金币日志 查询
+    static requestCoinsLog() {
+        let operation = Operation.sharedInstance().coinsLogReadOperation;
+
+        let todayStr = global.Tool.timeStringForDate(new Date(), "YYYY-MM-DD").concat(" 00:00:00");
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'&& ${Date} == '" + todayStr + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Date} DESC",
+            "Condition": condition,
+            "View":{
+                "EntityName":"TodayCoinTime"
+            }
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '金币日志 查询';
+        return req;
+    }
+
+    //今日获得金币数量 查询
+    static requestTodayCoins() {
+        let operation = Operation.sharedInstance().coinsLogReadOperation;
+
+        let todayStr = global.Tool.timeStringForDate(new Date(), "YYYY-MM-DD").concat(" 00:00:00");
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'&& ${Date} == '" + todayStr + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Date} DESC",
+            "Condition": condition,
+            "MaxCount": 1,
+            "StartIndex": 0,
+            "View": {
+                "EntityName": "TodayCoin"
+            }
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '今日获得金币数量 查询';
+        return req;
+    }
+
+    //店员获得奖励（今日和总得） 查询
+    static requestTodayTotalAward() {
+        let operation = Operation.sharedInstance().awardReadOperation;
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "MaxCount": 1,
+            "StartIndex": 0,
+            "View": {
+                "EntityName": "TodayAward"
+            }
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '店员获得奖励（今日和总得） 查询';
+        return req;
+    }
+
+    //店员获得奖励列表 查询
+    static requestAwardList() {
+        let operation = Operation.sharedInstance().awardReadOperation;
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order":"${CreateTime} DESC"
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '店员获得奖励列表 查询';
+        return req;
+    }
+
+    //店员获得奖励统计 查询
+    static requestAwardFilterList(condition) {
+        let operation = Operation.sharedInstance().awardReadOperation;
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${CreateTime} DESC",
+            "MemberId": global.Storage.memberId()
+        };
+        let req = new RequestRead(bodyParameters);
+        req.item = ["Brand","RewardMoney","Id"]
+        req.name = '店员获得奖励统计 查询';
+        return req;
+    }
+
+    //提现明细 查询
+    static requestWithdrawDetail() {
+        let operation = Operation.sharedInstance().withdrawDetailReadOperation;
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${CreateTime} DESC",
+            "MemberId": global.Storage.memberId()
+        };
+        let req = new RequestRead(bodyParameters);
+        req.item = ["CreateTime", "Money", "Status","Id"];
+        req.name = '提现明细 查询';
+        return req;
+    }
 }

@@ -26,5 +26,5 @@
 }
 
 .status.active{
-    color: #715329;
+    color: #ff5555;
 }

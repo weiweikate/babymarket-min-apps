@@ -1,13 +1,13 @@
 <template name="coin-cell">
     <view class="bg-view">
-        <label class="title">完善个人资料</label>
+        <label class="title">{{Name}}</label>
         <view class="amount-view">
             <image src="/res/img/my/coins/my-coins-award-icon.png" class="amount-icon"></image>
-            <label class="amount">100</label>
+            <label class="amount">{{UnitCoin}}</label>
         </view>
         <view class="right-view">
-            <label class="coin currentCoin">0</label>
-            <label class="coin maxCoin">/10</label>
+            <label class="coin currentCoin">{{currentCount}}</label>
+            <label class="coin maxCoin">/{{MaxCount}}</label>
         </view>
 
   </view>

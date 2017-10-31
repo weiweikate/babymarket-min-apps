@@ -20,7 +20,7 @@
 }
 
 .withdraw-icon{
-    margin-top: 70rpx;
+    margin-top: 40rpx;
 }
 
 .my-walet{

@@ -1,6 +1,5 @@
 /* group-buy-confirm-order.wxss */
 @import '/pages/my/cell/address-cell.wxss';
-@import '/components/textfield-alert/textfield-alert.wxss';
 
 .address-view{
     display: flex;

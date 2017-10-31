@@ -135,6 +135,21 @@ export default class Operation {
         // 签到记录 新增
         this.signRecordAddOperation = '0e22c859-30ee-05f5-0031-3f550018150a'
 
+        // 金币规则 查询
+        this.coinsRuleReadOperation = 'f34215ea-db65-4ae4-a7e7-a65d00b67ccd'
+        // 金币日志 查询
+        this.coinsLogReadOperation = '0f0a3146-e9e6-4fd3-af1d-a65d00b949fd'
+        // 金币充值 新增 
+        this.exchangeAddOperation = '18458212-4cd1-0919-3c71-3f550016ad62'
+
+        // 店员获得总奖励 查询
+        this.awardReadOperation = 'e65e2d7a-61d0-4be2-a4f2-a6dc01276fa5'
+
+        // 提现记录 新增
+        this.withdrawRecordAddOperation = '6500a1bc-1b81-0712-1fac-3e3600b74689'
+        // 提现明细 查询
+        this.withdrawDetailReadOperation = 'eb43e06c-3322-0979-2075-3e3801742130'
+
         // 秒杀时间段 查询
         this.secKillTimeReadOperation = '94b1a9c8-c840-4f16-8b4d-a64e01109a55'
         // 秒杀商品列表 查询
@@ -174,6 +189,7 @@ export default class Operation {
 
         //用户信息
         this.memberInfoReadOperation = 'cf71ab3d-ed28-4541-819b-a62c00f4ed2d';
+        this.memberInfoModifyOperation = 'aa2afdb8-9982-4304-8a49-a63300cfd44d';
         this.memberAddOperation = '562fc66f-b28c-0aaf-18a4-3f2501975efa';
 
         //购物车
@@ -198,10 +214,6 @@ export default class Operation {
 
         //订单明细
         this.orderLineAddOperation = 'cc995cdf-115c-01b3-30cb-3f2500426b35';
-
-        //完善信息
-        this.informationCompleteReadOperation = '';
-        this.informationCompleteWriteOperation = '';
 
         //积分-新增
         this.integralAddOperation = '1e2c21c5-ace8-46ec-8983-9fdd0185c222';
