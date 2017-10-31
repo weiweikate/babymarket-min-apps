@@ -3,7 +3,7 @@
 <import src='/pages/my/my-award/award-detail/award-detail-cell/award-detail-cell.wxml' />
 
 <template is="date-filter" data="{{startDate:startDate, endDate:endDate}}"></template>
-<view class="ok-button">确定</view>
+<view class="ok-button" catchtap="submitTap">确定</view>
 
 <block wx:for="{{listDatas}}" wx:key="unique">
     <template is="award-detail-cell" data="{{...item}}"></template>

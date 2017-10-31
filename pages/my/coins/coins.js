@@ -136,7 +136,7 @@ Page({
         let self = this;
         r.finishBlock = (req) => {
             let datas = req.responseObject.Datas;
-            let item = datas.firstObject;
+            let item = datas[0];
             if (Tool.isValidObject(item)){
                 self.setData({
                     todayMoney: item.CoinIncome

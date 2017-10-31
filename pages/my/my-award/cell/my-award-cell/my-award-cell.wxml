@@ -1,11 +1,11 @@
 <template name="my-award-cell">
     <view class="bg-view">
-        <label class="acount OverFlowTwoLine">16312398121</label>
-        <label class="code OverFlowTwoLine">831083012830</label>
+        <label class="acount OverFlowTwoLine">{{MemberIntegralAccount}}</label>
+        <label class="code OverFlowTwoLine">{{ScoreCode}}</label>
         <view class="amount-view">
             <image src="/res/img/my/coins/my-coins-award-icon.png" class="amount-icon"></image>
-            <label class="amount">100</label>
+            <label class="amount">{{RewardMoney}}</label>
         </view>
-        <label class="time OverFlowTwoLine">2017-07-25 10:51:30</label>
+        <label class="time OverFlowTwoLine">{{CreateTime}}</label>
   </view>
 </template>

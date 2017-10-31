@@ -139,8 +139,16 @@ export default class Operation {
         this.coinsRuleReadOperation = 'f34215ea-db65-4ae4-a7e7-a65d00b67ccd'
         // 金币日志 查询
         this.coinsLogReadOperation = '0f0a3146-e9e6-4fd3-af1d-a65d00b949fd'
-        // 金币充值 新增
+        // 金币充值 新增 
         this.exchangeAddOperation = '18458212-4cd1-0919-3c71-3f550016ad62'
+
+        // 店员获得总奖励 查询
+        this.awardReadOperation = 'e65e2d7a-61d0-4be2-a4f2-a6dc01276fa5'
+
+        // 提现记录 新增
+        this.withdrawRecordAddOperation = '6500a1bc-1b81-0712-1fac-3e3600b74689'
+        // 提现明细 查询
+        this.withdrawDetailReadOperation = 'eb43e06c-3322-0979-2075-3e3801742130'
 
         // 秒杀时间段 查询
         this.secKillTimeReadOperation = '94b1a9c8-c840-4f16-8b4d-a64e01109a55'

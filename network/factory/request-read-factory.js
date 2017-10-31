@@ -2811,4 +2811,67 @@ export default class RequestReadFactory {
         req.name = '今日获得金币数量 查询';
         return req;
     }
+
+    //店员获得奖励（今日和总得） 查询
+    static requestTodayTotalAward() {
+        let operation = Operation.sharedInstance().awardReadOperation;
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "MaxCount": 1,
+            "StartIndex": 0,
+            "View": {
+                "EntityName": "TodayAward"
+            }
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '店员获得奖励（今日和总得） 查询';
+        return req;
+    }
+
+    //店员获得奖励列表 查询
+    static requestAwardList() {
+        let operation = Operation.sharedInstance().awardReadOperation;
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order":"${CreateTime} DESC"
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '店员获得奖励列表 查询';
+        return req;
+    }
+
+    //店员获得奖励统计 查询
+    static requestAwardFilterList(condition) {
+        let operation = Operation.sharedInstance().awardReadOperation;
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${CreateTime} DESC",
+            "MemberId": global.Storage.memberId()
+        };
+        let req = new RequestRead(bodyParameters);
+        req.item = ["Brand","RewardMoney","Id"]
+        req.name = '店员获得奖励统计 查询';
+        return req;
+    }
+
+    //提现明细 查询
+    static requestWithdrawDetail() {
+        let operation = Operation.sharedInstance().withdrawDetailReadOperation;
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${CreateTime} DESC",
+            "MemberId": global.Storage.memberId()
+        };
+        let req = new RequestRead(bodyParameters);
+        req.item = ["CreateTime", "Money", "Status","Id"];
+        req.name = '提现明细 查询';
+        return req;
+    }
 }

@@ -656,6 +656,24 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //提现 记录新增
+    static addWithdrawRecord(money, writePayPassword, alipayAccount) {
+        let operation = Operation.sharedInstance().withdrawRecordAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "MemberId": global.Storage.memberId(),
+            "CreatorId": global.Storage.memberId(),
+            "Money": money,
+            "WritePayPassword": writePayPassword,
+            "AlipayAccount": alipayAccount
+        }
+
+        let req = new RequestWrite(status, 'Cash', params, null);
+        req.name = '提现 记录新增';
+        return req;
+    }
+
     //新增众筹订单
     static addRaiseOrder(buyCount, raiseId, receiptAddressID, orderId, payPassword) {
         let operation = Operation.sharedInstance().raiseOrderAddOperation;
