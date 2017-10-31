@@ -1,18 +1,18 @@
-<!--add-baby-diary.wxml-->
-<view class="bg-view">
-    <form bindsubmit="submitTap">
-        <view class="input-area">
-            <textarea class="input" name="input" placeholder="请输入记录心情，不要超过40个字哦～" />
-            <image class="select-image" src="{{imageUrl == ''?'/res/img/my/my-baby-diary-carema-icon.png':imageUrl}}" mode="aspectFit" catchtap="selectImageTap"></image>
-        </view>
+<import src='/components/image-picker/image-picker.wxml' />
 
-        <view class="time-view">
-            <view class="modify-time">修改拍摄日期</view>
-
-            <picker mode="date" value="{{date}}" end="{{endDate}}" bindchange="dateChange">
-                <view class="time">{{date}}</view>
-            </picker>
-
-        </view>
-    </form>
+<view class="view-root">
+  <form catchsubmit="onSubmitAction" class='view-form'>
+    <view class='view-content'>
+      <textarea class="input-content" name="content" maxlength='-1' placeholder="请输入记录心情，不要超过40个字哦～" placeholder-style="color:#acadaa" />
+      <template is="image-picker" data="{{maxCount:maxCount,imageArray:imageArray}}" />
+    </view>
+    <picker catchchange="onSelectChangeListener" mode="date">
+      <view class="view-date">
+        <text class="date-title">修改拍摄日期</text>
+        <text class="date-value">{{date}}</text>
+      </view>
+    </picker>
+    <!--底部按钮保存-->
+    <button class="view-submit" form-type="submit">发布</button>
+  </form>
 </view>

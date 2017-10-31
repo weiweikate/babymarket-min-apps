@@ -1,22 +1,17 @@
-<!--baby-diary.wxml-->
-
+<import src='/components/empty-view/empty-view.wxml' />
 <import src='/pages/my/baby-diary/baby-diary-cell/baby-diary-cell.wxml' />
+<import src='/components/create-btn/create-btn.wxml' />
 
- <view class="diary-view"> 
-    <view class="left">
-        <block wx:for="{{leftDatas}}" wx:key="unique">
-             <view catchtap="diaryCellTap" data-index="{{index}}" data-coloum="0"> 
-                <template is="baby-diary-cell" data="{{...item}}"></template>
-             </view> 
-        </block>
-    </view>
+<view class="view-root">
+  <view class='view-list' wx:if="{{listArray.length>0}}">
+    <block wx:for="{{listArray}}" wx:key="unique">
+      <template is="baby-diary-cell" data="{{...item}}" />
+    </block>
+  </view>
+  <view wx:else class="no-data">
+    <template is="empty-view" data="{{title:'这里还什么都没有哦～'}}" />
+  </view>
+</view>
 
-     <view class="right">
-        <view class="add-diary" catchtap="addTap">创建</view>
-        <block wx:for="{{rightDatas}}" wx:key="unique">
-             <view catchtap="diaryCellTap" data-index="{{index}}" data-coloum="1"> 
-                <template is="baby-diary-cell" data="{{...item}}"></template>
-             </view> 
-        </block>
-    </view> 
-</view> 
+
+<template is="create-btn" data="{{navigateUrl:navigateUrl,icon:icon,isHide:isHide}}" />

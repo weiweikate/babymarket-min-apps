@@ -1,12 +1,12 @@
 <!--baby-diary-detail.wxml-->
 <view class="bg-view">
-    <image src="" class="image"></image>
+    <image src="{{detailInfo.imageUrl}}" class="image" mode='aspectFill'></image>
     <view class="date-age">
-        <view class="date">2017-08-08</view>
+        <view class="date">{{detailInfo.PhotoDate}}</view>
         <view class="age">(1个月2天)</view>
     </view>
     <view class="sepline"></view>
-    <view class="content">肌肤的垃圾分类的就撒了房间看到饭撒减肥了</view>
+    <view class="content">{{detailInfo.Content}}</view>
 </view>
 
 <view class="modify-button" catchtap="modifyTap">修改</view>

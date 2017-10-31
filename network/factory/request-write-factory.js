@@ -301,6 +301,44 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //新增宝宝日记
+    static addBabyDiary(requestData, temporaryIdArray) {
+      let operation = Operation.sharedInstance().babyDiaryAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let relevancies = null;
+
+      if (temporaryIdArray != undefined) {
+        let requestId = requestData.Id;
+        relevancies = new Array();
+        temporaryIdArray.forEach((item) => {
+          let relevancy = new Object();
+          relevancy.EntityName = "Attachment";
+          relevancy.Status = Network.sharedInstance().statusNew;
+
+          let itemId = Tool.guid();
+
+          let items = new Object();
+          items.FileName = itemId + ".png";
+          items.RelevancyId = requestId;
+          items.RelevancyType = 'BabyDiary';
+          items.RelevancyBizElement = 'Attachments';
+          items.$FILE_BYTES = item;
+          items.Id = itemId;
+          relevancy.Items = items;
+
+          relevancies.push(relevancy);
+
+          requestData.PhotoImgId = itemId;
+        });
+      }
+
+      
+      let req = new RequestWrite(status, 'BabyDiary', requestData, operation, relevancies);
+      req.name = '新增宝宝日记';
+      return req;
+    }
+
     //新增帖子
     static addPost(requestData, temporaryIdArray) {
       let operation = Operation.sharedInstance().postAddOperation;

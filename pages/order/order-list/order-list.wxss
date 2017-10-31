@@ -1,10 +1,6 @@
 @import '/pages/order/cell-order/cell-order.wxss';
 @import '/components/empty-view/empty-view.wxss';
 
-page{
-    background: white;
-}
-
 .view-root {
   display: flex;
   flex-direction: column;

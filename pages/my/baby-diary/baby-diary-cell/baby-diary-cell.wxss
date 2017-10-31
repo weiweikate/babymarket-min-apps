@@ -1,38 +1,44 @@
-    .baby-diary-cell{
-    /* display: flex;
-    flex-direction: column; */
-    /* width: 342rpx;
-    height: 100%; */
-    background: white;
-    margin-left: 22rpx;
-    margin-top: 20rpx;
-    padding-bottom: 28rpx;
-}    
-
-.date-age{
-    display: flex;
-    align-items: center;
-    height: 40rpx;
-    margin-left: 10rpx;
-    margin-top: 25rpx;
+.baby-diary-cell {
+  display: flex;
+  flex-direction: column;
+  width: 47%;
+  background-color: white;
+  margin: 10rpx;
+  padding-bottom: 20rpx;
 }
 
-.date{
-    font-size: 28rpx;
-    color: #494848;
+.cell-image {
+  width: 100%;
+  height: 300rpx;
+  background-color: #f3f4f5;
+  flex: none;
 }
 
-.age{
-    font-size: 26rpx;
-    color: #acadaa;
-    margin-left: 20rpx;
+.date-age {
+  display: flex;
+  align-items: center;
+  padding: 10rpx;
 }
 
-.content{
-    margin-top: 30rpx;
-    font-size: 26rpx;
-    color: #494848;
-    margin-left: 10rpx;
-    margin-right: 10rpx;
-    line-height: 120%;
+.date {
+  font-size: 28rpx;
+  color: #494848;
+}
+
+.age {
+  font-size: 26rpx;
+  color: #acadaa;
+  margin-left: 10rpx;
+}
+
+.content {
+  height: 72rpx;
+  padding: 0rpx 10rpx;
+  font-size: 26rpx;
+  color: #494848;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }

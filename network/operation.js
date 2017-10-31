@@ -220,6 +220,12 @@ export default class Operation {
         this.lotteryExtractAddOperation = 'baec8091-49c7-4a0d-9b81-a65900be9705';
         //中奖记录-查询
         this.lotteryExtractReadOperation = 'dc844348-0028-4eeb-848a-a65900bde035';
+        //宝宝日记-新增
+        this.babyDiaryAddOperation = '9844e4b4-ab5b-48ec-883a-a69c00e062f9';
+        //宝宝日记-查询
+        this.babyDiaryReadOperation = 'ac3f9f18-769f-4b2d-aa98-a69c00a71da5';
+        //宝宝日记-修改
+        this.babyDiaryModifyOperation = 'bd1a8dfd-09ba-4fa2-9c11-a69c00a75969';
 
         __instance(this);
     }

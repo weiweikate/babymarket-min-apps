@@ -1,31 +1,20 @@
-/* baby-diary.wxss */
+@import '/components/empty-view/empty-view.wxss';
 @import '/pages/my/baby-diary/baby-diary-cell/baby-diary-cell.wxss';
+@import '/components/create-btn/create-btn.wxss';
 
-.diary-view{
-    display: flex;
-} 
-
-.left{
-    width: 364rpx;
-    height: 100%; 
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+  height: 100%;
 }
 
-.right{
-    width: 364rpx;
-    height: 100%; 
-} 
+.view-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10rpx;
+}
 
-.add-diary{
-    position: fixed;
-    bottom: 100rpx;
-    right: 50rpx;
-    width: 110rpx;
-    height: 110rpx;
-    font-size: 32rpx;
-    background: blue;
-    color: white;
-    border-radius: 55rpx;
-    z-index: 20;
-    text-align: center;
-    line-height: 100rpx;
+.no-data {
+  height: 100%;
 }

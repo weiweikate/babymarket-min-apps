@@ -18,6 +18,52 @@ export default class RequestReadFactory {
     }
 
     /**
+     * 查询宝宝日记
+     */
+    static babyDiaryRead() {
+      let operation = Operation.sharedInstance().babyDiaryReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MemberId": global.Storage.memberId(),
+        "Order": '${PhotoDate} DESC'
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询宝宝日记';//用于日志输出
+      req.items = ['Id', 'Content', 'PhotoImgId', 'PhotoDate'];
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.imageUrl = global.Tool.imageURLForId(item.PhotoImgId);
+          item.PhotoDate = item.PhotoDate.substring(0,10);
+        });
+      }
+      return req;
+    }
+
+    /**
+     * 查询宝宝详情日记
+     */
+    static babyDiaryDetailRead(id) {
+      let operation = Operation.sharedInstance().babyDiaryReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": id,
+        "MaxCount": '1'
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询宝宝日记';//用于日志输出
+      req.items = ['Id', 'Content', 'PhotoImgId', 'PhotoDate'];
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.imageUrl = global.Tool.imageURLForId(item.PhotoImgId);
+          item.PhotoDate = item.PhotoDate.substring(0, 10);
+        });
+      }
+      return req;
+    }
+
+    /**
      * 查询奖品
      */
     static lotteryRead() {

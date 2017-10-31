@@ -1,4 +1,3 @@
-<!--my-seckill.wxml-->
 <import src='/components/empty-view/empty-view.wxml' />
 
 <view class="my-seckill" wx:if="{{listDatas.length != 0}}">

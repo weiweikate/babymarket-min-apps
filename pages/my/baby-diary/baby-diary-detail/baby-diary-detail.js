@@ -1,72 +1,39 @@
-// baby-diary-detail.js
+let { Tool, Storage, Event, RequestReadFactory, RequestWriteFactory } = global;
 Page({
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    detailInfo: undefined
+  },
 
-    },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.requestInfo(options.id);
+  },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
 
-    },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    },
-
-    modifyTap: function () {
-        wx.navigateTo({
-            url: '../add-baby-diary/add-baby-diary?type=1',
-        })
+  modifyTap: function () {
+    wx.navigateTo({
+      url: '../add-baby-diary/add-baby-diary?type=1',
+    })
+  },
+  /**
+   * 宝宝日记查询
+   */
+  requestInfo: function (id) {
+    let task = RequestReadFactory.babyDiaryDetailRead(id);
+    task.finishBlock = (req, firstData) => {
+      if (req.responseObject.Count > 0) {
+        this.setData({
+          detailInfo: firstData
+        });
+      }
     }
+    task.addToQueue();
+  },
 })
