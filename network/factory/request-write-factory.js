@@ -282,6 +282,50 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //修改头像,avatarType:2会员头像 1宝宝头像
+    static modifyMemberAvatar(tempImgId, avatarType) {
+        let operation = Operation.sharedInstance().memberInfoModifyOperation;
+        let status = Network.sharedInstance().statusExisted;
+
+        // 文件名
+        let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
+        let nowTimeInterval = Tool.timeIntervalFromString(now);
+        let fileName = nowTimeInterval + '.png';
+
+        let imgId = Tool.guid();
+
+        let relevancies = [{
+            "EntityName": "Attachment",
+            "Status": Network.sharedInstance().statusNew,
+            "Items": {
+                "FileName": fileName,
+                "RelevancyId": global.Storage.memberId(),
+                "RelevancyType": "Member",
+                "RelevancyBizElement": "Img",
+                "$FILE_BYTES": tempImgId,
+                "Id": imgId,
+            },
+        }];
+
+        let params = {};
+        if (avatarType == '1'){
+            params = {
+                "ImgId": imgId
+            }
+        }else{
+            params = {
+                "BabyImgId": imgId
+            }
+        }
+        params.Operation = operation;
+        params.Id = global.Storage.memberId();
+
+        let req = new RequestWrite(status, 'Member', params, operation, relevancies);
+        req.name = '修改头像';
+
+        return req;
+    }
+
     //验证码
     static verifyCodeGet(mobile, typeKey) {
         let operation = Operation.sharedInstance().verifyCodeAddOperation;
@@ -297,21 +341,37 @@ export default class RequestWriteFactory {
         return req;
     }
 
-    //设置支付密码
-    static payPasswordSet(checkCode, pwd, confirmPwd, mobile) {
-        let operation = Operation.sharedInstance().payPasswordAddOperation;
+    //设置支付密码 classifyKey:1设置，2修改
+    static payPasswordSet(loginPwd, payPwd, classifyKey) {
+        let operation = Operation.sharedInstance().payPasswordModifyOperation;
         let status = Network.sharedInstance().statusNew;
         let params = {
             "Operation": operation,
-            "CheckCode": checkCode,
-            "NewCode": pwd,
-            "CheckPassword": confirmPwd,
-            "Mobile": mobile,
-            "MemberId": global.Storage.memberId()
+            "MemberId": global.Storage.memberId(),
+            "Password": loginPwd,
+            "PayPassword": payPwd,
+            "ClassifyKey": classifyKey
         };
 
-        let req = new RequestWrite(status, 'PayCode', params, null);
+        let req = new RequestWrite(status, 'PayPasswordRecord', params, null);
         req.name = '设置支付密码';
+        return req;
+    }
+
+    //修改登录密码
+    static loginPasswordSet(mobile, checkCode, pwd) {
+        let operation = Operation.sharedInstance().loginPasswordModifyOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "Mobile": mobile,
+            "CheckCode": checkCode,
+            "NewPassword": pwd,
+            "PasswordCheck": pwd
+        };
+
+        let req = new RequestWrite(status, 'PasswordRetake', params, null);
+        req.name = '修改登录密码';
         return req;
     }
 

@@ -1,13 +1,13 @@
 // edit-profile.js
 
-let { Tool, Storage, RequestReadFactory, RequestWriteFactory, Event } = global;
+let { Tool, Storage, Network, RequestReadFactory, RequestWriteFactory, Event } = global;
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        imageUrl:'',
+        imageUrl: '',
         listDatas: [
             {
                 'title': '昵称',
@@ -40,10 +40,10 @@ Page({
                 'desp': ''
             }
         ],
-        statusArry:['备孕','怀孕','育儿'],
+        statusArry: ['备孕', '怀孕', '育儿'],
         sexArry: ['保密', '男', '女'],
         endDate: Tool.timeStringForDate(new Date(), 'YYYY-MM-DD'),
-        statusIndex:'0',
+        statusIndex: '0',
         sexIndex: '0',
     },
 
@@ -52,7 +52,7 @@ Page({
      */
     onLoad: function (options) {
         this.updateInfo();
-    
+
         Event.on('refreshMemberInfoNotice', this.requestMemberInfo, this)
     },
 
@@ -105,15 +105,15 @@ Page({
 
     },
 
-    bindPickerChange:function(e){
+    bindPickerChange: function (e) {
         let value = e.detail.value;
         let title = e.currentTarget.dataset.title;
         console.log('-----value:' + value);
         console.log('----title:' + title);
 
         let params = {}
-        if (title == '当前状态') { 
-            let ParentingProcessKey = parseInt(value)+1
+        if (title == '当前状态') {
+            let ParentingProcessKey = parseInt(value) + 1
             params = {
                 'ParentingProcessKey': ParentingProcessKey.toString()
             };
@@ -131,15 +131,15 @@ Page({
         this.modifyInfo(params, title);
     },
 
-    cellTap:function(e){
+    cellTap: function (e) {
         let title = e.currentTarget.dataset.title;
         console.log('----title:' + title);
 
-        if(title == '昵称'){ //修改昵称
+        if (title == '昵称') { //修改昵称
             wx.navigateTo({
                 url: '../edit-profile/modify-nickname/modify-nickname?type=0',
             })
-        }else if(title == '宝宝姓名'){
+        } else if (title == '宝宝姓名') {
             wx.navigateTo({
                 url: '../edit-profile/modify-nickname/modify-nickname?type=1',
             })
@@ -155,73 +155,63 @@ Page({
     },
 
     // 修改头像
-    modifyImageTap:function(){
+    modifyImageTap: function () {
         let self = this;
 
         wx.showActionSheet({
             itemList: ['拍照', '从相册选择'],
             success: function (res) {
                 console.log(res.tapIndex),
-                 wx.chooseImage({
+                wx.chooseImage({
                     count: 1, // 默认9
                     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-                    success: function(res) {
-                        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                        var tempFilePaths = res.tempFilePaths;
-                        self.setData({
-                            imageUrl: tempFilePaths[0],
-                        });
+                    success: function (imgRes) {
+                        wx.showActionSheet({
+                            itemList: ['设定为我的头像', '同时设定为宝宝头像'],
+                            success: function (e) {
+                                console.log(e.tapIndex)
 
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            var arrayBuffer = reader.result;
-                            var base64 = wx.arrayBufferToBase64(arrayBuffer);
-                            console.log('------base64----:' + base64);
+                                var tempFilePaths = imgRes.tempFilePaths;
+                                self.setData({
+                                    imageUrl: tempFilePaths[0],
+                                });
 
-                            //上传到服务器
-                            wx.request({
-                                url: 'https://www.babymarkt.com.cn/Libra.Web.Api.ApiWriteBlob.aspx',
-                                data: {
-                                    '_SESSION_': global.Storage.currentSession(),
-                                    'format':'BASE64',
-                                    base64
-                                },
-                                success: function (res) {
-                                    console.log('---------临时Id:' + res.data.TemporaryId);
+                                wx.uploadFile({
+                                    url: Network.sharedInstance().uploadURL,
+                                    filePath: tempFilePaths[0],
+                                    name: 'file',
+                                    success: function (res) {
+                                        var fileInfo = JSON.parse(res.data);
+                                        console.log(fileInfo);
 
-                                    let temporaryId = res.data.TemporaryId;//临时Id
-                                    let r = RequestWriteFactory.modifyAcatar(temporaryId);
-                                    r.finishBlock = (req) => {
-                                        Event.emit('refreshMemberInfoNotice');//发出通知
+                                        let temporaryId = fileInfo.TemporaryId;
+                                        self.modifyAvatar(temporaryId, '1');//修改我的头像
+                                    }
+                                })
 
-                                        wx.navigateBack({
-                                            delta:1
-                                        })
-                                    };
-                                    r.addToQueue();
+                                if (e.tapIndex == 1) {//同时修改宝宝头像
+                                    wx.uploadFile({
+                                        url: Network.sharedInstance().uploadURL,
+                                        filePath: tempFilePaths[0],
+                                        name: 'file',
+                                        success: function (res) {
+                                            var fileInfo = JSON.parse(res.data);
+                                            console.log(fileInfo);
+
+                                            let temporaryId = fileInfo.TemporaryId;
+                                            self.modifyAvatar(temporaryId, '2');
+                                        }
+                                    })
                                 }
-                            })
-                        }
-                        reader.readAsArrayBuffer(new Blob(tempFilePaths))
-                        // reader.readAsBinaryString(new Blob(tempFilePaths));
-                     },
-                 })
+                            }
+                        })
+                    }
+                })
             },
             fail: function (res) {
                 console.log(res.errMsg)
             }
         })
-    },
-
-    // 获取文件二进制数据
-    getFileBinary:function(file, cb) {
-        var reader = new FileReader();
-        reader.readAsArrayBuffer(file);
-        reader.onload = function (e) {
-            if (typeof cb === "function") {
-                cb.call(this, this.result);
-            }
-        }
     },
 
     /**
@@ -236,7 +226,7 @@ Page({
         r.addToQueue();
     },
 
-    updateInfo:function(){
+    updateInfo: function () {
         let self = this;
         let memberInfo = Storage.currentMember()
         self.setData({
@@ -266,11 +256,20 @@ Page({
         })
     },
 
-    modifyInfo: function (params, title){
+    modifyInfo: function (params, title) {
         let r = RequestWriteFactory.modifyMemberInfo(params);
         r.finishBlock = (req) => {
             this.requestMemberInfo();
         };
         r.addToQueue();
+    },
+
+    modifyAvatar:function(tempImgId, avatarType){
+        let r = RequestWriteFactory.modifyMemberAvatar(tempImgId, avatarType);
+        r.finishBlock = (req) => {
+            Event.emit('refreshMemberInfoNotice');
+        };
+        r.addToQueue();
     }
+
 })
