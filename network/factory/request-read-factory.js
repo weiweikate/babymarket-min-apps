@@ -2929,4 +2929,20 @@ export default class RequestReadFactory {
         req.name = '提现明细 查询';
         return req;
     }
+
+    //用户验证 查询
+    static requestVerifyMember(mobile) {
+        let operation = Operation.sharedInstance().memberInfoReadOperation; 
+        let condition = "${Mobile} == '" + mobile + "'";
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "MaxCount": 1,
+            "StartIndex": 0,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.item = ["Id"];
+        req.name = '用户验证 查询';
+        return req;
+    }
 }

@@ -21,6 +21,10 @@ export default class Operation {
         
         //验证码-新增
         this.verifyCodeAddOperation = '593350ec-de1d-0d15-1242-3f25019f99be';
+        //修改登录密码
+        this.loginPasswordModifyOperation = '423002f7-38c2-49f8-b0ec-a6cd01010b21';
+        //修改支付密码
+        this.payPasswordModifyOperation = '7c991cfc-3fd0-4a55-a059-a6fa0128d2b9';
 
         // 便便诊所，咨询类型
         this.advisoryTypeReadOperation = '8445b839-c622-40cb-8dbc-a63d0115a365';
