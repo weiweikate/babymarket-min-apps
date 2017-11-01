@@ -1,9 +1,8 @@
-<!--baby-diary-detail.wxml-->
 <view class="bg-view">
-    <image src="{{detailInfo.imageUrl}}" class="image" mode='aspectFill'></image>
+    <image src="{{detailInfo.imageUrl}}" class="image" mode='aspectFit'></image>
     <view class="date-age">
         <view class="date">{{detailInfo.PhotoDate}}</view>
-        <view class="age">(1个月2天)</view>
+        <view class="age">（{{detailInfo.PhotoDate2}}）</view>
     </view>
     <view class="sepline"></view>
     <view class="content">{{detailInfo.Content}}</view>

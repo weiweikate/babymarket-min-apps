@@ -78,23 +78,30 @@ export default class ImagePicker {
       //上传图片
       imageArray.forEach((item) => {
         //调用微信上传接口
-        wx.uploadFile({
-          url: httpUrl,
-          filePath: item,
-          name: 'file',
-          success: function (res) {
-            taskCount++;
-
-            var fileInfo = JSON.parse(res.data);
-            let temporaryId = fileInfo.TemporaryId;
-            //把临时ID放入id数组
-            temporaryIdArray.push(temporaryId);
-            if (taskCount == arrayLength) {
-              //所有文件上传成功，回调finishBlock方法
-              finishBlock(temporaryIdArray);
-            }
+        if (item.indexOf("mobile.topmom.com.cn") >= 0) {
+          arrayLength--;
+          if (arrayLength == 0) {
+            finishBlock(undefined);
           }
-        })
+        } else {
+          wx.uploadFile({
+            url: httpUrl,
+            filePath: item,
+            name: 'file',
+            success: function (res) {
+              taskCount++;
+
+              var fileInfo = JSON.parse(res.data);
+              let temporaryId = fileInfo.TemporaryId;
+              //把临时ID放入id数组
+              temporaryIdArray.push(temporaryId);
+              if (taskCount == arrayLength) {
+                //所有文件上传成功，回调finishBlock方法
+                finishBlock(temporaryIdArray);
+              }
+            }
+          })
+        }
       });
     } else {
       //直接返回空数据

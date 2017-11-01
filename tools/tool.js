@@ -107,6 +107,53 @@ export default class Tool {
         return date;
     }
 
+    /**
+     * 根据时间戳返回多少年多少月多少天
+     */
+    static getYearMonthDayCount(period) {
+      var yearLevelValue = 365 * 24 * 60 * 60 * 1000;
+      var monthLevelValue = 30 * 24 * 60 * 60 * 1000;
+      var dayLevelValue = 24 * 60 * 60 * 1000;
+      var hourLevelValue = 60 * 60 * 1000;
+      var minuteLevelValue = 60 * 1000;
+      var secondLevelValue = 1000;
+
+      function getDifference(period) {
+        /*******计算出时间差中的年、月、日、天、时、分、秒*******/
+        var year = parseInt(getYear(period));
+        var month = parseInt(getMonth(period - year * yearLevelValue));
+        var day = parseInt(getDay(period - year * yearLevelValue - month * monthLevelValue));
+        var hour = parseInt(getHour(period - year * yearLevelValue - month * monthLevelValue - day * dayLevelValue));
+        var minute = parseInt(getMinute(period - year * yearLevelValue - month * monthLevelValue - day * dayLevelValue - hour * hourLevelValue));
+        var second = parseInt(getSecond(period - year * yearLevelValue - month * monthLevelValue - day * dayLevelValue - hour * hourLevelValue - minute * minuteLevelValue));
+        var result = "";
+        if (year != 0) result = result + year + "年";
+        if (month != 0) result = result + month + "个月";
+        if (day != 0) result = result + day + "天";
+        // result = result + hour + "时" + minute + "分" + second + "秒";
+        function getYear(period) {
+          return parseInt(period) / yearLevelValue;
+        }
+        function getMonth(period) {
+          return parseInt(period) / monthLevelValue;
+        }
+        function getDay(period) {
+          return parseInt(period) / dayLevelValue;
+        }
+        function getHour(period) {
+          return parseInt(period) / hourLevelValue;
+        }
+        function getMinute(period) {
+          return parseInt(period) / minuteLevelValue;
+        }
+        function getSecond(period) {
+          return parseInt(period) / secondLevelValue;
+        }
+        return result;
+      }
+      return getDifference(period);
+    }  
+
     static timeStringForDateString(string, formate) {
         if ('1900-01-01 00:00:00' === string) {
             return '空';

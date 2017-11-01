@@ -32,10 +32,7 @@ export default class RequestReadFactory {
       req.items = ['Id', 'Content', 'PhotoImgId', 'PhotoDate'];
       req.preprocessCallback = (req) => {
         let responseData = req.responseObject.Datas;
-        responseData.forEach((item, index) => {
-          item.imageUrl = global.Tool.imageURLForId(item.PhotoImgId);
-          item.PhotoDate = item.PhotoDate.substring(0,10);
-        });
+        this.parseBabyDiaryData(responseData);
       }
       return req;
     }
@@ -55,12 +52,24 @@ export default class RequestReadFactory {
       req.items = ['Id', 'Content', 'PhotoImgId', 'PhotoDate'];
       req.preprocessCallback = (req) => {
         let responseData = req.responseObject.Datas;
-        responseData.forEach((item, index) => {
-          item.imageUrl = global.Tool.imageURLForId(item.PhotoImgId);
-          item.PhotoDate = item.PhotoDate.substring(0, 10);
-        });
+        this.parseBabyDiaryData(responseData);
       }
       return req;
+    }
+
+    /**
+     * 处理宝宝日记的数据
+     */
+    static parseBabyDiaryData(responseData) {
+      let babyBirthday = Date.parse(new Date(global.Storage.currentMember().BabyBirthday));
+      responseData.forEach((item, index) => {
+        item.imageUrl = global.Tool.imageURLForId(item.PhotoImgId);
+        let timestamp2 = Date.parse(new Date(item.PhotoDate));
+        //发表的时间-宝宝年纪
+        timestamp2 = timestamp2 - babyBirthday;
+        item.PhotoDate2 = global.Tool.getYearMonthDayCount(timestamp2);
+        item.PhotoDate = item.PhotoDate.substring(0, 10);
+      });
     }
 
     /**

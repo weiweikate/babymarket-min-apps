@@ -1,5 +1,3 @@
-/* baby-diary-detail.wxss */
-
 .bg-view{
     background: white;
 }
@@ -7,7 +5,8 @@
 .bg-view .image{
     width: 100%;
     height: 500rpx;
-    background: lightblue;
+    background-color: white;
+    flex: none;
 }
 
 .bg-view .date-age{
@@ -36,7 +35,7 @@
 .date-age .age{
     font-size: 28rpx;
     color: #acadaa;
-    margin-left: 30rpx;
+    margin-left: 20rpx;
 }
 
 .modify-button{

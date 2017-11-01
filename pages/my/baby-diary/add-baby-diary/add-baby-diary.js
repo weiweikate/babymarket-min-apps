@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    date: undefined
+    requestData: undefined
   },
 
   /**
@@ -15,19 +15,32 @@ Page({
    */
   onLoad: function (options) {
     this.imagePicker = new ImagePicker(this, 1);
-
-    let dateString = Tool.timeStringForDate(new Date(), "YYYY-MM-DD");
-    this.setData({
-      date: dateString
-    });
+    let requestData = undefined;
+    if (options.type == '1') {
+      requestData = Storage.getterFor("baby-diary-info");
+      let imageArray = [requestData.imageUrl];
+      this.setData({
+        requestData: requestData,
+        imageArray: imageArray
+      });
+    } else {
+      let dateString = Tool.timeStringForDate(new Date(), "YYYY-MM-DD");
+      let requestData = new Object();
+      requestData.PhotoDate = dateString;
+      this.setData({
+        requestData: requestData
+      });
+    }
   },
 
   /**
    * 日期改变
    */
   onSelectChangeListener: function (e) {
+    let requestData = this.data.requestData;
+    requestData.PhotoDate = e.detail.value;
     this.setData({
-      date: e.detail.value
+      requestData: requestData
     });
   },
 
@@ -38,6 +51,20 @@ Page({
     let task = RequestWriteFactory.addBabyDiary(requestData, temporaryIdArray);
     task.finishBlock = (req) => {
       Tool.showSuccessToast("发布成功！");
+      Tool.navigationPop();
+
+      Event.emit('refreshBabyDiaryList');//发出通知
+    };
+    task.addToQueue();
+  },
+
+  /**
+   * 修改记录
+   */
+  requestModify: function (requestData, temporaryIdArray) {
+    let task = RequestWriteFactory.modifyBabyDiary(requestData, temporaryIdArray);
+    task.finishBlock = (req) => {
+      Tool.showSuccessToast("修改成功！");
       Tool.navigationPop();
 
       Event.emit('refreshBabyDiaryList');//发出通知
@@ -60,12 +87,17 @@ Page({
 
     Tool.showLoading();
     self.imagePicker.onUploadAction((temporaryIdArray) => {
-      let requestData = new Object();
-      requestData.Id = Tool.guid();
-      requestData.PhotoDate = self.data.date;
-      requestData.MemberId = Storage.memberId();
+      let requestData = self.data.requestData;
       requestData.Content = info.content;
-      self.requestAdd(requestData, temporaryIdArray);
+      if (Tool.isEmptyStr(requestData.Id)) {
+        //新增
+        requestData.Id = Tool.guid();
+        requestData.MemberId = Storage.memberId();
+        self.requestAdd(requestData, temporaryIdArray);
+      } else {
+        //修改
+        self.requestModify(requestData, temporaryIdArray);
+      }
     });
   }
 })

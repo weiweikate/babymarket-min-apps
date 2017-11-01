@@ -3,7 +3,7 @@
     <image src="{{imageUrl}}" class='cell-image' mode='aspectFill' />
     <view class="date-age">
       <view class="date">{{PhotoDate}}</view>
-      <view class="age">(1个月3天)</view>
+      <view class="age">({{PhotoDate2}})</view>
     </view>
     <view class="content">{{Content}}</view>
   </view>
