@@ -173,7 +173,7 @@ Page({
             })
         } else if (title == '工具库') {
             wx.navigateTo({
-                url: 'pages/find/knowledge/knowledge',
+                url: '/pages/find/knowledge/knowledge',
             })
         }
     },

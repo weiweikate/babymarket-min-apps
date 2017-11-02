@@ -69,25 +69,21 @@ Page({
 
     },
 
-    questionButtonTap: function () {
-        this.setData({
-            currentIndex: 0
-        })
-
-        if (this.data.questionListDatas.length == 0) {
-            this.requestData(0);
-        }
-    },
-
-    replyButtonTap: function (e) {
+    segmentItemTap:function(e){
         let index = e.currentTarget.dataset.index;
-        
         this.setData({
             currentIndex: index
         })
+        if (index == 0){//我的提问
 
-        if (this.data.replyListDatas.length == 0){
-            this.requestData(index);
+            if (this.data.questionListDatas.length == 0) {
+                this.requestData(index);
+            }
+        } else {//我的回答
+
+            if (this.data.replyListDatas.length == 0) {
+                this.requestData(index);
+            }
         }
     },
 

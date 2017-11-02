@@ -37,7 +37,10 @@
 
     <!--宝宝年龄  -->
     <label class="baby-age">{{babyAge}}</label>
-    <image src="{{babyImageUrl}}" class="avatar" catchtap="avatarTap"></image>
+    <view class="avatar-camera">
+        <image src="{{babyImageUrl}}" class="avatar" catchtap="avatarTap"></image>
+        <image src="/res/img/index/index-avatar-camera-icon.png" class="camera"></image>
+    </view>
     <label class="name">{{babyName}}</label>
     <label class="height-weight">{{weightHeight}}</label>
     <view class="desp">

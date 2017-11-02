@@ -13,6 +13,7 @@ Page({
     },
     content: '',
     isReplyComment:false,
+    mainId:'',
 
     /**
      * 生命周期函数--监听页面加载
@@ -20,9 +21,14 @@ Page({
     onLoad: function (options) {
         this.imagePicker = new ImagePicker(this, 1);
 
-        let datas = wx.getStorageSync('questionDatas');
+        //let datas = wx.getStorageSync('questionDatas');
+        this.mainId = options.Id;
+        this.isReplyComment = Tool.isTrue(options.isReplyComment);
 
-        if (Tool.isEmpty(datas)){
+        //获取问题详情
+        this.requestQuestionDetail(this.mainId);
+
+ /*       if (Tool.isEmpty(datas)){
             let Id = options.Id;
             this.isReplyComment = Tool.isTrue(options.isReplyComment);
 
@@ -39,7 +45,7 @@ Page({
             this.setData({
                 datas: datas
             })
-        }
+        }*/
     },
 
     /**
@@ -67,7 +73,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-        wx.removeStorageSync('questionDatas');
+        //wx.removeStorageSync('questionDatas');
     },
 
     /**
@@ -160,6 +166,12 @@ Page({
             self.setData({
                 datas: firstData
             })
+
+            if (!self.isReplyComment){
+                wx.setNavigationBarTitle({
+                    title: '回复' + firstData.NickName,
+                })
+            }
         };
         r.addToQueue();
     },

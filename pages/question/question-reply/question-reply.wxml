@@ -16,7 +16,7 @@
 
 <view class="reply-text-view">
     <textarea class="reply-input" placeholder="回复#{{datas.NickName}}（回答10字以上，即可获得2金币）" bindinput = 'inputTap'/>
-    <template is="image-picker" data="{{maxCount:maxCount,imageArray:imageArray}}" />
+    <!--<template is="image-picker" data="{{maxCount:maxCount,imageArray:imageArray}}" />-->
 </view>
 
 <view class="reply-button" catchtap="replyTap">回答</view>
