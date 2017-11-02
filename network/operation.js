@@ -196,6 +196,8 @@ export default class Operation {
         this.memberInfoModifyOperation = 'aa2afdb8-9982-4304-8a49-a63300cfd44d';
         this.memberAddOperation = '562fc66f-b28c-0aaf-18a4-3f2501975efa';
 
+        this.storeMemberInfoReadOperation = '5e353452-b893-4679-a609-a6db01079815';
+
         //购物车
         this.cartReadOperation = 'd85baa92-d73c-42de-a91c-a62c0115803d';
         this.cartAddOperation = '88282f4f-a1d7-07c2-250f-3f2501f1e80e';
@@ -242,6 +244,10 @@ export default class Operation {
         this.babyDiaryReadOperation = 'ac3f9f18-769f-4b2d-aa98-a69c00a71da5';
         //宝宝日记-修改
         this.babyDiaryModifyOperation = 'bd1a8dfd-09ba-4fa2-9c11-a69c00a75969';
+
+        //门店查询
+        this.storeInfoReadOperation = '05c9e3ef-a59c-4335-bf6d-a73200fc51c1';
+        this.storeMemberAddOperation = '9b83cee5-4ce8-44b8-9f18-a6db00b1e0b9';
 
         __instance(this);
     }

@@ -2928,7 +2928,7 @@ export default class RequestReadFactory {
         req.item = ["CreateTime", "Money", "Status","Id"];
         req.name = '提现明细 查询';
         return req;
-    }
+    } 
 
     //用户验证 查询
     static requestVerifyMember(mobile) {
@@ -2943,6 +2943,54 @@ export default class RequestReadFactory {
         let req = new RequestRead(bodyParameters);
         req.item = ["Id"];
         req.name = '用户验证 查询';
+        return req;
+    } 
+
+    //门店用户信息 查询
+    static requestStoreMemberInfo() {
+        let operation = Operation.sharedInstance().storeMemberInfoReadOperation;
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'";
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "MaxCount": 1,
+            "StartIndex": 0,
+            "IsReturnTotal": true,
+            "Order": "${CreateTime} DESC",
+            "Appendixes": {
+                "+Area": [
+                    "FullName"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.appendixesKeyMap = { 'DQ': 'AreaId' };
+        req.name = '门店用户信息 查询';
+
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
+
+            if (key === 'DQ') {
+                //给data添加新属性
+                data.FullName = appendixe.FullName;
+            }
+        };
+
+        return req;
+    }
+
+    //门店 查询
+    static requestStoreList(condition) {
+        let operation = Operation.sharedInstance().storeInfoReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '门店 查询';
+        req.item = ["ShopName","Id"]
+
         return req;
     }
 }

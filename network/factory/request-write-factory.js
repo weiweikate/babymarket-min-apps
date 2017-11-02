@@ -908,4 +908,14 @@ export default class RequestWriteFactory {
       req.name = '新增黄金便征集令申请';
       return req;
     }
+
+    //新增门店会员
+    static addLevyApply(requestData) {
+        let operation = Operation.sharedInstance().storeMemberAddOperation;
+        let status = Network.sharedInstance().statusNew;
+
+        let req = new RequestWrite(status, 'MemberClerk', requestData, operation, null);
+        req.name = '新增门店会员';
+        return req;
+    }
 }

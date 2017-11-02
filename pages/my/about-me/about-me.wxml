@@ -2,5 +2,6 @@
 
 <view class="window">
     <image src="/res/img/my/my-about-me-logo-icon.png" class="logo"></image>
+    <view class="name">TOPMOM</view>
     <text>{{version}}</text>
 </view>

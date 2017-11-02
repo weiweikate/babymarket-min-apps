@@ -25,7 +25,13 @@ let TCGlobal = {
     ExpressKey:"68b36abf923b43d8294cfa09482c945a",
     BaiduMapKey:'isXMvA8KolOhA9UireE9IsXOYFQl8XGw',
     CustomerServicesNumber:'4006286698',
-    version:'V1.0'
+    version:'V1.0',
+    
+    AppId:'wx27771c51f11bf6fc',
+    Secret:'a652d5de756c419ebaa70294f4b7af6a',
+    WXPayMchId:'1486151622',
+    WXPayAccount:'2af11683-275b-4272-baa3-a81e014a46ca',
+    WXPayKey:''
 };
 
 module.exports = TCGlobal;

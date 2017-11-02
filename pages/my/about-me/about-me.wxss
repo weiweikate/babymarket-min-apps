@@ -21,3 +21,9 @@ text{
     color: #7d7d7f;
     margin-top: 50rpx;
 }
+
+.window .name{
+    font-size: 38rpx;
+    color: #090909;
+    margin-top: 35rpx;
+}
