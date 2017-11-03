@@ -31,7 +31,7 @@ let TCGlobal = {
     Secret:'a652d5de756c419ebaa70294f4b7af6a',
     WXPayMchId:'1486151622',
     WXPayAccount:'2af11683-275b-4272-baa3-a81e014a46ca',
-    WXPayKey:''
+    WXPayKey:'b1Sfq9hBI822iR2BJbY1BxTDZ1v2noCh'
 };
 
 module.exports = TCGlobal;

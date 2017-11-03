@@ -593,7 +593,7 @@ export default class RequestReadFactory {
           let responseData = req.responseObject.Datas;
           responseData.forEach((item, index) => {
             // 当有规格名时显示规格名,无规格名时显示产品名
-            if (item.ProductSizeFullName.length > 0) {
+              if (global.Tool.isValidObject(item.ProductSizeFullName) && item.ProductSizeFullName.length > 0) {
               item.Name = item.ProductSizeFullName;
             } else {
               item.Name = item.ProductName;
@@ -1093,6 +1093,27 @@ export default class RequestReadFactory {
             });
         }
         return req;
+    }
+
+    static searchKnowledgeListRead2(keyword, index = 0) {
+      let operation = Operation.sharedInstance().knowledgeReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MaxCount": '20',
+        "StartIndex": index,
+        "Condition": "StringIndexOf(${Title},'" + keyword + "') > 0 || StringIndexOf(${ContentDigest},'" + keyword + "') > 0",
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '知识列表';
+      req.items = ["Id", "Title", "ImgId", "Content"];
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.ImgId);
+        });
+      }
+      return req;
     }
 
     /**
@@ -1817,6 +1838,38 @@ export default class RequestReadFactory {
       return req;
     }
 
+    // 宝妈圈-搜索帖子
+    static searchPostRead2(keyword, index = 0) {
+      let operation = Operation.sharedInstance().postReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MaxCount": '20',
+        "StartIndex": index,
+        "Condition": "(${Title_Article} like %" + keyword + "% || ${Article_Abstract} like %" + keyword + "%) && ${Belong_ArticleId} =='00000000-0000-0000-0000-000000000000'",
+        "Order": "${CreateTime} DESC"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '宝妈圈-搜索帖子';
+      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "Article_Abstract",
+        "Commemt_Number", "Img_Member_Article_SendId"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.Img_Member_Article_SendId);
+          item.name = item.SendNickName;
+          item.age = "宝宝" + item.BabyAge;
+          item.isReply = true;
+          item.replyNum = item.Commemt_Number;
+          item.title = item.Title_Article;
+          item.content = item.Article_Abstract;
+        });
+      }
+      return req;
+    }
+
     //首页 宝宝年龄段描述 查询
     static requestAgeDescriptionWithDay(days) {
         let operation = Operation.sharedInstance().babyAgeDespReadOperation;
@@ -1918,6 +1971,22 @@ export default class RequestReadFactory {
             }
         };
         return req;
+    }
+
+    //首页文章点赞 查询
+    static requestHomeArticalLike(articalId) {
+      let operation = Operation.sharedInstance().homeArticalLikeReadOpertaion;
+      let condition = '';
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": condition,
+        "MaxCount": '1',
+        "StartIndex": 0
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '首页文章点赞 查询';
+      req.items = ["Id"];
+      return req;
     }
 
     //孕育问答 查询

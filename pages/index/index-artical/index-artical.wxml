@@ -4,7 +4,7 @@
 
 <view class="root-view">
     <view class="title-view">
-        <template is="artical-title-cell" data="{{items:titleList,currentTab,tabMinWidth:tabMinWidth}}" />
+        <template is="artical-title-cell" data="{{items:titleList,currentTab,tabMinWidth:tabMinWidth, scrollLeft:scrollLeft}}" />
     </view>
 
     <view class="artical">
@@ -15,7 +15,7 @@
     <view class="view-btns">
         <image class="collect-icon" src="{{isCollect?'/res/img/mom/mom-collect-s.png':'/res/img/mom/mom-collect-n.png'}}" mode="aspectFit" catchtap="onCollectListener" />
 
-        <image class="praise-icon" src="{{isPraise?'/res/img/mom/mom-praise-s.png':'/res/img/mom/mom-praise-n.png'}}" mode="aspectFit" catchtap="onPraiseListener" />
+        <image class="praise-icon" src="{{isLike?'/res/img/mom/mom-praise-s.png':'/res/img/mom/mom-praise-n.png'}}" mode="aspectFit" catchtap="onPraiseListener" />
         
         <picker bindchange="bindPickerChange" value="{{index}}" range="{{notLikeList}}">
             <image class="discuss-icon" src="/res/img/index/index-artical-tucao-icon.png" mode="aspectFit"></image>

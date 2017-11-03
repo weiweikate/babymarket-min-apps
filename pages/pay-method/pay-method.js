@@ -165,7 +165,7 @@ Page({
             device_info: 'WEB',
             mch_id: global.TCGlobal.WXPayMchId, //商户号
             nonce_str: nonce_str, //随机吗
-            notify_url: 'https://mobile.topmom.com.cn', // 回调地址
+            notify_url: 'https://www.babymarkt.com.cn/ReceiveNotify.aspx', // 回调地址
             openid: openid,
             out_trade_no: order.OrderNo, // 订单编号
             spbill_create_ip: clientip,  //ip
@@ -190,11 +190,11 @@ Page({
         bodyData += '<sign>' + self.getSign(json) + '</sign>'; //签名
         bodyData += '</xml>'
         console.log("bodyData======" + bodyData);
-        //统一支付
+        //统一支付 a7a04727-7bdd-491b-8eb7-a7c200b49421
 
         global.Tool.showLoading();
         wx.request({
-            url: 'https://mobile.topmom.com.cn/Libra.Weixin.Pay.Web.UnifiedOrder.aspx?account=' + global.TCGlobal.WXPayAccount, //account
+            url: 'https://www.babymarkt.com.cn/Libra.Weixin.Pay.Web.UnifiedOrder.aspx?account=' + global.TCGlobal.WXPayAccount, //account
             //url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
             method: 'POST',
             data: bodyData,
@@ -232,7 +232,7 @@ Page({
         let sign = '';
         var signA = "appId=" + global.TCGlobal.AppId + "&nonceStr=" + nonceStr
             + "&package=" + packages + "&signType=MD5&timeStamp=" + timeStamp;;
-        var signB = signA + "&key=" + global.TCGlobal.WXPayKey;
+            var signB = signA + "&key=" + global.TCGlobal.WXPayKey;//商户平台32位密钥
         sign = MD5Util.MD5(signB).toUpperCase();
         return sign;
     },

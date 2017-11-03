@@ -61,8 +61,19 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
+      let index = this.data.currentIndex;
+      
         if (this.hasMore){
-            this.requestSearchPost(keyword, this.data.listdatas.length);
+            if (index == 0) {
+              //查询帖子列表
+              this.requestSearchPost(this.data.listdatas.length);
+            } else if (index == 1) {
+              //查询知识列表
+              this.requestSearchKnowledge(this.data.listdatas.length);
+            } else {
+              //查询问答列表
+              this.requestSearchQuestion(this.data.listdatas.length);
+            }
         }
     },
 
@@ -86,13 +97,13 @@ Page({
 
         if (index == 0) {
             //查询帖子列表
-            this.requestSearchPost();
+            this.requestSearchPost(0);
         } else if (index == 1) {
             //查询知识列表
-            this.requestSearchKnowledge();
+            this.requestSearchKnowledge(0);
         } else {
             //查询问答列表
-            this.requestSearchQuestion();
+            this.requestSearchQuestion(0);
         }
     },
 
@@ -111,13 +122,13 @@ Page({
         Tool.showLoading();
         if (index == 0) {
             //查询帖子列表
-            this.requestSearchPost();
+            this.requestSearchPost(0);
         } else if (index == 1) {
             //查询知识列表
-            this.requestSearchKnowledge();
+            this.requestSearchKnowledge(0);
         } else {
             //查询问答列表
-            this.requestSearchQuestion();
+            this.requestSearchQuestion(0);
         }
     },
 
@@ -159,7 +170,7 @@ Page({
      * 搜索贴子
      */
     requestSearchPost: function (index) {
-        let task = RequestReadFactory.searchPostRead(this.data.keyword, index);
+      let task = RequestReadFactory.searchPostRead2(this.data.keyword, index);
         task.finishBlock = (req) => {
             let responseData = req.responseObject.Datas;
             if (responseData.length > 0) {
@@ -190,7 +201,7 @@ Page({
      * 搜索知识
     */
     requestSearchKnowledge: function (index) {
-        let task = RequestReadFactory.searchKnowledgeListRead(this.data.keyword, index);
+        let task = RequestReadFactory.searchKnowledgeListRead2(this.data.keyword, index);
         task.finishBlock = (req) => {
             let responseData = req.responseObject.Datas;
             if (responseData.length > 0) {

@@ -78,6 +78,7 @@
 
 .slogan-view .slogan{
     display: flex;
+    align-items: center;
     font-size: 28rpx;
     color: #494848;
     height: 100%;

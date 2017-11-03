@@ -16,10 +16,11 @@ Page({
             '看不到专家的观点，觉得不可靠'],
         index: 0,
         currentTab:0,
-        isPraise: false,//点赞
+        isLike: false,//点赞
         isComplain: false,//吐槽
         isCollect: false,//收藏
-        tabMinWidth:240
+        tabMinWidth:240,
+        scrollLeft:200,
     },
     mainId:'',
     currentDay:0,
@@ -38,6 +39,7 @@ Page({
         })
 
         this.requestArticalMaxDays();
+        
     },
 
     /**
@@ -204,6 +206,7 @@ Page({
 
                     self.requestArticalDetail(item.Id);
                     self.requestIsPostCollectRead(item.Id);
+                    self.requestIsArticalLikeRead(item.Id);
                 }
             });
 
@@ -233,21 +236,19 @@ Page({
     },
 
     /**
-     * 猜你喜欢
-     */
-    guessTap:function(){
-
-    },
-
-    /**
      * 查询文章是否被我点赞
      */
-    requestIsPostPraiseRead: function (postId) {
-        let task = RequestReadFactory.isPostPraiseRead(postId);
+    requestIsArticalLikeRead: function (articalId) {
+        let task = RequestReadFactory.requestHomeArticalLike(articalId);
         task.finishBlock = (req) => {
-            let isPraise = req.responseObject.isPraise;
+            let datas = req.responseObject.Datas;
+            let isLike = false;
+            if(datas.length >0){
+                isLike = true;
+            }
+
             this.setData({
-                isPraise: isPraise
+                isLike: isLike
             });
         };
         task.addToQueue();
@@ -259,7 +260,7 @@ Page({
         let task = RequestWriteFactory.addArticalLike(articalId);
         task.finishBlock = (req) => {
             this.setData({
-                isPraise: true
+                isLike: true
             });
             Tool.showSuccessToast("已点赞");
         };
@@ -345,12 +346,13 @@ Page({
           })
         }
     },
+
     /**
      * 点赞
      */
     onPraiseListener: function (e) {
-        let isPraise = this.data.isPraise;
-        if (!isPraise) {
+        let isLike = this.data.isLike;
+        if (!isLike) {
             if (Storage.didLogin()) {
                 //新增点赞
                 Tool.showLoading();
@@ -389,5 +391,12 @@ Page({
               })
             }
         }
-    }
+    },
+
+    /**
+     * 猜你喜欢
+     */
+    guessTap: function () {
+
+    },
 })
