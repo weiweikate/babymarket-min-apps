@@ -25,6 +25,7 @@ Page({
     mainId:'',
     currentDay:0,
     totalCount:0,
+    title:'',//转发用
 
     /**
      * 生命周期函数--监听页面加载
@@ -88,7 +89,17 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
+        let item = this.data.titleList[this.data.currentTab];
+        return {
+            title: item.MainTitle,
+            path: '/pages/index/index-artical/index-artical',
+            success: function (res) {
+                // 转发成功
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
     },
 
     onTabChangeListener:function(e){

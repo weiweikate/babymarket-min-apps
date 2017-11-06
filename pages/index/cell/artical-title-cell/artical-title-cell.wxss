@@ -6,7 +6,6 @@
     flex-direction: row;
     flex: none;
     white-space: nowrap;
-    overflow: hidden;
 }
 
 .tab-layout .tab {
