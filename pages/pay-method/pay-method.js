@@ -194,7 +194,7 @@ Page({
 
         global.Tool.showLoading();
         wx.request({
-            url: 'https://www.babymarkt.com.cn/Libra.Weixin.Pay.Web.UnifiedOrder.aspx?account=' + global.TCGlobal.WXPayAccount, //account
+            url: 'http://mobile.topmom.com.cn/Libra.Weixin.Pay.Web.UnifiedOrder.aspx?account=' + global.TCGlobal.WXPayAccount, //account
             //url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
             method: 'POST',
             data: bodyData,
@@ -244,10 +244,11 @@ Page({
         let self = this;
         let order = this.data.order;
         let no = order.OrderNo;
-        let money = order.Total;
+        let money = order.Money;
         let id = order.Id;
         let door = this.data.door;
         let infos = this.data.infos;
+
         global.Tool.showLoading();
         wx.requestPayment({
             timeStamp: timeStamp,
@@ -263,7 +264,7 @@ Page({
                     data: infos,
                     success: function (res) {
                         wx.redirectTo({
-                            url: '/pages/pay-success/pay-success?no=' + no + '&price=' + money + '&id=' + id,
+                            url: '/pages/pay-success/pay-success?door=2&id='+id,
                         })
                         //如果从我的订单和订单详情进入，通知我的订单刷新数据
                         if (door === "1") {

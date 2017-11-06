@@ -6,21 +6,26 @@ Page({
      * 页面的初始数据
      */
     data: {
-        orderInfo: undefined
+        orderInfo: undefined,
+        door: ''
     },
-    door: '',
 
     /**
       * 生命周期函数--监听页面加载
       */
     onLoad: function (options) {
         let orderId = options.id;
-        this.door = options.door;
+
+        this.setData({
+            door: options.door
+        })
 
         Tool.showLoading();
-        if (this.door == '3') {//秒杀进入
+        if (this.data.door == '3') {//秒杀进入
             this.requestSecKillOrderInfo(orderId);
-        } else {
+        } else if (this.data.door == '2') {//团购进入
+            this.requestGroupBuyOrderInfo(orderId);
+        }else {
             this.requestOrderInfo(orderId);
         }
     },
@@ -66,12 +71,32 @@ Page({
     },
 
     /**
+    * 查询团购订单详情
+    */
+    requestGroupBuyOrderInfo: function (orderId){//团购订单
+        let task = RequestReadFactory.requestGroupBuyOrderDetail(orderId);
+        task.finishBlock = (req) => {
+            let responseData = req.responseObject.Datas;
+
+            let item = responseData[0];
+            item.Number = item.OrderNo
+            item.Points = item.Money
+            item.ReciptTypeName = '总部寄送'
+
+            this.setData({
+                orderInfo: item
+            });
+        };
+        task.addToQueue();
+    },
+
+    /**
      * 查看订单
      */
     onGoOrderClickListener: function () {
         let id = this.data.orderInfo.Id;
         wx.redirectTo({
-            url: '/pages/order/order-detail/order-detail?id=' + id + '&door=' + this.door
+            url: '/pages/order/order-detail/order-detail?id=' + id + '&door=' + this.data.door
         })
     },
     /**

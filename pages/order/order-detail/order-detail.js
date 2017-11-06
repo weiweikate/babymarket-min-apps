@@ -90,6 +90,10 @@ Page({
         wx.navigateTo({
             url: '/pages/find/second-kill/second-kill-detail/second-kill-detail?mainId=' + this.data.orderInfo.Seckill_ProductId
         })
+    } else if (this.data.door == '2'){//团购
+        wx.navigateTo({
+            url: '/pages/find/group-buy/group-buy-detail/group-buy-detail?mainId=' + this.data.orderInfo.ActivityId
+        })
     }else{
         let productId = e.currentTarget.dataset.productId;
         wx.navigateTo({
