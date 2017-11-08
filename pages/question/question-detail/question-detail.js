@@ -71,7 +71,17 @@ Page({
      * 用户点击右上角分享 <div class="comment-container">
      */
     onShareAppMessage: function () {
-
+        let self = this;
+        return {
+            title: self.data.datas.Que,
+            path: '/pages/question/question-detail/question-detail',
+            success: function (res) {
+                // 转发成功
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
     },
 
     /**

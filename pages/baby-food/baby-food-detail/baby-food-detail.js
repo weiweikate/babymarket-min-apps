@@ -71,6 +71,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+      let self = this;
+      return {
+          title: '宝宝辅食 ' + self.data.datas.Title,
+          path: '/pages/baby-food/baby-food-detail/baby-food-detail',
+          success: function (res) {
+              // 转发成功
+          },
+          fail: function (res) {
+              // 转发失败
+          }
+      }
   }
 })
