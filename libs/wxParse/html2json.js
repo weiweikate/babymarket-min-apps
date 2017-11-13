@@ -149,7 +149,7 @@ function html2json(html, bindName) {
                 node.imgIndex = results.images.length;
                 var imgUrl = node.attr.src;
                 if(imgUrl.indexOf('http') == -1){
-                  imgUrl = 'http://mobile.topmom.com.cn' + imgUrl;
+                  imgUrl = 'https://mobile.topmom.com.cn' + imgUrl;
                   imgUrl = imgUrl.replace("~","");
                 }
                 if (imgUrl[0] == '') {

@@ -17,9 +17,9 @@ export default class Network {
         if (__instance()) return __instance();
 
         //域名
-        this.domain = 'http://mobile.topmom.com.cn/';
+        this.domain = 'https://mobile.topmom.com.cn/';
         //域名Erp
-        this.domainErp = 'http://erp.takecare.com.cn/';
+        this.domainErp = 'https://erp.takecare.com.cn/';
 
         //读取
         this.readURL = this.domain + 'Libra.Web.AppSync.AppSyncBatchReadData2.aspx';
