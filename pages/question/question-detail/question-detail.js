@@ -10,6 +10,7 @@ Page({
     data: {
         datas:'',
         replyList:[],
+        questionImageUrl:''
     },
     Id: '',
 
@@ -70,7 +71,17 @@ Page({
      * 用户点击右上角分享 <div class="comment-container">
      */
     onShareAppMessage: function () {
-
+        let self = this;
+        return {
+            title: self.data.datas.Que,
+            path: '/pages/question/question-detail/question-detail',
+            success: function (res) {
+                // 转发成功
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
     },
 
     /**
@@ -95,7 +106,13 @@ Page({
                 datas: firstData
             })
 
-            this.requestReplyList();
+            if (parseInt(firstData.ReplierNumber) > 0) {//问题回复 查询
+                this.requestReplyList();
+            }
+
+            if (parseInt(firstData.Attachments) > 0){//附件查询
+                this.requestAttachments(this.data.datas.Id);
+            }   
         };
         r.addToQueue();
     },
@@ -189,7 +206,20 @@ Page({
             })
         };
         r.addToQueue();
-        
+    },
+
+    /**
+     * 附件 查询 
+     */
+    requestAttachments: function (attachmentId) {
+        let r = RequestReadFactory.attachmentsRead(attachmentId);
+        let self = this;
+        r.finishBlock = (req, firstData) => {
+            this.setData({
+                questionImageUrl: firstData.imageUrl
+            })
+        };
+        r.addToQueue();
     },
 
     /**

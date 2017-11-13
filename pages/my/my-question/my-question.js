@@ -10,6 +10,7 @@ Page({
         questionListDatas: [],
         replyListDatas: [],
         currentIndex: 0,//0:我的提问 1:我的回答
+        titleArry: ['我的提问','我的回答']
     },
 
     /**
@@ -68,23 +69,21 @@ Page({
 
     },
 
-    questionButtonTap: function () {
+    segmentItemTap:function(e){
+        let index = e.currentTarget.dataset.index;
         this.setData({
-            currentIndex: 0
+            currentIndex: index
         })
+        if (index == 0){//我的提问
 
-        if (this.data.questionListDatas.length == 0) {
-            this.requestData(0);
-        }
-    },
+            if (this.data.questionListDatas.length == 0) {
+                this.requestData(index);
+            }
+        } else {//我的回答
 
-    replyButtonTap: function () {
-        this.setData({
-            currentIndex: 1
-        })
-
-        if (this.data.replyListDatas.length == 0){
-            this.requestData(1);
+            if (this.data.replyListDatas.length == 0) {
+                this.requestData(index);
+            }
         }
     },
 

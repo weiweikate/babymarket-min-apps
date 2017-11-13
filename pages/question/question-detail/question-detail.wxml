@@ -5,6 +5,9 @@
 <view class="root-view">
     <view class="question-detail-view">
         <template is="question-detail-cell" data="{{item:datas}}"></template>
+
+        <image src="{{questionImageUrl}}" wx:if="{{datas.Attachments > 0}}" 
+        class="question-image" mode="aspectFit"></image>
         <view class="reply-num">{{datas.ReplierNumber}}条回复</view>
     </view>
 

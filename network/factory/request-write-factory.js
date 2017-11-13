@@ -268,6 +268,64 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //修改用户信息
+    static modifyMemberInfo(params) {
+        let operation = Operation.sharedInstance().memberInfoModifyOperation;
+        let status = Network.sharedInstance().statusExisted;
+
+        params.Operation = operation;
+        params.Id = global.Storage.memberId();
+
+        let req = new RequestWrite(status, 'Member', params, null);
+        req.name = '修改用户信息';
+
+        return req;
+    }
+
+    //修改头像,avatarType:2会员头像 1宝宝头像
+    static modifyMemberAvatar(tempImgId, avatarType) {
+        let operation = Operation.sharedInstance().memberInfoModifyOperation;
+        let status = Network.sharedInstance().statusExisted;
+
+        // 文件名
+        let now = Tool.timeStringForDate(new Date(), "YYYY-MM-DD HH:mm:ss");
+        let nowTimeInterval = Tool.timeIntervalFromString(now);
+        let fileName = nowTimeInterval + '.png';
+
+        let imgId = Tool.guid();
+
+        let relevancies = [{
+            "EntityName": "Attachment",
+            "Status": Network.sharedInstance().statusNew,
+            "Items": {
+                "FileName": fileName,
+                "RelevancyId": global.Storage.memberId(),
+                "RelevancyType": "Member",
+                "RelevancyBizElement": "Img",
+                "$FILE_BYTES": tempImgId,
+                "Id": imgId,
+            },
+        }];
+
+        let params = {};
+        if (avatarType == '1'){
+            params = {
+                "ImgId": imgId
+            }
+        }else{
+            params = {
+                "BabyImgId": imgId
+            }
+        }
+        params.Operation = operation;
+        params.Id = global.Storage.memberId();
+
+        let req = new RequestWrite(status, 'Member', params, operation, relevancies);
+        req.name = '修改头像';
+
+        return req;
+    }
+
     //验证码
     static verifyCodeGet(mobile, typeKey) {
         let operation = Operation.sharedInstance().verifyCodeAddOperation;
@@ -283,22 +341,113 @@ export default class RequestWriteFactory {
         return req;
     }
 
-    //设置支付密码
-    static payPasswordSet(checkCode, pwd, confirmPwd, mobile) {
-        let operation = Operation.sharedInstance().payPasswordAddOperation;
+    //设置支付密码 classifyKey:1设置，2修改
+    static payPasswordSet(loginPwd, payPwd, classifyKey) {
+        let operation = Operation.sharedInstance().payPasswordModifyOperation;
         let status = Network.sharedInstance().statusNew;
         let params = {
             "Operation": operation,
-            "CheckCode": checkCode,
-            "NewCode": pwd,
-            "CheckPassword": confirmPwd,
-            "Mobile": mobile,
-            "MemberId": global.Storage.memberId()
+            "MemberId": global.Storage.memberId(),
+            "Password": loginPwd,
+            "PayPassword": payPwd,
+            "ClassifyKey": classifyKey
         };
 
-        let req = new RequestWrite(status, 'PayCode', params, null);
+        let req = new RequestWrite(status, 'PayPasswordRecord', params, null);
         req.name = '设置支付密码';
         return req;
+    }
+
+    //修改登录密码
+    static loginPasswordSet(mobile, checkCode, pwd) {
+        let operation = Operation.sharedInstance().loginPasswordModifyOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "Mobile": mobile,
+            "CheckCode": checkCode,
+            "NewPassword": pwd,
+            "PasswordCheck": pwd
+        };
+
+        let req = new RequestWrite(status, 'PasswordRetake', params, null);
+        req.name = '修改登录密码';
+        return req;
+    }
+
+    //新增宝宝日记
+    static addBabyDiary(requestData, temporaryIdArray) {
+      let operation = Operation.sharedInstance().babyDiaryAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let relevancies = null;
+
+      if (temporaryIdArray != undefined) {
+        let requestId = requestData.Id;
+        relevancies = new Array();
+        temporaryIdArray.forEach((item) => {
+          let relevancy = new Object();
+          relevancy.EntityName = "Attachment";
+          relevancy.Status = Network.sharedInstance().statusNew;
+
+          let itemId = Tool.guid();
+
+          let items = new Object();
+          items.FileName = itemId + ".png";
+          items.RelevancyId = requestId;
+          items.RelevancyType = 'BabyDiary';
+          items.RelevancyBizElement = 'Attachments';
+          items.$FILE_BYTES = item;
+          items.Id = itemId;
+          relevancy.Items = items;
+
+          relevancies.push(relevancy);
+
+          requestData.PhotoImgId = itemId;
+        });
+      }
+
+      
+      let req = new RequestWrite(status, 'BabyDiary', requestData, operation, relevancies);
+      req.name = '新增宝宝日记';
+      return req;
+    }
+
+    //修改宝宝日记
+    static modifyBabyDiary(requestData, temporaryIdArray) {
+      let operation = Operation.sharedInstance().babyDiaryModifyOperation;
+      let status = Network.sharedInstance().statusExisted;
+
+      let relevancies = null;
+
+      if (temporaryIdArray != undefined) {
+        let requestId = requestData.Id;
+        relevancies = new Array();
+        temporaryIdArray.forEach((item) => {
+          let relevancy = new Object();
+          relevancy.EntityName = "Attachment";
+          relevancy.Status = Network.sharedInstance().statusNew;
+
+          let itemId = Tool.guid();
+
+          let items = new Object();
+          items.FileName = itemId + ".png";
+          items.RelevancyId = requestId;
+          items.RelevancyType = 'BabyDiary';
+          items.RelevancyBizElement = 'Attachments';
+          items.$FILE_BYTES = item;
+          items.Id = itemId;
+          relevancy.Items = items;
+
+          relevancies.push(relevancy);
+
+          requestData.PhotoImgId = itemId;
+        });
+      }
+
+      let req = new RequestWrite(status, 'BabyDiary', requestData, operation, relevancies);
+      req.name = '修改宝宝日记';
+      return req;
     }
 
     //新增帖子
@@ -493,11 +642,10 @@ export default class RequestWriteFactory {
     }
 
     //新增孕育问答
-    static addQuestion(content, isExpertAns, isAnonymity, queId) {
+    static addQuestion(content, isExpertAns, isAnonymity, queId, temporaryIdArray) {
         let operation = Operation.sharedInstance().questionAddOperation;
         let status = Network.sharedInstance().statusNew;
         let params = {
-            "Operation": operation,
             "Id": queId,
             "AskMemberId": global.Storage.memberId(),
             "Que": content,
@@ -505,7 +653,32 @@ export default class RequestWriteFactory {
             "IsAnonymity": isAnonymity
         }
 
-        let req = new RequestWrite(status, 'BreedQueAns', params, null);
+        let relevancies = null;
+
+        if (temporaryIdArray != undefined) {
+            relevancies = new Array();
+            
+            temporaryIdArray.forEach((item) => {
+                let relevancy = new Object();
+                relevancy.EntityName = "Attachment";
+                relevancy.Status = Network.sharedInstance().statusNew;
+
+                let itemId = Tool.guid();
+
+                let items = new Object();
+                items.FileName = itemId + ".png";
+                items.RelevancyId = queId;
+                items.RelevancyType = 'BreedQueAns';
+                items.RelevancyBizElement = 'Attachments';
+                items.$FILE_BYTES = item;
+                items.Id = itemId;
+                relevancy.Items = items;
+
+                relevancies.push(relevancy);
+            });
+        }
+
+        let req = new RequestWrite(status, 'BreedQueAns', params, operation, relevancies);
         req.name = '新增孕育问答';
         return req;
     }
@@ -515,14 +688,13 @@ export default class RequestWriteFactory {
         let operation = Operation.sharedInstance().questionAddOperation;
         let status = Network.sharedInstance().statusNew;
         let params = {
-            "Operation": operation,
             "ReplierMemberId": global.Storage.memberId(),
             "BreedQueAnsId": breedQueAnsId,
             "Ans": content,
             "BelongAnswerId": BelongAnswerId
         }
 
-        let req = new RequestWrite(status, 'BreedQueAns', params, null);
+        let req = new RequestWrite(status, 'BreedQueAns', params, operation, null);
         req.name = '新增孕育问答回复';
         return req;
     }
@@ -618,6 +790,39 @@ export default class RequestWriteFactory {
         return req;
     }
 
+    //金币充值记录新增
+    static addExchangeRecord(points) {
+        let operation = Operation.sharedInstance().exchangeAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "Point": points,
+            "MemberId": global.Storage.memberId(),
+        }
+
+        let req = new RequestWrite(status, 'Exchange', params, null);
+        req.name = '金币充值记录新增';
+        return req;
+    }
+
+    //提现 记录新增
+    static addWithdrawRecord(money, writePayPassword, alipayAccount) {
+        let operation = Operation.sharedInstance().withdrawRecordAddOperation;
+        let status = Network.sharedInstance().statusNew;
+        let params = {
+            "Operation": operation,
+            "MemberId": global.Storage.memberId(),
+            "CreatorId": global.Storage.memberId(),
+            "Money": money,
+            "WritePayPassword": writePayPassword,
+            "AlipayAccount": alipayAccount
+        }
+
+        let req = new RequestWrite(status, 'Cash', params, null);
+        req.name = '提现 记录新增';
+        return req;
+    }
+
     //新增众筹订单
     static addRaiseOrder(buyCount, raiseId, receiptAddressID, orderId, payPassword) {
         let operation = Operation.sharedInstance().raiseOrderAddOperation;
@@ -702,5 +907,15 @@ export default class RequestWriteFactory {
       let req = new RequestWrite(status, 'Apply_For', requestData, operation, null);
       req.name = '新增黄金便征集令申请';
       return req;
+    }
+
+    //新增门店会员
+    static addLevyApply(requestData) {
+        let operation = Operation.sharedInstance().storeMemberAddOperation;
+        let status = Network.sharedInstance().statusNew;
+
+        let req = new RequestWrite(status, 'MemberClerk', requestData, operation, null);
+        req.name = '新增门店会员';
+        return req;
     }
 }

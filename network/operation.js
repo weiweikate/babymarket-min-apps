@@ -21,6 +21,10 @@ export default class Operation {
         
         //验证码-新增
         this.verifyCodeAddOperation = '593350ec-de1d-0d15-1242-3f25019f99be';
+        //修改登录密码
+        this.loginPasswordModifyOperation = '423002f7-38c2-49f8-b0ec-a6cd01010b21';
+        //修改支付密码
+        this.payPasswordModifyOperation = '7c991cfc-3fd0-4a55-a059-a6fa0128d2b9';
 
         // 便便诊所，咨询类型
         this.advisoryTypeReadOperation = '8445b839-c622-40cb-8dbc-a63d0115a365';
@@ -87,8 +91,10 @@ export default class Operation {
         this.babyAgeDespReadOperation = '5685c0ea-609e-4844-a2e4-a68600aae0ed';
         // 首页-文章查询
         this.homeArticalReadOperation = '568b4f34-2b12-48ff-b8dc-a68600af2af9';
-        // 首页-文章查询点赞新增
+        // 首页-文章点赞新增
         this.homeArticalLikeAddOperation = '81eb7bb6-36af-49f8-88d4-a6da0122b069';
+        // 首页-文章点赞查询
+        this.homeArticalLikeReadOpertaion = 'ea137e2e-f3d7-4db8-9644-a82000f4c2fd';
 
         // 孕育问答 查询
         this.questionReadOperation = '5107b45e-6f9d-4383-bdfa-a68600b56711'
@@ -135,6 +141,21 @@ export default class Operation {
         // 签到记录 新增
         this.signRecordAddOperation = '0e22c859-30ee-05f5-0031-3f550018150a'
 
+        // 金币规则 查询
+        this.coinsRuleReadOperation = 'f34215ea-db65-4ae4-a7e7-a65d00b67ccd'
+        // 金币日志 查询
+        this.coinsLogReadOperation = '0f0a3146-e9e6-4fd3-af1d-a65d00b949fd'
+        // 金币充值 新增 
+        this.exchangeAddOperation = '18458212-4cd1-0919-3c71-3f550016ad62'
+
+        // 店员获得总奖励 查询
+        this.awardReadOperation = 'e65e2d7a-61d0-4be2-a4f2-a6dc01276fa5'
+
+        // 提现记录 新增
+        this.withdrawRecordAddOperation = '6500a1bc-1b81-0712-1fac-3e3600b74689'
+        // 提现明细 查询
+        this.withdrawDetailReadOperation = 'eb43e06c-3322-0979-2075-3e3801742130'
+
         // 秒杀时间段 查询
         this.secKillTimeReadOperation = '94b1a9c8-c840-4f16-8b4d-a64e01109a55'
         // 秒杀商品列表 查询
@@ -174,7 +195,10 @@ export default class Operation {
 
         //用户信息
         this.memberInfoReadOperation = 'cf71ab3d-ed28-4541-819b-a62c00f4ed2d';
+        this.memberInfoModifyOperation = 'aa2afdb8-9982-4304-8a49-a63300cfd44d';
         this.memberAddOperation = '562fc66f-b28c-0aaf-18a4-3f2501975efa';
+
+        this.storeMemberInfoReadOperation = '5e353452-b893-4679-a609-a6db01079815';
 
         //购物车
         this.cartReadOperation = 'd85baa92-d73c-42de-a91c-a62c0115803d';
@@ -199,10 +223,6 @@ export default class Operation {
         //订单明细
         this.orderLineAddOperation = 'cc995cdf-115c-01b3-30cb-3f2500426b35';
 
-        //完善信息
-        this.informationCompleteReadOperation = '';
-        this.informationCompleteWriteOperation = '';
-
         //积分-新增
         this.integralAddOperation = '1e2c21c5-ace8-46ec-8983-9fdd0185c222';
         //积分-查询
@@ -220,6 +240,16 @@ export default class Operation {
         this.lotteryExtractAddOperation = 'baec8091-49c7-4a0d-9b81-a65900be9705';
         //中奖记录-查询
         this.lotteryExtractReadOperation = 'dc844348-0028-4eeb-848a-a65900bde035';
+        //宝宝日记-新增
+        this.babyDiaryAddOperation = '9844e4b4-ab5b-48ec-883a-a69c00e062f9';
+        //宝宝日记-查询
+        this.babyDiaryReadOperation = 'ac3f9f18-769f-4b2d-aa98-a69c00a71da5';
+        //宝宝日记-修改
+        this.babyDiaryModifyOperation = 'bd1a8dfd-09ba-4fa2-9c11-a69c00a75969';
+
+        //门店查询
+        this.storeInfoReadOperation = '05c9e3ef-a59c-4335-bf6d-a73200fc51c1';
+        this.storeMemberAddOperation = '9b83cee5-4ce8-44b8-9f18-a6db00b1e0b9';
 
         __instance(this);
     }

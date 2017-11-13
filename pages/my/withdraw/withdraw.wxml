@@ -6,19 +6,20 @@
   <text class="withdraw-detail" catchtap="withdrawDetailTap">提现明细</text>
   <image src="/res/img/my/my-withdraw-icon.png" style="width:144rpx;height:144rpx" class="withdraw-icon"></image>
   <text class="my-walet">我的钱包</text>
-  <text class="amount">{{balance}}</text>
+  <text class="amount">￥{{balance}}</text>
   <text class="withdraw-amount">提现金额</text>
 
   <form bindsubmit="formSubmit" class="formView">
 
     <view class="input-view">
       <text class="amount-icon">￥</text>
-      <input class="input" placeholder="0.00" name="amount" />
+      <input class="input" placeholder="0.00" name="amount" value="{{amount}}"/>
     </view>
 
     <button class="ok-button" form-type="submit">确认提现</button>
 
   </form>
 
-  <template is="input-alert" data="{{visiable:showInputAlert, placeholder:placeholder}}" />
+  <template is="input-alert" data="{{visiable:showInputAlert, placeholder:placeholder, value:account}}" wx:if="{{alertType == 1}}"/>
+  <template is="input-alert" data="{{visiable:showInputAlert, placeholder:placeholder}}" wx:else/>
 </view>

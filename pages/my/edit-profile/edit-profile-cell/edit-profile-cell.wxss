@@ -17,7 +17,7 @@
 
 .desp {
     font-size: 30rpx;
-    color: #b0b1b3;
+    color: #090909;
     text-align: right;
     margin-right: 20rpx;
     margin-left: 10rpx;

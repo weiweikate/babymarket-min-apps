@@ -1,11 +1,13 @@
 <!--顶部横向滚动的tab-->
 <template name="artical-title-cell">
-  <scroll-view class="tab-layout" scroll-x>
-    <view style="width:{{750/items.length<tabMinWidth?tabMinWidth:750/items.length}}rpx" class="{{index==currentTab?'tab select':'tab'}}" catchtap="onTabChangeListener" 
-    wx:for="{{items}}" data-current="{{index}}" wx:key="unique">
-    
-        <view class="{{item.isToday&&index!=currentTab?'line-one today':'line-one'}}">{{item.MonthDay}}</view>
-        <view class="{{item.isToday&&index!=currentTab?'line-two today':'line-two'}}">{{item.date}}</view>
-    </view>
-  </scroll-view>
+    <scroll-view class="tab-layout" scroll-x="true" scroll-left="300">
+
+        <block wx:for="{{items}}" wx:key="unique">
+            <view style="width:{{750/items.length<tabMinWidth?tabMinWidth:750/items.length}}rpx" class="{{index==currentTab?'tab select':'tab'}}" catchtap="onTabChangeListener" data-current="{{index}}">
+                <view class="{{item.isToday&&index!=currentTab?'line-one today':'line-one'}}">{{item.MonthDay}}</view>
+                <view class="{{item.isToday&&index!=currentTab?'line-two today':'line-two'}}">{{item.date}}</view>
+            </view>
+        </block>
+
+    </scroll-view>
 </template>

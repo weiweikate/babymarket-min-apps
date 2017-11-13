@@ -86,7 +86,18 @@ Page({
         //     return;
         // }
 
-        let r = RequestWriteFactory.modifyMemberInfo(name);
+        let params = {}
+        if (this.data.modifyType == 0){
+            params = {
+                'NickName': name
+            };
+        }else{
+            params = {
+                'Name_baby': name
+            };
+        }
+
+        let r = RequestWriteFactory.modifyMemberInfo(params);
         r.finishBlock = (req) => {
 
             Event.emit('refreshMemberInfoNotice');//发出通知
@@ -94,7 +105,6 @@ Page({
             wx.navigateBack({
                 delta:1
             })
-
         };
         r.addToQueue();
     }

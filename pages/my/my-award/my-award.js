@@ -1,5 +1,5 @@
 // my-award.js
-let { Tool, RequestReadFactory } = global;
+let { Tool, Storage, RequestReadFactory } = global;
 
 Page({
 
@@ -7,25 +7,25 @@ Page({
      * 页面的初始数据
      */
     data: {
-        listDatas: ['', '', ''],
-        award: '90',
-        todayMoney: '100'
+        listDatas: [],
+        award: '0',
+        todayMoney: '0',
+
+        telNo:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        //   this.requestData();
-        //   let self = this;
-        //   wx.getStorage({
-        //       key: 'memberInfo',
-        //       success: function (res) {
-        //           self.setData({
-        //               award: res.data.Commission
-        //           })
-        //       },
-        //   })
+        this.requestTodayTotalAward();
+        this.requestAwardDatas();
+
+        let memberInfo = Storage.currentMember();
+        let saleTel = Tool.isValidStr(memberInfo.SaleTel) ? memberInfo.SaleTel : global.TCGlobal.CustomerServicesNumber
+        this.setData({
+            telNo: saleTel
+        })
     },
 
     /**
@@ -92,48 +92,41 @@ Page({
     },
 
     contactTap: function () {
-
+        wx.makePhoneCall({
+            phoneNumber: this.data.telNo
+        })
     },
 
     /**
-      * 收到奖励查询
+     * 店员获得奖励（今日和总得） 查询 查询
+     */
+    requestTodayTotalAward: function () {
+        let r = RequestReadFactory.requestTodayTotalAward();
+        r.finishBlock = (req) => {
+            let datas = req.responseObject.Datas;
+            let firstData = datas[0];
+            
+            this.setData({
+                award: firstData.RewardMoney,
+                todayMoney: firstData.TodayAwardMoney
+            });
+        };
+        r.addToQueue();
+    },
+
+    /**
+      * 收到奖励列表查询
       */
-    requestData: function () {
-        let r = RequestReadFactory.awardRead(0);
+    requestAwardDatas: function () {
+        let r = RequestReadFactory.requestAwardList();
         r.finishBlock = (req) => {
             let datas = req.responseObject.Datas;
-            let total = req.responseObject.Total;
 
-            let nomoredata = false;
-            if (datas.length >= total) {
-                nomoredata = true;
-            }
             this.setData({
-                'listDatas': datas,
-                noMoreData: nomoredata,
-                index: datas.length
+                listDatas: datas
             });
         };
         r.addToQueue();
     },
 
-    loadMore: function () {
-        let r = RequestReadFactory.awardRead(this.data.index);
-        r.finishBlock = (req) => {
-            let datas = req.responseObject.Datas;
-            let total = req.responseObject.Total;
-
-            let nomoredata = false;
-            if (datas.length + this.data.index >= total) {
-                nomoredata = true;
-            }
-
-            this.setData({
-                'listDatas': this.data.listDatas.concat(datas),
-                noMoreData: nomoredata,
-                index: datas.length + this.data.index
-            });
-        };
-        r.addToQueue();
-    },
 })

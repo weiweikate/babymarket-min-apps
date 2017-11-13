@@ -6,5 +6,5 @@
 </view>
 
 <block wx:for="{{listDatas}}" wx:key = "unique">
-    <view class="text" catchtap="cellTap" data-index="{{index}}" data-name="{{item.name}}">{{item.name}}</view>
+    <view class="text" catchtap="cellTap" data-index="{{index}}" data-name="{{item.ShopName}}">{{item.ShopName}}</view>
 </block>

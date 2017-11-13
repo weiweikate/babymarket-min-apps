@@ -1,6 +1,6 @@
 <template name="search-field">
   <view catchtap="searchClicked" class="search-field">
     <image mode="AspectFit" src="{{imgSrc?imgSrc:'/res/img/common/common-search-icon.png'}}" />
-    <input disabled="{{isDisabled==undefined?true:isDisabled}}" catchconfirm="onConfirmAction" confirm-type="{{confirmText.length>0?confirmText:'search'}}" value="{{defaultValue}}"/>
+    <input disabled="{{isDisabled==undefined?true:isDisabled}}" catchconfirm="onConfirmAction" confirm-type="{{confirmText.length>0?confirmText:'search'}}" placeholder="{{defaultValue}}"/>
   </view>
 </template>

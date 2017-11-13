@@ -26,6 +26,6 @@
 
     <!--订单按钮-->
     <view class="pay-footer">
-        <view bindtap="pay" class="pay-bt">确认支付</view>
+        <view bindtap="confirmTap" class="pay-bt">确认支付</view>
     </view>
 </view>

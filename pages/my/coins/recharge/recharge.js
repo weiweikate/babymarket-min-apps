@@ -1,21 +1,28 @@
 // recharge.js
+let { Tool, Storage, RequestReadFactory, Event, RequestWriteFactory } = global
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        award: '100',
-        currentIndex:-1,
-        inputValue:'',
-        costPoints:'0'
+        award: '0',
+        points:'0',
+        currentIndex: -1,
+        inputValue: '',
+        costPoints: '0'
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        let memberInfo = Storage.currentMember();
+        this.setData({
+            award: memberInfo.Coin,
+            points:memberInfo.Point
+        })
     },
 
     /**
@@ -67,25 +74,25 @@ Page({
 
     },
 
-    selectCoinTap:function(e){
+    selectCoinTap: function (e) {
         let index = e.currentTarget.dataset.index;
         let coins = e.currentTarget.dataset.coins;
-        let cost = coins/10;
+        let cost = coins / 10;
 
         this.setData({
-            currentIndex:index,
+            currentIndex: index,
             inputValue: '',
             costPoints: cost
         });
     },
 
-    beginInputTap:function(e){
+    beginInputTap: function (e) {
         this.setData({
             currentIndex: 3
         });
     },
 
-    inputValueChanged:function(e){
+    inputValueChanged: function (e) {
         let value = e.detail.value;
         let cost = value / 10;
         this.setData({
@@ -93,14 +100,40 @@ Page({
         });
     },
 
-    rechargeTap: function (e){
+    rechargeTap: function (e) {
         let coins = this.data.costPoints * 10;
-        if(coins%10 != 0){
+        if (coins % 10 != 0) {
             wx.showToast({
                 title: '请输入10的倍数',
             })
             return;
         }
-        console.log('金币' + this.data.costPoints*10);
-    }
+        console.log('金币' + this.data.costPoints * 10);
+
+        this.addRechargeRecords();
+    },
+
+    /**
+     * 新增充值记录
+    */
+    addRechargeRecords: function () {
+        let task = RequestWriteFactory.addExchangeRecord(this.data.costPoints.toString());
+        let self = this;
+        task.finishBlock = (req) => {
+            let coins = parseInt(self.data.award) + parseInt(self.data.costPoints)*10;
+            let points = parseInt(self.data.points) - parseInt(self.data.costPoints);
+
+            this.setData({
+                points: points.toString(),
+                award: coins.toString(),
+            });
+
+            //修改本地数据库信息
+            let memberInfo = Storage.currentMember();
+            memberInfo.Coin = coins.toString();
+            memberInfo.Point = points.toString();
+            Storage.setCurrentMember(memberInfo);
+        };
+        task.addToQueue();
+    },
 })

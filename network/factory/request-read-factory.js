@@ -18,6 +18,61 @@ export default class RequestReadFactory {
     }
 
     /**
+     * 查询宝宝日记
+     */
+    static babyDiaryRead() {
+      let operation = Operation.sharedInstance().babyDiaryReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MemberId": global.Storage.memberId(),
+        "Order": '${PhotoDate} DESC'
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询宝宝日记';//用于日志输出
+      req.items = ['Id', 'Content', 'PhotoImgId', 'PhotoDate'];
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        this.parseBabyDiaryData(responseData);
+      }
+      return req;
+    }
+
+    /**
+     * 查询宝宝详情日记
+     */
+    static babyDiaryDetailRead(id) {
+      let operation = Operation.sharedInstance().babyDiaryReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Id": id,
+        "MaxCount": '1'
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '查询宝宝日记';//用于日志输出
+      req.items = ['Id', 'Content', 'PhotoImgId', 'PhotoDate'];
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        this.parseBabyDiaryData(responseData);
+      }
+      return req;
+    }
+
+    /**
+     * 处理宝宝日记的数据
+     */
+    static parseBabyDiaryData(responseData) {
+      let babyBirthday = Date.parse(new Date(global.Storage.currentMember().BabyBirthday));
+      responseData.forEach((item, index) => {
+        item.imageUrl = global.Tool.imageURLForId(item.PhotoImgId);
+        let timestamp2 = Date.parse(new Date(item.PhotoDate));
+        //发表的时间-宝宝年纪
+        timestamp2 = timestamp2 - babyBirthday;
+        item.PhotoDate2 = global.Tool.getYearMonthDayCount(timestamp2);
+        item.PhotoDate = item.PhotoDate.substring(0, 10);
+      });
+    }
+
+    /**
      * 查询奖品
      */
     static lotteryRead() {
@@ -53,6 +108,39 @@ export default class RequestReadFactory {
       let req = new RequestRead(bodyParameters);
       req.name = '查询转盘每次消耗的金币';//用于日志输出
       req.items = ['Id', 'DialEveryScore'];
+      return req;
+    }
+
+    //我的中奖纪录查询
+    static myLotteryExtractRead() {
+      let operation = Operation.sharedInstance().lotteryExtractReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MemberId": global.Storage.memberId(),
+        "Order": '${CreateTime} DESC',
+        "Appendixes": {
+          "+Win_Gift": [
+            "Name"
+          ]
+        },
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '我的中奖纪录查询';
+      req.items = ['Id', 'CreateTime', 'Win_GiftId', 'Win_Points'];
+      req.appendixesKeyMap = { 'Prize': 'Win_GiftId'};//可以多个
+      //匹配成功函数
+      req.appendixesBlock = (item, appendixe, key, id) => {
+        if (key === 'Prize') {
+          //给data添加新属性
+          item.GiftName = appendixe.Name;
+          console.log(item.Win_Points);
+          if (item.Win_Points > 0) {
+            item.title = "恭喜您获得" + item.GiftName;
+          }else{
+            item.title = "恭喜您抽到" + item.GiftName;
+          }
+        }
+      };
       return req;
     }
 
@@ -111,7 +199,7 @@ export default class RequestReadFactory {
       };
       let req = new RequestRead(bodyParameters);
       req.name = '附件';
-      req.items = ['Id'];
+      req.items = ['Id','RelevancyId'];
 
       //修改返回结果，为返回结果添加imageUrls字段
       req.preprocessCallback = (req) => {
@@ -505,7 +593,7 @@ export default class RequestReadFactory {
           let responseData = req.responseObject.Datas;
           responseData.forEach((item, index) => {
             // 当有规格名时显示规格名,无规格名时显示产品名
-            if (item.ProductSizeFullName.length > 0) {
+              if (global.Tool.isValidObject(item.ProductSizeFullName) && item.ProductSizeFullName.length > 0) {
               item.Name = item.ProductSizeFullName;
             } else {
               item.Name = item.ProductName;
@@ -980,6 +1068,51 @@ export default class RequestReadFactory {
       req.name = '知识库';
       req.items = ["Id", "Name"];
 
+      return req;
+    }
+
+    /**
+     * 关键词搜索知识列表
+     */
+    static searchKnowledgeListRead(keyword,index=0) {
+        let operation = Operation.sharedInstance().knowledgeReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "MaxCount": '20',
+            "StartIndex": index * 20 + '',
+            "Condition": "StringIndexOf(${Title},'" + keyword + "') > 0 || StringIndexOf(${ContentDigest},'" + keyword + "') > 0",
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '知识列表';
+        req.items = ["Id", "Title", "ImgId", "Content"];
+        //修改返回结果
+        req.preprocessCallback = (req) => {
+            let responseData = req.responseObject.Datas;
+            responseData.forEach((item, index) => {
+                item.headImgUrl = global.Tool.imageURLForId(item.ImgId);
+            });
+        }
+        return req;
+    }
+
+    static searchKnowledgeListRead2(keyword, index = 0) {
+      let operation = Operation.sharedInstance().knowledgeReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MaxCount": '20',
+        "StartIndex": index,
+        "Condition": "StringIndexOf(${Title},'" + keyword + "') > 0 || StringIndexOf(${ContentDigest},'" + keyword + "') > 0",
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '知识列表';
+      req.items = ["Id", "Title", "ImgId", "Content"];
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.ImgId);
+        });
+      }
       return req;
     }
 
@@ -1680,7 +1813,39 @@ export default class RequestReadFactory {
         "Operation": operation,
         "MaxCount": '20',
         "StartIndex": index * 20 + '',
-        "Condition": "${Title_Article} like %" + keyword + "% && ${Article_Abstract} like %" + keyword+"% && ${Belong_ArticleId} =='00000000-0000-0000-0000-000000000000'",
+        "Condition": "(${Title_Article} like %" + keyword + "% || ${Article_Abstract} like %" + keyword+"%) && ${Belong_ArticleId} =='00000000-0000-0000-0000-000000000000'",
+        "Order": "${CreateTime} DESC"
+      };
+
+      let req = new RequestRead(bodyParameters);
+      req.name = '宝妈圈-搜索帖子';
+      req.items = ["Id", "SendNickName", "BabyAge", "Title_Article", "Article_Abstract",
+        "Commemt_Number", "Img_Member_Article_SendId"];
+
+      //修改返回结果
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.headImgUrl = global.Tool.imageURLForId(item.Img_Member_Article_SendId);
+          item.name = item.SendNickName;
+          item.age = "宝宝" + item.BabyAge;
+          item.isReply = true;
+          item.replyNum = item.Commemt_Number;
+          item.title = item.Title_Article;
+          item.content = item.Article_Abstract;
+        });
+      }
+      return req;
+    }
+
+    // 宝妈圈-搜索帖子
+    static searchPostRead2(keyword, index = 0) {
+      let operation = Operation.sharedInstance().postReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MaxCount": '20',
+        "StartIndex": index,
+        "Condition": "(${Title_Article} like %" + keyword + "% || ${Article_Abstract} like %" + keyword + "%) && ${Belong_ArticleId} =='00000000-0000-0000-0000-000000000000'",
         "Order": "${CreateTime} DESC"
       };
 
@@ -1808,8 +1973,24 @@ export default class RequestReadFactory {
         return req;
     }
 
+    //首页文章点赞 查询
+    static requestHomeArticalLike(articalId) {
+      let operation = Operation.sharedInstance().homeArticalLikeReadOpertaion;
+      let condition = '';
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": condition,
+        "MaxCount": '1',
+        "StartIndex": 0
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '首页文章点赞 查询';
+      req.items = ["Id"];
+      return req;
+    }
+
     //孕育问答 查询
-    static requestQAWithCondition(condition, index, count, isAnswer=false) {
+    static requestQAWithCondition(condition, index, count=20, isAnswer=false) {
         let operation = Operation.sharedInstance().questionReadOperation;
         let bodyParameters = {
             "Operation": operation,
@@ -2696,6 +2877,188 @@ export default class RequestReadFactory {
                 data.Qnty = '1';
             }
         };
+
+        return req;
+    }
+
+    //金币规则 查询
+    static requestCoinsRule() {
+        let operation = Operation.sharedInstance().coinsRuleReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Order} ASC"
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '金币规则 查询';
+        req.items = ["Id", "Name", "MaxCount", "UnitCoin", "Order"];
+        return req;
+    }
+
+    //金币日志 查询
+    static requestCoinsLog() {
+        let operation = Operation.sharedInstance().coinsLogReadOperation;
+
+        let todayStr = global.Tool.timeStringForDate(new Date(), "YYYY-MM-DD").concat(" 00:00:00");
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'&& ${Date} == '" + todayStr + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Date} DESC",
+            "Condition": condition,
+            "View":{
+                "EntityName":"TodayCoinTime"
+            }
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '金币日志 查询';
+        return req;
+    }
+
+    //今日获得金币数量 查询
+    static requestTodayCoins() {
+        let operation = Operation.sharedInstance().coinsLogReadOperation;
+
+        let todayStr = global.Tool.timeStringForDate(new Date(), "YYYY-MM-DD").concat(" 00:00:00");
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'&& ${Date} == '" + todayStr + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${Date} DESC",
+            "Condition": condition,
+            "MaxCount": 1,
+            "StartIndex": 0,
+            "View": {
+                "EntityName": "TodayCoin"
+            }
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '今日获得金币数量 查询';
+        return req;
+    }
+
+    //店员获得奖励（今日和总得） 查询
+    static requestTodayTotalAward() {
+        let operation = Operation.sharedInstance().awardReadOperation;
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "MaxCount": 1,
+            "StartIndex": 0,
+            "View": {
+                "EntityName": "TodayAward"
+            }
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '店员获得奖励（今日和总得） 查询';
+        return req;
+    }
+
+    //店员获得奖励列表 查询
+    static requestAwardList() {
+        let operation = Operation.sharedInstance().awardReadOperation;
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'";
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order":"${CreateTime} DESC"
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '店员获得奖励列表 查询';
+        return req;
+    }
+
+    //店员获得奖励统计 查询
+    static requestAwardFilterList(condition) {
+        let operation = Operation.sharedInstance().awardReadOperation;
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${CreateTime} DESC",
+            "MemberId": global.Storage.memberId()
+        };
+        let req = new RequestRead(bodyParameters);
+        req.item = ["Brand","RewardMoney","Id"]
+        req.name = '店员获得奖励统计 查询';
+        return req;
+    }
+
+    //提现明细 查询
+    static requestWithdrawDetail() {
+        let operation = Operation.sharedInstance().withdrawDetailReadOperation;
+
+        let bodyParameters = {
+            "Operation": operation,
+            "Order": "${CreateTime} DESC",
+            "MemberId": global.Storage.memberId()
+        };
+        let req = new RequestRead(bodyParameters);
+        req.item = ["CreateTime", "Money", "Status","Id"];
+        req.name = '提现明细 查询';
+        return req;
+    } 
+
+    //用户验证 查询
+    static requestVerifyMember(mobile) {
+        let operation = Operation.sharedInstance().memberInfoReadOperation; 
+        let condition = "${Mobile} == '" + mobile + "'";
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "MaxCount": 1,
+            "StartIndex": 0,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.item = ["Id"];
+        req.name = '用户验证 查询';
+        return req;
+    } 
+
+    //门店用户信息 查询
+    static requestStoreMemberInfo() {
+        let operation = Operation.sharedInstance().storeMemberInfoReadOperation;
+        let condition = "${MemberId} == '" + global.Storage.memberId() + "'";
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition,
+            "MaxCount": 1,
+            "StartIndex": 0,
+            "IsReturnTotal": true,
+            "Order": "${CreateTime} DESC",
+            "Appendixes": {
+                "+Area": [
+                    "FullName"
+                ]
+            },
+        };
+        let req = new RequestRead(bodyParameters);
+        req.appendixesKeyMap = { 'DQ': 'AreaId' };
+        req.name = '门店用户信息 查询';
+
+        //匹配成功函数
+        req.appendixesBlock = (data, appendixe, key, id) => {
+            let { Tool } = global;
+
+            if (key === 'DQ') {
+                //给data添加新属性
+                data.FullName = appendixe.FullName;
+            }
+        };
+
+        return req;
+    }
+
+    //门店 查询
+    static requestStoreList(condition) {
+        let operation = Operation.sharedInstance().storeInfoReadOperation;
+        let bodyParameters = {
+            "Operation": operation,
+            "Condition": condition
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '门店 查询';
+        req.item = ["ShopName","Id"]
 
         return req;
     }

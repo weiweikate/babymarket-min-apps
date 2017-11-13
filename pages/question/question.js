@@ -108,10 +108,10 @@ Page({
 
     replyTap:function(e){
         let index = e.currentTarget.dataset.index;
-        wx.setStorageSync('questionDatas', this.data.listDatas[index]);
+        //wx.setStorageSync('questionDatas', this.data.listDatas[index]);
 
         wx.navigateTo({
-            url: '/pages/question/question-reply/question-reply',
+            url: '/pages/question/question-reply/question-reply?Id=' + this.data.listDatas[index].Id,
         })
     },
 

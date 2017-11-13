@@ -1,4 +1,5 @@
 /* question-reply.wxss */
+@import '/components/image-picker/image-picker.wxss';
 
 .question-info-view{
     background: white;
@@ -67,5 +68,12 @@
     font-size: 30rpx;
     color: #494848;
     width: 666rpx;
-    height: 360rpx;
+    height: 260rpx;
+}
+
+.item-image {
+  width: 100rpx;
+  height: 100rpx;
+  flex: none;
+  margin: 10rpx;
 }

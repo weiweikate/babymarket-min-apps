@@ -1,0 +1,24 @@
+.segment-view{
+    margin: 20rpx 137rpx;
+    width: 476rpx;
+    height: 62rpx;
+    border: 2rpx solid #ff5555;
+    border-radius: 10rpx;
+    display: flex;
+    font-size: 32rpx;
+    color: #ff5555;
+    background: white;
+}
+
+.top-button{
+    width: 238rpx;
+    height: 100%;
+    text-align: center;
+    line-height: 62rpx;
+    border-left: 2rpx solid #ff5555;
+}
+
+.top-button.active{
+    background: #ff5555;
+    color: white;
+}

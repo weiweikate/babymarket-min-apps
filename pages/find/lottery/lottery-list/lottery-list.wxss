@@ -1,1 +1,27 @@
-/* pages/find/lottery/lottery-list/lottery-list.wxss */
+.view-root {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rpx;
+}
+
+.view-cell {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background-color: white;
+}
+
+.view-cell.top {
+  border-top: 15rpx solid #fff8f4;
+}
+
+.cell-title {
+  color: #494848;
+  font-size: 30rpx;
+  flex-grow: 1;
+}
+
+.cell-time {
+  color: #494848;
+  font-size: 26rpx;
+}

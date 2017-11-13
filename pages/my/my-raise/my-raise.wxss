@@ -2,10 +2,10 @@
 @import '/pages/my/my-raise/my-raise-cell/my-raise-cell.wxss';
 @import '/components/empty-view/empty-view.wxss';
 
-page{
-    background: white;
-}
-
 .view-empty{
     height: 100%;
+}
+
+.my-raise{
+  border-top: 1rpx solid #fff8f4;
 }

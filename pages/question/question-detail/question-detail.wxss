@@ -37,3 +37,8 @@
     margin-right: 22rpx;
     text-align: right;
 }
+.question-detail-view .question-image{
+    width: 706rpx;
+    height: 500rpx;
+    margin-left: 22rpx;
+}

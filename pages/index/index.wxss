@@ -79,11 +79,23 @@
     margin-top: 10rpx;
 }
 
+.avatar-camera{
+    display: flex;
+}
+
 .avatar {
     width: 244rpx;
     height: 244rpx;
     border-radius: 122rpx;
     margin-top: 60rpx;
+}
+
+.camera{
+    width: 31rpx;
+    height: 31rpx;
+    position: relative;
+    right: 50rpx;
+    bottom: -260rpx;
 }
 
 .name {

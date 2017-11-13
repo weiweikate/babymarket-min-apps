@@ -1,4 +1,5 @@
 /* question-create.wxss */
+@import '/components/image-picker/image-picker.wxss';
 
 .input-area{
     background: white;

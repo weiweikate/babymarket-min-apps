@@ -30,6 +30,23 @@ Page({
       this.requestIsPostCollectRead(options.id);
     }
   },
+
+  /**
+ * 用户点击右上角分享
+ */
+  onShareAppMessage: function () {
+      return {
+          title: this.data.postData.title,
+          path: '/pages/mom/post-detail/post-detail',
+          success: function (res) {
+              // 转发成功
+          },
+          fail: function (res) {
+              // 转发失败
+          }
+      }
+  },
+
   /**
    * 查询热帖
    */

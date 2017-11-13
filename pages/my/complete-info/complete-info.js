@@ -53,15 +53,16 @@ Page({
             'FullName':'请选择'
         },
         birthDate:'请选择',
-        sex:0,
-        shopName:'请选择'
+        sex:1,
+        shopName:'请选择',
+        shopId:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        // this.requestData();
+         this.requestData();
     },
 
     /**
@@ -118,7 +119,7 @@ Page({
      */
     areaTap:function(){
         wx.navigateTo({
-            url: '../../select-provinces/select-provinces',
+            url: '/pages/address/select-provinces/select-provinces',
         })
     },
 
@@ -131,9 +132,9 @@ Page({
         
         let name = value.name;
         let area = this.data.area.FullName;
-        let areaId = this.data.area.SQId;
-        let birthDate = value.birthDate;
-        let shopName = value.shopName;
+        let areaId = this.data.area.AreaId;
+        let birthDate = this.data.birthDate;
+        let shopName = this.data.shopName;
         let idCard = value.idCard;
         let alipay = value.alipay;
         
@@ -167,17 +168,19 @@ Page({
             return;
         }
 
-        if (Tool.isEmptyStr(companyTel)) {
-            Tool.showAlert("请填写法人手机号码");
-            return;
-        }
+        let params = {
+            "MemberId": global.Storage.memberId(),
+            "SexKey": this.data.sex+'',
+            "Name": name,
+            "DateOfBirth": birthDate,
+            "IdCard": idCard,
+            "AlipayAccount": alipay,
+            "AreaId": areaId,
+            "ShopName": shopName,
+            "ShopId": this.data.shopId,
+        };
 
-        if (Tool.isEmptyStr(alipayAccount)) {
-            Tool.showAlert("请填写法人支付宝账号");
-            return;
-        }
-
-        let r = RequestWriteFactory.completeInfomationRequest(customName, areaId, receiptAddress, receiptName, receiptTel, companyName, companyTel, alipayAccount, withdrawPassword, confirmPassword);
+        let r = RequestWriteFactory.addLevyApply(params);
         r.finishBlock = (req) => {
             wx.showToast({
                 title: '操作成功！',
@@ -190,31 +193,24 @@ Page({
     },
 
     requestData:function(){
-        let r = RequestReadFactory.completeInfoRead();
+        let r = RequestReadFactory.requestStoreMemberInfo();
         r.finishBlock = (req, firstData) => {
-            if (Tool.isValidStr(firstData.CityId)){
-                let condition = "${Id} = '" + firstData.CityId + "'";
-                let r = RequestReadFactory.areaRead(condition);
-                r.finishBlock = (req, firstData) => {
-                    this.setData({
-                        area: {
-                            'FullName': firstData.FullName,
-                            'SQId': firstData.SQId
-                        }
-                    });
-                };
-                r.addToQueue();
-            }
 
             this.setData({
+                sex: firstData.SexKey,
+                birthDate: Tool.timeStringForDateString(firstData.DateOfBirth, 'YYYY-MM-DD'),
+                shopName: firstData.ShopName,
+                shopId: firstData.ShopId,
+
                 'datas[0].value': firstData.Name,
-                'datas[1].value': firstData.CityId,
-                'datas[2].value': firstData.ConsigneeAddress,
-                'datas[3].value': firstData.Consignee,
-                'datas[4].value': firstData.ConsigneeMobile,
-                'datas[5].value': firstData.LegalRepresentative,
-                'datas[6].value': firstData.LegalMobile,
-                'datas[7].value': firstData.AlipayAccount,
+                'datas[4].value': firstData.IdCard,
+                'datas[5].value': firstData.AlipayAccount,
+
+                area: {
+                    'FullName': firstData.FullName,
+                    'AreaId': firstData.AreaId
+                }
+
             });
         };
         
@@ -223,13 +219,13 @@ Page({
 
     maleTap:function(){
         this.setData({
-            sex: 0
+            sex: 1
         });
     },
 
     femaleTap: function () {
         this.setData({
-            sex: 1
+            sex: 2
         });
     },
 
@@ -240,8 +236,14 @@ Page({
     },
 
     shopTap:function(){
+        let areaId = this.data.area.AreaId;
+        if(Tool.isEmpty(areaId)){
+            Tool.showSuccessToast('请先选择所在地区');
+            return;
+        }
+
         wx.navigateTo({
-            url: '../complete-info/shop-list/shop-list',
+            url: '/pages/my/complete-info/shop-list/shop-list?cityId=' + this.data.area.AreaId
         })
     }
 })

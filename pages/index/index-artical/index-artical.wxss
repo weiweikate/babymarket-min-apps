@@ -39,14 +39,14 @@
 
 .view-btns .praise-icon {
   width: 38rpx;
-  height: 35rpx;
+  height: 30rpx;
   flex: none;
   margin-right: 50rpx;
 }
 
 .view-btns .discuss-icon {
-  width: 38rpx;
-  height: 36rpx;
+  width: 42rpx;
+  height: 38rpx;
   flex: none;
   margin-right: 25rpx;
 }

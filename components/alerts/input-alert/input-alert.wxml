@@ -2,7 +2,7 @@
     <block wx:if="{{visiable}}">
         <view catchtap="dismissInputAlert" class="model-view-bg">
             <view class="input-alert zoom-in" catchtap="inputAlertClicked">
-                <textarea bindinput="alertInputOnChange" placeholder = "{{placeholder}}"/>
+                <textarea bindinput="alertInputOnChange" placeholder = "{{placeholder}}" value="{{value}}" />
                 <view class="buttons">
                     <view class="left-btn" catchtap="inputAlertBtnClicked" data-index="0">
                         <view>取消</view>

@@ -1,6 +1,6 @@
 // withdraw.js
 
-let {Tool, Storage, RequestReadFactory, RequestWriteFactory} = global;
+let {Tool, Storage, RequestWriteFactory} = global;
 
 Page({
 
@@ -13,23 +13,21 @@ Page({
         showInputAlert:false,
         placeholder:'请输入支付密码',
         password:'',
-        amount:''
+        account:'',
+        amount:'',
+
+        alertType:0
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let self = this;
-        wx.getStorage({
-            key: 'memberInfo',
-            success: function (res) {
-                let memberInfo = res.data;
-                self.setData({
-                    balance: memberInfo.Balance,
-                    havePassword: memberInfo.HavePassword
-                });
-            },
+        let memberInfo = Storage.currentMember();
+        this.setData({
+            balance: memberInfo.Balance,
+            havePassword: Tool.isValidStr(memberInfo.PayPassword),
+            account: memberInfo.AlipayAccount,
         })
     },
 
@@ -107,14 +105,14 @@ Page({
             return;
         }
 
-        if (amount < 100) {
+        /*if (amount < 100) {
             wx.showModal({
                 title: '提示',
                 content: '提现金额不能低于100',
                 showCancel: false,
             })
             return;
-        }
+        }*/
 
         this.setData({
             amount: amount
@@ -124,6 +122,8 @@ Page({
 
             this.setData({
                 showInputAlert: true,
+                placeholder: '请输入支付宝账号',
+                alertType:1
             })
 
         }else{
@@ -150,53 +150,51 @@ Page({
 
     alertInputOnChange: function(e) {
         let text = e.detail.value;
-        this.setData({
-            password: text
-        });
+
+        if (this.data.alertType == 1) {
+            this.setData({
+                account: text
+            });
+        }
+
+        else if (this.data.alertType != 1) {
+            this.setData({
+                password: text
+            });
+        }
     },
 
     inputAlertBtnClicked: function(e) {
         let index = e.currentTarget.dataset.index;
         this.dismissInputAlert();
 
-        if(index == 1){//确定
-            let r = RequestWriteFactory.withdrawAddRequest(this.data.amount, this.data.password);
+        if (index == 1 && this.data.alertType == 1){//确定
+            this.setData({
+                showInputAlert: true,
+                placeholder: '请输入支付密码',
+                alertType: 0
+            })
+        }
+
+        else if (index == 1 && this.data.alertType != 1) {//确定
+            let r = RequestWriteFactory.addWithdrawRecord(this.data.amount, this.data.password, this.data.account);
             r.finishBlock = (req) => {
                 wx.showToast({
                     title: '操作成功！',
                 })
 
+                let balance = parseFloat(this.data.balance) - parseFloat(this.data.amount);
                 this.setData({
                     amount: '',
-                    
+                    balance: balance.toString()
                 });
 
-                this.requestMemberInfo();
+                //修改本地数据库信息
+                let memberInfo = Storage.currentMember();
+                memberInfo.Balance = balance.toString();
+                Storage.setCurrentMember(memberInfo);
             };
             r.addToQueue();
         }
-    },
-
-    /**
-    * 登录用户信息 
-    */
-    requestMemberInfo: function () {
-        let r = RequestReadFactory.memberInfoRead();
-        r.finishBlock = (req) => {
-            let datas = req.responseObject.Datas;
-            datas.forEach((item, index) => {
-
-                wx.setStorage({
-                    key: 'memberInfo',
-                    data: item,
-                })
-
-                this.setData({
-                    balance: item.Balance,
-                });
-
-            });
-        };
-        r.addToQueue();
     }
 })

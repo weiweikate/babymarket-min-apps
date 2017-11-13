@@ -94,7 +94,7 @@ Page({
       } else {
         url = '/pages/login/login';
       }
-    } else if (title == '关于TOMPMOM') {
+    } else if (title == '关于TOPMOM') {
       url = '/pages/my/about-me/about-me';
     }
     wx.navigateTo({
@@ -112,7 +112,7 @@ Page({
         hasArrow: true
       },
       {
-        title: '关于TOMPMOM',
+        title: '关于TOPMOM',
         hasArrow: true,
         hasDivide: true
       }

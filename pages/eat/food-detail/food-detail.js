@@ -68,6 +68,16 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
+        let self = this;
+        return {
+            title: self.data.datas.Name + '能不能吃',
+            path: '/pages/eat/food-detail/food-detail',
+            success: function (res) {
+                // 转发成功
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
     }
 })

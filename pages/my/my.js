@@ -22,6 +22,7 @@ Page({
     //注册通知
     Event.on('loginSuccessEvent', this.loginSuccess, this)
     Event.on('logoutEvent', this.logoutSuccess, this)
+    Event.on('refreshMemberInfoNotice', this.loginSuccess, this)
   },
 
   /**
@@ -30,6 +31,7 @@ Page({
   onUnload: function () {
     Event.off('loginSuccessEvent', this.loginSuccess)
     Event.off('logoutEvent', this.logoutSuccess)
+    Event.off('refreshMemberInfoNotice', this.logoutSuccess)
   },
 
   /**

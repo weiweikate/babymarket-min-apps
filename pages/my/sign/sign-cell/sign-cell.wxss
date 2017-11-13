@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 74rpx;
     height: 74rpx;
 }
@@ -14,7 +15,6 @@
 .coins-num {
     font-size: 30rpx;
     color: #d86e00;
-    margin-top: 22rpx;
 }
 
 .coins-num.disable{

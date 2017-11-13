@@ -1,66 +1,32 @@
-// pages/find/lottery/lottery-list/lottery-list.js
+let { Tool, Storage, RequestReadFactory, RequestWriteFactory, Event } = global;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    listArray: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.requestLotteryData();
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 我的中奖纪录查询
    */
-  onReady: function () {
-  
+  requestLotteryData: function () {
+    let task = RequestReadFactory.myLotteryExtractRead();
+    task.finishBlock = (req) => {
+      let responseData = req.responseObject.Datas;
+      this.setData({
+        listArray: responseData
+      });
+    }
+    task.addToQueue();
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })

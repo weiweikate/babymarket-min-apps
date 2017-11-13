@@ -1,5 +1,5 @@
 // index.js
-let { Tool, Storage, RequestReadFactory} = global
+let { Tool, Storage, RequestReadFactory, RequestWriteFactory,Event,Network} = global
 
 Page({
 
@@ -62,6 +62,8 @@ Page({
 
         //获取今天的孕育问答头条
         this.readQAList();
+
+        Event.on('refreshMemberInfoNotice', this.readMemberInfo, this)
     },
 
     /**
@@ -89,7 +91,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        Event.off('refreshMemberInfoNotice', this.readMemberInfo)
     },
 
     /**
@@ -171,7 +173,7 @@ Page({
             })
         } else if (title == '工具库') {
             wx.navigateTo({
-                url: 'pages/find/knowledge/knowledge',
+                url: '/pages/find/knowledge/knowledge',
             })
         }
     },
@@ -201,7 +203,9 @@ Page({
     },
 
     searchTap: function () {
-        console.log('搜索');
+        wx.navigateTo({
+            url: '/pages/index/index-search/index-search',
+        })
     },
 
     /**
@@ -263,6 +267,68 @@ Page({
             //更新宝宝年龄
             this.readBabyAgeDescriptionWithDay(1);
         }
+    },
+
+    /**
+     * 更换头像
+     */
+    avatarTap:function(){
+        let self = this;
+
+        wx.showActionSheet({
+            itemList: ['拍照', '从相册选择'],
+            success: function (res) {
+                console.log(res.tapIndex),
+                    wx.chooseImage({
+                        count: 1, // 默认9
+                        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                        success: function (imgRes) {
+                            wx.showActionSheet({
+                                itemList: ['设定为我的头像', '同时设定为宝宝头像'],
+                                success: function (e) {
+                                    console.log(e.tapIndex)
+
+                                    var tempFilePaths = imgRes.tempFilePaths;
+                                    self.setData({
+                                        imageUrl: tempFilePaths[0],
+                                    });
+
+                                    wx.uploadFile({
+                                        url: Network.sharedInstance().uploadURL,
+                                        filePath: tempFilePaths[0],
+                                        name: 'file',
+                                        success: function (res) {
+                                            var fileInfo = JSON.parse(res.data);
+                                            console.log(fileInfo);
+
+                                            let temporaryId = fileInfo.TemporaryId;
+                                            self.modifyAvatar(temporaryId, '1');//修改我的头像
+                                        }
+                                    })
+
+                                    if (e.tapIndex == 1) {//同时修改宝宝头像
+                                        wx.uploadFile({
+                                            url: Network.sharedInstance().uploadURL,
+                                            filePath: tempFilePaths[0],
+                                            name: 'file',
+                                            success: function (res) {
+                                                var fileInfo = JSON.parse(res.data);
+                                                console.log(fileInfo);
+
+                                                let temporaryId = fileInfo.TemporaryId;
+                                                self.modifyAvatar(temporaryId, '2');
+                                            }
+                                        })
+                                    }
+                                }
+                            })
+                        }
+                    })
+            },
+            fail: function (res) {
+                console.log(res.errMsg)
+            }
+        })
     },
 
     /**
@@ -404,6 +470,14 @@ Page({
                     questionContent: item.Que
                 })
             }
+        };
+        r.addToQueue();
+    },
+
+    modifyAvatar: function (tempImgId, avatarType) {
+        let r = RequestWriteFactory.modifyMemberAvatar(tempImgId, avatarType);
+        r.finishBlock = (req) => {
+            Event.emit('refreshMemberInfoNotice');
         };
         r.addToQueue();
     }

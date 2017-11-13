@@ -112,6 +112,15 @@ Page({
         task.finishBlock = (req) => {
             let datas = req.responseObject.Datas;
 
+            if(datas.length <= 0){//活动不存在
+                Tool.showSuccessToast('活动不存在');
+
+                wx.navigateBack({
+                    delta: 1,
+                })
+                return;
+            }
+
             datas.forEach((item, index) => {
                 let imageUrl = Tool.imageURLForId(item.ImgId, '/res/img/common/common-avatar-default-icon.png');
                 item.imageUrl = imageUrl;

@@ -1,5 +1,6 @@
 // question-create.js
 let { Tool, Storage, RequestWriteFactory, Event } = global
+import ImagePicker from '../../../components/image-picker/image-picker';
 
 Page({
 
@@ -23,6 +24,8 @@ Page({
         this.setData({
             content: content
         })
+
+        this.imagePicker = new ImagePicker(this,1);
     },
 
     /**
@@ -81,7 +84,6 @@ Page({
     },
 
     inputTap:function(e){
-        console.log(e.detail);
         this.setData({
             content: e.detail.value
         })
@@ -100,22 +102,27 @@ Page({
             let isExpertAns = this.index==0?'True':'False';
             let isAnonymity = this.data.isHideName?'True':'False';
 
-            let rq = RequestWriteFactory.addQuestion(this.data.content, isExpertAns, isAnonymity, queId);
-            rq.finishBlock = (req) => {
-                wx.navigateBack({
-                    delta:1
-                })
+            Tool.showLoading();
+            this.imagePicker.onUploadAction((temporaryIdArray) => {
 
-                Tool.showSuccessToast("提问成功");
+                let rq = RequestWriteFactory.addQuestion(
+                    this.data.content, isExpertAns, isAnonymity, queId, temporaryIdArray);
+                rq.finishBlock = (req) => {
+                    wx.navigateBack({
+                        delta: 1
+                    })
 
-                //跳转到问题详情页面 todo
-                wx.navigateTo({
-                    url: '/pages/question/question-detail/question-detail?Id=' + queId,
-                })
+                    Tool.showSuccessToast("提问成功");
 
-                Event.emit('LocalNotification_QA_Updated');
-            };
-            rq.addToQueue();
+                    //跳转到问题详情页面 todo
+                    wx.navigateTo({
+                        url: '/pages/question/question-detail/question-detail?Id=' + queId,
+                    })
+
+                    Event.emit('LocalNotification_QA_Updated');
+                };
+                rq.addToQueue();
+            });
         } else {
           wx.navigateTo({
             url: '/pages/login/login'

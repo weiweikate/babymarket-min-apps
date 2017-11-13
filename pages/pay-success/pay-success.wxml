@@ -8,7 +8,8 @@
     <text class="value">{{orderInfo.Number}}</text>
   </view>
   <view class='view-row'>
-    <text class="title">消耗积分：</text>
+    <text class="title" wx:if="{{door=='2'}}">支付金额：￥</text>
+    <text class="title" wx:else>消耗积分：</text>
     <text class="value">{{orderInfo.Points}}</text>
   </view>
   <view class='view-row'>

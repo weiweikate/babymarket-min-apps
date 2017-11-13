@@ -1,108 +1,103 @@
-// add-baby-diary.js
-let { Tool } = global;
+import ImagePicker from '../../../../components/image-picker/image-picker';
+let { Tool, Storage, Event, RequestReadFactory, RequestWriteFactory } = global;
 
 Page({
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        isModify:false,
-        date:'2017-08-08',
-        endDate:'',
-        imageUrl:''
-    },
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    requestData: undefined
+  },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        let pageType = options.type;
-        if (pageType == 1){
-            this.setData({
-                isModify:true
-            });
-
-            wx.setNavigationBarTitle({
-                title: '修改',
-            })
-        }
-
-        let dateString = Tool.timeStringForDate(new Date(), "YYYY-MM-DD");
-        this.setData({
-            date: dateString,
-            endDate: dateString,
-        });
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    },
-
-    dateChange:function(e){
-        this.setData({
-            date:e.detail.value
-        });
-    },
-
-    selectImageTap:function(){
-        let self = this;
-        wx.chooseImage({
-            count: 1, // 默认9
-            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) {
-                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                var tempFilePaths = res.tempFilePaths;
-                self.setData({
-                    imageUrl: tempFilePaths[0]
-                });
-            }
-        })
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.imagePicker = new ImagePicker(this, 1);
+    let requestData = undefined;
+    if (options.type == '1') {
+      requestData = Storage.getterFor("baby-diary-info");
+      let imageArray = [requestData.imageUrl];
+      this.setData({
+        requestData: requestData,
+        imageArray: imageArray
+      });
+    } else {
+      let dateString = Tool.timeStringForDate(new Date(), "YYYY-MM-DD");
+      let requestData = new Object();
+      requestData.PhotoDate = dateString;
+      this.setData({
+        requestData: requestData
+      });
     }
+  },
+
+  /**
+   * 日期改变
+   */
+  onSelectChangeListener: function (e) {
+    let requestData = this.data.requestData;
+    requestData.PhotoDate = e.detail.value;
+    this.setData({
+      requestData: requestData
+    });
+  },
+
+  /**
+   * 新增记录
+   */
+  requestAdd: function (requestData, temporaryIdArray) {
+    let task = RequestWriteFactory.addBabyDiary(requestData, temporaryIdArray);
+    task.finishBlock = (req) => {
+      Tool.showSuccessToast("发布成功！");
+      Tool.navigationPop();
+
+      Event.emit('refreshBabyDiaryList');//发出通知
+    };
+    task.addToQueue();
+  },
+
+  /**
+   * 修改记录
+   */
+  requestModify: function (requestData, temporaryIdArray) {
+    let task = RequestWriteFactory.modifyBabyDiary(requestData, temporaryIdArray);
+    task.finishBlock = (req) => {
+      Tool.showSuccessToast("修改成功！");
+      Tool.navigationPop();
+
+      Event.emit('refreshBabyDiaryList');//发出通知
+    };
+    task.addToQueue();
+  },
+
+  /**
+   * 提交
+   */
+  onSubmitAction: function (e) {
+    let self = this;
+
+    let info = e.detail.value;
+
+    if (Tool.isEmptyStr(info.content)) {
+      Tool.showAlert("请输入内容哦~");
+      return false;
+    };
+
+    Tool.showLoading();
+    self.imagePicker.onUploadAction((temporaryIdArray) => {
+      let requestData = self.data.requestData;
+      requestData.Content = info.content;
+      if (Tool.isEmptyStr(requestData.Id)) {
+        //新增
+        requestData.Id = Tool.guid();
+        requestData.MemberId = Storage.memberId();
+        self.requestAdd(requestData, temporaryIdArray);
+      } else {
+        //修改
+        self.requestModify(requestData, temporaryIdArray);
+      }
+    });
+  }
 })

@@ -1,5 +1,7 @@
 <import src='/pages/find/knowledge/cell-item/cell-item.wxml' />
 
 <view class="view-root">
-  <template is="cell-item" data="{{listArray:listArray}}" />
+    <block wx:for="{{listArray}}" wx:key="unique">
+        <template is="cell-item" data="{{item:item}}" />
+    </block>
 </view>

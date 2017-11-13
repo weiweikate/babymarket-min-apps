@@ -4,10 +4,6 @@
 @import '/components/empty-view/empty-view.wxss';
 @import '/pages/find/second-kill/second-kill-cell/second-kill-cell.wxss';
 
-page{
-    background: white;
-}
-
 .second-kill-view{
     height: 100%;
 }

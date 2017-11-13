@@ -60,6 +60,7 @@ export default class Network {
         this.activityRuleURL = this.domain + 'ActivitRule.aspx';
         this.raiseURL = this.domain + 'TopCrowdDetail.aspx';
         this.raiseRuleURL = this.domain + 'TopWinRule.aspx';
+        this.lotteryRuleURL = this.domain + 'Dial.aspx';
 
         __instance(this);
     }

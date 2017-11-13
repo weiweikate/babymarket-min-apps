@@ -66,6 +66,18 @@ Page({
                     delta: 1,
                 })
             }
+            else if (pageBOne.route == 'pages/my/complete-info/complete-info') {
+                pageBOne.setData({
+                    area: {
+                        'FullName': areas[index].FullName,
+                        'AreaId': areas[index].Id
+                    },
+                    shopName: '请选择',
+                })
+                wx.navigateBack({
+                    delta: 1,
+                })
+            }
         } else {
             //继续向下一层
             wx.redirectTo({

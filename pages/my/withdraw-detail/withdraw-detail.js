@@ -8,9 +8,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        detailDatas: [],
-        nomoredata:false,
-        index:0,
+        detailDatas: []
     },
 
     /**
@@ -59,9 +57,6 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-        if (!this.data.nomoredata){
-            this.loadmore(this.data.index);
-        }
     },
 
     /**
@@ -75,39 +70,11 @@ Page({
     * 提现明细查询
     */
     requestData: function () {
-        let r = RequestReadFactory.withdrawListRead(0);
+        let r = RequestReadFactory.requestWithdrawDetail();
         r.finishBlock = (req) => {
             let datas = req.responseObject.Datas;
-            let total = req.responseObject.Total;
-            let nomoredata = false;
-            if (datas.length >= total) {
-                nomoredata = true;
-            }
-
             this.setData({
-                detailDatas: datas,
-                nomoredata: nomoredata,
-                index: datas.length,
-            });
-        };
-        r.addToQueue();
-    },
-
-    loadmore: function (index) {
-        let r = RequestReadFactory.withdrawListRead(index);
-        r.finishBlock = (req) => {
-            let datas = req.responseObject.Datas;
-            let arry = this.data.detailDatas.concat(datas);
-            
-            let total = req.responseObject.Total;
-            let nomoredata = false;
-            if (this.data.index + datas.length >= total) {
-                nomoredata = true;
-            }
-            this.setData({
-                detailDatas: arry,
-                nomoredata: nomoredata,
-                index: this.data.index + datas.length,
+                detailDatas: datas
             });
         };
         r.addToQueue();

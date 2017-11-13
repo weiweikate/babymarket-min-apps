@@ -1,10 +1,10 @@
 <template name="baby-diary-cell">
-    <view class="baby-diary-cell" style="width:342rpx;height:{{height}}rpx;">
-        <image src="" style="width:342rpx;height:342rpx;background:red"></image>
-        <view class="date-age">
-            <view class="date">2017-8-7</view>
-            <view class="age">(1个月3天)</view>
-        </view>
-        <view class="content">{{content}}</view>
+  <view class="baby-diary-cell" catchtap='onItemClickListener' data-id="{{Id}}">
+    <image src="{{imageUrl}}" class='cell-image' mode='aspectFill' />
+    <view class="date-age">
+      <view class="date">{{PhotoDate}}</view>
+      <view class="age">({{PhotoDate2}})</view>
     </view>
+    <view class="content">{{Content}}</view>
+  </view>
 </template>
