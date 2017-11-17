@@ -88,6 +88,9 @@ Page({
       url = '/pages/my/my-reply-post/my-reply-post';
     } else if (title == '收货地址管理') {
       url = '/pages/address/address';
+    } else if (title == '扫一扫') {
+      this.onCodeClickListener();
+      return;
     }
 
     wx.navigateTo({
@@ -234,6 +237,12 @@ Page({
         icon: '/res/img/my/cell/my-cell-baby-diary-icon.png',
         title: '宝宝日记',
         hasArrow: true
+      },
+      {
+        icon: '/res/img/my/cell/my-cell-qrcode-scan.png',
+        title: '扫一扫',
+        hasArrow: true,
+        hasDivide: true
       },
       {
         icon: '/res/img/my/cell/my-cell-seckill-icon.png',
