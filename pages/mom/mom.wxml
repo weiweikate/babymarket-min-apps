@@ -6,7 +6,7 @@
 <import src='/pages/eat/search-cell/search-cell.wxml' />
 
 <view class="view-root">
-  <view class="view-top">
+  <view class='view-top'>
     <template is="tab-layout" data="{{items:oneSortData,currentTab}}" />
   </view>
   <view class="swiper-view">

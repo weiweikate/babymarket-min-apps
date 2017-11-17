@@ -1,7 +1,6 @@
 .tab-layout {
   display: flex;
   background-color: white;
-  width: 100%;
   flex-direction: row;
   flex: none;
   white-space: nowrap;
@@ -11,7 +10,7 @@
   display: inline-flex;
   font-size: 28rpx;
   color: #3c3d3d;
-  height: 54rpx;
+  padding: 10rpx 0rpx;
   align-items: center;
   justify-content: center;
 }

@@ -17,7 +17,7 @@
   <view class='view-login' wx:if="{{currentTab==0}}">
     <form catchsubmit="onLoginClickListener">
       <template is="cell-add-input" data="{{title:'登录名',hint:'请输入您的登录账号',key:'username',type:'number',maxlength:'11'}}" />
-      <template is="cell-add-input" data="{{title:'密码',hint:'请输入您的密码',key:'password'}}" />
+      <template is="cell-add-input" data="{{title:'密码',hint:'请输入您的密码',key:'password',password:true}}" />
       <view class='view-find-password'>
         <text class='find-password' catchtap='onFindPasswordListener'>忘记密码？</text>
       </view>
@@ -31,7 +31,7 @@
         <template is="cell-add-input" data="{{title:'验证码',hint:'请输入验证码',key:'code',type:'number',maxlength:'6'}}" />
         <text class="{{isTiming?'btn-code':'btn-code enable'}}" catchtap='onCodeClickListener' form-type="submit">{{isTiming?time+'秒后重发':'获取验证码'}}</text>
       </view>
-      <template is="cell-add-input" data="{{title:'密码',hint:'请输入您的密码',key:'password'}}" />
+      <template is="cell-add-input" data="{{title:'密码',hint:'请输入您的密码',key:'password',password:true}}" />
       <button class="btn-submit" form-type="submit">注册</button>
     </form>
   </view>
