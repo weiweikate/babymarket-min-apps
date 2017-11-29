@@ -204,7 +204,9 @@ Page({
    * 忘记密码
    */
   onFindPasswordListener: function (e) {
-    console.log('忘记密码？');
+    wx.navigateTo({
+      url: '/pages/find-password/find-password'
+    })
   },
   /**
    * 监听文本改变
