@@ -251,6 +251,9 @@ export default class Operation {
         this.storeInfoReadOperation = '05c9e3ef-a59c-4335-bf6d-a73200fc51c1';
         this.storeMemberAddOperation = '9b83cee5-4ce8-44b8-9f18-a6db00b1e0b9';
 
+        //密码修改
+        this.passwordRetakeAddOperation = '423002f7-38c2-49f8-b0ec-a6cd01010b21';
+
         __instance(this);
     }
 
