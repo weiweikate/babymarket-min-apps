@@ -49,6 +49,16 @@ export default class RequestWriteFactory {
       return req;
     }
 
+    //修改密码
+    static modifyPassword(requestData) {
+      let operation = Operation.sharedInstance().passwordRetakeAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'PasswordRetake', requestData, operation, null);
+      req.name = '修改密码';
+      return req;
+    }
+
     //新增消息阅读
     static addMessageBatch(requestData) {
       let operation = Operation.sharedInstance().messageBatchReadOperation;
