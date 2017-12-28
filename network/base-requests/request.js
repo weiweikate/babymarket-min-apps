@@ -63,7 +63,7 @@ export default class Request {
         this.tag = 0;
 
         //请求的状态
-        this.status = RequestStatus.waiting;
+        this.requestStatus = RequestStatus.waiting;
 
         //是否有队列管理请求
         this.isManagedByQueue = false;
@@ -129,7 +129,7 @@ export default class Request {
         let that = this;
         this.body();
         this.url();
-        this.status = RequestStatus.requesting;
+        this.requestStatus = RequestStatus.requesting;
         wx.request({
             data:this._body,
             url: this._url,
@@ -249,7 +249,7 @@ export default class Request {
                 }
             },
             complete:function () {
-                that.status = RequestStatus.finish;
+                that.requestStatus = RequestStatus.finish;
                 that.completeBlock(that);
 
                 if (that.isManagedByQueue) {
