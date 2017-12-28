@@ -125,6 +125,7 @@ Page({
         } else {
           Tool.showAlert('二维码不符合规范');
         }
+        
         if (code.length > 0) {
           wx.navigateTo({
             url: '/pages/code-success/code-success?code=' + code

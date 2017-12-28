@@ -284,8 +284,11 @@ export default class RequestReadFactory {
       req.items = ['Id', 'Reason', 'SFJHCG', 'SPId', 'YHId', 'BCJF'];
       req.appendixesKeyMap = { 'SP': 'SPId', 'JFHY': 'YHId' };//可以多个
       req.preprocessCallback = (req, firstData) => {
+          console.log('firstData = ' + firstData);
+          console.log('firstData.SFJHCG = ' + firstData.SFJHCG);
+          console.log('firstData.Reason = ' + firstData.Reason);
         if (global.Tool.isValid(firstData)) {
-          if (firstData.SFJHCG == 'True'){
+            if (firstData.SFJHCG == 'True' || firstData.Reason == '积分成功'){
             req.result = true;
           }else{
             req.result = false;
@@ -294,6 +297,7 @@ export default class RequestReadFactory {
         }else{
           req.result = false;
         }
+        console.log('req.result = ' + req.result);
       }
       //匹配成功函数
       req.appendixesBlock = (item, appendixe, key, id) => {

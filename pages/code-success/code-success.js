@@ -84,7 +84,7 @@ Page({
       requestData.ClerkId = memberInfo.Id;
       requestData.IsClerk = 'True';
     }
-
+    console.log('requestData= ' + requestData);
     this.requestAdd(requestData);
   }
 
