@@ -232,7 +232,10 @@ export default class Request {
                 console.debug('==============================\n\n\n');
                 //请求失败重试
                 if (that.tryCount < that.maxTryCount) {
-                    if (that.isManagedByQueue === false) {
+                    if (that.isManagedByQueue) {
+                        that.addToQueue();
+                    }
+                    else {
                         that.start();
                     }
                 }
