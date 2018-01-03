@@ -132,12 +132,6 @@
         "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-0.png"
       },
       {
-        "pagePath": "pages/mom/mom",
-        "text": "宝妈圈",
-        "iconPath": "/res/img/tabbar/tabbar-icon-normal-1.png",
-        "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-1.png"
-      },
-      {
         "pagePath": "pages/find/find",
         "text": "发现",
         "iconPath": "/res/img/tabbar/tabbar-icon-normal-2.png",

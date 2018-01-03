@@ -234,11 +234,11 @@ Page({
         title: '赚金币',
         hasArrow: true
       },
-      {
-        icon: '/res/img/my/cell/my-cell-baby-diary-icon.png',
-        title: '宝宝日记',
-        hasArrow: true
-      },
+    //   {<!-- todo 1.3 -->
+    //     icon: '/res/img/my/cell/my-cell-baby-diary-icon.png',
+    //     title: '宝宝日记',
+    //     hasArrow: true
+    //   },
       {
         icon: '/res/img/my/cell/my-cell-qrcode-scan.png',
         title: '扫一扫',
@@ -271,22 +271,22 @@ Page({
         title: '我的积分订单',
         hasArrow: true
       },
-      {
-        icon: '/res/img/my/cell/my-cell-qa-icon.png',
-        title: '我的问答',
-        hasArrow: true,
-        hasDivide: true
-      },
-      {
-        icon: '/res/img/my/cell/my-cell-create-post-icon.png',
-        title: '发表的帖子',
-        hasArrow: true
-      },
-      {
-        icon: '/res/img/my/cell/my-cell-reply-post-icon.png',
-        title: '回复的帖子',
-        hasArrow: true
-      },
+    //   {<!-- todo 1.3 -->
+    //     icon: '/res/img/my/cell/my-cell-qa-icon.png',
+    //     title: '我的问答',
+    //     hasArrow: true,
+    //     hasDivide: true
+    //   },
+    //   {
+    //     icon: '/res/img/my/cell/my-cell-create-post-icon.png',
+    //     title: '发表的帖子',
+    //     hasArrow: true
+    //   },
+    //   {
+    //     icon: '/res/img/my/cell/my-cell-reply-post-icon.png',
+    //     title: '回复的帖子',
+    //     hasArrow: true
+    //   },
       {
         icon: '/res/img/my/cell/my-cell-address-icon.png',
         title: '收货地址管理',

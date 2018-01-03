@@ -1,6 +1,7 @@
 <import src='/components/cell/cell-menu/cell-menu.wxml' />
 
-<view class="view-top">
+<!-- todo 1.3 -->
+<!-- <view class="view-top">
   <view class="top" catchtap="onTopListener" data-position='0'>
     <image src="/res/img/find/find-clinic-icon.png" class="top-icon" mode="aspectFit" />
     <text class="top-title">便便诊所</text>
@@ -9,7 +10,7 @@
     <image src="/res/img/find/find-tooth-icon.png" class="top-icon" mode="aspectFit" />
     <text class="top-title">爱牙卫士</text>
   </view>
-</view>
+</view> -->
 
 <view class='view-menu'>
   <template is="cell-menu" data="{{...item,index}}" wx:for="{{menuArray}}" wx:key="unique" />

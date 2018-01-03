@@ -6,7 +6,9 @@
         <template is="search-cell" data="{{placeholder:'请输入食物名称，例如“奇异果”'}}"></template>
     </view>
 
-    <view class="empty-tips">没有找到“{{searchKey}}”的相关结果，要不要去孕育问答询问下其他宝妈？</view>
+<!-- todo 1.3 -->
+    <!-- <view class="empty-tips">没有找到“{{searchKey}}”的相关结果，要不要去孕育问答询问下其他宝妈？</view> -->
+    <view class="empty-tips">没有找到“{{searchKey}}”的相关结果</view>
 
-    <view class="question-button" catchtap="questionTap">问问宝妈们</view>
+    <!-- <view class="question-button" catchtap="questionTap">问问宝妈们</view> -->
 </view>
