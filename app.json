@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/home/home",
+    "pages/index/index",
     "pages/find/find",
     "pages/product-detail/product-detail",
     "pages/my/my",
@@ -125,18 +125,6 @@
     "color": "#808080",
     "borderStyle": "white",
     "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "/res/img/tabbar/tabbar-icon-normal-0.png",
-        "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-0.png"
-      },
-      {
-        "pagePath": "pages/find/find",
-        "text": "发现",
-        "iconPath": "/res/img/tabbar/tabbar-icon-normal-2.png",
-        "selectedIconPath": "/res/img/tabbar/tabbar-icon-select-2.png"
-      },
       {
         "pagePath": "pages/home/home",
         "text": "积分商城",
