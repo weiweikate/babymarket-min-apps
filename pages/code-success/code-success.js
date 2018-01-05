@@ -6,14 +6,18 @@ Page({
    */
   data: {
     fourteenCode: undefined,
+    codeType:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      let code = options.code
+      let codeType = (code.length == 14)?1:2
     this.setData({
-      fourteenCode: options.code
+      fourteenCode: code,
+      codeType: codeType
     });
   },
 
@@ -60,9 +64,13 @@ Page({
    */
   onSubmitAction: function (e) {
     let fourCode = e.detail.value.fourCode;
-    if (fourCode.length != 4) {
+    if (this.data.codeType == 1 && fourCode.length != 4) {
       Tool.showAlert("请输入正确的后4位积分码");
       return false;
+    };
+    if (this.data.codeType == 2 && fourCode.length != 6) {
+        Tool.showAlert("请输入正确的后6位积分码");
+        return false;
     };
     let mobile = e.detail.value.mobile;
     if (Tool.isEmptyStr(mobile)) {

@@ -1,9 +1,9 @@
 <view class='view-root'>
-  <text class='code-fourteen'>积分前14位：{{fourteenCode}}</text>
-  <text class='tips'>(刮开最下一行涂层，输入最后4位)</text>
+  <text class='code-fourteen'>{{codeType == 1 ? '积分前14位：':'积分前12位：'}}{{fourteenCode}}</text>
+  <text class='tips'>(刮开最下一行涂层，输入最后{{codeType == 1 ? '4':'6'}}位)</text>
   <form bindsubmit="onSubmitAction">
     <!--4位数字-->
-    <input class="cell-input" name="fourCode" placeholder="请输入4位数字" placeholder-style="color:#ffabab" type="number" />
+    <input class="cell-input" name="fourCode" placeholder="{{codeType == 1?'请输入积分码后4位':'请输入积分码后6位'}}" placeholder-style="color:#ffabab" type="number" />
     <!--手机号码-->
     <input class="cell-input" name="mobile" placeholder="请输入手机号码，很重要" placeholder-style="color:#ffabab" type="number" />
     <!--底部按钮保存-->
