@@ -1,0 +1,38 @@
+.detail-cell-top{
+  padding-top: 28rpx;
+  padding-bottom: 120rpx;
+  font-size:58rpx;
+  text-align: center;
+  font-weight: bold;
+  background:#fff;
+}
+.detail-cell-top image{
+  width: 64rpx;
+  height: 64rpx;
+  margin-bottom: 15rpx;
+}
+.detail-line{
+  color: #979797;
+  font-size: 30rpx;
+  border-bottom: 1px solid #dcdcdc;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.detail-datas{
+  background: #fff;
+  padding: 0 28rpx ;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dcdcdc;
+}
+.detail-line .right{
+  float: right;
+  color: #252525;
+  width: 520rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  text-align: right
+}
+.detail-datas .detail-line:last-child{
+  border: 0
+}

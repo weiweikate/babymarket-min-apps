@@ -65,7 +65,12 @@ Page({
     let title = e.currentTarget.dataset.title;
     let url = '';
     if (title == '我的奖励') {
-      url = '/pages/my/my-award/my-award';
+      //url = '/pages/my/my-award/my-award';
+      if (this.data.memberInfo.IsSalesclerk == 'True'){
+        url = '/pages/my/sale-changed/sale-changed';
+      } else{
+        url = '/pages/my/my-award/my-award';
+      }
     } else if (title == '赚金币') {
       url = '/pages/my/sign/sign';
     } else if (title == '宝宝日记') {
@@ -131,7 +136,8 @@ Page({
         
         if (code.length > 0) {
           wx.navigateTo({
-            url: '/pages/code-success/code-success?code=' + code
+            //url: '/pages/code-success/code-success?code=' + code
+            url: '/pages/code-web/code?code=' + code
           })
         }
       }

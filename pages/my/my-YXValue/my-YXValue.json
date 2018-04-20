@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "婴雄值",
+  "usingComponents": {
+    "my-award-filter": "/pages/my/my-YXValue/filter-view/my-YXValue-filter"
+  }
+}

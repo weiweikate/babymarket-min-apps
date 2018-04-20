@@ -1,0 +1,19 @@
+<import src='/pages/my/my-YXValue/my-value-header/my-value-header.wxml'/>
+<import src='/pages/my/my-YXValue/cell/cell.wxml'/>
+
+<!--top view-->
+<view class="top-view">
+    <view class="top">
+        <text class="balance-text">可用婴雄值(分）</text>
+        <text class="filter" catchtap="filterClicked">筛选</text>
+    </view>
+  <view class="balance-value">{{totalXYValue}}</view>
+</view>
+<view class='temp' wx:for='{{YXValueLog}}' wx:for-item="items" wx:for-index="section" wx:key="">
+ <template is="my-value-header" data="{{...items,section}}" wx:if="{{items.LogDetail.length>0}}"/>
+ <block wx:for="{{items.LogDetail}}" wx:key="">
+    <template is="my-value-cell" data="{{...item,section,index}}" />
+ </block>
+</view>
+<view class='warn-msg'>--没有更多信息了--</view>
+<my-award-filter visiable="{{isFilterVisiable}}" bind:dismissFilterClicked="dismissFilterClicked" bind:thumbClicked="thumbClicked"/>

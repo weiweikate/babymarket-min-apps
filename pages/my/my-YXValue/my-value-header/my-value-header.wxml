@@ -1,0 +1,14 @@
+<template name="my-value-header">
+    <view class="my-value-header">
+        <view class="left">
+             <view class="date">{{Month}}</view>
+             <view class="income">收益：{{Increase}} 支出：{{Reduce}}</view> 
+             <!-- <view class="date">2017-12</view>
+            <view class="income">收益：￥1111</view> -->
+        </view>
+        <!--结束日期-->
+        <picker  mode="date" fields="month" bindchange="datePickerChange" wx:if='{{section==0}}'>
+            <image class="date-picker" src="/res/img/my/date.png" mode="aspectFit" />
+        </picker>
+    </view>
+</template>

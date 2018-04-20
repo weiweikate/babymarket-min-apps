@@ -1,0 +1,40 @@
+/* pages/my/my-YXValue/my-YXValue.wxss */
+@import '/pages/my/my-YXValue/my-value-header/my-value-header.wxss';
+@import '/pages/my/my-YXValue/cell/cell.wxss';
+.top-view {
+    height: 170rpx;
+    background:#EC615B;
+    padding-left: 38rpx;
+    padding-top:40rpx;
+    padding-bottom: 10rpx;
+    color: #fff;
+}
+.balance-text {
+    font-size: 22rpx;
+}
+
+.balance-value {
+    font-size: 74rpx;
+}
+.top{
+    overflow: hidden
+}
+
+.filter{
+    font-style: 30rpx;
+    padding-right: 30rpx;
+    float: right
+}
+.temp{
+  border-bottom:1rpx solid #dcdcdc
+}
+.temp>view:nth-child(2) .content{
+  border: 0
+}
+.warn-msg{
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color:#979797;
+}

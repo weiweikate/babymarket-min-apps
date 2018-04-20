@@ -1,0 +1,17 @@
+<template name="my-value-cell">
+    <view class="my-value-cell" catchtap="cellClicked" data-index="{{index}}" data-section="{{section}}">
+       <view class='content'>
+          <view class='left'>
+             <image src='{{iconUrl}}'></image>
+          </view>
+          <view class='right'>
+            <view class='rightTop'>
+               <text>{{Title}}</text>
+               <text class='value' wx:if='{{Increase!="0"}}'>{{Increase}}</text>
+               <text class='value' wx:if='{{Reduce!="0"}}' >{{Reduce}}</text>
+            </view>
+            <view class='rightBottom'>{{DateTime}}</view>
+          </view>
+       </view>
+    </view>
+</template>

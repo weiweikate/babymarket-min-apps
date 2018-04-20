@@ -1,0 +1,15 @@
+<block wx:if="{{visiable}}">
+    <view class="model-view-bg">
+        <view class="my-YXValue-filter zoom-in">
+            <view class="title" catchtap=""><view>类型</view></view>
+            <view class="sep-line"></view>
+            <view class="content">
+                 <block wx:for="{{items}}" wx:key="unique">
+                    <view class="thumb" catchtap="thumbClicked" data-index="{{index}}"><view>{{item.Name}}</view></view>
+                </block> 
+            </view>
+            <view class='view-line'></view>
+            <view class="cancel" catchtap="dismiss"><view>取消</view></view>
+        </view>
+    </view>
+</block>

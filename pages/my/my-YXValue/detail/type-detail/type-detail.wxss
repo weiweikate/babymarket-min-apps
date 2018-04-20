@@ -1,0 +1,45 @@
+.XYValue-type image,.type-line image{
+  width:60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+  vertical-align: middle;
+}
+.XYValue-type{
+  margin-bottom: 34rpx;
+}
+.typeTotalValue{
+  float: right;
+  font-size: 42rpx;
+}
+.XYValue-type,.type-line{
+  background: #fff;
+  border-bottom: 1px solid #dcdcdc;
+  color: #252525;
+  /* display: flex;
+  align-items:center;
+  text-align: right; */
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+}
+.XYValue-Infos,.XYValue-type{
+  border-top: 1px solid #dcdcdc;
+}
+.type-line>view{
+  display: inline-block;
+  vertical-align:middle;
+}
+.type-title{
+  width: 225rpx;
+  font-size:28rpx;
+}
+.type-title>view:last-child{
+  font-size:24rpx;
+  color: #B2B2B2;
+}
+.type-value{
+  float: right;
+  font-size: 44rpx;
+}
+.type-line{
+  padding: 30rpx;
+}

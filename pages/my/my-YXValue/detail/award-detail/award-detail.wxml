@@ -1,0 +1,50 @@
+<!-- <import src='/pages/my/my-YXValue/detail/cell/cell-top/cell-top.wxml'/>
+<import src='/pages/my/my-YXValue/detail/cell/cell-line/cell-line.wxml'/>
+
+<template is="detail-cell-top" data="{{...infos}}"/>
+<view class='my-YXValue-detail-list'>
+  <template is="detail-cell-line" />
+</view> -->
+
+<view class="detail-cell-top">
+    <view>
+      <image src='{{infos.iconUrl}}'></image>
+    </view>
+  <view>
+    <text>{{infos.value}}</text>
+  </view>
+</view>
+<view class='detail-datas'>
+  <view wx:if='{{infos.type == 1 }}'>
+    <view class='detail-line'>
+      <text>会员账号</text>
+      <text class='right'>{{data.MemberIntegralAccount}}</text>
+    </view>
+     <view class='detail-line'>
+      <text>产品名称</text>
+      <text class='right'>{{data.ProductName}}</text>
+    </view>
+     <view class='detail-line'>
+      <text>积分码</text>
+      <text class='right'>{{data.ScoreCode}}</text>
+    </view>
+    <view class='detail-line'>
+      <text>奖励时间</text>
+      <text class='right'>{{data.CreateTime}}</text>
+    </view>
+  </view>
+  <view wx:else>
+    <view class='detail-line'>
+      <text>兑换订单</text>
+      <text class='right'>{{data.OrderNo}}</text>
+    </view>
+     <view class='detail-line'>
+      <text>兑换产品</text>
+      <text class='right'>{{data.Name}}</text>
+    </view>
+     <view class='detail-line'>
+      <text>兑换时间</text>
+      <text class='right'>{{data.CreateTime}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<view class='XYValue-type'>
+   <image src='{{types.iconUrl}}' mode="aspectFit"></image>
+   <text>{{types.type}}</text>
+   <text class='typeTotalValue'>{{totalValue}}</text>
+</view>
+<view class='XYValue-Infos'>
+  <view class='type-line' wx:for='{{datas}}' wx:for-item="item" wx:for-index="section" wx:key="">
+  <view class='icon'>
+     <image src='{{item.IconUrl}}' mode="aspectFit"></image>
+  </view>
+  <view class='type-title'>
+   <view>{{item.Title}}</view>
+   <view>{{item.DateTime}}</view>
+  </view>
+  <view class='type-value'>{{item.typeValue}}</view>
+</view>
+</view>
+
+<view class='noMsg'>-没有更多信息了-</view>

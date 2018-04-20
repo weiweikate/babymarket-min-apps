@@ -1,0 +1,33 @@
+.my-value-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100rpx;
+    background-color: #F6F6F6;
+    padding:0 20rpx;
+    /* border-top:1px solid #dcdcdc; */
+    border-bottom:1px solid #dcdcdc;
+}
+
+.my-value-header .left{
+    display: flex;
+    flex-direction: column;
+}
+
+.my-value-header .left .date{
+    font-size: 28rpx;
+    color: #252525;
+}
+
+.my-value-header .left .income{
+    color: #B2B2B2;
+    font-size: 24rpx;
+}
+
+.my-value-header .date-picker{
+    height: 60rpx;
+    width:60rpx
+}
+
+

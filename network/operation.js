@@ -254,7 +254,24 @@ export default class Operation {
         //密码修改
         this.passwordRetakeAddOperation = '423002f7-38c2-49f8-b0ec-a6cd01010b21';
 
+        // 婴雄联盟
+        this.babyAllianceReadOperation ='5ac8dd81-634e-4372-b51e-a8c600b50375';
+        // 联盟战报
+        this.babyAllianceAwardReadOperation = '00f293b5-a890-4c48-9e7d-a8c600b93e45';
+        // 店员婴雄联盟产品分类查询
+        this.babyAllianceProductCategory = 'f5a6ffc2-633f-481d-8254-a8c601247a9d';
+        // 婴雄值(主表)
+        this.YXValueMonthSumReadOperation ='9d52091c-3754-4239-878e-a8c700d2981d';
+        // 婴雄值明细
+        this.YXValueLogReadOperation = 'b2cf0fc7-5765-00c0-0227-31c500ec5ba2';
+        // 婴雄值的类型
+        this.YXValueTypesReadOperation = 'b6186867-60db-4ca2-b109-a8c7011de31d';
+        // 积分成功 婴雄值奖励明细查询
+        this.YXValueSuccessClerkAwardReadOperation = 'e65e2d7a-61d0-4be2-a4f2-a6dc01276fa5';
+        // 查询订单明细
+        this.orderLineReadOperation ='ecd55db5-13af-4371-8e76-a62c01184c41'
         __instance(this);
+        // 
     }
 
     static sharedInstance() {

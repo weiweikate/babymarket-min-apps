@@ -92,6 +92,7 @@
     "pages/order/order-list/order-list",
     "pages/order/order-detail/order-detail",
     "pages/code-success/code-success",
+    "pages/code-web/code",
     "pages/integral-success/integral-success",
     "pages/my/my-raise/my-raise",
     "pages/find/raise/raise-previous/raise-previous",
@@ -105,7 +106,12 @@
     "pages/find/lottery/lottery-rule/lottery-rule",
     "pages/my/my-levy/my-levy",
     "pages/index/index-search/index-search",
-    "pages/find-password/find-password"
+    "pages/find-password/find-password",
+    "pages/my/sale-changed/sale-changed",
+    "pages/allianceContract/allianceContract",
+    "pages/my/my-YXValue/my-YXValue",
+    "pages/my/my-YXValue/detail/type-detail/type-detail",
+    "pages/my/my-YXValue/detail/award-detail/award-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

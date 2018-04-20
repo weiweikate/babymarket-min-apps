@@ -465,15 +465,18 @@ export default class RequestReadFactory {
     }
 
     //积分商城-根据分类ID查询商品
-    static productByCategoryIdRead(categoryId) {
+    static productByCategoryIdRead(categoryId,maxcount) {
       let operation = Operation.sharedInstance().productReadOperation;
       let bodyParameters = {
         "Operation": operation,
         "CategoryId": categoryId
       };
+      if (maxcount){
+        bodyParameters.MaxCount = maxcount
+      }
       let req = new RequestRead(bodyParameters);
       req.name = '积分商城-根据分类ID查询商品';
-      req.items = ['Id', 'Name', 'ImgId', 'Price'];
+      //req.items = ['Id', 'Name', 'ImgId', 'Price'];
       //修改返回结果
       req.preprocessCallback = (req) => {
         let responseData = req.responseObject.Datas;
@@ -3065,5 +3068,188 @@ export default class RequestReadFactory {
         req.item = ["ShopName","Id"]
 
         return req;
+    }
+    // 婴雄联盟 
+    static requestBabyAlliance() {
+      let operation = Operation.sharedInstance().babyAllianceReadOperation;
+      let bodyParameters = {
+        "Operation": operation
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '婴雄联盟 查询';
+      return req;
+    }
+    // 英雄联盟战报
+    static requestBabyAllianceAward() {
+      let operation = Operation.sharedInstance().babyAllianceAwardReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MaxCount":'20'
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '婴雄联盟战报 查询';
+      return req;
+    }
+    // 查询产品
+    static requestBabyAllianceProductCategory() {
+      let operation = Operation.sharedInstance().babyAllianceProductCategory;
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": "${Tier} == '2'",
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '婴雄联盟产品查询';
+      //req.items = ['Id', 'Name', 'ImgId', 'Price'];
+      //修改返回结果
+      return req;
+    }
+    // 婴雄值日志
+    static requestYXValueMonthSum(month) {
+      // month 有值的时候 按月份查询
+      let operation = Operation.sharedInstance().YXValueMonthSumReadOperation;
+      let Condition = ''
+      if(month){
+        Condition = "${ShopPersonId} == '" + global.Storage.memberId() + "'&& ${Month} <= '" + month + "'"
+      }else{
+        Condition= "${ShopPersonId} == '" + global.Storage.memberId() + "'"
+      }
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": Condition,
+        "MaxCount": '50',
+        "Order":"${Month} DESC",
+        "IsIncludeSubtables": true
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '婴雄值查询';
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.imageUrl = global.Tool.imageURLForId(item.ImgId);
+          function Month (num){
+            return num[0] =='0'? num[1]:num;
+          }
+          item.Month = item.Month.slice(0, 4) + "年" + Month(item.Month.slice(5, 7)) + "月";
+          if (item.LogDetail.length > 0) {
+            item.LogDetail.forEach((item0, index0) => {
+              item0.iconUrl = global.Tool.imageURLForId(item0.IconId);
+              item0.DateTime = Month(item0.DateTime.slice(5, 7)) + "月" + Month(item0.DateTime.slice(8, 10)) + "日" + item0.DateTime.slice(10, 16);
+              item0.Reduce = Number(item0.Reduce) > 0 ? -Number(item0.Reduce):'0'
+              item0.Increase = Number(item0.Increase) > 0 ? "+"+Number(item0.Increase) : '0'
+            });
+          }
+        });
+      }
+      return req;
+    }
+    // 按类型查询婴雄值明细
+    static requestYXValueTypeLog(key) {
+      let operation = Operation.sharedInstance().YXValueLogReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "MaxCount": '999',
+        "Condition": "${TypeKey} == '" + key +"'",
+        "Order": "${Month} DESC",
+        "IsIncludeSubtables": true
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '婴雄值类型明细查询';
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas;
+        responseData.forEach((item, index) => {
+          item.IconUrl = global.Tool.imageURLForId(item.IconId);
+          item.DateTime = item.DateTime.slice(0, 16)
+          if (key == "1" ) {
+            item.typeValue = "+"+item.Increase
+          } else {
+            item.typeValue = "-" + item.Reduce
+          }
+        });
+      }
+      return req;
+    }
+    // 婴雄值总数查询
+    static requestTotalYXValue(key) {
+     
+      let operation = Operation.sharedInstance().YXValueMonthSumReadOperation;
+      let EntityName = ''
+      let Condition = ''
+      if(key){
+        EntityName = "YXValueTypeView"
+        Condition = "${ShopPersomId} == '" + global.Storage.memberId() + "'&& ${TypeKey}=='"+key+"'"
+      } else{
+        EntityName = "ShopYXValueView"
+        Condition = "${ShopPersomId} == '" + global.Storage.memberId() + "'"
+      }
+      console.log(EntityName)
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": Condition,
+        //"Order": "${TrueValue} ASC",
+        "View": {
+          "EntityName": EntityName
+        },
+        "IsIncludeSubtables": true
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '婴雄值月汇总查询';
+      if (key) {
+        req.preprocessCallback = (req) => {
+          if (req.responseObject.Datas.length>0){
+            let responseData = req.responseObject.Datas[0];
+            if (responseData.TypeKey == '1') {
+              responseData.totalValue = "+" + responseData.Increase
+            } else {
+              responseData.totalValue = "-" + responseData.Reduce
+            }
+          }else{
+            req.responseObject.Datas.push({totalValue:0})
+          }
+        }
+      }
+      return req;
+    }
+    // YXValueTypesReadOperation 婴雄值类型查询
+    static requestYXValueTypes() {
+      let operation = Operation.sharedInstance().YXValueTypesReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "IsIncludeSubtables": true
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '婴雄值类型查询';
+      return req;
+    }
+    // YXValueSuccessClerkAward
+    static requestYXValueSuccessClerkAward(Id) {
+      let operation = Operation.sharedInstance().YXValueSuccessClerkAwardReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": "${Id} == '" + Id + "'",
+        "IsIncludeSubtables": true
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '婴雄值奖励明细查询';
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas[0];
+        responseData.CreateTime = responseData.CreateTime.slice(0,16)
+      }
+      return req;
+    }
+    // orderLineReadOperation
+    static requestOrderLine(Id) {
+      let operation = Operation.sharedInstance().orderLineReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": "${Id} == '" + Id + "'",
+        "IsIncludeSubtables": true
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '订单明细查询';
+      req.preprocessCallback = (req) => {
+        let responseData = req.responseObject.Datas[0];
+        responseData.CreateTime = responseData.CreateTime.slice(0, 16)
+      }
+      return req;
     }
 }

@@ -1,0 +1,79 @@
+<view class='sale-exchange-page'>
+  <!--banner图片  -->
+  <view class='sale-change-banner'>
+    <!--图片  -->
+    <view class='sale-change-img'>
+      <image src='{{babyAllianceList.PostId}}'></image>
+    </view>
+    <!--契约  -->
+    <view class='my-rules' bindtap='ruleClicked'>
+      <image src='/res/img/sale-changed/my-rules.png'></image>
+    </view>
+    <!--导航  -->
+     <view class='sale-changed-items'> 
+      <view class='sale-changed-item sale-changed-item1' >
+        <navigator url="/pages/my/my-YXValue/my-YXValue" >
+          <image src='{{babyAllianceList.ValueImgId}}'></image>
+          <view class='title'>婴雄值</view>
+        </navigator> 
+      </view>
+      <view class='sale-changed-item sale-changed-item1'>
+         <navigator url="/pages/my/my-award/my-award" >
+            <image src='{{babyAllianceList.RewardiconId}}'></image>
+            <view class='title'>现金奖励</view>
+        </navigator>       
+      </view>
+      <view class='sale-changed-item sale-changed-item1'>
+       <image src='{{babyAllianceList.OrderIconId}}'></image>
+        <view class='title'>我的订单</view>
+      </view>
+      <view class='sale-changed-item sale-changed-item1'>
+       <image src='{{babyAllianceList.RankIconId}}'></image>
+        <view class='title'>婴雄榜</view>
+      </view>
+     </view> 
+  </view>
+  <!--新闻轮播  -->
+  <view class='silderNews'>
+   <swiper class="swiper"  autoplay="true" interval="5000" duration="1000" vertical>    
+      <block wx:for="{{news}}" wx:for-index="index" wx:key="unique">    
+        <swiper-item>    
+          <view class='newsInfo'>
+           {{item.LeagueNews}}
+          </view>
+        </swiper-item>    
+      </block>    
+    </swiper>  
+  </view>
+  <!--兑换项目  -->
+  <view class='change-content'>
+    <view class='change-item'>{{babyAlliancePrdType[0].Name}}</view>
+    <view class='changeType1'>
+      <view class='list' wx:for='{{babyAlliancePrdList[0]}}' wx:for-item="item" wx:for-index="section" wx:key="" >
+        <text  class='listName'>{{item.YXValue+'分'}}</text>
+        <image src='{{item.imageUrl}}'></image>
+      </view>
+    </view>
+    <view class='change-item'>{{babyAlliancePrdType[1].Name}}</view>
+    <view class='changeType2' >
+        <view class='list' wx:for='{{babyAlliancePrdList[1]}}' wx:for-item="item" wx:for-index="section" wx:key="" >
+         <view class='listImg'>
+           <image src='{{item.imageUrl}}'></image>
+         </view>
+         <view>
+            <text class='prdName'>{{item.Name}}</text>
+            <text class='prdAmount'>{{'¥ '+item.ProuductPrice}}</text>
+         </view>
+         <view class='integralVal'>
+            <text >婴雄值兑换：</text>
+            <text>{{item.YXValue}}</text>
+         </view>
+         <view wx:if="{{item.Overdue == 'False'}}" class='exchangeBtn'> 去兑换 </view>
+         <view wx:else class='exchangeBtn exchangeBtnDisable'> 已结束 </view>
+       </view> 
+    </view>
+  </view>
+  <view class='warnMsg'>
+   —— 咨询电话:400-6286698 ——
+  </view>
+</view>
