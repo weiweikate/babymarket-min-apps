@@ -7,7 +7,7 @@
             <view class="income">收益：￥1111</view> -->
         </view>
         <!--结束日期-->
-        <picker  mode="date" fields="month" bindchange="datePickerChange" wx:if='{{section==0}}'>
+        <picker  mode="date" fields="month" bindchange="datePickerChange" wx:if='{{section==0}}' value='{{selectMonth}}' start="2016-01">
             <image class="date-picker" src="/res/img/my/date.png" mode="aspectFit" />
         </picker>
     </view>

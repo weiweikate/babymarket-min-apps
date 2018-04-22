@@ -7,7 +7,7 @@ Page({
    */
   data: {
     isFilterVisiable: false,
-    selectMonth:'',
+    selectMonth:'2018-4',
     YXValueLog:'',
     totalXYValue:'',
   },
