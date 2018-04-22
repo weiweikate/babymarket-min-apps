@@ -14,6 +14,7 @@ Page({
     * 生命周期函数--监听页面加载
     */
   onLoad: function (options) {
+    console.log(options)
     let orderId = options.id;
     this.setData({
         door: options.door
@@ -29,7 +30,7 @@ Page({
   requestOrderInfo: function (orderId) {
     let self = this;
 
-    if(this.data.door == '1'){//积分订单
+    if (this.data.door == '1' || this.data.door == 0){//积分订单
         let r = RequestReadFactory.orderDetailRead(orderId);
         r.finishBlock = (req) => {
             if (req.responseObject.Count > 0) {

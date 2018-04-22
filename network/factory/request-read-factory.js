@@ -497,7 +497,7 @@ export default class RequestReadFactory {
       };
       let req = new RequestRead(bodyParameters);
       req.name = '积分商城-根据ID查询商品';
-      req.items = ['Id', 'Name', 'ImgId', 'Price', 'Description', 'Attachments', 'Summary', 'Attachments2', 'InventoryNumber', 'ExistSize', 'OutSold'];
+      //req.items = ['Id', 'Name', 'ImgId', 'Price', 'Description', 'Attachments', 'Summary', 'Attachments2', 'InventoryNumber', 'ExistSize', 'OutSold'];
       //修改返回结果
       req.preprocessCallback = (req) => {
         let responseData = req.responseObject.Datas;
@@ -559,13 +559,18 @@ export default class RequestReadFactory {
     }
 
     //查询购物车
-    static cartRead() {
+    static cartRead(types) {
         let operation = Operation.sharedInstance().cartReadOperation;
+        let isYXorder = 'False'
+        if (types == '0'){
+          isYXorder = 'True'
+        }
         let bodyParameters = {
             "Operation": operation,
             "MemberId": global.Storage.memberId(),
             "Bought": "False",
             "OutSold": "False",
+            'IsYXOrder': isYXorder,
             "Order": "${CreateTime} DESC",
             "Appendixes": {
               "+Product": [
@@ -581,7 +586,7 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '查询购物车';
-        req.items = ['Id', 'ProductId', 'Price', 'Qnty', 'Points', 'ProductSizeId'];
+        //req.items = ['Id', 'ProductId', 'Price', 'Qnty', 'Points', 'ProductSizeId'];
         req.appendixesKeyMap = { 'Product': 'ProductId', 'ProductSize': 'ProductSizeId'};//可以多个
         //匹配成功函数
         req.appendixesBlock = (item, appendixe, key, id) => {
@@ -678,12 +683,18 @@ export default class RequestReadFactory {
     }
 
     //订单列表查询
-    static orderListRead() {
+    static orderListRead(orderType) {
       let operation = Operation.sharedInstance().orderReadOperation;
-
+      let Condition = ''
+      if (orderType == 'YXOrder') {
+        Condition = "${MemberId} == '" + global.Storage.memberId()+"'&& ${YXOrder} == 'True'"
+      } else{
+        Condition = "${MemberId} == '" + global.Storage.memberId() + "'&& ${YXOrder} == 'False'"
+      }
       let bodyParameters = {
-        "MemberId": global.Storage.memberId(),
+        //"MemberId": global.Storage.memberId(),
         "Operation": operation,
+        'Condition': Condition,
         "Order": "${CreateTime} DESC",
         "IsIncludeSubtables": true,
         "Appendixes": {
@@ -694,7 +705,7 @@ export default class RequestReadFactory {
       };
       let req = new RequestRead(bodyParameters);
       req.name = '订单详情查询';
-      req.items = ["Id", "StatusKey", "Points", "StatusIdId","CreateTime"];
+      req.items = ["Id", "StatusKey", "Points", "StatusIdId", "CreateTime", "TotalYXValues","YXOrder"];
       req.appendixesKeyMap = {
         'DeliveryStatus': 'StatusIdId'
       };//可以多个
@@ -711,6 +722,7 @@ export default class RequestReadFactory {
       }
       //匹配成功函数
       req.appendixesBlock = (item, appendixe, key, id) => {
+        console.log(item, appendixe, key, id)
         if (key === 'DeliveryStatus') {
           item.StatusName = appendixe.Name;
         }
@@ -3131,11 +3143,15 @@ export default class RequestReadFactory {
           }
           item.Month = item.Month.slice(0, 4) + "年" + Month(item.Month.slice(5, 7)) + "月";
           if (item.LogDetail.length > 0) {
+            item.LogDetail.reverse()
             item.LogDetail.forEach((item0, index0) => {
               item0.iconUrl = global.Tool.imageURLForId(item0.IconId);
               item0.DateTime = Month(item0.DateTime.slice(5, 7)) + "月" + Month(item0.DateTime.slice(8, 10)) + "日" + item0.DateTime.slice(10, 16);
-              item0.Reduce = Number(item0.Reduce) > 0 ? -Number(item0.Reduce):'0'
-              item0.Increase = Number(item0.Increase) > 0 ? "+"+Number(item0.Increase) : '0'
+              if (item0.IsReduce == 'True') {
+                item0.totalValue = '-' + item0.Reduce
+              } else {
+                item0.totalValue = '+' + item0.Increase
+              }
             });
           }
         });
@@ -3236,7 +3252,7 @@ export default class RequestReadFactory {
       }
       return req;
     }
-    // orderLineReadOperation
+    // 婴雄订单 消耗积分查询
     static requestOrderLine(Id) {
       let operation = Operation.sharedInstance().orderLineReadOperation;
       let bodyParameters = {
@@ -3249,6 +3265,22 @@ export default class RequestReadFactory {
       req.preprocessCallback = (req) => {
         let responseData = req.responseObject.Datas[0];
         responseData.CreateTime = responseData.CreateTime.slice(0, 16)
+      }
+      return req;
+    }
+    // 婴雄联盟兑换订单查询
+    static requestYXExchangeOrder() {
+      let operation = Operation.sharedInstance().YXExchangeOrderReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": "${MemberId} == '" + global.Storage.memberId() + "'",
+        "IsIncludeSubtables": true
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '婴雄联盟兑换订单查询';
+      req.preprocessCallback = (req) => {
+        // let responseData = req.responseObject.Datas[0];
+        // responseData.CreateTime = responseData.CreateTime.slice(0, 16)
       }
       return req;
     }

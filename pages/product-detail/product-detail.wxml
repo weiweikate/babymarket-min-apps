@@ -7,10 +7,16 @@
   <view class="view-product">
     <text class="product-name">{{productInfo.Name}}</text>
     <text class="product-detail" wx:if="{{productInfo.Summary.length > 0}}">{{productInfo.Summary}}</text>
-    <view class="view-price">
-      <text class="price-title">需要积分：</text>
-      <text class="price-value">{{productInfo.Price}}</text>
-    </view>
+    <block>
+     <view class="view-price" wx:if='{{productInfo.IsYXProduct == "True"}}'>
+        <text class="price-title">需要婴雄值：</text>
+        <text class="price-value">{{productInfo.YXValue}}</text>
+      </view>
+      <view class="view-price" wx:else>
+        <text class="price-title">需要积分：</text>
+        <text class="price-value">{{productInfo.Price}}</text>
+      </view>
+    </block>
     <text class="product-express">运费：包邮</text>
   </view>
   <view class='view-detail'>

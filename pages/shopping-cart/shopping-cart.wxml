@@ -2,7 +2,7 @@
 <import src='/pages/shopping-cart/cell-cart/cell-cart.wxml' />
 
 <view wx:if="{{cartArray.length>0}}" class="view-root">
-  <template is="cell-cart" data="{{...item,position:index}}" wx:for="{{cartArray}}" wx:key="unique" />
+  <template is="cell-cart" data="{{...item,position:index,door}}" wx:for="{{cartArray}}" wx:key="unique" />
 </view>
 
 <view wx:if="{{cartArray.length==0}}" class="no-data">
@@ -15,7 +15,7 @@
     <text class='all-select-title'>全选</text>
     <view class='view-total'>
       <text class='total-title'>合计：</text>
-      <text class='total-value'>{{totalPrice}}积分</text>
+      <text class='total-value'>{{totalPrice}}{{door == '0'? '婴雄值':'积分'}}</text>
     </view>
   </view>
   <view class='view-submit' catchtap="onSubmitClickListener">

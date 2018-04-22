@@ -14,6 +14,7 @@ export default class ProductForm {
     form.isShowForm = false;//是否显示规格选择页面
     form.formArray = [];//规格数组
     form.selectFormPosition = -1;//选中的规格下标
+    form.IsYXProduct = 'False'; // 是否是婴雄值兑换产品
 
     this.page.data.form = form;
 
@@ -105,8 +106,15 @@ export default class ProductForm {
     let form = this.page.data.form;
     form.innerType = innerType;
     form.isShowForm = true;
-    form.innerPrice = productInfo.Price;
-    form.innerStock = productInfo.InventoryNumber;
+    if (this.page.data.productInfo.IsYXProduct == 'True' ){
+      form.innerPrice = this.page.data.productInfo.YXValue;
+      form.IsYXProduct = 'True'
+    } else {
+      form.innerPrice = productInfo.Price;
+    }
+    
+    //改成 form.innerStock = productInfo.InventoryNumber;
+    form.innerStock = productInfo.Quantity
     this.page.setData({
       form: form
     })
@@ -132,22 +140,30 @@ export default class ProductForm {
       Tool.showAlert('请选择规格');
       return;
     }
-
+    if (this.page.data.productInfo.IsYXProduct == 'True' && this.page.data.productInfo.Overdue == 'True'){
+      Tool.showAlert('兑换时间已超时');
+      return;
+    }
+    if (form.formArray.Quantity == '0'){
+      Tool.showAlert('商品库存不足');
+      return;
+    }
     let selectForm = formArray[form.selectFormPosition];
     let requestData = undefined;
     // 判断form.innerType
     switch (form.innerType) {
       case 0:
         //加入购物车
+        let isXYorder = 'False'
         requestData = {
           'MemberId': Storage.memberId(),
           'ProductId': this.page.data.productId,
           'Price': form.innerPrice + '',
           'Points': form.innerPrice * form.innerQuantity + '',
           'Qnty': form.innerQuantity + '',
-          'ProductSizeId': selectForm.Id
+          'ProductSizeId': selectForm.Id,
+          'IsYXOrder': form.IsYXProduct
         };
-
         Tool.showLoading();
         this.requestAdd(requestData);
         break;
@@ -161,9 +177,16 @@ export default class ProductForm {
           'Price': form.innerPrice,
           'Points': form.innerPrice * form.innerQuantity,
           'Qnty': form.innerQuantity,
-          'ProductSizeId': selectForm.Id
+          'ProductSizeId': selectForm.Id,
+          'IsYXProduct': this.page.data.productInfo.IsYXProduct,
         }];
-
+        // 如果是婴雄联盟的产品 那么添加相关信息
+        if (this.page.data.productInfo.IsYXProduct == 'True') {
+          requestData[0].XYProuductPrice = this.page.data.productInfo.ProuductPrice
+          requestData[0].YXValue = this.page.data.productInfo.YXValue
+          requestData[0].YXValueSum = this.page.data.productInfo.YXValue * form.innerQuantity
+        }
+        console.log(requestData)
         Storage.setterFor("orderLine", requestData);
         this.finishBlock(selectForm.Id, 1, form.innerQuantity, form.innerPrice);
         break;

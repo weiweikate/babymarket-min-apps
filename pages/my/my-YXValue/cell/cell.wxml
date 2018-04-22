@@ -7,8 +7,7 @@
           <view class='right'>
             <view class='rightTop'>
                <text>{{Title}}</text>
-               <text class='value' wx:if='{{Increase!="0"}}'>{{Increase}}</text>
-               <text class='value' wx:if='{{Reduce!="0"}}' >{{Reduce}}</text>
+               <text class='value' >{{totalValue}}</text>
             </view>
             <view class='rightBottom'>{{DateTime}}</view>
           </view>

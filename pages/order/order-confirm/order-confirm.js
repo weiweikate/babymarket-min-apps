@@ -11,22 +11,32 @@ Page({
         totalPrice: 0,
         canUsedMoney: 0,
         isEdit: true,
-        door:''
+        door:'', // 判断是从哪种类型的产品页面进来的 0为婴雄联盟 1为普通兑换 
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
         let orderLineArray = Storage.getterFor("orderLine");
-        let canUsedMoney = Storage.currentMember().Point;
+        let canUsedMoney  = ''
+        if (options.door == '0'){
+          canUsedMoney = Storage.currentMember().YXValue
+        } else {
+          canUsedMoney = Storage.currentMember().Point;
+        }
         let totalPrice = 0;
         orderLineArray.forEach((item) => {
             item.Points = parseInt(item.Points);
             item.Qnty = parseInt(item.Qnty);
             item.Price = parseInt(item.Price);
-            totalPrice += item.Points;
+            item.YXValue = item.YXValues = parseInt(item.YXValue);
+            if (options.door == '0'){
+              item.door = 0
+              totalPrice += item.YXValueSum;
+            } else{
+              totalPrice += item.Points;
+            }
         });
 
         let isEdit = true;
@@ -194,15 +204,30 @@ Page({
                 item.Qnty += "";
                 item.Points += "";
                 item.Price += "";
+                if(this.data.door == '0'){
+                  if (!item.YXValues){
+                    item.YXValues = item.Price
+                  }
+                  item.YXValues += ''
+                  item.YXValue += ''
+                  item.YXValueSum += ''
+                  //item.Points = item.Price = '0'
+                  delete item.door 
+                }
             });
-
+            let YXOrder = 'False'
+            if (this.data.door == '0'){
+               YXOrder = 'True'
+            }
             let requestData = {
                 'Id': orderId,
                 'MemberId': Storage.memberId(),
-                'ReceiptAddressId': this.data.addressInfo.Id
+                'ReceiptAddressId': this.data.addressInfo.Id,
+                'YXOrder': YXOrder
             };
 
             Tool.showLoading();
+            console.log(orderLineArray)
             this.requestAddOrder(requestData, orderLineArray, orderId);
         }
     }

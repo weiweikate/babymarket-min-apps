@@ -271,7 +271,8 @@ export default class Operation {
         // 查询订单明细
         this.orderLineReadOperation ='ecd55db5-13af-4371-8e76-a62c01184c41'
         __instance(this);
-        // 
+        // 婴雄订单查询
+        this.YXExchangeOrderReadOperation = 'f08dd6ad-65d4-47d8-b935-a8c600b9fc1d'
     }
 
     static sharedInstance() {

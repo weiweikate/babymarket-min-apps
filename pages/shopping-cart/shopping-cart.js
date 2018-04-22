@@ -8,21 +8,25 @@ Page({
   data: {
     cartArray: [],
     isAllSelect: false, //全选
-    totalPrice: 0
+    totalPrice: 0,
+    door:'' //是否从婴雄联盟页面进入
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.requestCartData();
+    this.setData({
+      door: options.door
+    });
+    this.requestCartData(options.door);
   },
 
   /**
    * 查询购物车列表
    */
-  requestCartData: function () {
-    let task = RequestReadFactory.cartRead();
+  requestCartData: function (types) {
+    let task = RequestReadFactory.cartRead(types);
     task.finishBlock = (req) => {
       let responseData = req.responseObject.Datas;
       this.setData({
@@ -154,8 +158,12 @@ Page({
    */
   onItemClickLitener: function (e) {
     let id = e.currentTarget.dataset.productId;
+    let url = '/pages/product-detail/product-detail?id=' + id
+    if(this.data.door == '0'){
+      url = url+'&door=0'
+    }
     wx.navigateTo({
-      url: '/pages/product-detail/product-detail?id=' + id
+      url: url
     })
   },
 
@@ -209,22 +217,26 @@ Page({
           'Price': item.Price,
           'Points': item.Points,
           'Qnty': item.Qnty,
-          'ProductSizeId': item.ProductSizeId
+          'ProductSizeId': item.ProductSizeId,
+          'IsYXProduct':'False'
         };
+        if(this.data.door == '0') {
+          request.YXValue = item.Price
+          request.IsYXProduct = 'True'
+        }
         requestData.push(request);
       }
     });
 
     if (requestData.length > 0) {
       //结束当前页面，跳转到订单确认界面
-      wx.setStorage({
-        key: 'orderLine',
-        data: requestData,
-        success: function (res) {
-          wx.redirectTo({
-            url: '/pages/order/order-confirm/order-confirm',
-          })
-        }
+      let url = '/pages/order/order-confirm/order-confirm'
+      if(this.data.door){
+        url = url + '?&door=' + this.data.door + '&cartType=' + this.data.door
+      }
+      Storage.setterFor("orderLine", requestData);
+      wx.redirectTo({
+        url: url,
       })
     } else {
       Tool.showAlert("请选择购物车商品");

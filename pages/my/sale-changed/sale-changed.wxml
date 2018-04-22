@@ -13,19 +13,21 @@
      <view class='sale-changed-items'> 
       <view class='sale-changed-item sale-changed-item1' >
         <navigator url="/pages/my/my-YXValue/my-YXValue" >
-          <image src='{{babyAllianceList.ValueImgId}}'></image>
+          <image src='{{babyAllianceList.ValueImgId}}' mode="aspectFit"></image>
           <view class='title'>婴雄值</view>
         </navigator> 
       </view>
       <view class='sale-changed-item sale-changed-item1'>
          <navigator url="/pages/my/my-award/my-award" >
-            <image src='{{babyAllianceList.RewardiconId}}'></image>
+            <image src='{{babyAllianceList.RewardiconId}}' mode="aspectFit" ></image>
             <view class='title'>现金奖励</view>
         </navigator>       
       </view>
       <view class='sale-changed-item sale-changed-item1'>
-       <image src='{{babyAllianceList.OrderIconId}}'></image>
-        <view class='title'>我的订单</view>
+        <navigator url="/pages/order/order-list/order-list?type= 0 " >
+          <image src='{{babyAllianceList.OrderIconId}}'></image>
+          <view class='title'>我的订单</view>
+        </navigator>
       </view>
       <view class='sale-changed-item sale-changed-item1'>
        <image src='{{babyAllianceList.RankIconId}}'></image>
@@ -49,14 +51,17 @@
   <view class='change-content'>
     <view class='change-item'>{{babyAlliancePrdType[0].Name}}</view>
     <view class='changeType1'>
-      <view class='list' wx:for='{{babyAlliancePrdList[0]}}' wx:for-item="item" wx:for-index="section" wx:key="" >
-        <text  class='listName'>{{item.YXValue+'分'}}</text>
-        <image src='{{item.imageUrl}}'></image>
-      </view>
+      <block wx:for='{{babyAlliancePrdList[0]}}' wx:for-item="item" wx:for-index="section" wx:key="unique" >
+        <view class='list' bindtap='itemClicked'  data-id="{{item.ProductId}}" data-overdue="{{item.Overdue}}">
+          <text  class='listName'>{{item.YXValue+'分'}}</text>
+          <image src='{{item.imageUrl}}'></image>
+        </view>     
+      </block>     
     </view>
     <view class='change-item'>{{babyAlliancePrdType[1].Name}}</view>
     <view class='changeType2' >
-        <view class='list' wx:for='{{babyAlliancePrdList[1]}}' wx:for-item="item" wx:for-index="section" wx:key="" >
+      <block wx:for='{{babyAlliancePrdList[1]}}' wx:for-item="item" wx:for-index="section" wx:key="unique" >
+        <view class='list' bindtap='itemClicked'  data-id="{{item.ProductId}}" data-overdue="{{item.Overdue}}">
          <view class='listImg'>
            <image src='{{item.imageUrl}}'></image>
          </view>
@@ -71,9 +76,13 @@
          <view wx:if="{{item.Overdue == 'False'}}" class='exchangeBtn'> 去兑换 </view>
          <view wx:else class='exchangeBtn exchangeBtnDisable'> 已结束 </view>
        </view> 
+      </block>
     </view>
   </view>
   <view class='warnMsg'>
    —— 咨询电话:400-6286698 ——
+  </view>
+  <view class='XYcart' bindtap='XYcartClicked'>
+    <image src='/res/img/my/cart.png' mode="aspectFit" ></image>
   </view>
 </view>

@@ -9,8 +9,15 @@
 <view class='view-btn'>
   <view class='view-total'>
     <text class='total-title'>合计：</text>
-    <text class='total-value'>{{totalPrice}}积分</text>
-    <text class='total-value-used'>(可用积分{{canUsedMoney}})</text>
+    <block>
+      <text class='total-value' wx:if='{{ door == "0"}}'>{{totalPrice}}婴雄值</text>
+      <text class='total-value'wx:else >{{totalPrice}}积分</text>
+    </block>
+    <block>
+      <text class='total-value-used'  wx:if='{{ door == "0"}}'>(可用婴雄值{{canUsedMoney}})</text>
+      <text class='total-value-used' wx:else>(可用积分{{canUsedMoney}})</text>
+    </block>
+    
   </view>
   <view class='view-submit' catchtap="onSubmitClickListener">
     <text class="total-submit">提交订单</text>

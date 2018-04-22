@@ -75,7 +75,6 @@ Page({
     let task = RequestReadFactory.productByCategoryIdRead(id,maxcount);
     task.finishBlock = (req) => {
       let responseData = req.responseObject.Datas;
-      console.log(responseData)
       let babyAlliancePrdList = this.data.babyAlliancePrdList
       babyAlliancePrdList[index] = responseData
       this.setData({
@@ -89,7 +88,21 @@ Page({
       url: '/pages/allianceContract/allianceContract'
     })
   },
-  
+  itemClicked(e){
+    if (e.currentTarget.dataset.overdue == 'True'){
+      Tool.showAlert('该商品兑换活动已结束');
+      return
+    }
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/product-detail/product-detail?id=' + id+'&door=0'
+    })
+  },
+  XYcartClicked(){
+    wx.navigateTo({
+      url: '/pages/shopping-cart/shopping-cart?isXYcart=true&door=0'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -27,14 +27,29 @@ Page({
             wx.setNavigationBarTitle({
                 title: '我的团购订单',
             })
+        } else if (this.data.door == 0){ //婴雄值兑换订单
+            this.requestOrderData('YXOrder');
+            wx.setNavigationBarTitle({
+              title: '婴雄联盟订单',
+            })
         }
     },
-
+   requestYXExchangeOrder(){
+     let task = RequestReadFactory.requestYXExchangeOrder()
+     task.finishBlock = (req) => {
+       let responseData = req.responseObject.Datas;
+       this.setData({
+         orderArray: responseData
+       });
+       console.log(responseData)
+     };
+     task.addToQueue();
+   },
     /**
      * 查询订单列表
      */
-    requestOrderData: function () {
-        let task = RequestReadFactory.orderListRead();
+    requestOrderData: function (orderType) {
+      let task = RequestReadFactory.orderListRead(orderType);
         task.finishBlock = (req) => {
             let responseData = req.responseObject.Datas;
             this.setData({

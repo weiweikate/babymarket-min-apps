@@ -11,7 +11,8 @@ Page({
   data: {
     productId: undefined,
     productInfo: undefined,
-    bannerArray: []
+    bannerArray: [],
+    door:''
   },
 
   /**
@@ -22,12 +23,19 @@ Page({
     this.setData({
       productId: productId
     });
+    this.setData({
+      door: options.door
+    });
 
     this.productForm = new ProductForm(this);
     this.productForm.finishBlock = (formId, innerType, quantity, price) => {
       //结束当前页面，跳转到订单确认界面
+      let url = '/pages/order/order-confirm/order-confirm'
+      if (this.data.productInfo.IsYXProduct == 'True'){
+        url = '/pages/order/order-confirm/order-confirm?door=0'
+      }
       wx.redirectTo({
-        url: '/pages/order/order-confirm/order-confirm'
+        url: url
       })
     };
 
@@ -84,8 +92,12 @@ Page({
    * 进入购物车
    */
   onGoCartListener: function (e) {
+    let url = '/pages/shopping-cart/shopping-cart'
+    if(this.data.door == '0'){
+      url = '/pages/shopping-cart/shopping-cart?door=0'
+    }
     wx.navigateTo({
-      url: '/pages/shopping-cart/shopping-cart'
+      url: url
     })
   },
 

@@ -9,11 +9,13 @@
     </view>
   <view class="balance-value">{{totalXYValue}}</view>
 </view>
-<view class='temp' wx:for='{{YXValueLog}}' wx:for-item="items" wx:for-index="section" wx:key="">
- <template is="my-value-header" data="{{...items,section}}" wx:if="{{items.LogDetail.length>0}}"/>
- <block wx:for="{{items.LogDetail}}" wx:key="">
-    <template is="my-value-cell" data="{{...item,section,index}}" />
- </block>
-</view>
+ <scroll-view scroll-y>
+    <view class='temp' wx:for='{{YXValueLog}}' wx:for-item="items" wx:for-index="section" wx:key="">
+    <template is="my-value-header" data="{{...items,section}}" wx:if="{{items.LogDetail.length>0}}"/>
+    <block wx:for="{{items.LogDetail}}" wx:key="">
+        <template is="my-value-cell" data="{{...item,section,index}}" />
+    </block>
+    </view>
+ </scroll-view>
 <view class='warn-msg'>--没有更多信息了--</view>
 <my-award-filter visiable="{{isFilterVisiable}}" bind:dismissFilterClicked="dismissFilterClicked" bind:thumbClicked="thumbClicked"/>

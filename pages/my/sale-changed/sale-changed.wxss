@@ -167,3 +167,12 @@
   padding-bottom: 40rpx;
   padding-top:22rpx;
 }
+.XYcart{
+  width:90rpx;
+  height:90rpx;
+  position:fixed;
+  bottom:50rpx;
+  border-radius:80rpx;
+  background:rgba(0,0,0,0.5);
+  left:12rpx;
+}
