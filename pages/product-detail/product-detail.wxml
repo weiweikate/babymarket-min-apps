@@ -8,10 +8,16 @@
     <text class="product-name">{{productInfo.Name}}</text>
     <text class="product-detail" wx:if="{{productInfo.Summary.length > 0}}">{{productInfo.Summary}}</text>
     <block>
-     <view class="view-price" wx:if='{{productInfo.IsYXProduct == "True"}}'>
+     <!--婴雄联盟的产品显示-->
+     <view class="view-price" wx:if='{{door == "0"}}'>
         <text class="price-title">需要婴雄值：</text>
         <text class="price-value">{{productInfo.YXValue}}</text>
+        <view>
+        <text class="price-title" style='margin-left:20rpx;'>{{productInfo.ActivityProduct=='False'? '您的可用婴雄值：':'您的当前活动婴雄值：'}}</text>
+        <text class="price-value">{{userXYvalue}} </text>
+        </view>
       </view>
+      <!--普通兑换商品的显示 -->
       <view class="view-price" wx:else>
         <text class="price-title">需要积分：</text>
         <text class="price-value">{{productInfo.Price}}</text>

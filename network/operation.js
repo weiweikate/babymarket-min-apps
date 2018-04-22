@@ -260,6 +260,8 @@ export default class Operation {
         this.babyAllianceAwardReadOperation = '00f293b5-a890-4c48-9e7d-a8c600b93e45';
         // 店员婴雄联盟产品分类查询
         this.babyAllianceProductCategory = 'f5a6ffc2-633f-481d-8254-a8c601247a9d';
+        // 店员婴雄联盟活动期间有效婴雄值
+        this.XYExchangeDetailReadOperation = '873434a8-62ca-450c-bec7-a8c9010fa0b9';
         // 婴雄值(主表)
         this.YXValueMonthSumReadOperation ='9d52091c-3754-4239-878e-a8c700d2981d';
         // 婴雄值明细

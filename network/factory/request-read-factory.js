@@ -3278,10 +3278,21 @@ export default class RequestReadFactory {
       };
       let req = new RequestRead(bodyParameters);
       req.name = '婴雄联盟兑换订单查询';
-      req.preprocessCallback = (req) => {
-        // let responseData = req.responseObject.Datas[0];
-        // responseData.CreateTime = responseData.CreateTime.slice(0, 16)
+      return req;
+    }
+    // 婴雄值活动有效积分
+    static requestXYExchangeDetail(start,end) {
+      if (!start && !end ){
+          return 
       }
+      let operation = Operation.sharedInstance().XYExchangeDetailReadOperation;
+      let bodyParameters = {
+        "Operation": operation,
+        "Condition": "${ShopPersonId} == '" + global.Storage.memberId() + "'&& ${StartDate} >= '" + start +"'&& ${EndDate} <= '"+end+"'",
+        "IsIncludeSubtables": true
+      };
+      let req = new RequestRead(bodyParameters);
+      req.name = '婴雄联盟当前活动有效积分查询';
       return req;
     }
 }

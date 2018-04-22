@@ -5,7 +5,6 @@ let { Tool, Storage, Event, RequestReadFactory, RequestWriteFactory } = global;
 export default class ProductForm {
   constructor(page) {
     this.page = page;
-
     let form = new Object();
     form.innerType = 0;//0加入购物车 1立即兑换
     form.innerPrice = 0;//价格
@@ -15,6 +14,7 @@ export default class ProductForm {
     form.formArray = [];//规格数组
     form.selectFormPosition = -1;//选中的规格下标
     form.IsYXProduct = 'False'; // 是否是婴雄值兑换产品
+    form.ActivityProduct = 'False' // 是否是婴雄值兑换活动产品
 
     this.page.data.form = form;
 
@@ -48,6 +48,11 @@ export default class ProductForm {
   * 新增购物车
   */
   requestAdd(requestData) {
+    if (this.page.data.door == '0' && this.page.data.productInfo.ActivityProduct == 'True') {
+      Tool.showSuccessToast("暂不支持加入");
+      this.dismiss();
+      return 
+    }
     let task = RequestWriteFactory.addCart(requestData);
     task.finishBlock = (req) => {
       Tool.showSuccessToast("添加到购物车");
@@ -109,6 +114,7 @@ export default class ProductForm {
     if (this.page.data.productInfo.IsYXProduct == 'True' ){
       form.innerPrice = this.page.data.productInfo.YXValue;
       form.IsYXProduct = 'True'
+      form.ActivityProduct = this.page.data.productInfo.ActivityProduct
     } else {
       form.innerPrice = productInfo.Price;
     }
@@ -162,13 +168,17 @@ export default class ProductForm {
           'Points': form.innerPrice * form.innerQuantity + '',
           'Qnty': form.innerQuantity + '',
           'ProductSizeId': selectForm.Id,
-          'IsYXOrder': form.IsYXProduct
+          'IsYXOrder': form.IsYXProduct,
+          'ActivityProduct': form.ActivityProduct
         };
         Tool.showLoading();
         this.requestAdd(requestData);
         break;
       case 1:
         //立即兑换
+        // if (Number(this.page.data.userXYvalue) < ){
+          
+        // }
         requestData = [{
           'MemberId': Storage.memberId(),
           'ProductId': this.page.data.productId,
@@ -179,12 +189,14 @@ export default class ProductForm {
           'Qnty': form.innerQuantity,
           'ProductSizeId': selectForm.Id,
           'IsYXProduct': this.page.data.productInfo.IsYXProduct,
+          'ActivityProduct': form.ActivityProduct
         }];
         // 如果是婴雄联盟的产品 那么添加相关信息
         if (this.page.data.productInfo.IsYXProduct == 'True') {
           requestData[0].XYProuductPrice = this.page.data.productInfo.ProuductPrice
           requestData[0].YXValue = this.page.data.productInfo.YXValue
           requestData[0].YXValueSum = this.page.data.productInfo.YXValue * form.innerQuantity
+          requestData[0].usefulXYValue = this.page.data.userXYvalue
         }
         console.log(requestData)
         Storage.setterFor("orderLine", requestData);

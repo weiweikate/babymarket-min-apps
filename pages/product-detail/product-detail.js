@@ -12,9 +12,22 @@ Page({
     productId: undefined,
     productInfo: undefined,
     bannerArray: [],
+    userXYvalue: undefined,
     door:''
   },
-
+  // 查询会员的婴雄联盟订单
+  requestXYExchangeDetail(start,end) {
+    let r = RequestReadFactory.requestXYExchangeDetail(start,end);
+    r.finishBlock = (req) => {
+      if (req.responseObject.Count > 0) {
+        let responseData = req.responseObject.Datas;
+        this.setData({
+          userXYvalue: responseData[0].YXValue
+        });
+      }
+    }
+    r.addToQueue();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -64,6 +77,13 @@ Page({
 
           //加载详情
           WxParse.wxParse('article', 'html', responseData.Description, self, 0);
+        }
+        if (responseData.ActivityProduct == 'True'){
+          self.requestXYExchangeDetail(responseData.StartDate.slice(0, 10), responseData.EndDate.slice(0, 10))
+        } else {
+          self.setData({
+            userXYvalue: Storage.currentMember().YXValue
+          });
         }
       } else {
         //商品不存在

@@ -7,7 +7,8 @@ Page({
   data: {
     isLogin: false,
     memberInfo: undefined,
-    menuArray: []
+    menuArray: [],
+    isXYnumber:'' // 是否是参加了婴雄联盟活动
   },
 
   /**
@@ -15,7 +16,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      isLogin: Storage.didLogin()
+      isLogin: Storage.didLogin(),
+      isXYnumber: Storage.currentMember().Recommend
     })
     this.initMenuArray();
     this.requestData();
@@ -65,13 +67,15 @@ Page({
     let title = e.currentTarget.dataset.title;
     let url = '';
     if (title == '我的奖励') {
-      //url = '/pages/my/my-award/my-award';
-      if (this.data.memberInfo.IsSalesclerk == 'True'){
-        url = '/pages/my/sale-changed/sale-changed';
-      } else{
-        url = '/pages/my/my-award/my-award';
-      }
-    } else if (title == '赚金币') {
+      url = '/pages/my/my-award/my-award';
+      // if (this.data.memberInfo.IsSalesclerk == 'True'){
+      //   url = '/pages/my/sale-changed/sale-changed';
+      // } else{
+      //   url = '/pages/my/my-award/my-award';
+      // }
+    } else if (title == '婴雄联盟'){
+      url = '/pages/my/sale-changed/sale-changed';
+    }else if (title == '赚金币') {
       url = '/pages/my/sign/sign';
     } else if (title == '宝宝日记') {
       url = '/pages/my/baby-diary/baby-diary';
@@ -300,6 +304,13 @@ Page({
         hasDivide: true
       }
     ];
+    if (this.data.isXYnumber == 'True') {
+      menuArray[0] = {
+        icon: '/res/img/my/cell/XY-icon.png',
+        title: '婴雄联盟',
+        hasArrow: true
+      }
+    }
     this.setData({
       menuArray: menuArray
     });

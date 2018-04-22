@@ -9,7 +9,7 @@ Page({
         addressInfo: undefined,
         orderLineArray: [],
         totalPrice: 0,
-        canUsedMoney: 0,
+        canUsedMoney: undefined,
         isEdit: true,
         door:'', // 判断是从哪种类型的产品页面进来的 0为婴雄联盟 1为普通兑换 
     },
@@ -21,7 +21,11 @@ Page({
         let orderLineArray = Storage.getterFor("orderLine");
         let canUsedMoney  = ''
         if (options.door == '0'){
-          canUsedMoney = Storage.currentMember().YXValue
+          if (orderLineArray[0].usefulXYValue!=undefined){
+            canUsedMoney = orderLineArray[0].usefulXYValue
+          } else{
+            canUsedMoney = Storage.currentMember().YXValue;
+          }
         } else {
           canUsedMoney = Storage.currentMember().Point;
         }
@@ -103,7 +107,7 @@ Page({
         task.finishBlock = (req) => {
             //跳转到下一级
             wx.redirectTo({
-                url: '/pages/pay-success/pay-success?id=' + orderId
+                url: '/pages/pay-success/pay-success?id=' + orderId +'&door='+this.data.door
             })
         };
         task.addToQueue();
@@ -132,7 +136,9 @@ Page({
             orderLineArray.forEach((item) => {
                 totalPrice += item.Points;
             });
-
+            if (this.data.door == '0') {
+              orderLineData.YXValueSum = orderLineData.YXValues * orderLineData.Qnty;
+            }
             this.setData({
                 orderLineArray: orderLineArray,
                 totalPrice: totalPrice
@@ -156,7 +162,9 @@ Page({
             orderLineArray.forEach((item) => {
                 totalPrice += item.Points;
             });
-
+            if(this.data.door== '0') {
+              orderLineData.YXValueSum = orderLineData.YXValues * orderLineData.Qnty;
+            }
             this.setData({
                 orderLineArray: orderLineArray,
                 totalPrice: totalPrice
@@ -211,7 +219,7 @@ Page({
                   item.YXValues += ''
                   item.YXValue += ''
                   item.YXValueSum += ''
-                  //item.Points = item.Price = '0'
+                  item.Points = item.Price = '0'
                   delete item.door 
                 }
             });
@@ -227,7 +235,6 @@ Page({
             };
 
             Tool.showLoading();
-            console.log(orderLineArray)
             this.requestAddOrder(requestData, orderLineArray, orderId);
         }
     }

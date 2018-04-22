@@ -223,6 +223,7 @@ Page({
         if(this.data.door == '0') {
           request.YXValue = item.Price
           request.IsYXProduct = 'True'
+          request.YXValueSum = Number(item.Points)
         }
         requestData.push(request);
       }

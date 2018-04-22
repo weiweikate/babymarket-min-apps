@@ -14,16 +14,14 @@ Page({
     * 生命周期函数--监听页面加载
     */
   onLoad: function (options) {
-    console.log(options)
     let orderId = options.id;
     this.setData({
         door: options.door
     })
-
     Tool.showLoading();
     this.requestOrderInfo(orderId);
   },
-
+ 
   /**
    * 查询订单详情
    */
