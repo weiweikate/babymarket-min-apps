@@ -96,7 +96,7 @@ Page({
     onGoOrderClickListener: function () {
         let id = this.data.orderInfo.Id;
         wx.redirectTo({
-            url: '/pages/order/order-detail/order-detail?id=' + id + '&door=' + this.data.door
+            url: '/pages/order/order-detail/order-detail?id=' + id + '&door='+this.data.door
         })
     },
     /**

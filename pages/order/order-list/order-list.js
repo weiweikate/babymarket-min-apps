@@ -7,7 +7,7 @@ Page({
      */
     data: {
         orderArray: [],
-        door: 0,
+        door:undefined,
     },
 
     /**

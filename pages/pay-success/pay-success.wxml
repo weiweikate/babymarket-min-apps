@@ -9,8 +9,8 @@
   </view>
   <view class='view-row'>
     <text class="title" wx:if="{{door=='2'}}">支付金额：￥</text>
-    <text class="title" wx:else>消耗积分：</text>
-    <text class="value">{{orderInfo.Points}}</text>
+    <text class="title" wx:else>{{ door=='0'? '消耗婴雄值:':'消耗积分:' }}</text>
+    <text class="value">{{ door=='0'? orderInfo.TotalYXValues:orderInfo.Points }}</text>
   </view>
   <view class='view-row'>
     <text class="title">发放方式：</text>

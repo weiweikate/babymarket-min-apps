@@ -29,6 +29,7 @@ Page({
     let self = this;
 
     if (this.data.door == '1' || this.data.door == 0){//积分订单
+    console.log(1111111111111)
         let r = RequestReadFactory.orderDetailRead(orderId);
         r.finishBlock = (req) => {
             if (req.responseObject.Count > 0) {
@@ -96,7 +97,7 @@ Page({
     }else{
         let productId = e.currentTarget.dataset.productId;
         wx.navigateTo({
-            url: '/pages/product-detail/product-detail?id=' + productId
+          url: '/pages/product-detail/product-detail?id=' + productId + '&door='+this.data.door
         })
     }
   },

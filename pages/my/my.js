@@ -8,7 +8,7 @@ Page({
     isLogin: false,
     memberInfo: undefined,
     menuArray: [],
-    isXYnumber:'' // 是否是参加了婴雄联盟活动
+    isXYnumber: 'False' // 是否是参加了婴雄联盟活动
   },
 
   /**
@@ -17,7 +17,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       isLogin: Storage.didLogin(),
-      isXYnumber: Storage.currentMember().Recommend
+      //isXYnumber: Storage.currentMember().Recommend
     })
     this.initMenuArray();
     this.requestData();
@@ -49,9 +49,11 @@ Page({
    */
   logoutSuccess: function () {
     this.setData({
+      isXYnumber: 'False',
       memberInfo: undefined,
       isLogin: false
     })
+    this.initMenuArray();
   },
 
   /**
@@ -222,10 +224,11 @@ Page({
       let memberInfo = Storage.currentMember();
 
       this.setData({
+        isXYnumber: memberInfo.Recommend,
         memberInfo: memberInfo,
         isLogin: true
       });
-
+      this.initMenuArray();
     };
     r.addToQueue();
   },

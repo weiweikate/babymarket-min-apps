@@ -219,7 +219,7 @@ Page({
                   item.YXValues += ''
                   item.YXValue += ''
                   item.YXValueSum += ''
-                  item.Points = item.Price = '0'
+                  //item.Points = item.Price = '0'
                   delete item.door 
                 }
             });

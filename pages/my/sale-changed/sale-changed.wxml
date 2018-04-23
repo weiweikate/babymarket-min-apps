@@ -24,7 +24,7 @@
         </navigator>       
       </view>
       <view class='sale-changed-item sale-changed-item1'>
-        <navigator url="/pages/order/order-list/order-list?type= 0 " >
+        <navigator url="/pages/order/order-list/order-list?type=0 " >
           <image src='{{babyAllianceList.OrderIconId}}'></image>
           <view class='title'>我的订单</view>
         </navigator>

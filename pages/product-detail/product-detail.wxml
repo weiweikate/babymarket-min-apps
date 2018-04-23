@@ -9,7 +9,7 @@
     <text class="product-detail" wx:if="{{productInfo.Summary.length > 0}}">{{productInfo.Summary}}</text>
     <block>
      <!--婴雄联盟的产品显示-->
-     <view class="view-price" wx:if='{{door == "0"}}'>
+     <view class="view-price" wx:if='{{door == 0}}'>
         <text class="price-title">需要婴雄值：</text>
         <text class="price-value">{{productInfo.YXValue}}</text>
         <view>

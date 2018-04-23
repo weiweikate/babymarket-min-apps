@@ -25,11 +25,12 @@
   <template is="cell-address" wx:if="{{door=='2'}}"
   data="{{isSelectMode:true,hasLocation:true,Consignee:orderInfo.Consignee,Mobile:orderInfo.ConsigneeMobile,ReciptAddress:orderInfo.Address}}" />
   
-  <template is="cell-order-line" data="{{...item,position:index}}" wx:for="{{orderInfo.Detail}}" wx:key="unique" />
+  <template is="cell-order-line" data="{{...item,position:index,door}}" wx:for="{{orderInfo.Detail}}" wx:key="unique" />
 
   <view class='view-fee'>
-    <text class="fee-title" wx:if="{{door=='1'}}">运费：包邮</text>
+    <text class="fee-title" wx:if="{{door=='1' || door==0}}">运费：包邮</text>
     <text class="fee-title" wx:if="{{door=='1'}}">合计：{{orderInfo.Points}}积分</text>
+    <text class="fee-title" wx:if="{{door==0}}">合计：{{orderInfo.TotalYXValues}}积分</text>
   </view>
 
   <view class='view-btn'>

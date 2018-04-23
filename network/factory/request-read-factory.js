@@ -757,7 +757,7 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '订单详情查询';
-        req.items = ["Id", "Number", "Date", "MemberId", "ReceiptAddressId", "ReciptTypeIdId", "ReciptTypeKey", "StatusKey", "Qnty", "Points", "StatusIdId", "LogisticsCode", "LogisticsNumber", "LogisticsName", "CreateTime"];
+        // req.items = ["Id", "Number", "Date", "MemberId", "ReceiptAddressId", "ReciptTypeIdId", "ReciptTypeKey", "StatusKey", "Qnty", "Points", "StatusIdId", "LogisticsCode", "LogisticsNumber", "LogisticsName", "CreateTime"];
         req.appendixesKeyMap = { 'Member': 'MemberId',
           'ReceiptAddress': 'ReceiptAddressId',
           'ReciptType': 'ReciptTypeIdId',
