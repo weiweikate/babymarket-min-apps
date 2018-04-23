@@ -469,11 +469,11 @@ export default class RequestReadFactory {
       let operation = Operation.sharedInstance().productReadOperation;
       let bodyParameters = {
         "Operation": operation,
-        "CategoryId": categoryId,
-        "Order": "${YXValue} DESC",
+        "CategoryId": categoryId
       };
       if (maxcount){
         bodyParameters.MaxCount = maxcount
+        bodyParameters.Order = '${YXValue} DESC'
       }
       let req = new RequestRead(bodyParameters);
       req.name = '积分商城-根据分类ID查询商品';
