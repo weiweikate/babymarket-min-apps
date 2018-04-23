@@ -53,7 +53,7 @@
     <view class='changeType1'>
       <block wx:for='{{babyAlliancePrdList[0]}}' wx:for-item="item" wx:for-index="section" wx:key="unique" >
         <view class='list' bindtap='itemClicked'  data-id="{{item.ProductId}}" data-overdue="{{item.Overdue}}">
-          <text  class='listName'>{{item.YXValue+'分'}}</text>
+          <!-- <text  class='listName'>{{item.YXValue+'分'}}</text> -->
           <image src='{{item.imageUrl}}'></image>
         </view>     
       </block>     

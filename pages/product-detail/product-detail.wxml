@@ -37,9 +37,9 @@
     <text class="cart-name">购物车</text>
   </view>
   <view class="btn-two">
-    <view class="btn-addcart" catchtap="onAddCartListener">
+    <view class="btn-addcart" catchtap="onAddCartListener" wx:if="{{productInfo.ActivityProduct=='False'&& door==0}}">
       加入购物车</view>
-    <view class="btn-submit" catchtap="onSubmitListener">
+    <view class="btn-submit" catchtap="onSubmitListener" style="width:{{productInfo.ActivityProduct=='False'? '300rpx':'500rpx'}}">
       立即兑换</view>
   </view>
 </view>

@@ -469,7 +469,8 @@ export default class RequestReadFactory {
       let operation = Operation.sharedInstance().productReadOperation;
       let bodyParameters = {
         "Operation": operation,
-        "CategoryId": categoryId
+        "CategoryId": categoryId,
+        "Order": "${YXValue} DESC",
       };
       if (maxcount){
         bodyParameters.MaxCount = maxcount
@@ -3107,7 +3108,7 @@ export default class RequestReadFactory {
       let operation = Operation.sharedInstance().babyAllianceProductCategory;
       let bodyParameters = {
         "Operation": operation,
-        "Condition": "${Tier} == '2'",
+        "Condition": "${Tier} == '2'"
       };
       let req = new RequestRead(bodyParameters);
       req.name = '婴雄联盟产品查询';

@@ -134,6 +134,11 @@
 .prdName{
   font-size: 24rpx;
   color: #808080;
+  display:inline-block;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  width:145rpx;
 }
 .prdAmount{
   color:#B6A581;
