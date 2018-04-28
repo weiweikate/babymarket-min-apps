@@ -155,6 +155,10 @@ Page({
         let position = e.currentTarget.dataset.position;
         let orderLineArray = this.data.orderLineArray;
         let orderLineData = orderLineArray[position];
+        if (orderLineData.Qnty >= orderLineData.innerStock){
+          Tool.showAlert('该商品目前库存只有' + orderLineData.innerStock+"件");
+          return
+        }
         if (orderLineData.Qnty < 999) {
             orderLineData.Qnty++;
             orderLineData.Points = orderLineData.Price * orderLineData.Qnty;
@@ -180,6 +184,10 @@ Page({
         //如果合计积分大于可用积分，提示积分不足
         let canUsedMoney = this.data.canUsedMoney;
         let totalPrice = this.data.totalPrice;
+        if (this.data.addressInfo === undefined){
+          Tool.showAlert('请填写收货地址');
+          return
+        }
         if (totalPrice > canUsedMoney) {
             Tool.showAlert('积分不足，兑换失败！');
             return;
@@ -208,6 +216,10 @@ Page({
         }else{
             let orderLineArray = this.data.orderLineArray;
             orderLineArray.forEach((item) => {
+              // console.log(item.Qnty > item.innerStock)
+                // if (item.Qnty > item.innerStock) {
+                //   Tool.showAlert('该商品目前库存只有' + item.innerStock + "件");
+                // }
                 item.ExchangeOrderId = orderId;
                 item.Qnty += "";
                 item.Points += "";

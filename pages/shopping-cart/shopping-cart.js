@@ -218,7 +218,8 @@ Page({
           'Points': item.Points,
           'Qnty': item.Qnty,
           'ProductSizeId': item.ProductSizeId,
-          'IsYXProduct':'False'
+          'IsYXProduct':'False',
+          'innerStock': item.ProductSizeQuantity
         };
         if(this.data.door == '0') {
           request.YXValue = item.Price

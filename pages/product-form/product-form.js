@@ -154,6 +154,10 @@ export default class ProductForm {
       Tool.showAlert('商品库存不足');
       return;
     }
+    if (form.innerQuantity > form.innerStock){
+      Tool.showAlert('该商品库存只有' + form.innerStock +"件");
+      return;
+    }
     let selectForm = formArray[form.selectFormPosition];
     let requestData = undefined;
     // 判断form.innerType
@@ -189,7 +193,8 @@ export default class ProductForm {
           'Qnty': form.innerQuantity,
           'ProductSizeId': selectForm.Id,
           'IsYXProduct': this.page.data.productInfo.IsYXProduct,
-          'ActivityProduct': form.ActivityProduct
+          'ActivityProduct': form.ActivityProduct,
+          'innerStock': form.innerStock
         }];
         // 如果是婴雄联盟的产品 那么添加相关信息
         if (this.page.data.productInfo.IsYXProduct == 'True') {
