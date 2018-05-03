@@ -1,4 +1,4 @@
-/**
+/** 0.1 18758328354 123456
  * Created by coin on 17/6/10.
  */
 export default class InputAlert {

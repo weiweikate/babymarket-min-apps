@@ -1,0 +1,19 @@
+.submit{
+  background:#EC615B;
+  color:#fff;
+  border:0;
+  position:initial;
+
+}
+.submit,.group input{
+  width:90%;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 28rpx;
+}
+.group input{
+  background: #fff;
+  border-radius: 5px;
+   
+}

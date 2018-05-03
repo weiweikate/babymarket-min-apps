@@ -20,14 +20,20 @@ Page({
     onLoad: function (options) {
         this.requestTodayTotalAward();
         this.requestAwardDatas();
-
+        //this.requestMemberInfo()
         let memberInfo = Storage.currentMember();
         let saleTel = Tool.isValidStr(memberInfo.SaleTel) ? memberInfo.SaleTel : global.TCGlobal.CustomerServicesNumber
         this.setData({
-            telNo: saleTel
+          telNo: saleTel
         })
     },
-
+    requestMemberInfo: function (orderId) {
+      let r = RequestReadFactory.memberInfoRead();
+      r.finishBlock = (req) => {
+        
+      };
+      r.addToQueue();
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

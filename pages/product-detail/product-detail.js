@@ -44,7 +44,7 @@ Page({
     this.productForm.finishBlock = (formId, innerType, quantity, price) => {
       //结束当前页面，跳转到订单确认界面
       let url = '/pages/order/order-confirm/order-confirm'
-      if (this.data.productInfo.IsYXProduct == 'True'){
+      if (this.data.door == '0'){
         url = '/pages/order/order-confirm/order-confirm?door=0'
       }
       wx.redirectTo({
@@ -54,7 +54,6 @@ Page({
 
     this.requestProductInfo();
   },
-
   /**
    * 查询商品详情
    */
@@ -81,6 +80,7 @@ Page({
         if (responseData.ActivityProduct == 'True'){
           self.requestXYExchangeDetail(responseData.StartDate.slice(0, 10), responseData.EndDate.slice(0, 10))
         } else {
+          //self.requestMemberInfo()
           self.setData({
             userXYvalue: Storage.currentMember().YXValue
           });

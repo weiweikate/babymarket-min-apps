@@ -928,4 +928,15 @@ export default class RequestWriteFactory {
         req.name = '新增门店会员';
         return req;
     }
+    // 新增提现密码 TXpasswordAddOperation
+    static addTXpassword(requestData) {
+      requestData.MemberId = global.Storage.memberId()
+      requestData.ClassifyKey = '1'
+      let operation = Operation.sharedInstance().TXpasswordAddOperation;
+      let status = Network.sharedInstance().statusNew;
+
+      let req = new RequestWrite(status, 'PayPasswordRecord', requestData, operation, null);
+      req.name = '新增提现密码';
+      return req;
+    }
 }

@@ -111,7 +111,8 @@
     "pages/allianceContract/allianceContract",
     "pages/my/my-YXValue/my-YXValue",
     "pages/my/my-YXValue/detail/type-detail/type-detail",
-    "pages/my/my-YXValue/detail/award-detail/award-detail"
+    "pages/my/my-YXValue/detail/award-detail/award-detail",
+    "pages/my/withdraw/pay-passward/pay-passward"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,4 +1,4 @@
-// withdraw.js
+// withdraw.js 0.1 18758328354 123456
 
 let {Tool, Storage, RequestWriteFactory} = global;
 
@@ -95,7 +95,7 @@ Page({
     formSubmit: function (e) {
         let value = e.detail.value;
         let amount = value.amount;
-
+        
         if (amount > this.data.balance) {
             wx.showModal({
                 title: '提示',
@@ -134,7 +134,8 @@ Page({
                 success: function (res) {
                     if (res.confirm) {
                         wx.navigateTo({
-                            url: '../complete-info/complete-info',
+                            //url: '../complete-info/complete-info',
+                          url:'/pages/my/withdraw/pay-passward/pay-passward'
                         })
                     }
                 }
@@ -183,7 +184,7 @@ Page({
                     title: '操作成功！',
                 })
 
-                let balance = parseFloat(this.data.balance) - parseFloat(this.data.amount);
+                let balance = (parseFloat(this.data.balance) - parseFloat(this.data.amount)).toFixed(2);
                 this.setData({
                     amount: '',
                     balance: balance.toString()

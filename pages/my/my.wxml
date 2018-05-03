@@ -14,7 +14,8 @@
     <image src="{{memberInfo.headImageUrl.length>0&&isLogin?memberInfo.headImageUrl:'/res/img/common/common-avatar-default-icon.png'}}" 
     class="info-avatar" catchtap="onEditClickListener" mode="aspectFill" />
     <text class="info-nickname">{{isLogin?memberInfo.NickName:'未登录'}}</text>
-    <text class="info-birthday" wx:if="{{isLogin}}">宝宝生日{{memberInfo.BabyBirthday}}</text>
+    <text class="info-birthday" wx:if="{{isLogin && !(memberInfo.IsSalesclerk =='True')}}">宝宝生日{{memberInfo.BabyBirthday}}</text>
+    <text class="info-birthday" wx:if="{{isLogin && memberInfo.IsSalesclerk =='True'}}">所属门店：{{storeName}}</text>
   </view>
 
   <view class='view-count'>

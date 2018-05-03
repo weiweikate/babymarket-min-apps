@@ -275,6 +275,8 @@ export default class Operation {
         __instance(this);
         // 婴雄订单查询
         this.YXExchangeOrderReadOperation = 'f08dd6ad-65d4-47d8-b935-a8c600b9fc1d'
+        // 新增提现密码
+        this.TXpasswordAddOperation = ' 7c991cfc-3fd0-4a55-a059-a6fa0128d2b9'
     }
 
     static sharedInstance() {

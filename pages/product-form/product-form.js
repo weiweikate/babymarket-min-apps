@@ -15,6 +15,7 @@ export default class ProductForm {
     form.selectFormPosition = -1;//选中的规格下标
     form.IsYXProduct = 'False'; // 是否是婴雄值兑换产品
     form.ActivityProduct = 'False' // 是否是婴雄值兑换活动产品
+    form.door = this.page.data.door
 
     this.page.data.form = form;
 
@@ -111,9 +112,10 @@ export default class ProductForm {
     let form = this.page.data.form;
     form.innerType = innerType;
     form.isShowForm = true;
-    if (this.page.data.productInfo.IsYXProduct == 'True' ){
+    if (this.page.data.door == '0' ){
       form.innerPrice = this.page.data.productInfo.YXValue;
       form.IsYXProduct = 'True'
+      form.door ='0'
       form.ActivityProduct = this.page.data.productInfo.ActivityProduct
     } else {
       form.innerPrice = productInfo.Price;
@@ -146,7 +148,7 @@ export default class ProductForm {
       Tool.showAlert('请选择规格');
       return;
     }
-    if (this.page.data.productInfo.IsYXProduct == 'True' && this.page.data.productInfo.Overdue == 'True'){
+    if (this.page.data.door == '0' && this.page.data.productInfo.Overdue == 'True'){
       Tool.showAlert('兑换时间已超时');
       return;
     }
@@ -197,7 +199,7 @@ export default class ProductForm {
           'innerStock': form.innerStock
         }];
         // 如果是婴雄联盟的产品 那么添加相关信息
-        if (this.page.data.productInfo.IsYXProduct == 'True') {
+        if (this.page.data.door == '0') {
           requestData[0].XYProuductPrice = this.page.data.productInfo.ProuductPrice
           requestData[0].YXValue = this.page.data.productInfo.YXValue
           requestData[0].YXValueSum = this.page.data.productInfo.YXValue * form.innerQuantity

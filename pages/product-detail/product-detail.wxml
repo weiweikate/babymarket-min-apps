@@ -13,7 +13,7 @@
         <text class="price-title">需要婴雄值：</text>
         <text class="price-value">{{productInfo.YXValue}}</text>
         <view>
-        <text class="price-title" style='margin-left:20rpx;'>{{productInfo.ActivityProduct=='False'? '您的可用婴雄值：':'您的当前活动婴雄值：'}}</text>
+        <text class="price-title" style='margin-left:20rpx;'>{{productInfo.ActivityProduct=='False'? '您的可用婴雄值：':'活动可用婴雄值：'}}</text>
         <text class="price-value">{{userXYvalue}} </text>
         </view>
       </view>

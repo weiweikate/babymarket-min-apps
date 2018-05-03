@@ -4,7 +4,7 @@
   <view class='product-form' wx:if="{{form.isShowForm}}" catchtap='dismiss'>
     <view class="product-form-root" catchtap='onNoActionListener'>
       <view class="form-price-stock">
-        <text class='form-price-title'>需要积分：</text>
+        <text class='form-price-title'>{{form.door == '0'? '需要婴雄值':'需要积分'}}：</text>
         <text class='form-price-value'>{{form.innerPrice}}</text>
         <text class='form-stock-value'>(库存{{form.innerStock}}件)</text>
       </view>

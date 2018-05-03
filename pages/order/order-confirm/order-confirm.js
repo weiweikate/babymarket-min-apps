@@ -69,7 +69,17 @@ Page({
             })
         }
     },
-
+    // 查询婴雄值
+    requestMemberInfo: function (orderId) {
+      let r = RequestReadFactory.memberInfoRead();
+      r.finishBlock = (req) => {
+        //跳转到下一级
+        wx.redirectTo({
+          url: '/pages/pay-success/pay-success?id=' + orderId + '&door=' + this.data.door
+        })
+      };
+      r.addToQueue();
+    },
     /**
      * 查询地址
      */
@@ -105,10 +115,7 @@ Page({
     requestAddOrderLine: function (requestData, orderId) {
         let task = RequestWriteFactory.orderLineAdd(requestData);
         task.finishBlock = (req) => {
-            //跳转到下一级
-            wx.redirectTo({
-                url: '/pages/pay-success/pay-success?id=' + orderId +'&door='+this.data.door
-            })
+          this.requestMemberInfo(orderId)
         };
         task.addToQueue();
     },
@@ -245,7 +252,7 @@ Page({
                 'ReceiptAddressId': this.data.addressInfo.Id,
                 'YXOrder': YXOrder
             };
-
+            //console.log(requestData)
             Tool.showLoading();
             this.requestAddOrder(requestData, orderLineArray, orderId);
         }

@@ -8,7 +8,8 @@ Page({
     isLogin: false,
     memberInfo: undefined,
     menuArray: [],
-    isXYnumber: 'False' // 是否是参加了婴雄联盟活动
+    isXYnumber: 'False', // 是否是参加了婴雄联盟活动
+    storeName:'' // 所属门店
   },
 
   /**
@@ -122,6 +123,12 @@ Page({
    * 扫码积分
    */
   onCodeClickListener: function () {
+     if (!Storage.didLogin()) {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return;
+    }
     // 允许从相机和相册扫码
     wx.scanCode({
       success: (res) => {
@@ -208,13 +215,23 @@ Page({
   requestData: function () {
     if (Storage.didLogin()) {
       this.requestMemberInfo();
+      //this.requestStoreMemberInfo()
     } else {
       this.setData({
         memberInfo: undefined
       });
     }
   },
-
+  requestStoreMemberInfo: function (){
+    let r = RequestReadFactory.requestStoreMemberInfo();
+    r.finishBlock = (req) => {
+      console.log(req.responseObject.Datas)
+      this.setData({
+        storeName: req.responseObject.Datas[0].ShopName,
+      });
+    };
+    r.addToQueue();
+  },
   /**
    * 登录用户信息 
    */
@@ -222,7 +239,10 @@ Page({
     let r = RequestReadFactory.memberInfoRead();
     r.finishBlock = (req) => {
       let memberInfo = Storage.currentMember();
-
+      if (memberInfo.IsSalesclerk =='True'){
+        console.log(11111)
+        this.requestStoreMemberInfo()
+      }
       this.setData({
         isXYnumber: memberInfo.Recommend,
         memberInfo: memberInfo,

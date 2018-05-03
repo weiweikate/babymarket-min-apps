@@ -12,7 +12,7 @@
     <view class='total-btn'>
       <text class='order-total-title' wx:if="{{door=='1'}}">共消耗积分：</text>
       <text class='order-total-value' wx:if="{{door =='1'}}">{{Points}}</text>
-      <text class='order-total-title' wx:if="{{door == 0 }}">共消耗积婴雄值：</text>
+      <text class='order-total-title' wx:if="{{door == 0 }}">共消耗婴雄值：</text>
       <text class='order-total-value' wx:if="{{door == 0 }}">{{ TotalYXValues }}</text>
       <text class='order-btn' catchtap='onContactClickListener'>联系客服</text>
     </view>

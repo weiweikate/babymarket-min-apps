@@ -803,6 +803,10 @@ export default class Tool {
             return false;
         }
     }
+    // 去除左右两边的空格
+    static trim(s) {
+      return s.replace(/(^\s*)|(\s*$)/g, "");
+    }
     
 }
 

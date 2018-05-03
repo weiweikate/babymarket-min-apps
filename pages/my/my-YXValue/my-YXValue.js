@@ -36,7 +36,7 @@ Page({
     // 按月获取明细
     let r = RequestReadFactory.requestYXValueMonthSum(month);
     r.finishBlock = (req) => {
-      //console.log(req.responseObject.Datas)
+      console.log(req.responseObject.Datas)
       let YXValueLog = req.responseObject.Datas
       this.setData({
         YXValueLog: YXValueLog
