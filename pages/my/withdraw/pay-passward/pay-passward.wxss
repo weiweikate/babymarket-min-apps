@@ -1,19 +1,32 @@
+.passWordPage{
+  padding-top: 150rpx;
+}
+
+.submit,.group{
+  width:85%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 30rpx;
+}
 .submit{
   background:#EC615B;
   color:#fff;
   border:0;
   position:initial;
-
+  margin-top:50rpx;
+  padding:10rpx 0;
 }
-.submit,.group input{
-  width:90%;
-  padding: 0;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 28rpx;
+.group {
+  border:1rpx solid #dcdcdc;
+  border-radius: 5px;
+  overflow: hidden;
+  
 }
 .group input{
   background: #fff;
-  border-radius: 5px;
-   
+  border-radius: 5rpx;
+  padding: 20rpx 0;  
+}
+.group>input:first-child{
+  border-bottom: 1rpx solid #dcdcdc;
 }

@@ -21,9 +21,7 @@ Page({
     });
 
     this.createBtn = new CreateBtn(this, '/pages/address/add-address/add-address');
-    if (this.data.isSelectMode) {
-      this.createBtn.setHide();
-    }
+    
 
     this.requestData();
 
@@ -52,6 +50,9 @@ Page({
     let r = RequestReadFactory.addressRead();
     r.finishBlock = (req) => {
       let responseData = req.responseObject.Datas;
+      if (this.data.isSelectMode && responseData.length !== 0) {
+        this.createBtn.setHide();
+      }
       this.setData({
         addressArray: responseData
       });

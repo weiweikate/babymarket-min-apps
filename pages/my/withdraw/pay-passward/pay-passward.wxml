@@ -1,9 +1,12 @@
-<form bindsubmit="formSubmit">
-  <view class='group'>
-    <input placeholder='请输入TOPMOM的登录密码' name='Password'></input>
-  </view>
-  <view class='group'>
-    <input placeholder='请输入TOPMOM的提现密码' name='PayPassword' password='true'></input>
-  </view>
-  <button formType="submit" class='submit'>确认</button>
-</form>
+<view class='passWordPage'>
+  <form bindsubmit="formSubmit">
+    <view class='group'>
+      <input placeholder='请输入TOPMOM的登录密码' name='Password'></input>
+      <input placeholder='请输入TOPMOM的支付密码' name='PayPassword' password='true'></input>
+    </view>
+    <!-- <view class='group'>
+      
+    </view> -->
+    <button formType="submit" class='submit'>确认</button>
+  </form>
+</view>

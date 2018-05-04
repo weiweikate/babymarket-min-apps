@@ -84,13 +84,14 @@ button::after{
 }
 
 .input-alert{
-    height: 150rpx;
+    height: 180rpx;
 }
 
 .input-alert textarea{
-    height: 40rpx;
-    width: 530rpx;
-    background-color: #eeeeee;
-    margin-bottom: 24rpx;
-    padding: 10rpx;
+   height:60rpx;
+  width:530rpx;
+  background-color:#eeeeee;
+  margin-bottom:24rpx;
+  padding:6rpx 10rpx ;
+  /* padding-top:20rpx */
 }

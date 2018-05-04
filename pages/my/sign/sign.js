@@ -46,6 +46,7 @@ Page({
         this.requestSignRecords();
 
         let memberInfo = Storage.currentMember();
+        memberInfo.Coin == '' ? 0 : memberInfo.Coin
         this.setData({
             award: memberInfo.Coin
         })

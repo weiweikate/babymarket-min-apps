@@ -21,7 +21,7 @@ Page({
       Tool.showAlert('请输入登录密码')
       return
     } else if (Tool.isEmptyStr(Tool.trim(e.detail.value.PayPassword))) {
-      Tool.showAlert('请输入提现密码')
+      Tool.showAlert('请输入支付密码')
       return
     }
     this.requestAddTXpassword(params)

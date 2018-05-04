@@ -20,17 +20,16 @@ Page({
     onLoad: function (options) {
         this.requestTodayTotalAward();
         this.requestAwardDatas();
-        //this.requestMemberInfo()
+        this.requestMemberInfo()
+    },
+    requestMemberInfo: function (orderId) {
+      let r = RequestReadFactory.memberInfoRead();
+      r.finishBlock = (req) => {
         let memberInfo = Storage.currentMember();
         let saleTel = Tool.isValidStr(memberInfo.SaleTel) ? memberInfo.SaleTel : global.TCGlobal.CustomerServicesNumber
         this.setData({
           telNo: saleTel
         })
-    },
-    requestMemberInfo: function (orderId) {
-      let r = RequestReadFactory.memberInfoRead();
-      r.finishBlock = (req) => {
-        
       };
       r.addToQueue();
     },
