@@ -11,7 +11,7 @@
     <view class="bottom-buttons">
         <view class="withdraw bottom-button" catchtap="withdrawTap">提现</view>
         <view class="total bottom-button" catchtap="withdrawDetailTap">统计</view>
-        <view class="contact bottom-button" catchtap="contactTap">联系业务</view>
+        <!-- <view class="contact bottom-button" catchtap="contactTap">联系业务</view> -->
     </view>
 
 </view>

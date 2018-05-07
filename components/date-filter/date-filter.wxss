@@ -14,3 +14,16 @@
     height:100rpx;
     font-size: 28rpx;
 }
+
+.date-filter view{
+    display: flex;
+    background-color: white;
+    margin:0 30rpx;
+    padding:0 20rpx;
+    height:100rpx;
+    font-size: 28rpx;
+    align-items: center;
+}
+.time{
+  color: #979797;
+}

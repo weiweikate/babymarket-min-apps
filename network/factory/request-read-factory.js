@@ -2992,11 +2992,14 @@ export default class RequestReadFactory {
     //店员获得奖励统计 查询
     static requestAwardFilterList(condition) {
         let operation = Operation.sharedInstance().awardReadOperation;
-
+        let con = "${MemberId} == '" + global.Storage.memberId()+"'"
+        if (condition){
+          con = con + ' && ' + condition
+        }
         let bodyParameters = {
             "Operation": operation,
             "Order": "${CreateTime} DESC",
-            "MemberId": global.Storage.memberId()
+            "Condition": con
         };
         let req = new RequestRead(bodyParameters);
         req.item = ["Brand","RewardMoney","Id"]

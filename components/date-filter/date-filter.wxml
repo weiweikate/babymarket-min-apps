@@ -10,7 +10,11 @@
                 data-type="start"
                 bindchange="datePickerChange"
         >
-            <input placeholder="开始日期" value="{{startDate}}"/>
+            <view>
+              <text class='time'>开始时间： </text>  
+              <text> {{startDate}}</text> 
+            </view>
+            <!-- <input placeholder="开始日期" value="{{startDate}}"/> -->
         </picker>
 
         <!--结束日期-->
@@ -21,7 +25,11 @@
                 data-type="end"
                 bindchange="datePickerChange"
         >
-            <input placeholder="结束日期" value="{{endDate}}"/>
+           <view> 
+              <text class='time'>结束日期： </text> 
+              <text> {{endDate}}</text> 
+          </view>
+            <!-- <input placeholder="结束日期" value="{{endDate}}"/> -->
         </picker>
 
 
